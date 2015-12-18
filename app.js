@@ -17,8 +17,11 @@ app.use(require('./controllers'))
 })*/
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '0.0.0.0'
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '127.0.0.1'
 
 app.listen(server_port, server_ip_address, function(){
   console.log("Listening on " + server_ip_address + ", server_port " + server_port)
 });
+
+//http://senserover-terrestre.rhcloud.com/
+//dw32igsr@gmail.com
