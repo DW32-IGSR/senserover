@@ -19,6 +19,8 @@
   "dependencies": {
     "body-parser": "^1.12.3",
     "express": "^4.12.3",
+    "express-handlebars": "^2.0.1",
+    "handlebars": "^4.0.5",
     "jade": "^1.9.2",
     "mongoose": "^4.3.2"
   },
