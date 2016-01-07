@@ -74,12 +74,12 @@
             tooltip: {
                 valueSuffix: '%'
             },
-            legend: {
+            /*legend: {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'middle',
                 borderWidth: 0
-            },
+            },*/
             
             //meter arrays de valores
             
@@ -119,12 +119,12 @@
             tooltip: {
                 valueSuffix: 'ppm'
             },
-            legend: {
+            /*legend: {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'middle',
                 borderWidth: 0
-            },
+            },*/
             
             //meter arrays de valores
             
@@ -164,12 +164,12 @@
             tooltip: {
                 valueSuffix: 'W/m^2'
             },
-            legend: {
+            /*legend: {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'middle',
                 borderWidth: 0
-            },
+            },*/
             
             //meter arrays de valores
             
@@ -209,12 +209,12 @@
             tooltip: {
                 valueSuffix: 'lux'
             },
-            legend: {
+            /*legend: {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'middle',
                 borderWidth: 0
-            },
+            },*/
             
             //meter arrays de valores
             
