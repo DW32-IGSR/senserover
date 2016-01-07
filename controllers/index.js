@@ -128,7 +128,10 @@ router.post('/register', function (req, res) {
     var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org';
     var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
     
-    var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace o copielo en la barra de direcciones del navegador:</p><br><a href='http://sense-rover-nohtrim.c9users.io/activate/"+new_key+"/"+form_email+"'>Activar la cuenta</a>";
+    var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace o copielo en la barra de direcciones del navegador:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/"+new_key+"/"+form_email+"'>Activar la cuenta</a>";
+    
+    //http://sense-rover-nohtrim.c9users.io
+    //http://senserover-terrestre.rhcloud.com/
     
     var data = {
       from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
