@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
   //si hay sesion o cookie a administracion
   //si no hay a la pagina principal
   
-  res.render('indexRuben')
+  res.render('index')
   //res.render('administracion')
 })
 
