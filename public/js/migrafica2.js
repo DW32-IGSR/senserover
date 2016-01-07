@@ -1,6 +1,6 @@
 //$(function () {
     function dibujargrafica2(){
-        $('#temperatura').highcharts({
+        $('#Temperatura').highcharts({
             title: {
                 text: 'Temperatura (°C)',
                 x: -20 //center
