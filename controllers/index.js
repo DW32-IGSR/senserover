@@ -40,6 +40,10 @@ router.get('/administracion', function(req, res) {
   res.render('administracion')
 })
 
+router.get('/perfil', function(req, res) {
+  res.render('perfil')
+})
+
 router.get('/cerrar', function(req, res) {
   
   //pendiente
