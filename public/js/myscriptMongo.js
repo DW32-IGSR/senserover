@@ -34,9 +34,9 @@ $(document).ready(function() {
                 datosLum.push(parseFloat(data[i].luminosidad));
             };
             //fechas=["January", "February", "March", "April", "May", "June", "July"];
-            console.log(fechas);
-            console.log(datosTemp);
-            console.log(datosHum);
+            //console.log(fechas);
+            //console.log(datosTemp);
+            //console.log(datosHum);
             //dibujargrafica(); 
             dibujargrafica2();
         },
