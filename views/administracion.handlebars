@@ -116,7 +116,7 @@
           </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
         <div class="info-box bg-red">
-          <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+          <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
           <div class="info-box-content">
             <span class="info-box-text">CO2</span>
             <span class="info-box-number">114,381</span>
@@ -129,7 +129,7 @@
           </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
         <div class="info-box bg-green">
-          <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
+          <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
           <div class="info-box-content">
             <span class="info-box-text">Radiacion Solar</span>
             <span class="info-box-number">33º</span>
@@ -142,7 +142,7 @@
           </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
         <div class="info-box bg-green">
-          <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
+          <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
           <div class="info-box-content">
             <span class="info-box-text">Luminosidad</span>
             <span class="info-box-number">33º</span>
@@ -163,40 +163,45 @@
       <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
         <div class="w-tab-menu">
           <a data-w-tab="Tab 1" class="w-tab-link w--current w-inline-block button tab">
-            <div>tiempo real</div>
+            <div><img src="icons/realtime.png" height="24" width="24"></div>
           </a>
           <a data-w-tab="Tab 2" class="w-tab-link w-inline-block button tab">
             <div><img src="icons/temp.png" height="24" width="24"></div>
           </a>
           <a data-w-tab="Tab 3" class="w-tab-link w-inline-block button tab">
-            <div>Humedad</div>
+            <div><img src="icons/humedad.png" height="24" width="24"></div>
           </a>
           <a data-w-tab="Tab 4" class="w-tab-link w-inline-block button tab">
-            <div>CO2</div>
+            <div><img src="icons/co2.png" height="24" width="24"></div>
           </a>
           <a data-w-tab="Tab 5" class="w-tab-link w-inline-block button tab">
-            <div>RADIACIÓN Solar</div>
+            <div><img src="icons/radiacion.png" height="24" width="24"></div>
           </a>
           <a data-w-tab="Tab 6" class="w-tab-link w-inline-block button tab">
-            <div>Luminosidad</div>
+            <div><img src="icons/luminosidad.png" height="24" width="24"></div>
           </a>
         </div> <!-- w-tab-menu -->
         <div class="w-tab-content">
           <div id="tiempo-real" data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
             <div class="white-box">
-              <h1 class="section-subheading center">Temperatura</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+              <h1 class="section-subheading center">Temperatura</h1>
+              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
             </div>
             <div class="white-box">
-              <h1 class="section-subheading center">Humedad</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+              <h1 class="section-subheading center">Humedad</h1>
+              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
             </div>
             <div class="white-box">
-              <h1 class="section-subheading center">co2</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+              <h1 class="section-subheading center">co2</h1>
+              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
             </div>
             <div class="white-box">
-              <h1 class="section-subheading center">RADIACIÓN solar</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+              <h1 class="section-subheading center">RADIACIÓN solar</h1>
+              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
             </div>
             <div class="white-box">
-              <h1 class="section-subheading center">Luminosidad</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+              <h1 class="section-subheading center">Luminosidad</h1>
+              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
             </div>
           </div> <!-- tiempo real: w-tab-pane w--tab-active-->
           <div data-w-tab="Tab 2" class="w-tab-pane">
@@ -210,10 +215,10 @@
                   <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
                   <div class="w-row">
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas" type="text" placeholder="Inicio" name="Rango-de-fechas" data-name="Rango de fechas" class="w-input">
+                      <input id="Rango-de-fechas" type="date" placeholder="Inicio" name="Rango-de-fechas" data-name="Rango de fechas" class="w-input">
                     </div>
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-2" type="text" placeholder="Final" name="Rango-de-fechas-2" data-name="Rango De Fechas 2" class="w-input">
+                      <input id="Rango-de-fechas-2" type="date" placeholder="Final" name="Rango-de-fechas-2" data-name="Rango De Fechas 2" class="w-input">
                     </div>
                   </div>
                   <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
@@ -238,10 +243,10 @@
                   <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
                   <div class="w-row">
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-9" type="text" placeholder="Inicio" name="Rango-de-fechas-9" data-name="Rango De Fechas 9" class="w-input">
+                      <input id="Rango-de-fechas-9" type="date" placeholder="Inicio" name="Rango-de-fechas-9" data-name="Rango De Fechas 9" class="w-input">
                     </div>
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-10" type="text" placeholder="Final" name="Rango-de-fechas-10" data-name="Rango De Fechas 10" class="w-input">
+                      <input id="Rango-de-fechas-10" type="date" placeholder="Final" name="Rango-de-fechas-10" data-name="Rango De Fechas 10" class="w-input">
                     </div>
                   </div>
                   <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
@@ -266,10 +271,10 @@
                   <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
                   <div class="w-row">
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-11" type="text" placeholder="Inicio" name="Rango-de-fechas-11" data-name="Rango De Fechas 11" class="w-input">
+                      <input id="Rango-de-fechas-11" type="date" placeholder="Inicio" name="Rango-de-fechas-11" data-name="Rango De Fechas 11" class="w-input">
                     </div>
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-12" type="text" placeholder="Final" name="Rango-de-fechas-12" data-name="Rango De Fechas 12" class="w-input">
+                      <input id="Rango-de-fechas-12" type="date" placeholder="Final" name="Rango-de-fechas-12" data-name="Rango De Fechas 12" class="w-input">
                     </div>
                   </div>
                   <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
@@ -294,10 +299,10 @@
                   <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
                   <div class="w-row">
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-13" type="text" placeholder="Inicio" name="Rango-de-fechas-13" data-name="Rango De Fechas 13" class="w-input">
+                      <input id="Rango-de-fechas-13" type="date" placeholder="Inicio" name="Rango-de-fechas-13" data-name="Rango De Fechas 13" class="w-input">
                     </div>
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-14" type="text" placeholder="Final" name="Rango-de-fechas-14" data-name="Rango De Fechas 14" class="w-input">
+                      <input id="Rango-de-fechas-14" type="date" placeholder="Final" name="Rango-de-fechas-14" data-name="Rango De Fechas 14" class="w-input">
                     </div>
                   </div>
                   <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
@@ -321,10 +326,10 @@
                   <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
                   <div class="w-row">
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-13" type="text" placeholder="Inicio" name="Rango-de-fechas-13" data-name="Rango De Fechas 13" class="w-input">
+                      <input id="Rango-de-fechas-13" type="date" placeholder="Inicio" name="Rango-de-fechas-13" data-name="Rango De Fechas 13" class="w-input">
                     </div>
                     <div class="w-col w-col-6">
-                      <input id="Rango-de-fechas-14" type="text" placeholder="Final" name="Rango-de-fechas-14" data-name="Rango De Fechas 14" class="w-input">
+                      <input id="Rango-de-fechas-14" type="date" placeholder="Final" name="Rango-de-fechas-14" data-name="Rango De Fechas 14" class="w-input">
                     </div>
                   </div>
                   <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
@@ -402,7 +407,9 @@
               <p class="white-text">14:50 se encendió el dron
                 <br>14:52 el dron mando una muestra
                 <br>14:54 el dron mando una muestra
-                <br>14:56 se apagó el dron</p><a href="#" class="hollow-button">HACER COMPROBACIÓN</a><a href="#" class="hollow-button">exportar registro</a>
+                <br>14:56 se apagó el dron</p>
+                <a href="#" class="hollow-button">HACER COMPROBACIÓN</a>
+                <a href="#" class="hollow-button">exportar registro</a>
             </div> <!-- panel estado: Tab-registro: bordecito -->
           </div> <!-- panel estado: Tab-registro: w-tab-pane -->
         </div> <!-- panel-estado: w-tab-content -->
@@ -412,7 +419,8 @@
   <div class="w-section section grafic">
     <div class="w-container">
       <h1 class="section-heading centered">Preguntas frecuentes</h1>
-      <p>Si tienes algún problema no dudes en visitar la sección de preguntas frecuentes.</p><a href="/faq" class="w-button button">Soluciones</a>
+      <p>Si tienes algún problema no dudes en visitar la sección de preguntas frecuentes.</p>
+      <a href="/faq" class="w-button button">Soluciones</a>
     </div>
   </div> <!-- preguntas frecuentes: w-section section grafic -->
   <div class="w-section footer center">
