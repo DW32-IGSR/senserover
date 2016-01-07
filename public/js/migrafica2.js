@@ -1,4 +1,4 @@
-//$(function () {
+$(function () {
     function dibujargrafica2(){
         $('#Temperatura').highcharts({
             title: {
@@ -226,4 +226,4 @@
             ]
         });
     }    
-//});
+});
