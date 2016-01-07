@@ -15,7 +15,7 @@ $(document).ready(function() {
    
         success: function(data) {
             for(var i=0; i<data.length; i++){
-                console.log(data)
+                //console.log(data)
                 $( "#tabla" ).append(
                     "<tr> <td align='center'><b>" + data[i].temperatura + "</b> ºC</td>" +
                         "<td align='center'><b>" + data[i].humedad + "</b> %</td>" +
