@@ -114,7 +114,6 @@ router.post('/register', function (req, res) {
   console.log("Pass 1: " + form_pass)
   console.log("Pass 2: " + form_pass2)
   
-  //pendiente de adaptar  
   var salt = bcrypt.genSaltSync(10);
   var pass_coded = bcrypt.hashSync(form_pass, salt);
   console.log(bcrypt.compareSync(form_pass2, pass_coded));
@@ -161,11 +160,9 @@ router.post('/register', function (req, res) {
   } else {
       console.log('Las pass no es la misma');
   }  
-//pendiente de adaptar  
   
 })  
 
-//sin comprobar
 router.get('/activate/:activation/:email', function (req, res) {
     
   var key = req.params.activation;
@@ -203,7 +200,6 @@ router.get('/activate/:activation/:email', function (req, res) {
   res.redirect('/');
 
 });    
-//sin comprobar
 
 module.exports = router
 

@@ -65,11 +65,59 @@
   <div id="alertas" class="w-section section">
     <div class="w-container">
       <h1 class="section-heading centered white">Alertas</h1>
-      <h1 class="section-subheading center off-white">Temperatura</h1><img src="images/alerta3.PNG">
-      <h1 class="section-subheading center off-white">Humedad</h1><img src="images/alerta2.PNG">
-      <h1 class="section-subheading center off-white">co2</h1><img src="images/alerta1.PNG">
-      <h1 class="section-subheading center off-white">RADIACIÓN solar</h1><img src="images/alerta1.PNG">
-      <h1 class="section-subheading center off-white">Luminosidad</h1><img src="images/alerta1.PNG">
+        <section class="content">
+
+          <div class="box box-default">
+            
+            <div class="col-md-12">
+              <!-- Info Boxes Style 2 -->
+              <div class="info-box bg-green">
+                <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Temperatura</span>
+                  <span class="info-box-number">33º</span>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 100%"></div>
+                  </div>
+                  <span class="progress-description">
+                    La temperatura es optima
+                  </span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+              <div class="info-box bg-green">
+                <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Humedad</span>
+                  <span class="info-box-number">92,050</span>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 100%"></div>
+                  </div>
+                  <span class="progress-description">
+                    20% Increase in 30 Days
+                  </span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+              <div class="info-box bg-red">
+                <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Downloads</span>
+                  <span class="info-box-number">114,381</span>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 100%"></div>
+                  </div>
+                  <span class="progress-description">
+                    70% Increase in 30 Days
+                  </span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+
+            </div><!-- /.col -->
+
+            <div class="box-footer no-padding">
+            </div><!-- /.footer -->
+          </div><!-- /.box -->
+    
+        </section><!-- /.content -->
     </div>
   </div>
   
@@ -359,6 +407,8 @@
     </div> <!-- footer: w-container -->
   </div> <!-- footer: w-section footer center -->
   
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/myscriptMongo.js"></script>
   <script type="text/javascript" src="js/migrafica2.js"></script>
   
 </body>
