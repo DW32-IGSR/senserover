@@ -450,19 +450,40 @@ p {
   text-align: center;
 }
 
+/* INICIO MODAL */
 .tab-menu-modal {
   margin-bottom: 15px;
   text-align: center;
 }
 
-.tabs-wrapper {
-  margin-top: 40px;
+.tabs-wrapper-modal {
+  margin-top: 0px;
   padding-bottom: 0px;
   text-align: center;
 }
+/* FIN MODAL */
 
-.tabs-wrapper-modal {
-  margin-top: 0px;
+/* INICIO PERFIL */
+.tab-menu-perfil {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.button.full-width.perfil {
+  display: block;
+  width: 50%;
+  margin-right: 0px;
+  margin-left: 25%;
+}
+
+.section-title-group-perfil {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+/* FIN PERFIL */
+
+.tabs-wrapper {
+  margin-top: 40px;
   padding-bottom: 0px;
   text-align: center;
 }
@@ -837,29 +858,6 @@ p {
   background-color: white;
 }
 
-/*.modal-wrapper-registro {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 9999;
-  display: none;
-  height: 100%;
-  padding-top: 90px;
-  background-color: rgba(0, 0, 0, 0.5);
-  text-align: center;
-}*/
-
-/*.registro-wrapper {
-  display: block;
-  width: 450px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 20px 40px;
-  background-color: white;
-}*/
-
 .text-usuario {
   height: 40px;
   margin-top: 10px;
@@ -872,13 +870,6 @@ p {
 .login-submit {
   width: 100%;
   height: 40px;
-}
-
-.login-submit.tablogin {
-  width: 100%;
-  height: 40px;
-  margin-left: 100px;
-  margin-right: 100px;
 }
 
 .registrar {
