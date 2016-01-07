@@ -56,3 +56,27 @@ var datoModel = function () {
 };
 
 module.exports = new datoModel();
+
+/*
+
+// https://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/
+// https://github.com/carlosazaustre/node-api-rest-example/tree/feature-express4
+
+// --- Para API (Sin comprobar) ---
+
+exports = module.exports = function(app, mongoose) {
+
+    var datoSchema = new mongoose.Schema({
+        temperatura: { type: String },
+        humedad: { type: String },
+        co2: { type: String },
+        radiacion: { type: String },
+        luminosidad: { type: String },
+        fecha: { type: String }
+    }
+
+	mongoose.model('Dato', datoSchema);
+
+};
+
+*/

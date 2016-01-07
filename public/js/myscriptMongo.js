@@ -8,7 +8,8 @@ var datosLum=[];
 $(document).ready(function() {
     $.ajax({
     type: "GET",
-    url: "http://dron-terrestre.rhcloud.com/datosj.php",
+    //url: "http://dron-terrestre.rhcloud.com/datosj.php",
+    url: "https://sense-dron-nohtrim.c9users.io/sense_dron/devolverDatos.php",
     dataType: "json",
    
         success: function(data) {
