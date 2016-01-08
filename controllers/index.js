@@ -24,25 +24,26 @@ router.get('/', function(req, res) {
 router.get('/administracion', function(req, res) {
   //comprobar que hay sesion
   var sess = req.session;
-  if(sess.usuario==""){
-    res.render('administracion')  
+  //console.log("sesion usuario: "+sess.usuario);
+  if(sess.usuario==""||sess.usuario==undefined){
+    res.redirect('/')  
   }else { //si no redireccion a pagina de inicio
-    res.redirect('/')
+    res.render('administracion')
   }  
 })
 
-router.get('/comprar', function(req, res) {
+router.get('/tienda', function(req, res) {
   res.render('comprar')
 })
 
 router.get('/perfil', function(req, res) {
   //comprobar que hay sesion
   var sess = req.session;
-  if(sess.usuario==""){
-    res.render('perfil')
+  if(sess.usuario==""||sess.usuario==undefined){
+    res.redirect('/')  
   }else { //si no redireccion a pagina de inicio
-    res.redirect('/')
-  }  
+    res.render('perfil')
+  }    
 })
 
 router.post('/rangofecha', function(req, res) {
@@ -51,10 +52,11 @@ router.post('/rangofecha', function(req, res) {
   var fecha_final = req.body.Rango_fecha_final
   
   console.log('Dato: ' + dato_form)
-  console.log('Fecha inicio: ' + fecha_inicio)
-  console.log('Fecha final: ' + fecha_final)
+  console.log('Fecha inicio: ' + fecha_inicio) // 2015-12-11
+  console.log('Fecha final: ' + fecha_final) //2016-01-08
   
-  Dato.find({fecha: {$lte: fecha_final, $gte: fecha_inicio}}, function (err, dato) {
+  //Dato.find({fecha: {$lte: fecha_final, $gte: fecha_inicio}}, function (err, dato) {
+  Dato.find({fecha: {$in: ["2015-12-11", "2016-01-08"]}}, function (err, dato) {
   //Dato.find({fecha: {"$in": [fecha_inicio, fecha_final]}}, function (err, dato) {
   //Dato.find({fecha: {$lte: fecha_final}}, {temperatura: 1}, function (err, dato) { // Solo muestra el campo temperatura
     if (err){
@@ -66,11 +68,16 @@ router.post('/rangofecha', function(req, res) {
 })
 
 router.get('/cerrar', function(req, res) {
-  
-  //pendiente
   //borrar datos de sesion
+  req.session.destroy(function(err){
+    if(err){
+      console.log(err);
+    } else {
+      console.log("sesion cerrrada")
+      res.redirect('/');
+    }
+  });
   
-  res.redirect('/')
 })  
 
 
