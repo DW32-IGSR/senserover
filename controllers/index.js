@@ -42,6 +42,10 @@ router.get('/administracion', function(req, res) {
   res.render('administracion')
 })
 
+router.get('/comprar', function(req, res) {
+  res.render('comprar')
+})
+
 router.get('/perfil', function(req, res) {
   res.render('perfil')
 })

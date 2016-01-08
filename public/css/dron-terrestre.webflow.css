@@ -450,6 +450,38 @@ p {
   text-align: center;
 }
 
+/* INICIO MODAL */
+.tab-menu-modal {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.tabs-wrapper-modal {
+  margin-top: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+/* FIN MODAL */
+
+/* INICIO PERFIL */
+.tab-menu-perfil {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.button.full-width.perfil {
+  display: block;
+  width: 50%;
+  margin-right: 0px;
+  margin-left: 25%;
+}
+
+.section-title-group-perfil {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+/* FIN PERFIL */
+
 .tabs-wrapper {
   margin-top: 40px;
   padding-bottom: 0px;

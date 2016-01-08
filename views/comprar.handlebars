@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!-- This site was created in Webflow. http://www.webflow.com-->
+<!-- Last Published: Fri Dec 11 2015 12:48:18 GMT+0000 (UTC) -->
+<html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="5649c7bdd778ff2e6eb2fc05">
+<head>
+  <title>Comprar</title>
+  <link rel="stylesheet" type="text/css" href="css/dron-terrestre.webflow.css">
+</head>
+<body class="body">
+  <div class="modal-wrapper">
+    <div class="iniciar-sesion-wrapper"><a href="#" data-ix="cerrar-login" class="w-editable cerrar-link">x</a>
+      <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper-modal">
+        <div class="w-tab-menu tab-menu-modal">
+          <a data-w-tab="Tab Login" class="w-tab-link w--current w-inline-block button tab">
+            <div>Login</div>
+          </a>
+          <a data-w-tab="Tab Registro" class="w-tab-link w-inline-block button tab">
+            <div>Registro</div>
+          </a>
+        </div>
+        <div class="w-tab-content">
+          <div data-w-tab="Tab Login" class="w-tab-pane w--tab-active">
+            <div>
+              <h3>INICIAR SESIóN</h3>
+              <div class="w-form">
+                <form id="email-form-2" name="email-form-2" data-name="Email Form 2" action="/login" method="post">
+                  <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+                  <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                  <div class="w-row">
+                    <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="boton2">
+                  </div>
+                </form>
+                <div class="w-form-done">
+                  <p>Thank you! Your submission has been received!</p>
+                </div>
+                <div class="w-form-fail">
+                  <p>Oops! Something went wrong while submitting the form</p>
+                </div>
+              </div> <!-- Formulario inicio sesión -->
+            </div> <!-- iniciar-sesion-wrapper -->
+          </div> <!-- Tab Login -->
+          <div data-w-tab="Tab Registro" class="w-tab-pane">
+            <div>
+              <h3>REGISTRO</h3>
+              <div class="w-form">
+                <form id="email-form-2-registro" name="email-form-2-registro" data-name="Email Form 2" action="/register" method="post">
+                  <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+                  <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-email">
+                  <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                  <input id="contrasenya2" type="password" placeholder="Repetir Contraseña" name="contrasenya2" data-name="Contraseña2" required="required" class="w-input pass-text">
+                  <div class="w-row">
+                    <input type="submit" value="Registrar" data-wait="Please wait..." class="w-button login-submit" id="boton3">
+                  </div>
+                </form>
+                <div class="w-form-done">
+                  <p>Thank you! Your submission has been received!</p>
+                </div>
+                <div class="w-form-fail">
+                  <p>Oops! Something went wrong while submitting the form</p>
+                </div>
+              </div> <!-- Formulario registro -->
+            </div> <!-- registro-wrapper -->
+          </div> <!-- Tab Registro -->
+        </div> <!-- w-tab-content-->
+      </div>
+    </div> <!-- iniciar-sesion-wrapper -->
+  </div> <!-- Modal Inicio sesión-->
+
+  <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
+    <div class="w-container">
+      <a href="index.html" class="w-nav-brand brand-link">
+        <h1 class="brand-text">Dron-terrestre</h1>
+      </a>
+      <nav role="navigation" class="w-nav-menu navigation-menu">
+        <a href="index.html" class="w-nav-link navigation-link">Home</a>
+        <a href="#seccion-producto" class="w-nav-link navigation-link">Producto</a>
+        <a href="#seccion-compra" class="w-nav-link navigation-link">Compra</a>
+        <a data-ix="login" class="w-nav-link navigation-link login2">Inicio de Sesión</a>
+      </nav>
+      <div class="w-nav-button hamburger-button">
+        <div class="w-icon-nav-menu"></div>
+      </div>
+    </div> <!-- navbar: w-container -->
+  </div><!-- navbar: w-nav navigation-bar -->
+  <div id="seccion-producto" class="w-section section">
+    <div class="w-container">
+      <div class="section-title-group">
+        <h2 class="section-heading centered">Super dron 3000</h2>
+      </div>
+      <div>
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
+              <div class="w-slider-mask">
+                <div class="w-slide slide-dron1"></div>
+                <div class="w-slide slide-dron2"></div>
+              </div>
+              <div class="w-slider-arrow-left">
+                <div class="w-icon-slider-left"></div>
+              </div>
+              <div class="w-slider-arrow-right">
+                <div class="w-icon-slider-right"></div>
+              </div>
+              <div class="w-slider-nav w-round"></div>
+            </div> <!-- seccion-producto: w-slider -->
+          </div> <!-- seccion-producto: w-col w-col-6 -->
+          <div class="w-col w-col-6 precio">
+            <h1>500.000&nbsp;€</h1>
+            <p>IVA incluido (precio*0.21)</p><a href="#seccion-compra" class="button">Comprar</a>
+          </div> <!-- seccion-producto: w-col w-col-6 precio -->
+        </div> <!-- seccion-producto: w-row -->
+      </div> <!-- seccion-producto: 2º div -->
+      <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
+        <div class="w-tab-menu tab-menu">
+          <a data-w-tab="Tab 1" class="w-tab-link w--current w-inline-block button tab">
+            <div>DEscripción</div>
+          </a>
+          <a data-w-tab="Tab 2" class="w-tab-link w-inline-block button tab">
+            <div>especificaciones</div>
+          </a>
+          <a data-w-tab="Tab 3" class="w-tab-link w-inline-block button tab">
+            <div>opiniones</div>
+          </a>
+        </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-menu tab-menu -->
+        <div class="w-tab-content">
+          <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+            <div>
+              <h2>Descripción</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+                <br>Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+                <br>Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+            </div>
+          </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Descripción -->
+          <div data-w-tab="Tab 2" class="w-tab-pane">
+            <div>
+              <h2>Especificaciones</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+                <br>Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+                <br>Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+            </div>
+          </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Especificaciones -->
+          <div data-w-tab="Tab 3" class="w-tab-pane">
+            <div>
+              <h2>Opiniones</h2>
+              <div class="w-row row_opinion">
+                <div class="w-col w-col-3">
+                  <h1 class="heading-opinion">Rubén</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+                </div>
+                <div class="w-col w-col-9">
+                  <p class="text_opinion">Este producto cambio la forma de ver la vida.</p>
+                </div>
+              </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 1º Opinión -->
+              <div class="w-row row_opinion">
+                <div class="w-col w-col-3">
+                  <h1 class="heading-opinion">Gorka</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+                </div>
+                <div class="w-col w-col-9">
+                  <p class="text_opinion">No sé como pude vivir sin él.</p>
+                </div>
+              </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 2º Opinión -->
+              <div class="w-row row_opinion">
+                <div class="w-col w-col-3">
+                  <h1 class="heading-opinion">Sergio</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+                </div>
+                <div class="w-col w-col-9">
+                  <p class="text_opinion">No puedo parar de comprarlo.</p>
+                </div>
+              </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 3º Opinión -->
+            </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: div -->
+          </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Opiniones -->
+        </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content -->
+      </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper -->
+    </div> <!-- seccion-producto: w-container -->
+  </div> <!-- seccion-producto -->
+  <div id="seccion-compra" class="w-section section grafic">
+    <div class="w-container">
+      <div class="section-title-group">
+        <h2 class="section-heading centered white">DATOS DEL COMPRADOR</h2>
+      </div>
+      <div class="w-form form-wrapper">
+        <form id="email-form" name="email-form" data-name="Email Form" class="form">
+          <div class="w-row">
+            <div class="w-col w-col-4">
+              <div class="text_form">Nombre:</div>
+              <input id="Name-2" type="text" placeholder="Nombre" name="Name-2" required="required" data-name="Name 2" class="w-input form-field">
+            </div>
+            <div class="w-col w-col-4">
+              <div class="text_form">Apellidos:</div>
+              <input id="Name-3" type="text" placeholder="Apellidos" name="Name-3" required="required" data-name="Name 3" class="w-input form-field">
+            </div>
+            <div class="w-col w-col-4">
+              <div class="text_form">DNI:</div>
+              <input id="Name-4" type="text" placeholder="DNI" name="Name-4" required="required" data-name="Name 4" class="w-input form-field">
+            </div>
+          </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(1º row) -->
+          <div class="w-row">
+            <div class="w-col w-col-7">
+              <div class="text_form">Dirección:</div>
+              <input id="Email-2" type="email" placeholder="Dirección" name="Email-2" required="required" data-name="Email 2" class="w-input form-field">
+            </div>
+            <div class="w-col w-col-5">
+              <div class="text_form">Código Postal:</div>
+              <input id="Name-5" type="text" placeholder="Código Postal" name="Name-5" required="required" data-name="Name 5" class="w-input form-field">
+            </div>
+          </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(2º row) -->
+          <div class="w-row">
+            <div class="w-col w-col-6">
+              <div class="text_form">Email:</div>
+              <input id="Email-3" type="email" placeholder="Email" name="Email-3" required="required" data-name="Email 3" class="w-input form-field">
+            </div>
+            <div class="w-col w-col-6">
+              <div class="text_form">Producto:</div>
+              <input id="Email-4" type="email" placeholder="Producto" name="Email-4" required="required" data-name="Email 4" class="w-input form-field">
+            </div>
+          </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(3º row) -->
+          <input type="submit" value="Comprar" data-wait="Please wait..." class="w-button button full-width">
+        </form>
+        <div class="w-form-done">
+          <p>Thank you! Your submission has been received!</p>
+        </div>
+        <div class="w-form-fail">
+          <p>Oops! Something went wrong while submitting the form :(</p>
+        </div>
+      </div> <!-- seccion-producto: w-container: w-form form-wrapper -->
+    </div> <!-- seccion-producto: w-container -->
+  </div> <!-- seccion-compra -->
+  <div class="w-section footer center">
+    <div class="w-container">
+      <div class="footer-text">Proyecto Dron</div>
+      <div class="w-row">
+        <div class="w-col w-col-6">
+          <h1 class="section-heading centered white">Redes sociales</h1>
+          <div class="w-row">
+            <div class="w-col w-col-3">
+              <a href="#" class="w-button boton-red-social g-mas"></a>
+            </div>
+            <div class="w-col w-col-3">
+              <a href="#" class="w-button boton-red-social fasebok"></a>
+            </div>
+            <div class="w-col w-col-3">
+              <a href="#" class="w-button boton-red-social linkedin"></a>
+            </div>
+            <div class="w-col w-col-3">
+              <a href="#" class="w-button boton-red-social twita"></a>
+            </div>
+          </div> <!-- footer: w-col w-col-6: w-row -->
+        </div> <!-- footer: w-col w-col-6 -->
+        <div class="w-col w-col-6"></div>
+      </div> <!-- footer: w-row -->
+    </div> <!-- footer: w-container -->
+  </div> <!-- footer: w-section footer center -->
+  <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+</body>
+</html>

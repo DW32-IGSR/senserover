@@ -42,7 +42,7 @@ $(document).ready(function(){
 					minlength: 'El mínimo permitido son 2 caracteres', 
 					maxlength: 'El máximo permitido son 50 caracteres'
 		        },
-		        Asunto: {
+		        asunto: {
 					required: 'El apellido es requerido', 
 					minlength: 'El mínimo permitido son 2 caracteres', 
 					maxlength: 'El máximo permitido son 30 caracteres'
@@ -85,7 +85,9 @@ $(document).ready(function(){
 		        },
 			}
      	});
-     $("#boton3").click(function(){
+	});
+	
+    $("#boton3").click(function(){
      	$("#email-form-2-registro").validate ({
 			rules: {
 				user: {
@@ -126,6 +128,5 @@ $(document).ready(function(){
 				},
 			}
      	});
-     });
     });
 });
