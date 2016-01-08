@@ -19,7 +19,21 @@ $(document).ready(function(){
         return false;
     }, "Especifica un número de NIF válido" );
     //validacion de nif  
-
+	
+	//cambio de nombres
+	/*
+		antiguo => nuevo
+		email-form formulario_compra
+		Name-2 nombre_compra
+		Name-3 apellidos_compra
+		Name-4 dni_compra
+		Email-2 direccion_compra
+		Name-5 cp_compra
+		Email-3 email_compra
+		Email-4 producto_compra
+	*/
+	
+	
     $("#boton").click(function(){
      	$("#email-form").validate ({
 			rules: {

@@ -54,10 +54,9 @@ router.post('/rangofecha', function(req, res) {
   console.log('Dato: ' + dato_form)
   console.log('Fecha inicio: ' + fecha_inicio) // 2015-12-11
   console.log('Fecha final: ' + fecha_final) //2016-01-08
-  
-  //Dato.find({fecha: {$lte: fecha_final, $gte: fecha_inicio}}, function (err, dato) {
-  Dato.find({fecha: {$in: ["2015-12-11", "2016-01-08"]}}, function (err, dato) {
-  //Dato.find({fecha: {"$in": [fecha_inicio, fecha_final]}}, function (err, dato) {
+
+  Dato.find({fecha: {$ne: [fecha_inicio, fecha_final]}}, function (err, dato) {
+  //Dato.find({fecha: {$ne: [fecha_inicio, fecha_final]}}, {temperatura: 1, _id: 0}, function (err, dato) {
   //Dato.find({fecha: {$lte: fecha_final}}, {temperatura: 1}, function (err, dato) { // Solo muestra el campo temperatura
     if (err){
       console.log('prueba ruben: error occured in the database')
@@ -193,20 +192,36 @@ router.post('/register', function (req, res) {
 })  // /register
 
 router.post('/comprar', function (req, res) {
+  var sess = req.session;
   
-  console.log("compra")
+  if(sess.usuario==""||sess.usuario==undefined){
+    //algun mensaje de usuario no conectado
+    //res.redirect('/')      
+  }else { 
   
-  //variables de formulario
-  var form_usuario = req.body.usuario
-  var form_pass = req.body.contrasenya  
-  
-  //despues de realizar la compra pasamos a perfil
-  //donde vera que en la tabla de drones se añadio uno nuevo
-  
-  //en administracion no tiene datos ni alertas configuradas
-  
-  res.redirect('/perfil')
-  
+    console.log("comprar")
+    
+    //variables de formulario
+    var form_nombre = req.body.nombre_compra
+    var form_apellidos = req.body.apellidos_compra
+    var form_dni = req.body.dni_compra
+    var form_direccion = req.body.direccion_compra
+    var form_cp = req.body.cp_compra
+    var form_email = req.body.email_compra
+    var form_producto = req.body.producto_compra
+    //pendiente tipo de subscripcion
+    //var form_sub = req.body.subscripcion  
+    
+    //insercion en la bd modelo dron y usuario
+    
+    
+    //despues de realizar la compra pasamos a perfil
+    //donde vera que en la tabla de drones se añadio uno nuevo
+    
+    //en administracion no tiene datos ni alertas configuradas
+    
+    res.redirect('/perfil')
+  }
 })  // /comprar
 
 router.get('/activate/:activation/:email', function (req, res) {
