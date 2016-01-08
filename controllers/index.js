@@ -35,8 +35,9 @@ router.get('/perfil', function(req, res) {
 })
 
 router.get('/pruebaruben', function(req, res) {
-  //var fec = '2015-12-11 18:37:28'
-  Dato.find({}, function (err, dato) {
+  var inicio = '2015-12-11'
+  var final = '2016-01-08'
+  Dato.find({fecha: {$lt: inicio,$gte: final}}, function (err, dato) {
     //{ fecha: { $lt: 60, $gte: 50 } }
     if (err){
       console.log('prueba ruben: error occured in the database')
