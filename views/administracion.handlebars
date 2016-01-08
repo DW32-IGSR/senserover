@@ -46,14 +46,13 @@
       </div>
     </div> <!-- w-container -->
   </div> <!-- w-nav navigation-bar -->
-  <!--<div id="seleccion-dron" class="w-section section grafic">
+  <div id="seleccion-dron" class="w-section section grafic">
     <div class="w-container">
       <div class="white-box formulario">
         <div class="w-form">
           <form id="email-form" name="email-form" data-name="Email Form">
             <label for="name">Selección de dron</label>
             <select id="field" name="field" class="w-select">
-              <option value="">Selecciona un dron...</option>
               <option value="modelo 200c">modelo 200c</option>
               <option value="modelo 300v">modelo 300v</option>
               <option value="modelo 400">modelo 400</option>
@@ -68,7 +67,7 @@
         </div>
       </div>
     </div> 
-  </div>--> <!-- "w-section section grafic -->
+  </div> <!-- "w-section section grafic -->
   <!--<div id="alertas" class="w-section section">
     <div class="w-container">
       <h1 class="section-heading centered white">Alertas</h1>
@@ -82,78 +81,102 @@
   <div id="alertas" class="w-section section grafic">
     <div class="w-container">
       <h1 class="section-heading centered white">Alertas</h1>
-
         <div align="right">
-          <button class="btn btn-box-tool" style="font-size:25px;"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
-          <button class="btn btn-box-tool" style="font-size:25px;"><i class="glyphicon glyphicon-cog"></i></button>
+          <!--<button class="btn btn-box-tool" style="font-size:20px;"><i class="glyphicon glyphicon-triangle-bottom"></i></button>-->
+          <button class="btn btn-box-tool" style="font-size:20px;"><i class="glyphicon glyphicon-cog"></i></button>
         </div>
-
-        <!-- Info Boxes Style 2 -->
-        <div class="info-box bg-green">
-          <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Temperatura</span>
-            <span class="info-box-number">33º</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
-            </div>
-            <span class="progress-description">
-              La temperatura es optima
-            </span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-        <div class="info-box bg-green">
-          <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Humedad</span>
-            <span class="info-box-number">92,050</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
-            </div>
-            <span class="progress-description">
-              20% Increase in 30 Days
-            </span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-        <div class="info-box bg-red">
-          <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
-          <div class="info-box-content">
-            <span class="info-box-text">CO2</span>
-            <span class="info-box-number">114,381</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
-            </div>
-            <span class="progress-description">
-              70% Increase in 30 Days
-            </span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-        <div class="info-box bg-green">
-          <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Radiacion Solar</span>
-            <span class="info-box-number">33º</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
-            </div>
-            <span class="progress-description">
-              La temperatura es optima
-            </span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-        <div class="info-box bg-green">
-          <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Luminosidad</span>
-            <span class="info-box-number">33º</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
-            </div>
-            <span class="progress-description">
-              La temperatura es optima
-            </span>
-          </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
+        
+        <div class="col-md-6">
+          <!-- Info Boxes Style 2 -->
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Temperatura</span>
+              <span class="info-box-number">33º</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                La temperatura es optima
+              </span>
+            </div><!-- /.info-box-content -->
+          </div><!-- /.info-box -->
+        </div>
+        <div class="col-md-6">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Humedad</span>
+              <span class="info-box-number">92,050</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                20% Increase in 30 Days
+              </span>
+            </div><!-- /.info-box-content -->
+          </div><!-- /.info-box -->
+        </div>
+        <div class="col-md-6">
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
+            <div class="info-box-content">
+              <span class="info-box-text">CO2</span>
+              <span class="info-box-number">114,381</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                70% Increase in 30 Days
+              </span>
+            </div><!-- /.info-box-content -->
+          </div><!-- /.info-box -->
+        </div>
+        <div class="col-md-6">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Radiacion Solar</span>
+              <span class="info-box-number">33º</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                La temperatura es optima
+              </span>
+            </div><!-- /.info-box-content -->
+          </div><!-- /.info-box -->
+        </div>
+        <div class="col-md-6">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Luminosidad</span>
+              <span class="info-box-number">33º</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                La temperatura es optima
+              </span>
+            </div><!-- /.info-box-content -->
+          </div><!-- /.info-box -->
+        </div>
+        <div class="col-md-6">
+          <div class="info-box bg-orange">
+            <span class="info-box-icon"><img src="icons/bateria.png" height="48" width="48"></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Bateria del Dron</span>
+              <span class="info-box-number">10%</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                La temperatura es optima
+              </span>
+            </div><!-- /.info-box-content -->
+          </div><!-- /.info-box -->
+        </div>
     </div>
   </div>
   
@@ -352,24 +375,24 @@
       <h1 class="section-heading centered">Panel de estado</h1>
       <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
         <div class="w-tab-menu">
-          <a data-w-tab="Tab 1" class="w-tab-link w--current w-inline-block button tab">
+          <a data-w-tab="descripcion_dron" class="w-tab-link w--current w-inline-block button tab">
             <div id="descripcion-dron"><img src="icons/info.png" height="24" width="24"></div>
           </a>
-          <a data-w-tab="Tab 2" class="w-tab-link w-inline-block button tab">
+          <a data-w-tab="posicion_actual" class="w-tab-link w-inline-block button tab">
             <div id="posicion-actual"><img src="icons/posicion-actual.png" height="24" width="24"></div>
           </a>
-          <a data-w-tab="Tab 3" class="w-tab-link w-inline-block button tab">
+          <a data-w-tab="ruta" class="w-tab-link w-inline-block button tab">
             <div id="seguimiento-ruta"><img src="icons/seguimiento-ruta.png" height="24" width="24"></div>
           </a>
-          <a id="configuracion" data-w-tab="Tab 5" class="w-tab-link w-inline-block button tab">
+          <a id="configuracion" data-w-tab="configuracion" class="w-tab-link w-inline-block button tab">
             <div><img src="icons/conf.png" height="24" width="24"></div>
           </a>
-          <a id="registro" data-w-tab="Tab 4" class="w-tab-link w-inline-block button tab">
+          <a id="registro" data-w-tab="registro" class="w-tab-link w-inline-block button tab">
             <div><img src="icons/registro.png" height="24" width="24"></div>
           </a>
         </div> <!-- panel estado: w-tab-menu -->
         <div class="w-tab-content">
-          <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+          <div data-w-tab="descripcion_dron" class="w-tab-pane w--tab-active">
             <div class="w-row fila-a-1">
               <div class="w-col w-col-6"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
               </div>
@@ -379,13 +402,13 @@
               </div>
             </div>
           </div> <!-- panel estado: Tab-descripciónDron: w-tab-pane -->
-          <div data-w-tab="Tab 2" class="w-tab-pane">
+          <div data-w-tab="posicion_actual" class="w-tab-pane">
             <div data-widget-latlng="43.318334,-1.981231" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div>
           </div> <!-- panel estado: Tab-posiciónActual: w-tab-pane -->
-          <div data-w-tab="Tab 3" class="w-tab-pane">
+          <div data-w-tab="ruta" class="w-tab-pane">
             <div data-widget-latlng="43.308111,-1.891282" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div>
           </div> <!-- panel estado: Tab-seguimientoRuta: w-tab-pane -->
-          <div data-w-tab="Tab 5" class="w-tab-pane">
+          <div data-w-tab="configuracion" class="w-tab-pane">
             <div class="centrado-a-2">
               <div class="w-form">
                 <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
@@ -402,7 +425,7 @@
               </div> <!-- panel estado: Tab-configuración: "w-form -->
             </div> <!-- panel estado: Tab-configuración: centrado-a-2 -->
           </div> <!-- panel estado: Tab-configuración: w-tab-pane -->
-          <div data-w-tab="Tab 4" class="w-tab-pane">
+          <div data-w-tab="registro" class="w-tab-pane">
             <div class="bordecito">
               <p class="white-text">14:50 se encendió el dron
                 <br>14:52 el dron mando una muestra
@@ -430,18 +453,20 @@
         <div class="w-col w-col-6">
           <h1 class="section-heading centered white">Redes sociales</h1>
           <div class="w-row">
-            <div class="w-col w-col-3">
-              <a href="#" class="w-button boton-red-social g-mas"></a>
-            </div>
-            <div class="w-col w-col-3">
-              <a href="#" class="w-button boton-red-social fasebok"></a>
-            </div>
-            <div class="w-col w-col-3">
+            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2"></div>
+            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
               <a href="#" class="w-button boton-red-social linkedin"></a>
             </div>
-            <div class="w-col w-col-3">
+            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
+              <a href="#" class="w-button boton-red-social g-mas"></a>
+            </div>
+            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
               <a href="#" class="w-button boton-red-social twita"></a>
             </div>
+            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
+              <a href="#" class="w-button boton-red-social fasebok"></a>
+            </div>
+            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2"></div>
           </div> <!-- footer: w-col w-col-6: w-row -->
         </div> <!-- footer: w-col w-col-6 -->
         <div class="w-col w-col-6"></div>

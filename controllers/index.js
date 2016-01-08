@@ -4,7 +4,7 @@ var express = require('express')
 var bcrypt = require('bcrypt');
 
 
-//var Dato = require('../models/Dato')
+var Dato = require('../models/Dato')
 var Usuario = require('../models/Usuario')
 
 router.use('/comments', require('./comments'))
@@ -42,6 +42,18 @@ router.get('/administracion', function(req, res) {
 
 router.get('/perfil', function(req, res) {
   res.render('perfil')
+})
+
+router.get('/pruebaruben', function(req, res) {
+  //var fec = '2015-12-11 18:37:28'
+  Dato.find({}, function (err, dato) {
+    //{ fecha: { $lt: 60, $gte: 50 } }
+    if (err){
+      console.log('prueba ruben: error occured in the database')
+    }
+      console.log('prueba ruben' + dato)
+      //console.log("prueba humedad: "+dato[0].humedad)
+  })
 })
 
 router.get('/cerrar', function(req, res) {
@@ -82,6 +94,7 @@ router.post('/login', function (req, res) {
           if (usuario.validated) {
             //res.redirect('/home')
             console.log('usuario validado')
+            console.log(usuario.id)
             
             //importante
             //pendiente crear sesion/cookie
