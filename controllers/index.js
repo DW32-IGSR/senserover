@@ -1,8 +1,10 @@
 var express = require('express')
   , router = express.Router()
 //var w = require('handlebars');  
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt')
 
+    //http://sense-rover-nohtrim.c9users.io
+    //http://senserover-terrestre.rhcloud.com/
 
 var Dato = require('../models/Dato')
 var Usuario = require('../models/Usuario')
@@ -47,6 +49,8 @@ router.get('/comprar', function(req, res) {
 })
 
 router.get('/perfil', function(req, res) {
+  //comprobar que hay sesion
+  //si no redireccion a pagina de inicio  
   res.render('perfil')
 })
 
@@ -71,10 +75,6 @@ router.get('/cerrar', function(req, res) {
 })  
 
 
-// Login usuario --- SIN COMPROBAR ---
-// Hay que poner el html en handlebars
-
-//indexruben 30
 router.post('/login', function (req, res) {
   
   var form_usuario = req.body.usuario
@@ -123,7 +123,6 @@ router.post('/login', function (req, res) {
   })
 })
 
-//indexruben 57
 router.post('/register', function (req, res) {
   
   console.log("registro")
@@ -157,8 +156,7 @@ router.post('/register', function (req, res) {
     
     var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/"+new_key+"/"+form_email+"'>Activar la cuenta</a>";
     
-    //http://sense-rover-nohtrim.c9users.io
-    //http://senserover-terrestre.rhcloud.com/
+
     
     var data = {
       from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
@@ -226,53 +224,3 @@ router.get('/activate/:activation/:email', function (req, res) {
 });    
 
 module.exports = router
-
-
-/*
-
-// https://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/
-// https://github.com/carlosazaustre/node-api-rest-example/tree/feature-express4
-
-// --- Para API (Sin comprobar) En el ejemplo está en app.js ---
-
-var express         = require("express"),
-    app             = express(),
-    bodyParser      = require("body-parser"),
-    methodOverride  = require("method-override"),
-    mongoose        = require('mongoose');
-
-// Connection to DB
-mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
-  if(err) throw err;
-  console.log('Connected to Database');
-});
-
-// Middlewares
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(methodOverride());
-
-// Import Models and controllers
-var models     = require('./models/Dato')(app, mongoose);
-var DatoCtrl = require('./controllers/Datos');
-
-// API routes
-var datos = express.Router();
-
-datos.route('/datos')
-  .get(DatoCtrl.findAllDatos)
-  .post(DatoCtrl.addDato);
-
-datos.route('/datos/:id')
-  .get(DatoCtrl.findById)
-  .put(DatoCtrl.updateDato)
-  .delete(DatoCtrl.deleteDato);
-
-app.use('/api', datos);
-
-// Start server
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
-});
-
-*/
