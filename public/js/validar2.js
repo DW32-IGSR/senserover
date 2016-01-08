@@ -20,7 +20,7 @@ $(document).ready(function(){
     }, "Especifica un número de NIF válido" );
     //validacion de nif  
 
-    $("#boton3").click(function(){
+    $("#boton").click(function(){
      	$("#email-form").validate ({
 			rules: {
 				nombre: {
@@ -85,6 +85,29 @@ $(document).ready(function(){
 	           	nif: {
     	            nifES: 'Formato de NIF incorrecto: 8 numeros y una letra'
     	},
+			}
+     	});
+     });
+     
+     $("#boton2").click(function(){
+     	$("#email-form").validate ({
+     	    rules: {
+				
+				password: {
+					required: true, 
+					password: true, 
+					minlength: 8, 
+					maxlength: 20
+				},
+			},
+ 
+        	messages: {
+    		
+		        password: {
+					required: 'El password es requerido',  
+					minlength: 'El mínimo permitido son 8 caracteres', 
+					maxlength: 'El máximo permitido son 20 caracteres'
+		        },
 			}
      	});
      });
