@@ -267,7 +267,7 @@ router.get('/activate/:activation/:email', function (req, res) {
 
 });
 
-router.post('/comprar', function (req, res) {
+router.post('/contactar', function (req, res) {
   console.log("contactar")
   
   var form_nombre = req.body.nombre_contacto
@@ -279,22 +279,20 @@ router.post('/comprar', function (req, res) {
   var api_key = 'key-116da3f3cd011ad01d454a632a599587'
   var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org'
   var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
-  
-  var mensaje = "mensaje de: "+form_nombre+"<br>mensaje:<br>"+form_mensaje_contacto
-  
-
+  var mensaje = "mensaje de: "+form_nombre+"<br><br>mensaje:<br>"+form_mensaje_contacto+"<br>email de contacto: "+form_email
   
   var data = {
     from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
     to: "dw32igsr@gmail.com",
-    subject: "Formulario de contacto "+form_asunto,
+    subject: "Formulario de contacto: asunto:"+form_asunto,
     html: mensaje
   };
   
   mailgun.messages().send(data, function (error, body) {
     console.log(body)
   });
-
+  
+  res.redirect('/');
     
 })  
 
