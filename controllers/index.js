@@ -37,6 +37,8 @@ router.get('/', function(req, res) {
 })
 
 router.get('/administracion', function(req, res) {
+  //comprobar que hay sesion
+  //si no redireccion a pagina de inicio
   res.render('administracion')
 })
 
@@ -92,21 +94,22 @@ router.post('/login', function (req, res) {
         
         if (isMatch) {
           if (usuario.validated) {
-            //res.redirect('/home')
+            
             console.log('usuario validado')
             console.log(usuario.id)
             
             //importante
             //pendiente crear sesion/cookie
             
-            res.render('administracion')
+            //res.render('administracion')
+            res.redirect('/administracion')
           } else {
             console.log('usuario no validado')
-            //res.redirect('/')
+            res.redirect('/')
           }
         } else {
           console.log('contraseña incorrecta')
-          //res.redirect('/')
+          res.redirect('/')
         }                     
       })
     } else {
