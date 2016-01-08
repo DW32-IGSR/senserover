@@ -1,6 +1,7 @@
 var express = require('express')
   , router = express.Router()
   , bcrypt = require('bcrypt')
+  , session = require('express-session')
 
     //http://sense-rover-nohtrim.c9users.io
     //http://senserover-terrestre.rhcloud.com/
@@ -11,6 +12,8 @@ var Usuario = require('../models/Usuario')
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
 
+router.use(session({resave: true, saveUninitialized: true, secret: 'rubenonrails'}));
+
 router.get('/', function(req, res) {
 
   //si hay sesion o cookie poner usuario logueado
@@ -20,8 +23,12 @@ router.get('/', function(req, res) {
 
 router.get('/administracion', function(req, res) {
   //comprobar que hay sesion
-  //si no redireccion a pagina de inicio
-  res.render('administracion')
+  var sess = req.session;
+  if(sess.usuario==""){
+    res.render('administracion')  
+  }else { //si no redireccion a pagina de inicio
+    res.redirect('/')
+  }  
 })
 
 router.get('/comprar', function(req, res) {
@@ -30,19 +37,30 @@ router.get('/comprar', function(req, res) {
 
 router.get('/perfil', function(req, res) {
   //comprobar que hay sesion
-  //si no redireccion a pagina de inicio  
-  res.render('perfil')
+  var sess = req.session;
+  if(sess.usuario==""){
+    res.render('perfil')
+  }else { //si no redireccion a pagina de inicio
+    res.redirect('/')
+  }  
 })
 
-router.get('/pruebaruben', function(req, res) {
-  var inicio = '2015-12-11'
-  var final = '2016-01-08'
-  Dato.find({fecha: {$lt: inicio,$gte: final}}, function (err, dato) {
-    //{ fecha: { $lt: 60, $gte: 50 } }
+router.post('/rangofecha', function(req, res) {
+  var dato_form = req.body.dato
+  var fecha_inicio = req.body.Rango_fecha_inicio
+  var fecha_final = req.body.Rango_fecha_final
+  
+  console.log('Dato: ' + dato_form)
+  console.log('Fecha inicio: ' + fecha_inicio)
+  console.log('Fecha final: ' + fecha_final)
+  
+  Dato.find({fecha: {$lte: fecha_final, $gte: fecha_inicio}}, function (err, dato) {
+  //Dato.find({fecha: {"$in": [fecha_inicio, fecha_final]}}, function (err, dato) {
+  //Dato.find({fecha: {$lte: fecha_final}}, {temperatura: 1}, function (err, dato) { // Solo muestra el campo temperatura
     if (err){
       console.log('prueba ruben: error occured in the database')
     }
-      console.log('prueba ruben' + dato)
+      console.log('prueba ruben ' + dato)
       //console.log("prueba humedad: "+dato[0].humedad)
   })
 })
@@ -57,6 +75,7 @@ router.get('/cerrar', function(req, res) {
 
 
 router.post('/login', function (req, res) {
+  var sess = req.session;
   
   var form_usuario = req.body.usuario
   var form_pass = req.body.contrasenya
@@ -83,8 +102,8 @@ router.post('/login', function (req, res) {
             console.log('usuario validado')
             console.log(usuario.id)
             
-            //importante
-            //pendiente crear sesion/cookie
+            //crear sesion/cookie
+            sess.usuario=usuario.usuario;
             
             //res.render('administracion')
             res.redirect('/administracion')
@@ -164,7 +183,24 @@ router.post('/register', function (req, res) {
       console.log('Las pass no es la misma');
   }  
   
-})  
+})  // /register
+
+router.post('/comprar', function (req, res) {
+  
+  console.log("compra")
+  
+  //variables de formulario
+  var form_usuario = req.body.usuario
+  var form_pass = req.body.contrasenya  
+  
+  //despues de realizar la compra pasamos a perfil
+  //donde vera que en la tabla de drones se añadio uno nuevo
+  
+  //en administracion no tiene datos ni alertas configuradas
+  
+  res.redirect('/perfil')
+  
+})  // /comprar
 
 router.get('/activate/:activation/:email', function (req, res) {
     

@@ -21,6 +21,7 @@
     "body-parser": "^1.12.3",
     "express": "^4.12.3",
     "express-handlebars": "^2.0.1",
+    "express-session": "^1.12.1",
     "handlebars": "^4.0.5",
     "jade": "^1.9.2",
     "mailgun-js": "^0.7.7",
