@@ -1,6 +1,16 @@
 $(document).ready(function(){
 	$("#boton").click(function(){
      	
+    	//cambio de nombres
+	/*
+		antiguo => nuevo
+		email-form formulario_contacto
+		Name-2 nombre_contacto
+		Name-3 asunto_contacto
+		Email-2 email_contacto
+		field-3 mensaje_contacto
+	*/ 
+     	
     	$("#email-form").validate ({
 			rules: {
 				email: {

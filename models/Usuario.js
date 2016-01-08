@@ -8,6 +8,11 @@ var userModel = function () {
     var userSchema = new mongoose.Schema({
         _id: String,
         usuario: String,
+        /*nombre: String,
+        apellidos: String,
+        dni: String,
+        direccion: String,
+        codigo_postal: String,*/
         pass: String,
         email: String,
         activacion_key: String,
