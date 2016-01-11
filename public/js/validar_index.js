@@ -1,37 +1,27 @@
 $(document).ready(function(){
 	$("#boton").click(function(){
      	
-    	//cambio de nombres
-	/*
-		antiguo => nuevo
-		email-form formulario_contacto
-		Name-2 nombre_contacto
-		Name-3 asunto_contacto
-		Email-2 email_contacto
-		field-3 mensaje_contacto
-	*/ 
-     	
-    	$("#email-form").validate ({
+    	$("#formulario_contacto").validate ({
 			rules: {
-				email: {
+				email_contacto: {
 					required: true, 
 					email: true, 
 					minlength: 5, 
 					maxlength: 80
 				},
-				nombre: {
+				nombre_contacto: {
 					required: true, 
 					nombre: true, 
 					minlength: 2, 
 					maxlength: 50
 				},
-				asunto: {
+				asunto_contacto: {
 					required: true, 
 					asunto: true, 
 					minlength: 2, 
 					maxlength: 50
 				},
-				mensaje: {
+				mensaje_contacto: {
 					required: true, 
 					mensaje: true, 
 					minlength: 2, 
@@ -40,24 +30,24 @@ $(document).ready(function(){
 			},
  
         	messages: {
-    			email: {
+    			email_contacto: {
 					required: 'El email es requerido', 
 					email: 'El formato de email es incorrecto', 
 					minlength: 'El mínimo permitido son 5 caracteres',
 					maxlength: 'El máximo permitido son 80 caracteres'
 				},
-		        nombre: {
+		        nombre_contacto: {
 					required: 'El nombre es requerido', 
 					nombre: 'Sólo letras', 
 					minlength: 'El mínimo permitido son 2 caracteres', 
 					maxlength: 'El máximo permitido son 50 caracteres'
 		        },
-		        asunto: {
+		        asunto_contacto: {
 					required: 'El apellido es requerido', 
 					minlength: 'El mínimo permitido son 2 caracteres', 
 					maxlength: 'El máximo permitido son 30 caracteres'
 		        },
-				mensaje: {
+				mensaje_contacto: {
 					required: 'El mensaje es requerido', 
 					minlength: 'El mínimo permitido son 2 caracteres', 
 					maxlength: 'El máximo permitido son 50 caracteres'

@@ -3,8 +3,8 @@ var express = require('express')
   , bcrypt = require('bcrypt')
   , session = require('express-session')
 
-    //http://sense-rover-nohtrim.c9users.io
-    //http://senserover-terrestre.rhcloud.com/
+  //http://sense-rover-nohtrim.c9users.io
+  //http://senserover-terrestre.rhcloud.com/
 
 var Dato = require('../models/Dato')
 var Usuario = require('../models/Usuario')
@@ -152,6 +152,7 @@ router.post('/login', function (req, res) {
       })
     } else {
       console.log('usuario no registrado')
+      
       //res.redirect('/')
     }    
   })
@@ -198,9 +199,7 @@ router.post('/register', function (req, res) {
       html: mensaje
     };
     
-    mailgun.messages().send(data, function (error, body) {
-      console.log(body)
-    });
+
 
     //creacion de usuario
     //var usuario = new Usuario({usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
@@ -211,6 +210,11 @@ router.post('/register', function (req, res) {
     usuario.save(function (err) {
       if (err) {
           console.log('save error', err)
+      } else{
+        //envio de mensaje de activacion si no hay error
+        mailgun.messages().send(data, function (error, body) {
+          console.log(body)
+        });
       }
     });
     
@@ -222,7 +226,7 @@ router.post('/register', function (req, res) {
 
 // Temporal para introducir productos
 router.get('/productos', function (req, res) {
-  var producto = new Productos ({ nombre : 'Producto 1', descripcion : 'Descripción producto 1', precio : '500' });
+  var producto = new Productos ({ nombre : 'Producto 2', descripcion : 'Descripción producto 2', precio : '200' });
   
   //guardar usuario_dron en la base de datos
   producto.save(function (err) {
@@ -271,30 +275,28 @@ router.post('/comprar', function (req, res) {
     console.log('Email: ' + form_email)
     console.log('Producto: ' + form_producto)
     
-    Productos.findOne({ nombre: form_producto }, function (err, producto) {   
-    if (err) {
-      console.error(err)
-    } else {
-      console.log('ID Producto: ' + producto.id)
-    }
-  })
-    
-    /*Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
+    Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
       if (err) {
         console.error(err)
       } else {
-        console.log('bien')
-        //var usuario_dron = new Usuario_dron({ id_usuario : sess.id_usuario, id_dron : form_producto });
-        var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : form_producto });
-        
-        //guardar usuario_dron en la base de datos
-        dron.save(function (err) {
+        Productos.findOne({ nombre: form_producto }, function (err, producto) {   
           if (err) {
-              console.log('save error', err)
+            console.error(err)
+          } else {
+            //console.log('ID Producto: ' + producto.id)
+            //var usuario_dron = new Usuario_dron({ id_usuario : sess.id_usuario, id_dron : form_producto });
+            var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id });
+            
+            //guardar usuario_dron en la base de datos
+            dron.save(function (err) {
+              if (err) {
+                  console.log('save error', err)
+              }
+            });
           }
-        });
+        })
       }
-    });*/
+    });
     //pendiente
     
     
