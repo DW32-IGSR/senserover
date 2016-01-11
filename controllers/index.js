@@ -13,16 +13,20 @@ var Usuario_dron = require('../models/Usuario_dron')
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
 
+//parametros para la sesion
 router.use(session({resave: true, saveUninitialized: true, secret: 'rubenonrails'}))
 
 router.get('/', function(req, res) {
-
-  //si hay sesion o cookie poner usuario logueado
+  //ruta de pagina principal
+  //pendiente si hay sesion o cookie poner usuario logueado
   
   res.render('index')
 })
 
 router.get('/administracion', function(req, res) {
+  //ruta a administracion
+  //posible ruta /administracion/:id_dron
+  
   //comprobar que hay sesion
   var sess = req.session;
   //console.log("sesion usuario: "+sess.usuario);
@@ -34,11 +38,16 @@ router.get('/administracion', function(req, res) {
 })
 
 router.get('/tienda', function(req, res) {
+  //ruta a la tienda
+  //pendiente cargar la pagina con la informacion de un producto
+  //mediante /tienda/:id_producto
+  
   res.render('comprar')
 })
 
 router.get('/perfil', function(req, res) {
-  //comprobar que hay sesion
+  //ruta a la pagina de perfil
+  
   var sess = req.session;
   if(sess.usuario==""||sess.usuario==undefined){
     res.redirect('/')  
@@ -82,6 +91,9 @@ router.get('/cerrar', function(req, res) {
 
 
 router.post('/login', function (req, res) {
+  //post de formulario de login
+  //redireccion a administracion
+  
   var sess = req.session;
   
   var form_usuario = req.body.usuario
@@ -131,7 +143,8 @@ router.post('/login', function (req, res) {
 })
 
 router.post('/register', function (req, res) {
-  
+  //post de formulario de registro
+  //envio de correo de activacion
   console.log("registro")
   
   var form_usuario = req.body.usuario
@@ -163,8 +176,6 @@ router.post('/register', function (req, res) {
     
     var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/"+new_key+"/"+form_email+"'>Activar la cuenta</a>"
     
-
-    
     var data = {
       from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
       to: form_email,
@@ -193,6 +204,9 @@ router.post('/register', function (req, res) {
 })  // /register
 
 router.post('/comprar', function (req, res) {
+  //post del formulario de compra
+  //insert en la bd el usuario y el dron que compro
+  
   var sess = req.session
   
   if(sess.usuario==""||sess.usuario==undefined){
@@ -216,7 +230,8 @@ router.post('/comprar', function (req, res) {
     
     //insercion en la bd modelo dron y usuario
     //var usuario = new Usuario({ usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0});
-    var usuario_dron = new Usuario_dron({ usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0});
+    var usuario_dron = new Usuario_dron({ id_usuario : usuario, id_dron : dron });
+    var usuario = new Usuario({ usuario : form_usuario, pass : pass_coded, nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp, email : form_email, activacion_key : new_key, validated : 0});
     //pendiente
     
     
@@ -230,7 +245,8 @@ router.post('/comprar', function (req, res) {
 })  // /comprar
 
 router.get('/activate/:activation/:email', function (req, res) {
-    
+  //ruta de activacion que se envia en el correo de activacion
+  
   var key = req.params.activation
   var email = req.params.email
   console.log("activacion de usuario")
@@ -268,6 +284,8 @@ router.get('/activate/:activation/:email', function (req, res) {
 });
 
 router.post('/contactar', function (req, res) {
+  //post de formulario de contacto
+  //envio de correo a dw32igsr@gmail.com
   console.log("contactar")
   
   var form_nombre = req.body.nombre_contacto
