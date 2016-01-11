@@ -10,6 +10,7 @@ var Dato = require('../models/Dato')
 var Usuario = require('../models/Usuario')
 //var Usuario_dron = require('../models/Usuario_dron')
 var Drones = require('../models/Drones')
+var Productos = require('../models/Productos')
 
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
@@ -219,8 +220,16 @@ router.post('/register', function (req, res) {
   
 })  // /register
 
+// Temporal para introducir productos
 router.get('/productos', function (req, res) {
+  var producto = new Productos ({ nombre : 'Producto 1', descripcion : 'Descripción producto 1', precio : '500' });
   
+  //guardar usuario_dron en la base de datos
+  producto.save(function (err) {
+    if (err) {
+        console.log('save error', err)
+    }
+  });
 })
 
 router.post('/comprar', function (req, res) {
@@ -261,22 +270,31 @@ router.post('/comprar', function (req, res) {
     console.log('Cógido Postal: ' + form_cp)
     console.log('Email: ' + form_email)
     console.log('Producto: ' + form_producto)
-    Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
+    
+    Productos.findOne({ nombre: form_producto }, function (err, producto) {   
+    if (err) {
+      console.error(err)
+    } else {
+      console.log('ID Producto: ' + producto.id)
+    }
+  })
+    
+    /*Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
       if (err) {
         console.error(err)
       } else {
         console.log('bien')
         //var usuario_dron = new Usuario_dron({ id_usuario : sess.id_usuario, id_dron : form_producto });
-        var drones = new Drones ({ id_usuario : sess.id_usuario, id_producto : form_producto });
+        var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : form_producto });
         
         //guardar usuario_dron en la base de datos
-        drones.save(function (err) {
+        dron.save(function (err) {
           if (err) {
               console.log('save error', err)
           }
         });
       }
-    });
+    });*/
     //pendiente
     
     
