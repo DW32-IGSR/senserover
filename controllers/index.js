@@ -219,6 +219,10 @@ router.post('/register', function (req, res) {
   
 })  // /register
 
+router.get('/productos', function (req, res) {
+  
+})
+
 router.post('/comprar', function (req, res) {
   //post del formulario de compra
   //insert en la bd el usuario y el dron que compro
