@@ -8,7 +8,8 @@ var express = require('express')
 
 var Dato = require('../models/Dato')
 var Usuario = require('../models/Usuario')
-var Usuario_dron = require('../models/Usuario_dron')
+//var Usuario_dron = require('../models/Usuario_dron')
+var Drones = require('../models/Drones')
 
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
@@ -56,7 +57,7 @@ router.get('/perfil', function(req, res) {
     //pendiente
     //busqueda de dronde del usuario
     //sin comprobar
-      Usuario_dron.find({ 'usuario': sess.usuario }, function (err, drones) {
+      Drones.find({ 'usuario': sess.usuario }, function (err, drones) {
         // dron es un array
         console.log(drones)
       });
@@ -129,11 +130,13 @@ router.post('/login', function (req, res) {
           if (usuario.validated) {
             
             console.log('usuario validado')
-            console.log(usuario.id)
             
             //crear sesion/cookie
             sess.usuario=usuario.usuario;
             sess.id_usuario=usuario._id;
+            
+            console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
+            
             
             //res.render('administracion')
             res.redirect('/administracion')
@@ -199,7 +202,9 @@ router.post('/register', function (req, res) {
     });
 
     //creacion de usuario
-    var usuario = new Usuario({ usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
+    //var usuario = new Usuario({usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
+    //var usuario = new Usuario({ _id: ,usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
+    var usuario = new Usuario({ usuario : form_usuario,nombre: null, apellidos : null, dni: null, direccion : null, codigo_postal : null, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
     
     //guardar usuario en la base de datos
     usuario.save(function (err) {
@@ -244,7 +249,7 @@ router.post('/comprar', function (req, res) {
     
     // prueba ruben
     //console.log('Valor sesión: ' + sess.usuario)
-    console.log('Prueba sesión id: ' + sess.id_usuario)
+    //console.log('Prueba sesión id: ' + sess.id_usuario)
     console.log('Nombre: ' + form_nombre)
     console.log('Apellidos: ' + form_apellidos)
     console.log('DNI: ' + form_dni)
@@ -256,10 +261,18 @@ router.post('/comprar', function (req, res) {
       if (err) {
         console.error(err)
       } else {
-        //var usuario_dron = new Usuario_dron({ id_usuario : id_usuario, id_dron : form_producto });
+        console.log('bien')
+        //var usuario_dron = new Usuario_dron({ id_usuario : sess.id_usuario, id_dron : form_producto });
+        var drones = new Drones ({ id_usuario : sess.id_usuario, id_producto : form_producto });
+        
+        //guardar usuario_dron en la base de datos
+        drones.save(function (err) {
+          if (err) {
+              console.log('save error', err)
+          }
+        });
       }
     });
-    //var usuario = new Usuario({ usuario : form_usuario, pass : pass_coded, nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp, email : form_email, activacion_key : new_key, validated : 0});
     //pendiente
     
     

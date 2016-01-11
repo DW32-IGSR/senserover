@@ -7,7 +7,7 @@ var userDronModel = function () {
     var userdronSchema = new mongoose.Schema({
         id_usuario: String,
         id_dron: String
-    },{collection : 'dron'});  
+    },{collection : 'usuario_dron'});  
     
     return mongoose.model('User_dron', userdronSchema);
 };
