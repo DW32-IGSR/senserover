@@ -125,4 +125,79 @@ $(document).ready(function(){
 			}
      	});
      });
+     $("#boton3").click(function(){
+     	$("#formulario_compra").validate ({
+			rules: {
+				nombre: {
+					required: true, 
+					nombre: true, 
+					minlength: 8, 
+					maxlength: 20
+				},
+				
+				email: {
+					required: true, 
+					email: true, 
+					minlength: 5, 
+					maxlength: 80
+				},
+				apellido: {
+	               required: true, 
+	               apellido: true, 
+	               minlength: 2, 
+	               maxlength: 50
+	                   
+	               },
+	           posta: {
+	               required: true, 
+	               digits: true, 
+	               minlength: 1, 
+	               maxlength: 5
+	                   
+	               },
+	           nif: {
+                    nifES: true
+            
+                },
+                direccion: {
+                    required: true,
+            
+                },
+			},
+ 
+        	messages: {
+    			apellido: {
+                    required: 'El apellido es requerido', 
+                    apellido: 'Sólo letras', 
+                    minlength: 'El mínimo permitido son 2 caracteres', 
+                    maxlength: 'El máximo permitido son 50 caracteres'
+                    
+                },
+		        nombre: {
+					required: 'El nombre es requerido', 
+					minlength: 'El mínimo permitido son 8 caracteres', 
+					maxlength: 'El máximo permitido son 20 caracteres'
+		        },
+		        email: {
+					required: 'El email es requerido', 
+					email: 'El formato de email es incorrecto', 
+					minlength: 'El mínimo permitido son 5 caracteres',
+					maxlength: 'El máximo permitido son 80 caracteres'
+				},
+				 posta: {
+	               required: 'El código postal es requerido', 
+	               digits: 'Sólo dígitos', 
+	               minlength: 'El mínimo permitido son 1 caracteres', 
+	               maxlength: 'El máximo permitido son 5 caracteres'
+	               
+	           },
+	           	nif: {
+    	            nifES: 'Formato de NIF incorrecto: 8 numeros y una letra'
+    	},
+    	direccion: {
+    	            required: 'Se requiere la dirección'
+    	},
+			}
+     	});
+     });
     });

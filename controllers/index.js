@@ -52,6 +52,16 @@ router.get('/perfil', function(req, res) {
   if(sess.usuario==""||sess.usuario==undefined){
     res.redirect('/')  
   }else { //si no redireccion a pagina de inicio
+  
+    //pendiente
+    //busqueda de dronde del usuario
+    //sin comprobar
+      Usuario_dron.find({ 'usuario': sess.usuario }, function (err, drones) {
+        // dron es un array
+        console.log(drones)
+      });
+    //sin comprobar  
+    
     res.render('perfil')
   }    
 })
@@ -123,6 +133,7 @@ router.post('/login', function (req, res) {
             
             //crear sesion/cookie
             sess.usuario=usuario.usuario;
+            sess.id_usuario=usuario._id;
             
             //res.render('administracion')
             res.redirect('/administracion')
@@ -230,8 +241,25 @@ router.post('/comprar', function (req, res) {
     
     //insercion en la bd modelo dron y usuario
     //var usuario = new Usuario({ usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0});
-    var usuario_dron = new Usuario_dron({ id_usuario : usuario, id_dron : dron });
-    var usuario = new Usuario({ usuario : form_usuario, pass : pass_coded, nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp, email : form_email, activacion_key : new_key, validated : 0});
+    
+    // prueba ruben
+    //console.log('Valor sesión: ' + sess.usuario)
+    console.log('Prueba sesión id: ' + sess.id_usuario)
+    console.log('Nombre: ' + form_nombre)
+    console.log('Apellidos: ' + form_apellidos)
+    console.log('DNI: ' + form_dni)
+    console.log('Dirección: ' + form_direccion)
+    console.log('Cógido Postal: ' + form_cp)
+    console.log('Email: ' + form_email)
+    console.log('Producto: ' + form_producto)
+    Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
+      if (err) {
+        console.error(err)
+      } else {
+        //var usuario_dron = new Usuario_dron({ id_usuario : id_usuario, id_dron : form_producto });
+      }
+    });
+    //var usuario = new Usuario({ usuario : form_usuario, pass : pass_coded, nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp, email : form_email, activacion_key : new_key, validated : 0});
     //pendiente
     
     
