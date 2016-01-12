@@ -20,9 +20,15 @@ router.use(session({resave: true, saveUninitialized: true, secret: 'rubenonrails
 
 router.get('/', function(req, res) {
   //ruta de pagina principal
-  //pendiente si hay sesion o cookie poner usuario logueado
-  
-  res.render('index')
+  var sess = req.session;
+  if(sess.usuario==""||sess.usuario==undefined){
+    res.render('index') 
+  }else {
+    //
+    //render de index con idicadores de sesion iniciada
+    //
+    res.render('index')
+  }
 })
 
 router.get('/administracion', function(req, res) {
@@ -40,15 +46,6 @@ router.get('/administracion', function(req, res) {
       if(err){
         console.log(err)
       }else{
-        //console.log("id de usuario: "+sess.id_usuario)
-        //console.log("resultado busqueda de drones");
-        //console.log("tamano: "+drones.length)
-        //console.log("drones: "+drones)
-        //console.log("tipo "+ typeof drones)
-        //console.log("prueba plus "+drones[0].nombre)
-        //console.log("prueba extra "+drones[0]._doc.nombre)
-        //console.log("prueba extra 2 "+drones[0])
-        //console.log("fin de la busqueda");
         //drones={drones:drones}
   		  var array_drones={drones:drones_encontrados}
   		  res.render('administracion', array_drones)
@@ -118,9 +115,7 @@ router.get('/cerrar', function(req, res) {
       res.redirect('/')
     }
   });
-  
 })  
-
 
 router.post('/login', function (req, res) {
   //post de formulario de login
@@ -270,10 +265,6 @@ res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', 
     }
   });
 })*/
-
-
-
-        
    
 router.get('/login', function(req, res) {
         res.render("index.handlebars", {layout: 'index.handlebars', action: 'login', error: req.flash('error'),
@@ -289,7 +280,6 @@ router.post('/comprar', function (req, res) {
     //algun mensaje de usuario no conectado
     //res.redirect('/')      
   }else { 
-  
     console.log("comprar")
     
     //variables de formulario
@@ -388,7 +378,6 @@ router.get('/activate/:activation/:email', function (req, res) {
   });
   
   res.redirect('/');
-
 });
 
 router.post('/contactar', function (req, res) {
@@ -445,11 +434,9 @@ router.post('/contactar', function (req, res) {
   mailgun.messages().send(data, function (error, body) {
     console.log(body)
   });  
-  
   //fin de mensaje de respuesta
   
   res.redirect('/');
-    
 })  
 
 module.exports = router
