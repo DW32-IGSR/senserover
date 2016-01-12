@@ -1,7 +1,7 @@
 <!-- Last Published: Fri Dec 11 2015 12:48:18 GMT+0000 (UTC) -->
 <html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="564f081f5d65087935982588">
 <head>
-  <title>Adminitrador</title>
+  <title>Administrador</title>
   <link rel="stylesheet" type="text/css" href="css/dron-terrestre.webflow.css">
 </head>
 <body class="body">
@@ -42,6 +42,7 @@
         <a href="#panel-estado" class="w-nav-link navigation-link">Preguntas frecuentes</a>
         <a href="/cerrar" class="w-nav-link navigation-link">Cerrar sesión</a>
       </nav>
+      <button class="btn btn-box-tool boton-logout" style="font-size:14px;"><a href="/cerrar"><i class="glyphicon glyphicon-log-out"></i></a></button>
       <div class="w-nav-button hamburger-button">
         <div class="w-icon-nav-menu"></div>
       </div>
@@ -54,10 +55,16 @@
           <form id="email-form" name="email-form" data-name="Email Form">
             <label for="name">Selección de dron</label>
             <select id="field" name="field" class="w-select">
-              <option value="modelo 200c">modelo 200c</option>
+              <!--<option value="modelo 200c">modelo 200c</option>
               <option value="modelo 300v">modelo 300v</option>
-              <option value="modelo 400">modelo 400</option>
+              <option value="modelo 400">modelo 400</option>-->
+              {{#each drones}}
+                  <option value={{_id}} >{{nombre}}</option>
+    	        {{/each}}
             </select>
+            <!--  {{#each drones}}
+                  <p>{{_id}}: {{nombre}}</p>
+              {{/each}} -->
           </form>
           <div class="w-form-done">
             <p>Thank you! Your submission has been received!</p>

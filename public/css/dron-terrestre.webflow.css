@@ -486,6 +486,46 @@ p {
 }
 /* FIN PERFIL */
 
+/* INICIO COMPRA */
+.mensualidad_titulo {
+  padding-top: 15px;
+}
+
+.mensualidad_row {
+  /*padding-top: 75px;*/
+  height: 350px;
+  min-height: 400px;
+}
+
+.mensualidad_column {
+  height: 350px;
+  max-height: 250px;
+  min-height: 330px;
+  margin-top: 10px;
+}
+
+.mensualidad {
+  display: block;
+  height: 350px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #F5F5F5;
+}
+
+.mensualidad_datos {
+  background-color: #FAEBD7;
+}
+
+/* FIN COMPRA */
+
+
+/* INICIO ADMINISTRACIÓN */
+
+
+
+/* FIN ADMINISTRACIÓN */
+
 .tabs-wrapper {
   margin-top: 40px;
   padding-bottom: 0px;
@@ -958,6 +998,7 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
 }
 
 @media (max-width: 991px) {
+
   .navigation-link {
     color: #676770;
   }
@@ -987,6 +1028,7 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
 }
 
 @media (max-width: 767px) {
+
   .button.full-width {
     margin-right: auto;
     margin-left: auto;
@@ -1021,6 +1063,7 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
 }
 
 @media (max-width: 479px) {
+
   .button {
     margin-bottom: 25px;
     margin-left: 44px;

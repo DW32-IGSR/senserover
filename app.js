@@ -37,7 +37,7 @@ app.listen(server_port, server_ip_address, function(){
   db.once('open', function callback() {
     console.log('db connection open')
   })
-});
+})
 
 //http://senserover-terrestre.rhcloud.com/
 //http://sense-rover-nohtrim.c9users.io/

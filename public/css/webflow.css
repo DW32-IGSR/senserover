@@ -1827,6 +1827,24 @@ textarea.w-select {
   -ms-user-select: none;
   user-select: none;
 }
+
+.boton-logout {
+  position: relative;
+  top: 14px;
+  right: 90px;
+  float: right;
+  padding: 18px;
+  font-size: 24px;
+  display: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .w-nav-button.w--open {
   background-color: #C8C8C8;
   color: white;

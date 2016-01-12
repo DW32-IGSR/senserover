@@ -35,7 +35,26 @@ router.get('/administracion', function(req, res) {
   if(sess.usuario==""||sess.usuario==undefined){
     res.redirect('/')  
   }else { //si no redireccion a pagina de inicio
-    res.render('administracion')
+  
+    Drones.find({ 'id_usuario': sess.id_usuario }, function (err, drones_encontrados) {
+      if(err){
+        console.log(err)
+      }else{
+        //console.log("id de usuario: "+sess.id_usuario)
+        //console.log("resultado busqueda de drones");
+        //console.log("tamano: "+drones.length)
+        //console.log("drones: "+drones)
+        //console.log("tipo "+ typeof drones)
+        //console.log("prueba plus "+drones[0].nombre)
+        //console.log("prueba extra "+drones[0]._doc.nombre)
+        //console.log("prueba extra 2 "+drones[0])
+        //console.log("fin de la busqueda");
+        //drones={drones:drones}
+  		  var array_drones={drones:drones_encontrados}
+  		  res.render('administracion', array_drones)
+      }      
+    });
+    //res.render('administracion')
   }  
 })
 
@@ -51,6 +70,7 @@ router.get('/perfil', function(req, res) {
   //ruta a la pagina de perfil
   
   var sess = req.session;
+  console.log(sess.usuario)
   if(sess.usuario==""||sess.usuario==undefined){
     res.redirect('/')  
   }else { //si no redireccion a pagina de inicio
@@ -138,7 +158,6 @@ router.post('/login', function (req, res) {
             
             console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
             
-            
             //res.render('administracion')
             res.redirect('/administracion')
           } else {
@@ -151,8 +170,12 @@ router.post('/login', function (req, res) {
         }                     
       })
     } else {
+      if (usuario==null) {
+            return done(null, false, {
+                message: 'El usuario introducido es incorrecto'
+            });
+      }
       console.log('usuario no registrado')
-      
       //res.redirect('/')
     }    
   })
@@ -173,59 +196,69 @@ router.post('/register', function (req, res) {
   console.log("Pass 1: " + form_pass)
   console.log("Pass 2: " + form_pass2)
   
-  var salt = bcrypt.genSaltSync(10);
-  var pass_coded = bcrypt.hashSync(form_pass, salt);
-  console.log(bcrypt.compareSync(form_pass2, pass_coded))
-  console.log(pass_coded)
+  Usuario.findOne({usuario: form_usuario}, function (err, usuario) {   
+    if (err) {
+        console.error(err)
+    } else {
+      
+      if(usuario==null){
+        console.log('el usuario no existe')
         
-  if (bcrypt.compareSync(form_pass2, pass_coded)){
-    var chars = "abcdefghijklmnopqrstuvwxyz0123456789"
-    var new_key = ""
-    for (var i = 0; i < 32; i++) {
-        new_key += chars[Math.floor(Math.random()*35)]
-    }
-     
-    // Mailgun
-    var api_key = 'key-116da3f3cd011ad01d454a632a599587'
-    var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org'
-    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
-    
-    var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/"+new_key+"/"+form_email+"'>Activar la cuenta</a>"
-    
-    var data = {
-      from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
-      to: form_email,
-      subject: 'Registro en sense-rover',
-      html: mensaje
-    };
-    
-
-
-    //creacion de usuario
-    //var usuario = new Usuario({usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
-    //var usuario = new Usuario({ _id: ,usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
-    var usuario = new Usuario({ usuario : form_usuario,nombre: null, apellidos : null, dni: null, direccion : null, codigo_postal : null, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
-    
-    //guardar usuario en la base de datos
-    usuario.save(function (err) {
-      if (err) {
-          console.log('save error', err)
-      } else{
-        //envio de mensaje de activacion si no hay error
-        mailgun.messages().send(data, function (error, body) {
-          console.log(body)
-        });
+        var salt = bcrypt.genSaltSync(10);
+        var pass_coded = bcrypt.hashSync(form_pass, salt);
+        console.log(bcrypt.compareSync(form_pass2, pass_coded))
+        console.log(pass_coded)
+              
+        if (bcrypt.compareSync(form_pass2, pass_coded)){
+          var chars = "abcdefghijklmnopqrstuvwxyz0123456789"
+          var new_key = ""
+          for (var i = 0; i < 32; i++) {
+              new_key += chars[Math.floor(Math.random()*35)]
+          }
+           
+          // Mailgun
+          var api_key = 'key-116da3f3cd011ad01d454a632a599587'
+          var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org'
+          var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
+          
+          var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/"+new_key+"/"+form_email+"'>Activar la cuenta</a>"
+          
+          var data = {
+            from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
+            to: form_email,
+            subject: 'Registro en sense-rover',
+            html: mensaje
+          }
+      
+          //creacion de usuario
+          //var usuario = new Usuario({usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
+          //var usuario = new Usuario({ _id: ,usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
+          var usuario = new Usuario({ usuario : form_usuario,nombre: null, apellidos : null, dni: null, direccion : null, codigo_postal : null, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
+          
+          //guardar usuario en la base de datos
+          usuario.save(function (err) {
+            if (err) {
+              console.log('save error', err)
+            } else{
+              //envio de mensaje de activacion si no hay error
+              mailgun.messages().send(data, function (error, body) {
+                console.log(body)
+              })
+            }
+          })
+          
+        } else {
+            console.log('Las pass no es la misma')
+        }
+      } else {
+        console.log('el usuario ya existe')
       }
-    });
-    
-  } else {
-      console.log('Las pass no es la misma')
-  }  
-  
+    }  
+  })
 })  // /register
 
 // Temporal para introducir productos
-router.get('/productos', function (req, res) {
+/*router.get('/productos', function (req, res) {
   var producto = new Productos ({ nombre : 'Producto 2', descripcion : 'Descripción producto 2', precio : '200' });
   
   //guardar usuario_dron en la base de datos
@@ -234,8 +267,17 @@ router.get('/productos', function (req, res) {
         console.log('save error', err)
     }
   });
-})
+})*/
 
+
+router.get('/register', function(req, res) {
+        res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),
+                    csrf: 'CSRF token goes here' });
+    })
+router.get('/login', function(req, res) {
+        res.render("index.handlebars", {layout: 'index.handlebars', action: 'login', error: req.flash('error'),
+                    csrf: 'CSRF token goes here' });
+    })
 router.post('/comprar', function (req, res) {
   //post del formulario de compra
   //insert en la bd el usuario y el dron que compro
@@ -285,7 +327,7 @@ router.post('/comprar', function (req, res) {
           } else {
             //console.log('ID Producto: ' + producto.id)
             //var usuario_dron = new Usuario_dron({ id_usuario : sess.id_usuario, id_dron : form_producto });
-            var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id });
+            var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_producto });
             
             //guardar usuario_dron en la base de datos
             dron.save(function (err) {
@@ -365,7 +407,8 @@ router.post('/contactar', function (req, res) {
   var mensaje = "mensaje de: "+form_nombre+"<br><br>mensaje:<br>"+form_mensaje_contacto+"<br>email de contacto: "+form_email
   
   var data = {
-    from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
+    //from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
+    from: 'sense-rover <dw32igsr@gmail.com>',
     to: "dw32igsr@gmail.com",
     subject: "Formulario de contacto: asunto:"+form_asunto,
     html: mensaje
@@ -374,6 +417,36 @@ router.post('/contactar', function (req, res) {
   mailgun.messages().send(data, function (error, body) {
     console.log(body)
   });
+  /*
+    aqui va la parte del menasje para la persona que relleno el formulario de contacto
+    mensaje de mensaje enviado
+  */
+  
+  var form_nombre = req.body.nombre_contacto
+  var form_asunto = req.body.asunto_contacto
+  var form_email = req.body.email_contacto
+  var form_mensaje_contacto = req.body.mensaje_contacto
+    
+  // Mailgun
+  var api_key = 'key-116da3f3cd011ad01d454a632a599587'
+  var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org'
+  var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
+  var mensaje = "mensaje de contacto enviado<br><br>con el asunto:"
+                +form_asunto+"<br><br>le responderemos lo antes posible"
+                +"<br><br><h3>No responda a este mensaje</h3>"
+  
+  var data = {
+    from: 'sense-rover <dw32igsr@gmail.com>',
+    to: form_email,
+    subject: "Formulario de contacto sense-rover: asunto:"+form_asunto,
+    html: mensaje
+  };
+  
+  mailgun.messages().send(data, function (error, body) {
+    console.log(body)
+  });  
+  
+  //fin de mensaje de respuesta
   
   res.redirect('/');
     
