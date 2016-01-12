@@ -170,9 +170,9 @@ router.post('/login', function (req, res) {
         }                     
       })
     } else {
-      if (usuario==null) {
+      if (!usuario) {
             return done(null, false, {
-                message: 'El usuario introducido es incorrecto'
+                message: 'El usuario introducido no está registrado'
             });
       }
       console.log('usuario no registrado')
@@ -192,9 +192,9 @@ router.post('/register', function (req, res) {
   var form_pass2 = req.body.contrasenya2
   
   console.log("Usuario registro: " + form_usuario)
-  console.log("email registro: " + form_email)
-  console.log("Pass 1: " + form_pass)
-  console.log("Pass 2: " + form_pass2)
+  //console.log("email registro: " + form_email)
+  //console.log("Pass 1: " + form_pass)
+  //console.log("Pass 2: " + form_pass2)
   
   Usuario.findOne({usuario: form_usuario}, function (err, usuario) {   
     if (err) {
@@ -255,6 +255,8 @@ router.post('/register', function (req, res) {
       }
     }  
   })
+res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),
+                    csrf: 'CSRF token goes here' });
 })  // /register
 
 // Temporal para introducir productos
@@ -270,10 +272,9 @@ router.post('/register', function (req, res) {
 })*/
 
 
-router.get('/register', function(req, res) {
-        res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),
-                    csrf: 'CSRF token goes here' });
-    })
+
+        
+   
 router.get('/login', function(req, res) {
         res.render("index.handlebars", {layout: 'index.handlebars', action: 'login', error: req.flash('error'),
                     csrf: 'CSRF token goes here' });
@@ -310,11 +311,11 @@ router.post('/comprar', function (req, res) {
     //console.log('Valor sesión: ' + sess.usuario)
     //console.log('Prueba sesión id: ' + sess.id_usuario)
     console.log('Nombre: ' + form_nombre)
-    console.log('Apellidos: ' + form_apellidos)
-    console.log('DNI: ' + form_dni)
+    //console.log('Apellidos: ' + form_apellidos)
+    //console.log('DNI: ' + form_dni)
     console.log('Dirección: ' + form_direccion)
-    console.log('Cógido Postal: ' + form_cp)
-    console.log('Email: ' + form_email)
+    //console.log('Cógido Postal: ' + form_cp)
+    //console.log('Email: ' + form_email)
     console.log('Producto: ' + form_producto)
     
     Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
@@ -356,21 +357,21 @@ router.get('/activate/:activation/:email', function (req, res) {
   
   var key = req.params.activation
   var email = req.params.email
-  console.log("activacion de usuario")
-  console.log("key: " + key)
-  console.log("Email: " + email)
+  //console.log("activacion de usuario")
+  //console.log("key: " + key)
+  //console.log("Email: " + email)
   
   Usuario.findOne({activacion_key: key, email: email}, function (err, usuario) {
       if (err) {
           console.log(err);
       } else if (usuario!=null) {
           //update de usuario
-          console.log("busqueda de usuario en activacion")
-          console.log(usuario.usuario)
-          console.log(usuario.email)
-          console.log(usuario.activacion_key)
-          console.log(usuario.validated)
-          console.log(usuario.comp_validacion())
+          //console.log("busqueda de usuario en activacion")
+          //console.log(usuario.usuario)
+          //console.log(usuario.email)
+          //console.log(usuario.activacion_key)
+          //console.log(usuario.validated)
+          //console.log(usuario.comp_validacion())
           
           //en proceso
           usuario.validated = true;
@@ -407,8 +408,7 @@ router.post('/contactar', function (req, res) {
   var mensaje = "mensaje de: "+form_nombre+"<br><br>mensaje:<br>"+form_mensaje_contacto+"<br>email de contacto: "+form_email
   
   var data = {
-    //from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
-    from: 'sense-rover <dw32igsr@gmail.com>',
+    from: form_nombre + ' <' + form_email + '>',
     to: "dw32igsr@gmail.com",
     subject: "Formulario de contacto: asunto:"+form_asunto,
     html: mensaje
@@ -438,7 +438,7 @@ router.post('/contactar', function (req, res) {
   var data = {
     from: 'sense-rover <dw32igsr@gmail.com>',
     to: form_email,
-    subject: "Formulario de contacto sense-rover: asunto:"+form_asunto,
+    subject: "Formulario de contacto sense-rover: "+form_asunto,
     html: mensaje
   };
   
