@@ -2,6 +2,9 @@ var express = require('express')
   , router = express.Router()
   , bcrypt = require('bcrypt')
   , session = require('express-session')
+  , app = express()
+  , bodyParser = require("body-parser")
+  , methodOverride = require("method-override")
 
   //http://sense-rover-nohtrim.c9users.io
   //http://senserover-terrestre.rhcloud.com/
@@ -167,12 +170,13 @@ router.post('/login', function (req, res) {
       })
     } else {
       if (!usuario) {
-            return done(null, false, {
+            console.log("Prueba gorka")
+            /*return done(null, false, {
                 message: 'El usuario introducido no está registrado'
-            });
+            });*/
       }
-      res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
-                    });
+      /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
+                    });*/
       console.log('usuario no registrado')
       //res.redirect('/')
     }    
@@ -335,25 +339,23 @@ router.post('/comprar', function (req, res) {
                   if(duplicados!=0){
                     form_nombre_final+="*"
                     //console.log('Form nombre producto: ' + form_nombre_final)
-                    //contador++
                     //console.log("contador "+contador)
                     buscar()
                   } else {
                     //console.log("no hay duplicados")
                     //console.log("nombre final"+form_nombre_final)
                     var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_nombre_final });
-                    //guardar drones en la base de datos
                     dron.save(function (err) {
                       if (err) {
                           console.log('save error', err)
                       }
                     })
-                    //contador++
                     //console.log("cuenta final "+contador)
                   }
                 }
-              }) //buscar
-            }
+                //contador++
+              }) // find
+            } //funcion buscar
           } //else error
         }) //findone
       } //else error
