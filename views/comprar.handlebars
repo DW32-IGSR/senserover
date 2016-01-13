@@ -76,11 +76,13 @@
         <a href="#seccion-producto" class="w-nav-link navigation-link">Producto</a>
         <a href="#seccion-compra" class="w-nav-link navigation-link">Compra</a>
         <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
-        <a data-ix="login" class="w-nav-link navigation-link login2">Inicio de Sesión / Registro</a>
+        <a data-ix="login" class="w-nav-link navigation-link login2 login-menu">Inicio de Sesión / Registro</a>
       </nav>
       <div class="w-nav-button hamburger-button">
         <div class="w-icon-nav-menu"></div>
       </div>
+      <a class="w-nav-iniciarS" data-ix="login" role="button">Iniciar sesión</a>
+      <a class="btn btn-primary boton-registro" data-ix="login" role="button">Registro</a>
     </div> <!-- navbar: w-container -->
   </div><!-- navbar: w-nav navigation-bar -->
   <div id="seccion-producto" class="w-section section">
@@ -211,7 +213,8 @@
             </div>
             <div class="w-col w-col-6">
               <div class="text_form">Producto:</div>
-              <input id="producto_compra" type="text" placeholder="Producto" name="producto_compra" required="required" data-name="Email 4" class="w-input form-field">
+              <input id="producto_compra" type="text" placeholder="Producto 1" name="producto_compra" required="required" data-name="Email 4" class="w-input form-field" value="Producto 1">
+              <input hidden id="id_producto_compra" type="text" name="id_producto_compra" required="required" data-name="id_producto_compra" value="5693728d3890294f10406189">
             </div>
           </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(3º row) -->
           <input type="submit" value="Comprar" data-wait="Please wait..." class="w-button button full-width" id="boton3">
@@ -295,6 +298,7 @@
     </div> <!-- footer: w-container -->
   </div> <!-- footer: w-section footer center -->
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
-  <script src=validar_compra.js></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src=js/validar_compra.js ></script> 
 </body>
 </html>

@@ -162,6 +162,7 @@ router.post('/login', function (req, res) {
         } else {
           console.log('contraseña incorrecta')
           res.redirect('/')
+          
         }                     
       })
     } else {
@@ -170,6 +171,8 @@ router.post('/login', function (req, res) {
                 message: 'El usuario introducido no está registrado'
             });
       }
+      res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
+                    });
       console.log('usuario no registrado')
       //res.redirect('/')
     }    
@@ -250,8 +253,8 @@ router.post('/register', function (req, res) {
       }
     }  
   })
-res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),
-                    csrf: 'CSRF token goes here' });
+  //res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),});
+  res.render("index.handlebars", {layout: 'main.handlebars', action: 'Register', error: req.flash('error')});
 })  // /register
 
 // Temporal para introducir productos
@@ -266,10 +269,6 @@ res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', 
   });
 })*/
    
-router.get('/login', function(req, res) {
-        res.render("index.handlebars", {layout: 'index.handlebars', action: 'login', error: req.flash('error'),
-                    csrf: 'CSRF token goes here' });
-    })
 router.post('/comprar', function (req, res) {
   //post del formulario de compra
   //insert en la bd el usuario y el dron que compro
@@ -290,7 +289,8 @@ router.post('/comprar', function (req, res) {
     var form_direccion = req.body.direccion_compra
     var form_cp = req.body.cp_compra
     var form_email = req.body.email_compra
-    var form_producto = req.body.producto_compra
+    var form_nombre_producto = req.body.producto_compra
+    var form_id_producto = req.body.id_producto_compra
     //pendiente tipo de subscripcion
     //var form_sub = req.body.subscripcion  
     
@@ -303,35 +303,61 @@ router.post('/comprar', function (req, res) {
     console.log('Nombre: ' + form_nombre)
     //console.log('Apellidos: ' + form_apellidos)
     //console.log('DNI: ' + form_dni)
-    console.log('Dirección: ' + form_direccion)
+    //console.log('Dirección: ' + form_direccion)
     //console.log('Cógido Postal: ' + form_cp)
     //console.log('Email: ' + form_email)
-    console.log('Producto: ' + form_producto)
+    console.log('nombre pre compra: ' + form_nombre_producto)
     
     Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
       if (err) {
         console.error(err)
       } else {
-        Productos.findOne({ nombre: form_producto }, function (err, producto) {   
+        Productos.findOne({ _id: form_id_producto }, function (err, producto) {   
           if (err) {
             console.error(err)
           } else {
-            //console.log('ID Producto: ' + producto.id)
-            //var usuario_dron = new Usuario_dron({ id_usuario : sess.id_usuario, id_dron : form_producto });
-            var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_producto });
             
-            //guardar usuario_dron en la base de datos
-            dron.save(function (err) {
-              if (err) {
-                  console.log('save error', err)
-              }
-            });
-          }
-        })
-      }
-    });
-    //pendiente
-    
+            var form_nombre_final = form_nombre_producto
+            //var duplicados=1
+            //var contador=0
+            buscar()
+            function buscar(){
+              console.log(" busqueda ")
+              //console.log("¿nombre duplicado? "+form_nombre_final)
+              Drones.find({ nombre: form_nombre_final, 'id_usuario': sess.id_usuario }, function (err, resultados) {   
+                if (err) {
+                  console.error(err)
+                } else {        
+                  //console.log('ID Producto: ' + producto.id)
+                  //var usuario_dron = new Usuario_dron({ id_usuario : sess.id_usuario, id_dron : form_producto });
+                  var duplicados = resultados.length
+                  //console.log('Comprobación de duplicados: ' + duplicados)
+                  if(duplicados!=0){
+                    form_nombre_final+="*"
+                    //console.log('Form nombre producto: ' + form_nombre_final)
+                    //contador++
+                    //console.log("contador "+contador)
+                    buscar()
+                  } else {
+                    //console.log("no hay duplicados")
+                    //console.log("nombre final"+form_nombre_final)
+                    var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_nombre_final });
+                    //guardar drones en la base de datos
+                    dron.save(function (err) {
+                      if (err) {
+                          console.log('save error', err)
+                      }
+                    })
+                    //contador++
+                    //console.log("cuenta final "+contador)
+                  }
+                }
+              }) //buscar
+            }
+          } //else error
+        }) //findone
+      } //else error
+    });//find update
     
     //despues de realizar la compra pasamos a perfil
     //donde vera que en la tabla de drones se añadio uno nuevo

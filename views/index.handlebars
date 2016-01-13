@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/dron-terrestre.webflow.css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script>
     WebFont.load({
       google: {
@@ -61,7 +62,7 @@
             </div> <!-- iniciar-sesion-wrapper -->
           </div> <!-- Tab Login -->
           <div data-w-tab="Tab Registro" class="w-tab-pane">
-            <div>
+            <div id="registro">
               <h3>REGISTRO</h3>
               <div class="w-form">
                 <form id="email-form-2-registro" name="email-form-2-registro" data-name="Email Form 2" action="/register" method="post">
@@ -101,13 +102,13 @@
         <a href="#donde-estamos" class="w-nav-link navigation-link">Dónde estamos</a>
         <a href="#contacto" class="w-nav-link navigation-link">Contacto</a>
         <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
-        <a data-ix="login" class="w-nav-link navigation-link login2">Inicio de Sesión / Registro</a>
+        <a data-ix="login" class="w-nav-link navigation-link login2 login-menu">Inicio de Sesión / Registro</a>
       </nav>
-      <a class="w-nav-link navigation-link w--nav-link-open" href="#" role="button">Iniciar sesión</a>
-      <a class="btn btn-primary boton-registro" href="#" role="button">Registro</a>
       <div class="w-nav-button hamburger-button">
         <div class="w-icon-nav-menu"></div>
       </div>
+      <a class="w-nav-iniciarS" data-ix="login" role="button">Iniciar sesión</a>
+      <a class="btn btn-primary boton-registro" data-ix="login" role="button">Registro</a>
     </div> <!-- Navbar container -->
   </div> <!-- Navbar -->
   <div id="slider" class="w-section section-slider">
@@ -401,6 +402,7 @@
     </div> <!-- footer: w-container -->
   </div> <!-- footer: w-section footer center -->
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
-  <script src=validar_index.js></script>  
+  <script src=js/validar_index.js></script>
+  <script src="js/botonesSession.js"></script>
 </body>
 </html>

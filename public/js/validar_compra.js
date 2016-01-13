@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    
     jQuery.validator.addMethod( "nifES", function ( value, element ) {
         "use strict";
         value = value.toUpperCase();
@@ -33,8 +32,8 @@ $(document).ready(function(){
 		Email-4 producto_compra
 	*/
 	
-     $("#boton3").click(function(){
-     	$("#formulario_compra").validate ({
+	$("#boton3").click(function(){
+	 	$("#formulario_compra").validate ({
 			rules: {
 				nombre: {
 					required: true, 
@@ -42,7 +41,6 @@ $(document).ready(function(){
 					minlength: 8, 
 					maxlength: 20
 				},
-				
 				email: {
 					required: true, 
 					email: true, 
@@ -54,33 +52,28 @@ $(document).ready(function(){
 	               apellido: true, 
 	               minlength: 2, 
 	               maxlength: 50
-	                   
 	               },
 	           posta: {
 	               required: true, 
 	               digits: true, 
 	               minlength: 1, 
 	               maxlength: 5
-	                   
 	               },
 	           nif: {
-                    nifES: true
-            
-                },
-                direccion: {
-                    required: true,
-            
-                },
+	                nifES: true
+	            },
+	            direccion: {
+	            	required: true
+	            },
 			},
- 
-        	messages: {
-    			apellido: {
-                    required: 'El apellido es requerido', 
-                    apellido: 'Sólo letras', 
-                    minlength: 'El mínimo permitido son 2 caracteres', 
-                    maxlength: 'El máximo permitido son 50 caracteres'
-                    
-                },
+	
+	    	messages: {
+				apellido: {
+	                required: 'El apellido es requerido', 
+	                apellido: 'Sólo letras', 
+	                minlength: 'El mínimo permitido son 2 caracteres', 
+	                maxlength: 'El máximo permitido son 50 caracteres'
+	            },
 		        nombre: {
 					required: 'El nombre es requerido', 
 					minlength: 'El mínimo permitido son 8 caracteres', 
@@ -100,12 +93,12 @@ $(document).ready(function(){
 	               
 	           },
 	           	nif: {
-    	            nifES: 'Formato de NIF incorrecto: 8 numeros y una letra'
-    	},
-    	direccion: {
-    	            required: 'Se requiere la dirección'
-    	},
+		            nifES: 'Formato de NIF incorrecto: 8 numeros y una letra'
+				},
+				direccion: {
+		            required: 'Se requiere la dirección'
+				}
 			}
-     	});
-     });
-    });
+	 	});
+	});
+});

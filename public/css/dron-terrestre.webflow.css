@@ -463,6 +463,13 @@ p {
 }
 /* FIN MODAL */
 
+/* SESION */
+.login-menu {
+  visibility: hidden;
+  display: none;
+}
+/* FIN SESION */
+
 /* INICIO PERFIL */
 .tab-menu-perfil {
   margin-bottom: 0px;
@@ -998,6 +1005,7 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
 }
 
 @media (max-width: 991px) {
+  
 
   .navigation-link {
     color: #676770;
@@ -1063,6 +1071,13 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
 }
 
 @media (max-width: 479px) {
+  
+  /* SESION */
+  .login-menu {
+      visibility: visible;
+      display: block;
+  }
+  /* FIN SESION */
 
   .button {
     margin-bottom: 25px;
