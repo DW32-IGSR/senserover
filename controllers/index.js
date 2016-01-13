@@ -139,43 +139,46 @@ router.post('/login', function (req, res) {
   Usuario.findOne({ usuario: form_usuario }, function (err, usuario) {   
     if (err) {
         console.error(err)
-    }
-    if (usuario!=null) {
-      console.log('Find one usuario:' + usuario.usuario)
-
-      usuario.comparePassword(form_pass, function(err, isMatch) {
-        if (err) throw err
-        console.log('comprobacion: ' + form_pass, isMatch)
-        if (isMatch) {
-          if (usuario.validated) {
-            console.log('usuario activado')
-            //crear sesion/cookie
-            sess.usuario=usuario.usuario;
-            sess.id_usuario=usuario._id;
-            console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
-            //res.render('administracion')
-            res.redirect('/administracion')
+    } else {
+      if (usuario!=null) {
+        console.log('Find one usuario:' + usuario.usuario)
+  
+        usuario.comparePassword(form_pass, function(err, isMatch) {
+          if (err) throw err
+          console.log('comprobacion: ' + form_pass, isMatch)
+          if (isMatch) {
+            if (usuario.validated) {
+              console.log('usuario activado')
+              //crear sesion/cookie
+              sess.usuario=usuario.usuario;
+              sess.id_usuario=usuario._id;
+              console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
+              res.redirect('/administracion')
+            } else {
+              console.log('usuario NO activado')
+              //res.redirect('/')
+              //flash de errores
+              req.flash('success', 'El nombre de usuario no esta activado..');
+              res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+            }
           } else {
-            console.log('usuario NO activado')
+            console.log('contraseña incorrecta')
             //res.redirect('/')
             //flash de errores
+            req.flash('success', 'El nombre de usuario o la contraseña no son correctos..');
             res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
-          }
-        } else {
-          console.log('contraseña incorrecta')
-          res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
-          //res.redirect('/')
-          //flash de errores
-        }                     
-      })
-    } else {
-      console.log('usuario no registrado')
-      //res.redirect('/')
-      //flash de errores
-      /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
-                      });*/
-      req.flash('success', 'El usuario introducido no está registrado.');
-    }    
+          }                     
+        })
+      } else {
+        console.log('usuario no registrado')
+        //res.redirect('/')
+        //flash de errores
+        /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
+                        });*/
+        req.flash('success', 'El nombre de usuario o la contraseña no son correctos..');
+        res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+      } 
+    }
   })
 })
 

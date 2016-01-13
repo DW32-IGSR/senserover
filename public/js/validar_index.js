@@ -95,7 +95,7 @@ $(document).ready(function(){
                 },
                 contrasenya: {
             		required: true,
-            		minlength: 8, 
+            		//minlength: 8, 
             		maxlength: 20
             	}
             },
@@ -106,14 +106,68 @@ $(document).ready(function(){
                 },
                 contrasenya: {
                     required: 'Campo obligatorio',
-                    minlength: 'Tamanyo minimo 15',
+                    //minlength: 'Tamanyo minimo 8',
                     maxlength: 'Tamanyo maximo 15'
                 }
+           },
+           submitHandler: function(form) {
+           		form.submit()
+           }
+        })
+    })
+    
+    $("#boton3").click(function(){
+        $("#email-form-2-registro").validate({
+            rules: {
+                usuario: {
+                    required: true,
+                    maxlength: 15
+                },
+                email: {
+            		required: true,
+            		email: true,
+					minlength: 5,
+					maxlength: 80
+            	},
+                contrasenya: {
+            		required: true,
+            		minlength: 8,
+            		maxlength: 20
+            	}
+            	,
+                contrasenya2: {
+            		required: true,
+            		minlength: 8,
+            		maxlength: 20
+            	}
+            },
+           messages: {
+                usuario: {
+                    required: 'Campo obligatorio',
+                    maxlength: 'Tamanyo maximo 15'
+                },
+                email: {
+            		required: 'Campo obligatorio',
+            		email: 'No es un email valido',
+					minlength: 'Tamanyo minimo 5',
+					maxlength: 'Tamanyo maximo 80'
+            	},
+                contrasenya: {
+            		required: 'Campo obligatorio',
+            		minlength: 'Tamanyo minimo 8',
+            		maxlength: 'Tamanyo maximo 20'
+            	}
+            	,
+                contrasenya2: {
+            		required: 'Campo obligatorio',
+            		minlength: 'Tamanyo minimo 8',
+            		maxlength: 'Tamanyo maximo 20'
+            	}
            }
         });
     });
 	
-    $("#boton3").click(function(){
+    /*$("#boton3").click(function(){
      	$("#email-form-2-registro").validate ({
 			rules: {
 				user: {
@@ -154,5 +208,5 @@ $(document).ready(function(){
 				},
 			}
      	});
-    });
+    });*/
 });
