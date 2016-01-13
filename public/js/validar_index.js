@@ -57,7 +57,7 @@ $(document).ready(function(){
 	});
 	
 	$("#boton2").click(function(){
-	    $("#email-form-2").validate ({
+	    $("#inicio-session").validate ({
 			rules: {
 				user: {
 					required: true, 

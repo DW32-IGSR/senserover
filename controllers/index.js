@@ -2,9 +2,9 @@ var express = require('express')
   , router = express.Router()
   , bcrypt = require('bcrypt')
   , session = require('express-session')
-  , app = express()
+  /*, app = express()
   , bodyParser = require("body-parser")
-  , methodOverride = require("method-override")
+  , methodOverride = require("method-override")*/
 
   //http://sense-rover-nohtrim.c9users.io
   //http://senserover-terrestre.rhcloud.com/
@@ -365,7 +365,6 @@ router.post('/comprar', function (req, res) {
     //donde vera que en la tabla de drones se añadio uno nuevo
     
     //en administracion no tiene datos ni alertas configuradas
-    
     res.redirect('/perfil')
   }
 })  // /comprar
@@ -375,38 +374,26 @@ router.get('/activate/:activation/:email', function (req, res) {
   
   var key = req.params.activation
   var email = req.params.email
-  //console.log("activacion de usuario")
-  //console.log("key: " + key)
-  //console.log("Email: " + email)
-  
+
   Usuario.findOne({activacion_key: key, email: email}, function (err, usuario) {
       if (err) {
-          console.log(err);
+          console.log(err)
       } else if (usuario!=null) {
-          //update de usuario
-          //console.log("busqueda de usuario en activacion")
-          //console.log(usuario.usuario)
-          //console.log(usuario.email)
-          //console.log(usuario.activacion_key)
-          //console.log(usuario.validated)
-          //console.log(usuario.comp_validacion())
-          
-          //en proceso
-          usuario.validated = true;
+          usuario.validated = true
           usuario.save(function (err) {
               if (err) {
                 console.log(err)
               } else {
                 console.log('Updated', usuario)
               }
-          });
+          })
       } else {
-          console.log('Usuario no encontrado');
+          console.log('Usuario no encontrado')
       }
-  });
+  })
   
-  res.redirect('/');
-});
+  res.redirect('/')
+})
 
 router.post('/contactar', function (req, res) {
   //post de formulario de contacto
