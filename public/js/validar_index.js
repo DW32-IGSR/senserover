@@ -56,36 +56,62 @@ $(document).ready(function(){
      	});
 	});
 	
-	$("#boton2").click(function(){
+	/*$("#boton2").click(function(){
 	    $("#inicio-session").validate ({
 			rules: {
-				user: {
+				usuario: {
 					required: true, 
-					user: true, 
+					usuario: true, 
 					maxlength: 15
 				},
-				nombre: {
+				contrasenya: {
 					required: true, 
-					nombre: true, 
+					contrasenya: true, 
 					minlength: 8, 
 					maxlength: 20
 				},
 			},
  
         	messages: {
-    			user: {
+    			usuario: {
 					required: 'El user es requerido', 
-					user: 'El formato de user es incorrecto', 
+					usuario: 'El formato de user es incorrecto', 
 					maxlength: 'El máximo permitido son 15 caracteres'
 				},
-		        nombre: {
+		        contrasenya: {
 					required: 'El nombre es requerido',  
 					minlength: 'El mínimo permitido son 8 caracteres', 
 					maxlength: 'El máximo permitido son 20 caracteres'
 		        },
 			}
      	});
-	});
+	});*/
+	$("#boton2").click(function(){
+        $("#inicio-session").validate({
+            rules: {
+                usuario: {
+                    required: true,
+                    maxlength: 15
+                },
+                contrasenya: {
+            		required: true,
+            		minlength: 8, 
+            		maxlength: 20
+            	}
+            },
+           messages: {
+                usuario: {
+                    required: 'Campo obligatorio',
+                    maxlength: 'Tamanyo maximo 15'
+                },
+                contrasenya: {
+                    required: 'Campo obligatorio',
+                    minlength: 'Tamanyo minimo 15',
+                    maxlength: 'Tamanyo maximo 15'
+                }
+           }
+        });
+    });
 	
     $("#boton3").click(function(){
      	$("#email-form-2-registro").validate ({

@@ -2,6 +2,7 @@ var express = require('express')
   , router = express.Router()
   , bcrypt = require('bcrypt')
   , session = require('express-session')
+  , flash = require('express-flash');
   /*, app = express()
   , bodyParser = require("body-parser")
   , methodOverride = require("method-override")*/
@@ -17,6 +18,7 @@ var Productos = require('../models/Productos')
 
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
+router.use(flash());
 
 //parametros para la sesion
 router.use(session({resave: true, saveUninitialized: true, secret: 'rubenonrails'}))
@@ -50,11 +52,13 @@ router.get('/administracion', function(req, res) {
         console.log(err)
       }else{
         //drones={drones:drones}
-  		  var array_drones={drones:drones_encontrados}
+  		  var array_drones={drones:drones_encontrados, nombre_usuario: sess.usuario}
+  		  //var nombre_usuario=sess.usuario
+  		  //console.log('nombre miercoles '+sess.usuario)
+  		  //res.render('administracion', { nombre_usuario: sess.usuario })
   		  res.render('administracion', array_drones)
       }      
     });
-    //res.render('administracion')
   }  
 })
 
@@ -136,49 +140,41 @@ router.post('/login', function (req, res) {
     if (err) {
         console.error(err)
     }
-    
     if (usuario!=null) {
       console.log('Find one usuario:' + usuario.usuario)
 
       usuario.comparePassword(form_pass, function(err, isMatch) {
         if (err) throw err
-        
         console.log('comprobacion: ' + form_pass, isMatch)
-        
         if (isMatch) {
           if (usuario.validated) {
-            
-            console.log('usuario validado')
-            
+            console.log('usuario activado')
             //crear sesion/cookie
             sess.usuario=usuario.usuario;
             sess.id_usuario=usuario._id;
-            
             console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
-            
             //res.render('administracion')
             res.redirect('/administracion')
           } else {
-            console.log('usuario no validado')
-            res.redirect('/')
+            console.log('usuario NO activado')
+            //res.redirect('/')
+            //flash de errores
+            res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
           }
         } else {
           console.log('contraseña incorrecta')
-          res.redirect('/')
-          
+          res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+          //res.redirect('/')
+          //flash de errores
         }                     
       })
     } else {
-      if (!usuario) {
-            console.log("Prueba gorka")
-            /*return done(null, false, {
-                message: 'El usuario introducido no está registrado'
-            });*/
-      }
-      /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
-                    });*/
       console.log('usuario no registrado')
       //res.redirect('/')
+      //flash de errores
+      /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
+                      });*/
+      req.flash('success', 'El usuario introducido no está registrado.');
     }    
   })
 })
