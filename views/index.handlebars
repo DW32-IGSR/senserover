@@ -39,21 +39,21 @@
               <h3>INICIAR SESIóN</h3>
               <div class="w-form">
                 <form id="inicio-session" name="inicio-session" data-name="inicio-session" action="/login" method="post">
-                  <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
-                  <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
-                  <div class="w-row">
-                    <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="boton2">
+                  <div class="form-group">
+                      <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+                  </div>
+                  <div class="form-group">
+                      <input id="contrasenya" type="password" placeholder="Contrasaeña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="btn_login">
                   </div>
                 </form>
-                  <div class="alert alert-success">
-                    <p>Logueado con éxito</p>
-                  </div>
-                  <div>
-              {{#if error}}
-                <div class="alert alert-danger">{{error}}</div>
-              {{/if}}
-              </div>
-               
+                <div>
+                  {{#if error}}
+                    <div class="alert alert-danger">{{error}}</div>
+                  {{/if}}
+                </div>
               </div> <!-- Formulario inicio sesión -->
             </div> <!-- iniciar-sesion-wrapper -->
           </div> <!-- Tab Login -->
@@ -62,17 +62,24 @@
               <h3>REGISTRO</h3>
               <div class="w-form">
                 <form id="email-form-2-registro" name="email-form-2-registro" data-name="Email Form 2" action="/register" method="post">
-                  <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
-                  <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-email">
-                  <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
-                  <input id="contrasenya2" type="password" placeholder="Repetir Contraseña" name="contrasenya2" data-name="Contraseña2" required="required" class="w-input pass-text">
+                  <div class="form-group">
+                    <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+                  </div>
+                  <div class="form-group">
+                    <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-email">
+                  </div>
+                  <div class="form-group">
+                    <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                  </div>
+                  <div class="form-group">
+                    <input id="contrasenya2" type="password" placeholder="Repetir Contraseña" name="contrasenya2" data-name="Contraseña2" required="required" class="w-input pass-text">
+                  </div>
                   <div class="w-row">
-                    <input type="submit" value="Registrar" data-wait="Please wait..." class="w-button login-submit" id="boton3">
+                    <div class="form-group">
+                      <input type="submit" value="Registrar" data-wait="Please wait..." class="w-button login-submit" id="btn_registro">
+                    </div>
                   </div>
                 </form>
-                <div class="alert alert-success">
-                  <p>Registro completado con éxito</p>
-                </div>
                 <div>
                   {{#if expressFlash}}
                       <p><strong>FLASH!</strong> {{ expressFlash }}</p>
@@ -343,14 +350,28 @@
       <div class="w-form form-wrapper">
         <form id="formulario_contacto" name="formulario_contacto" data-name="formulario_contacto" class="form" action="/contactar" method="post">
           <div class="text_form">Nombre:</div>
-          <input id="nombre_contacto" type="text" placeholder="Nombre" name="nombre_contacto" required="required" data-name="nombre contacto" class="w-input form-field">
+          <div class="form-group">
+            <input id="nombre_contacto" type="text" placeholder="Nombre" name="nombre_contacto" required="required" data-name="nombre_contacto" class="w-input form-field">
+          </div>
+          
           <div class="text_form">Asunto:</div>
-          <input id="asunto_contacto" type="text" placeholder="Asunto" name="asunto_contacto" required="required" data-name="asunto contacto" class="w-input form-field">
+          <div class="form-group">
+            <input id="asunto_contacto" type="text" placeholder="Asunto" name="asunto_contacto" required="required" data-name="asunto_contacto" class="w-input form-field">
+          </div>
+          
           <div class="text_form">Email:</div>
-          <input id="email_contacto" type="email" placeholder="Email" name="email_contacto" required="required" data-name="email contacto" class="w-input form-field">
+          <div class="form-group">
+            <input id="email_contacto" type="email" placeholder="Email" name="email_contacto" required="required" data-name="email_contacto" class="w-input form-field">
+          </div>
+          
           <div class="text_form">Mensaje:</div>
-          <textarea id="mensaje_contacto" placeholder="Mensaje" name="mensaje_contacto" data-name="mensaje contacto" required="required" class="w-input form-field text-area"></textarea>
-          <input type="submit" value="Contactar" data-wait="Please wait..." class="w-button button full-width">
+          <div class="form-group">
+            <textarea id="mensaje_contacto" placeholder="Mensaje" name="mensaje_contacto" data-name="mensaje_contacto" required="required" class="w-input form-field text-area"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <input type="submit" value="Contactar" data-wait="Please wait..." class="w-button button full-width" id="btn_contacto">
+          </div>
         </form>
         <div class="w-form-done">
           <p>Thank you! Your submission has been received!</p>
@@ -402,10 +423,10 @@
     </div> <!-- footer: w-container -->
   </div> <!-- footer: w-section footer center -->
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
-  <!--<script type="text/javascript" src=js/validar_index.js></script>-->
   <script src="js/validar_index.js" type="text/javascript"></script>
-  <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-  <script type="text/javascript" src="js/additional-methods.min.js"></script>
+  <script src="js/bootstrapValidator.min.js"></script>
+  <!--<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="js/additional-methods.min.js"></script>-->
   <script src="js/botonesSession.js"></script>
 <!--</body>
 </html>-->

@@ -7,6 +7,19 @@ var mongoose = require('mongoose');
 var Dato  = mongoose.model('Dato');
 
 //GET - Return all tvshows in the DB
+exports.findDatos = function(req, res) {
+	Dato.find({}, function(err, datos) {
+        //if(err) res.send(500, err.message);
+        if (err) return console.error(err);
+        
+        res.send(datos);
+    
+        /*console.log('GET /datos')
+    		res.status(200).jsonp(datos);*/
+	});
+};
+
+
 exports.findAllDatos = function(req, res) {
 	Dato.find(function(err, datos) {
         if(err) res.send(500, err.message);

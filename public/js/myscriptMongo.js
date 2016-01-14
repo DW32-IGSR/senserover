@@ -4,11 +4,12 @@ var datosHum=[];
 var datosCO2=[];
 var datosRad=[];
 var datosLum=[];
-
+//funcion (id_dron)
 $(document).ready(function() {
     $.ajax({
     type: "GET",
     url: "http://dron-terrestre.rhcloud.com/datosj.php",
+    //url con id_dron
     //url: "https://sense-dron-nohtrim.c9users.io/sense_dron/devolverDatos.php",
     
     dataType: "json",

@@ -1814,6 +1814,7 @@ textarea.w-select {
   z-index: 1;
   top: 0;
 }
+
 .w-nav-button {
   position: relative;
   float: right;
@@ -1846,11 +1847,32 @@ textarea.w-select {
   user-select: none;
 }
 
+.usuario {
+  position: relative;
+  top: 1px;
+  right: 80px;
+  float: right;
+  padding: 18px;
+  font-size: 24px;
+  display: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .boton-registro {
   position: relative;
   top: 16px;
   right: -90px;
   float: right;
+}
+
+.iconos-alerta {
+  position: relative;
+  top: 16px;
 }
 
 .w-nav-iniciarS {
@@ -1898,6 +1920,11 @@ textarea.w-select {
     right: 0px;
     visibility: hidden;
     display: none;
+    font-size: 14px;
+  }
+  
+  .iconos-alerta {
+    top: 0px;
   }
 
   .w-nav-iniciarS {

@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var datoModel = function () {
     
     var datoSchema = new mongoose.Schema({
+        id_dron: String,
         temperatura: String,
         humedad: String,
         co2: String,

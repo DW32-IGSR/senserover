@@ -1,5 +1,5 @@
 <!-- Last Published: Fri Dec 11 2015 12:48:18 GMT+0000 (UTC) -->
-<!--<html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="564f081f5d65087935982588">-->
+<html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="564f081f5d65087935982588">
 <!--<head>-->
   <title>Administrador</title>
   <link rel="stylesheet" type="text/css" href="css/dron-terrestre.webflow.css">
@@ -41,11 +41,12 @@
         <a href="#panel-estado" class="w-nav-link navigation-link">Preguntas frecuentes</a>
         <a href="/cerrar" class="w-nav-link navigation-link">Cerrar sesión</a>
       </nav>
-      <p class="">Bienvenido {{nombre_usuario}}</p>
-      <button class="btn btn-box-tool boton-logout" style="font-size:14px;"><a href="/cerrar"><i class="glyphicon glyphicon-log-out"></i></a></button>
+      
+      <button class="btn btn-box-tool boton-logout"><a href="/cerrar"><i class="glyphicon glyphicon-log-out"></i></a></button>
       <div class="w-nav-button hamburger-button">
         <div class="w-icon-nav-menu"></div>
       </div>
+      <p class="btn btn-box-tool usuario">Bienvenido <a href="/perfil"><strong>{{nombre_usuario}}</strong></a></p>
     </div> <!-- w-container -->
   </div> <!-- w-nav navigation-bar -->
   <div id="seleccion-dron" class="w-section section grafic">
@@ -90,8 +91,7 @@
     <div class="w-container">
       <h1 class="section-heading centered white">Alertas</h1>
         <div align="right">
-          <!--<button class="btn btn-box-tool" style="font-size:20px;"><i class="glyphicon glyphicon-triangle-bottom"></i></button>-->
-          <button class="btn btn-box-tool" style="font-size:20px;"><i class="glyphicon glyphicon-cog"></i></button>
+          <button class="btn btn-box-tool" style="font-size:20px;" data-toggle="modal" data-target="#ModalAlertas"><i class="glyphicon glyphicon-cog"></i></button>
         </div>
         
         <div class="col-md-6">
@@ -188,6 +188,162 @@
     </div>
   </div>
   
+  <!-- Modal configuracion alertas -->
+  <div class="modal fade" id="ModalAlertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Configuración de Alertas</h4>
+        </div>
+        <div class="modal-body">
+          <div class="w-form form-wrapper">
+            <form id="form_alertas" name="form_alertas" data-name="Alertas Form" class="form">
+              <div class="w-row">
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-3">
+                  <div class="w--current button tab iconos-alerta">
+                    <img src="icons/temp.png" height="32" width="32">
+                  </div>
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Minima:</div>
+                  <input id="tempMinima" type="number" name="tempMinima" required="required" data-name="tempMinima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Maxima:</div>
+                  <input id="tempMaxima" type="number" name="tempMaxima" required="required" data-name="tempMaxima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                </div>
+              </div> <!-- seccion-temperatura-->
+              
+              <div class="w-row">
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-3">
+                  <div class="w--current button tab iconos-alerta">
+                    <img src="icons/humedad.png" height="32" width="32">
+                  </div>
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Minima:</div>
+                  <input id="tempMinima" type="number" name="tempMinima" required="required" data-name="tempMinima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Maxima:</div>
+                  <input id="tempMaxima" type="number" name="tempMaxima" required="required" data-name="tempMaxima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                </div>
+              </div> <!-- seccion-humedad-->
+              
+              <div class="w-row">
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-3">
+                  <div class="w--current button tab iconos-alerta">
+                    <img src="icons/co2.png" height="32" width="32">
+                  </div>
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Minima:</div>
+                  <input id="tempMinima" type="number" name="tempMinima" required="required" data-name="tempMinima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Maxima:</div>
+                  <input id="tempMaxima" type="number" name="tempMaxima" required="required" data-name="tempMaxima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                </div>
+              </div> <!-- seccion-co2-->
+              
+              <div class="w-row">
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-3">
+                  <div class="w--current button tab iconos-alerta">
+                    <img src="icons/radiacion.png" height="32" width="32">
+                  </div>
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Minima:</div>
+                  <input id="tempMinima" type="number" name="tempMinima" required="required" data-name="tempMinima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Maxima:</div>
+                  <input id="tempMaxima" type="number" name="tempMaxima" required="required" data-name="tempMaxima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                </div>
+              </div> <!-- seccion-radiacion-->
+              
+              <div class="w-row">
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-3">
+                  <div class="w--current button tab iconos-alerta">
+                    <img src="icons/luminosidad.png" height="32" width="32">
+                  </div>
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Minima:</div>
+                  <input id="tempMinima" type="number" name="tempMinima" required="required" data-name="tempMinima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Maxima:</div>
+                  <input id="tempMaxima" type="number" name="tempMaxima" required="required" data-name="tempMaxima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                </div>
+              </div> <!-- seccion-luminosidad-->
+              
+              <div class="w-row">
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-3">
+                  <div class="w--current button tab iconos-alerta">
+                    <img src="icons/bateria.png" height="32" width="32">
+                  </div>
+                </div>
+                <div class="w-col w-col-2">
+                  <div class="text_form">Minima:</div>
+                  <input id="tempMinima" type="number" name="tempMinima" required="required" data-name="tempMinima" class="w-input form-field">
+                </div>
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-2">
+                </div>
+              </div> <!-- seccion-bateria-->
+              <div class="w-row">
+                <div class="w-col w-col-2">
+                </div>
+                <div class="w-col w-col-10">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> Deseo recibir las alertas por correo electronico.
+                    </label>
+                  </div>
+                </div>
+                <input type="submit" value="Guardar" data-wait="Please wait..." class="w-button button full-width perfil" id="boton2">
+              </div>
+            </form>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div class="w-form-fail">
+              <p>Oops! Something went wrong while submitting the form :(</p>
+            </div>
+          </div> <!-- seccion-perfil: w-container: w-form form-wrapper -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="graficas" class="w-section section grafic grafica-a">
     <div class="w-container">
       <h1 class="section-heading centered">Gráficas</h1>
