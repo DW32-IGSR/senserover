@@ -1004,7 +1004,6 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
 }
 
 @media (max-width: 991px) {
-  
 
   .navigation-link {
     color: #676770;
@@ -1070,7 +1069,7 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
 }
 
 @media (max-width: 479px) {
-  
+
   /* SESION */
   .login-menu {
       visibility: visible;
@@ -1128,4 +1127,3 @@ html.w-mod-js *[data-ix="modal-interaccion"] {
   }
 }
 
- 

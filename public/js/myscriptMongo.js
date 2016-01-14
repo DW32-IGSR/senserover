@@ -13,6 +13,13 @@ $(document).ready(function() {
         console.log(this.value)
         var url_dron="http://sense-rover-nohtrim.c9users.io/datos/"+this.value
         console.log(url_dron)
+        //id de dron en input de rangos de fecha
+        document.getElementsByName('name_dron_rango')[0].value = this.value
+        document.getElementsByName('name_dron_rango')[1].value = this.value
+        document.getElementsByName('name_dron_rango')[2].value = this.value
+        document.getElementsByName('name_dron_rango')[3].value = this.value
+        document.getElementsByName('name_dron_rango')[4].value = this.value
+        
         $.ajax({
         type: "GET",
         //url: "http://dron-terrestre.rhcloud.com/datosj.php",

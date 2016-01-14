@@ -1833,40 +1833,27 @@ textarea.w-select {
 .boton-logout {
   position: relative;
   top: 14px;
-  right: 90px;
+  right: 8px;
   float: right;
-  padding: 18px;
-  font-size: 24px;
   display: none;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 /* INICIO BIENVENIDO_USUARIO*/
 .usuario {
   position: relative;
-  top: 1px;
-  right: 60px;
+  top: 2px;
+  right: 24px;
   float: right;
   padding: 18px;
   font-size: 24px;
   display: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 /* FIN BIENVENIDO_USUARIO */
 
 .boton-registro {
   position: relative;
-  top: 16px;
+  top: 14px;
   right: -90px;
   float: right;
 }
@@ -1916,12 +1903,18 @@ textarea.w-select {
   }
 }
 @media screen and (max-width: 479px) {
+  .boton-logout {
+    position: relative;
+    top: 14px;
+    right: 0px;
+    float: right;
+    display: none;
+  }
   
   .boton-registro {
     right: 0px;
     visibility: hidden;
     display: none;
-    font-size: 14px;
   }
   
   .iconos-alerta {
@@ -1982,6 +1975,13 @@ textarea.w-select {
   display: block;
 }
 @media screen and (max-width: 479px) {
+  
+  /* INICIO BIENVENIDO_USUARIO*/
+  .usuario {
+    right: 0px;
+    visibility: hidden;
+    display: none;
+  }
   
   .boton-registro {
     right: 0px;
