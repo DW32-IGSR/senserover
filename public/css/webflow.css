@@ -1847,21 +1847,22 @@ textarea.w-select {
   user-select: none;
 }
 
+/* INICIO BIENVENIDO_USUARIO*/
 .usuario {
   position: relative;
   top: 1px;
-  right: 80px;
+  right: 60px;
   float: right;
   padding: 18px;
   font-size: 24px;
   display: none;
-  cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+/* FIN BIENVENIDO_USUARIO */
 
 .boton-registro {
   position: relative;

@@ -53,11 +53,11 @@ router.get('/administracion', function(req, res) {
         console.log(err)
       }else{
         //drones={drones:drones}
-  		  var array_drones={drones:drones_encontrados, nombre_usuario: sess.usuario}
+  		  var array_admin={drones:drones_encontrados, nombre_usuario: sess.usuario}
   		  //var nombre_usuario=sess.usuario
   		  //console.log('nombre miercoles '+sess.usuario)
   		  //res.render('administracion', { nombre_usuario: sess.usuario })
-  		  res.render('administracion', array_drones)
+  		  res.render('administracion', array_admin)
       }      
     });
   }  
@@ -88,8 +88,8 @@ router.get('/perfil', function(req, res) {
         console.log(drones)
       });
     //sin comprobar  
-    
-    res.render('perfil')
+    var array_perfil={nombre_usuario: sess.usuario}
+    res.render('perfil', array_perfil)
   }    
 })
 
