@@ -10,7 +10,7 @@ $(document).ready(function() {
     //$("#seleccionador").selected(function (){
     $("#seleccionador").change(function (){
         //alert("hola")
-        console.log(this.value)
+        //console.log(this.value)
         var url_dron="http://sense-rover-nohtrim.c9users.io/datos/"+this.value
         console.log(url_dron)
         //id de dron en input de rangos de fecha
