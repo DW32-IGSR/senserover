@@ -43,7 +43,7 @@ exports.login = function(req, res) {
                 console.log('contraseña incorrecta')
                 //res.redirect('/')
                 //flash de errores
-                req.flash('success', 'El nombre de usuario o la contraseña no son correctos..');
+                req.flash('success', 'El nombre de usuario o la contraseña son incorrectos.');
                 res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
               }                     
             })
@@ -53,7 +53,7 @@ exports.login = function(req, res) {
             //flash de errores
             /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
                             });*/
-            req.flash('success', 'El nombre de usuario o la contraseña no son correctos..');
+            req.flash('success', 'El usuario no está registrado.');
             res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
           } 
         }

@@ -79,6 +79,5 @@ exports.contacto = function(req, res) {
         console.log(body)
     }) 
     //fin de mensaje de respuesta
-    
     res.redirect('/');
 }

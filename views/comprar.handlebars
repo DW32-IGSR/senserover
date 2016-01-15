@@ -109,7 +109,7 @@
           </div> <!-- seccion-producto: w-col w-col-6 -->
           <div class="w-col w-col-6 precio">
             <h1>500.000&nbsp;€</h1>
-            <p>IVA incluido (precio*0.21)</p><a href="#seccion-compra" class="button">Comprar</a>
+            <p>IVA incluido (precio*0.21)</p><a id="btn_compra" href="#seccion-compra" class="button">Comprar</a>
           </div> <!-- seccion-producto: w-col w-col-6 precio -->
         </div> <!-- seccion-producto: w-row -->
       </div> <!-- seccion-producto: 2º div -->
@@ -175,8 +175,8 @@
       </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper -->
     </div> <!-- seccion-producto: w-container -->
   </div> <!-- seccion-producto -->
-  <div id="seccion-compra" class="w-section section grafic">
-    <div class="w-container">
+  <div id="seccion-compra" class="w-section section grafic" >
+    <div class="w-container" hidden>
       <div class="section-title-group">
         <h2 class="section-heading centered white">DATOS DEL COMPRADOR</h2>
       </div>
@@ -229,134 +229,64 @@
     </div> <!-- seccion-producto: w-container -->
   </div> <!-- seccion-compra -->
   
-  <!--<div id="seccion-compra" class="w-section section grafic">
-    <div class="w-container">
+  <div id="seccion-paquete" class="w-section section grafic">
+    <div class="container">
       <div class="section-title-group">
-        <h2 class="section-heading centered white">PRUEBA</h2>
+        <h2 class="section-heading centered white">ELIJA SU PAQUETE</h2>
+      </div>
+  		<div class="row pricing">
+				<div class="col-md-4">
+					<div class="well">
+						<h3><b>BÁSICO</b></h3>
+						<hr>
+						<p>Datos en tiempo real</p>
+						<hr>
+						<p>Alertas en tiempo real</p>
+						<hr>
+						<p>Y mucho más</p>
+						<hr>
+  						<p><b>1 Mes GRATIS</b></p>
+						<hr>
+						<a href="#" class="btn btn-default btn-block">Comprar</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="well">
+						<h3><b>ESTÁNDAR</b></h3>
+						<hr>
+						<p>Datos en tiempo real</p>
+						<hr>
+						<p>Alertas en tiempo real</p>
+						<hr>
+						<p>Y mucho más</p>
+						<hr>
+						<p><b>5,99€ /Mes</b></p>
+						<hr>
+						<a href="#" class="btn btn-success btn-block">Comprar</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="well">
+						<h3><b>PROFESIONAL</b></h3>
+						<hr>
+						<p>4 GB Datatransfer</p>
+						<hr>
+						<p>4 GB Storage</p>
+						<hr>
+						<p>Y mucho más</p>
+						<hr>
+						<p><b>€ 5,99 /PM</b></p>
+						<hr>
+						<a href="#" class="btn btn-primary btn-block">Comprar</a>
+					</div>
+				</div>
       </div>
       <div>
-        <div class="w-row mensualidad_row">
-          <div class="w-col w-col-4 mensualidad_column">
-            <div class="mensualidad ">
-              <h1 class="mensualidad_titulo">BÁSICO</h1>
-              <div class="mensualidad_datos">
-                <ul>
-                  <li>aa</li>
-                  <li>ss</li>
-                </ul>
-              </div>
-              <a href="#seccion-compra" class="button">Comprar</a>
-            </div>
-          </div>
-          <div class="w-col w-col-4 mensualidad_column">
-            <div class="mensualidad">
-              <h1>500.000&nbsp;€</h1>
-              <p>IVA incluido (precio*0.21)</p>
-              <a href="#seccion-compra" class="button">Comprar</a>
-            </div>
-          </div>
-          <div class="w-col w-col-4 mensualidad_column">
-            <div class="mensualidad">
-              <h1>500.000&nbsp;€</h1>
-              <p>IVA incluido (precio*0.21)</p>
-              <a href="#seccion-compra" class="button">Comprar</a>
-            </div>
-          </div>
-        </div>
+        
+Nota: puede cambiar o cancelar su plan en cualquier momento en la configuración de su cuenta.
       </div>
     </div>
-  </div>-->
-  
-<section class="section">
-    			<div class="section-headlines text-center">
-					<h2>Pricing Plan</h2>
-					<p>Get this HTML template for ridiculously low price and give your awesome app promotion it deserves now.</p>
-				</div>
-
-				<div class="row-fluid">
-					<div class="pricing-table row-fluid text-center">
-						<div class="span4">
-							<div class="plan">
-								<div class="plan-name">
-									<h2>Basic</h2>
-									<p class="muted">Perfect for small budget</p>
-								</div>
-								<div class="plan-price">
-									<b>$19</b> / month
-								</div>
-								<div class="plan-details">
-									<div>
-										<b>Unlimited</b> Download
-									</div>
-									<div>
-										<b>Free</b> Priority Shipping
-									</div>
-									<div>
-										<b>Unlimited</b> Warranty
-									</div>
-								</div>
-								<div class="plan-action">
-									<a href="#" class="btn btn-block btn-large">Choose Plan</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="span4">
-							<div class="plan prefered">
-								<div class="plan-name">
-									<h2>Standard</h2>
-									<p class="muted">Perfect for medium budget</p>
-								</div>
-								<div class="plan-price">
-									<b>$39</b> / month
-								</div>
-								<div class="plan-details">
-									<div>
-										<b>Unlimited</b> Download
-									</div>
-									<div>
-										<b>Free</b> Priority Shipping
-									</div>
-									<div>
-										<b>Unlimited</b> Warranty
-									</div>
-								</div>
-								<div class="plan-action">
-									<a href="#" class="btn btn-success btn-block btn-large">Choose Plan</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="span4">
-							<div class="plan">
-								<div class="plan-name">
-									<h2>Advance</h2>
-									<p class="muted">Perfect for large budget</p>
-								</div>
-								<div class="plan-price">
-									<b>$59</b> / month
-								</div>
-								<div class="plan-details">
-									<div>
-										<b>Unlimited</b> Download
-									</div>
-									<div>
-										<b>Free</b> Priority Shipping
-									</div>
-									<div>
-										<b>Unlimited</b> Warranty
-									</div>
-								</div>
-								<div class="plan-action">
-									<a href="#" class="btn btn-block btn-large">Choose Plan</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<p class="muted text-center">Note: You can change or cancel your plan at anytime in your account settings.</p>
-				</div>
-			</section>
-  
+  </div>
   
   
   <div class="w-section footer center">
@@ -392,5 +322,6 @@
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src=js/validar_compra.js ></script> 
+  <script src=js/comprar.js ></script> 
 <!--</body>
 </html>-->
