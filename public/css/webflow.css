@@ -1854,7 +1854,7 @@ textarea.w-select {
 .boton-registro {
   position: relative;
   top: 14px;
-  right: -90px;
+  right: 12px;
   float: right;
 }
 

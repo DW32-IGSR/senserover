@@ -13,7 +13,7 @@ exports.rangoFecha = function(req, res) {
     console.log('Fecha final: ' + fecha_final) //2016-01-08
     
     //Dato.find({id_dron : id_dron, fecha: {$ne: [fecha_inicio, fecha_final]}}, function (err, dato) {
-    Dato.find({id_dron : id_dron, fecha : {$lte : fecha_final, $gte : fecha_inicio}}, function (err, dato) {
+    Dato.find({id_dron : id_dron, fecha : {$lte : '^'+fecha_final, $gte : fecha_inicio}}, function (err, dato) {
         if (err){
             console.log('prueba ruben: error occured in the database')
         }
