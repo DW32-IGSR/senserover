@@ -12,7 +12,12 @@ exports.rangoFecha = function(req, res) {
     console.log('Fecha inicio: ' + fecha_inicio) // 2015-12-11
     console.log('Fecha final: ' + fecha_final) //2016-01-08
     
-    Dato.find({fecha: {$ne: [fecha_inicio, fecha_final]}}, function (err, dato) {
+    //Dato.find({id_dron : id_dron, fecha: {$ne: [fecha_inicio, fecha_final]}}, function (err, dato) {
+    //Dato.find({id_dron : id_dron, fecha : {$lte : fecha_final, $gte : fecha_inicio}}, function (err, dato) {
+    Dato.find({temperatura : {$gt : 7}}, function (err, dato) {
+    //{ $in: [ 5, 15 ]
+    
+    
         //Dato.find({fecha: {$ne: [fecha_inicio, fecha_final]}}, {temperatura: 1, _id: 0}, function (err, dato) {
         //Dato.find({fecha: {$lte: fecha_final}}, {temperatura: 1}, function (err, dato) { // Solo muestra el campo temperatura
         if (err){

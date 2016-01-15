@@ -6,6 +6,7 @@ exports.activacion = function(req, res) {
     
     var key = req.params.activation
     var email = req.params.email
+    var sess = req.session;
     
     Usuario.findOne({activacion_key: key, email: email}, function (err, usuario) {
         if (err) {
@@ -17,15 +18,18 @@ exports.activacion = function(req, res) {
                     console.log(err)
                 } else {
                     console.log('Updated', usuario)
+                    //guardado de sesion
+                    sess.usuario=usuario.usuario;
+                    sess.id_usuario=usuario._id;
+                    res.redirect('/perfil')
                 }
             })
         } else {
             console.log('Usuario no encontrado')
+            res.redirect('/')
         }
     })
-    
-    res.redirect('/')
-};
+}
 
 exports.contacto = function(req, res) {
     //post de formulario de contacto
@@ -48,11 +52,11 @@ exports.contacto = function(req, res) {
         to: "dw32igsr@gmail.com",
         subject: "Formulario de contacto: asunto:"+form_asunto,
         html: mensaje
-    };
+    }
     
     mailgun.messages().send(data, function (error, body) {
         console.log(body)
-    });
+    })
     
     
     /*
@@ -69,12 +73,12 @@ exports.contacto = function(req, res) {
         to: form_email,
         subject: "Formulario de contacto sense-rover: "+form_asunto,
         html: mensaje
-    };
+    }
     
     mailgun.messages().send(data, function (error, body) {
         console.log(body)
-    });  
+    }) 
     //fin de mensaje de respuesta
     
     res.redirect('/');
-};
+}
