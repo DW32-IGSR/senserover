@@ -1,8 +1,3 @@
-// https://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/
-// https://github.com/carlosazaustre/node-api-rest-example/tree/feature-express4
-
-// --- Para API (Sin comprobar) ---
-
 var mongoose = require('mongoose')
 var Dato  = mongoose.model('Dato')
 
