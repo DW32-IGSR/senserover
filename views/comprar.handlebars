@@ -125,6 +125,7 @@
       </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper -->
     </div> <!-- seccion-producto: w-container -->
   </div> <!-- seccion-producto -->
+  {{#if nombre_usuario}}
   <div id="seccion-compra" class="w-section section grafic" >
     <div id='seccion-form-compra' class="w-container" hidden>
       <div class="section-title-group">
@@ -194,6 +195,11 @@
       </div> <!-- seccion-producto: w-container: w-form form-wrapper -->
     </div> <!-- seccion-producto: w-container -->
   </div> <!-- seccion-compra -->
+  {{else}}
+  <!-- No funciona -->
+    Tienes que estar logueado
+    {{>modal}}
+  {{/if}}
   
   <div id="seccion-paquete" class="w-section section grafic">
     <div class="container">

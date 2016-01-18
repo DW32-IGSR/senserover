@@ -22,8 +22,39 @@
   <!--<link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">-->
 <!--</head>-->
 <!--<body class="body">-->
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#Mensajes').modal('show');
+    });
+</script>
+
+
 
   {{>modal}}
+  
+  {{#if expressFlash}}
+    <div class="modal fade" id="Mensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Configuración de Alertas</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{ expressFlash }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+  
+  
+  
+  
 
   <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
     <div class="w-container">
@@ -87,15 +118,16 @@
   <div id="articulos" class="w-section section">
     <div class="w-container">
       <div class="section-title-group">
-                  {{#if expressFlash}}
-                      <p>{{ expressFlash }}</p>
-                  {{/if}}
         <h2 class="section-heading centered">Artículos</h2>
         <div class="section-subheading center off-white">artículos destacados</div>
       </div>
       <div class="w-row row1">
         <div class="w-col w-col-9">
           <h1 class="text-dron">Parrot AR. Drone 2.0 (GPS Edition)</h1>
+          {{#if expressFlash}}
+              <p><strong>FLASH!</strong> {{ expressFlash }}</p>
+          {{/if}}
+          
           <p class="text-dron2">Parrot AR Drone es uno de los mejores drones para fotografía y entretenimiento que existen actualmente, con una relación calidad precio sensacional.
             <br>
             <br>Se pilota de manera sencilla através de un smartphone o tablet simplemente descargándote una aplicación. La última versión incorpora un GPS con el que poder geolocalizar el dispositivo, grabar vídeos y posteriormente ver los vuelos en 3D. Mientras vuelas el vídeo HD se graba y se envía a tu dispositivo directamente.

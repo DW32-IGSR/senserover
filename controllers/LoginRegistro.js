@@ -4,13 +4,9 @@ var bcrypt = require('bcrypt')
 
 exports.login = function(req, res) {
     //post de formulario de login
-    //redireccion a administracion
-    
     var sess = req.session;
-    
     var form_usuario = req.body.usuario
     var form_pass = req.body.contrasenya
-    
     console.log("Usuario login: " + form_usuario)
     console.log("Pass login: " + form_pass)
     
@@ -27,14 +23,15 @@ exports.login = function(req, res) {
               if (isMatch) {
                 if (usuario.validated) {
                   console.log('usuario activado')
-                  //crear sesion/cookie
+                  //crear sesion
                   sess.usuario=usuario.usuario;
                   sess.id_usuario=usuario._id;
                   console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
                   
                   //redirect no render desde compra o render desde index
                   //if pagina_form=index
-                  //res.render(index, array_index)
+                  //var array_index={usuario:sess.id_usuario}
+                  //res.render('index', array_index)
                   //else if pagina_form=compra
                   //res.render(compra, array_compra)
                   
@@ -76,7 +73,6 @@ exports.registro = function(req, res) {
   var form_email = req.body.email  
   var form_pass = req.body.contrasenya
   var form_pass2 = req.body.contrasenya2
-  
   console.log("Usuario registro: " + form_usuario)
   //console.log("email registro: " + form_email)
   //console.log("Pass 1: " + form_pass)

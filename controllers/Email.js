@@ -102,7 +102,7 @@ exports.forgetPassword = function(req, res) {
             var api_key = 'key-116da3f3cd011ad01d454a632a599587'
             var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org'
             var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
-            var mensaje = "<h2>Hola "+usuario.nombre+"!</h2>"+
+            var mensaje = "<h2>Hola "+usuario.usuario+"!</h2>"+
                         "<p>Recientemente se ha enviado una solicitud de reinicio de tu contraseña para nuestra área de miembros.<br>"+
                         "Si no solicitaste esto, por favor ignora este correo.<br>"+
                         "Para reiniciar tu contraseña, por favor haga click en el siguiente enlance:</p><br>"+
