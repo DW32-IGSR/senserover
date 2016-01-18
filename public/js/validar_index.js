@@ -107,6 +107,31 @@ $(document).ready(function() {
         });
     });
     
+    $("#btn_forget_pass").click(function() {
+        $('#forget_pass_form').bootstrapValidator({
+        	// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+            //container: '#errores',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                email: {
+                	validators: {
+	                    notEmpty: {
+	                        message: 'Email requerido'
+	                    },
+	                    emailAddress: {
+	                        message: 'Email no válido'
+	                    }
+                	}
+            	}
+                
+            }
+        });
+    });
+    
     $("#btn_contacto").click(function() {
     	$("#formulario_contacto").bootstrapValidator({
     		// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later

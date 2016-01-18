@@ -87,16 +87,16 @@ exports.forgetPassword = function(req, res) {
 
     var email = req.body.email
     
-    Usuario.findOne({email: email}, function (err, usuario) {
+    var chars = "abcdefghijklmnopqrstuvwxyz0123456789"
+    var new_key = ""
+    for (var i = 0; i < 32; i++) {
+        new_key += chars[Math.floor(Math.random()*35)]
+    }
+    
+    Usuario.findOneAndUpdate({email: email}, {activacion_key: new_key}, function (err, usuario) {
         if (err) {
             console.log(err)
         } else if (usuario!=null) {
-            
-            var chars = "abcdefghijklmnopqrstuvwxyz0123456789"
-            var new_key = ""
-            for (var i = 0; i < 32; i++) {
-                new_key += chars[Math.floor(Math.random()*35)]
-            }
             
             // Mailgun
             var api_key = 'key-116da3f3cd011ad01d454a632a599587'
@@ -106,7 +106,7 @@ exports.forgetPassword = function(req, res) {
                         "<p>Recientemente se ha enviado una solicitud de reinicio de tu contraseña para nuestra área de miembros.<br>"+
                         "Si no solicitaste esto, por favor ignora este correo.<br>"+
                         "Para reiniciar tu contraseña, por favor haga click en el siguiente enlance:</p><br>"+
-                        "<a href='http://sense-rover-nohtrim.c9users.io/recoverPassword/"+usuario.activacion_key+"/"+email+"'>Restablecer contraseña</a>"
+                        "<a href='http://senserover-terrestre.rhcloud.com/recoverPassword/"+new_key+"/"+email+"'>Restablecer contraseña</a>"
             
             var data = {
                 from: 'sense-rover <dw32igsr@gmail.com>',
@@ -120,6 +120,8 @@ exports.forgetPassword = function(req, res) {
             });
         } else {
             console.log('Email no encontrado')
+            req.flash('error', ' El correo no existe.');
+            res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
         }
     })
 };
@@ -138,6 +140,8 @@ exports.recoverPassword = function(req, res) {
             res.render('recoverPassword', datos);
         } else {
             console.log('Error. No puedes recuperar la contraseña de ese correo')
+            req.flash('error', '<strong>¡Error!</strong> No puedes recuperar la contraseña de ese correo.');
+            res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
         }
     })
 };

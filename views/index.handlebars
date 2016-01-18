@@ -22,39 +22,8 @@
   <!--<link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">-->
 <!--</head>-->
 <!--<body class="body">-->
-<script type="text/javascript">
-    $(window).load(function(){
-        $('#Mensajes').modal('show');
-    });
-</script>
-
-
 
   {{>modal}}
-  
-  {{#if expressFlash}}
-    <div class="modal fade" id="Mensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Configuración de Alertas</h4>
-          </div>
-          <div class="modal-body">
-            <p>{{ expressFlash }}</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  {{/if}}
-
-  
-  
-  
-  
 
   <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
     <div class="w-container">

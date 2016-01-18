@@ -15,7 +15,8 @@ var userModel = function () {
         pass: String,
         email: String,
         activacion_key: String,
-        validated: Boolean
+        validated: Boolean,
+        ultima_conexion: String
     },{collection : 'usuarios'});
 
     userSchema.methods.comp_validacion = function () {

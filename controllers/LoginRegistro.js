@@ -28,27 +28,50 @@ exports.login = function(req, res) {
                   sess.id_usuario=usuario._id;
                   console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
                   
-                  //redirect no render desde compra o render desde index
-                  //if pagina_form=index
-                  //var array_index={usuario:sess.id_usuario}
-                  //res.render('index', array_index)
-                  //else if pagina_form=compra
-                  //res.render(compra, array_compra)
+                  var fecha = new Date();
+                	var fecha = fecha.setHours(fecha.getHours()+1);
+                	//console.log("fecha en milisegundos " + fecha)
+                	fecha=new Date(fecha)
+                	
+                	console.log('ultima conexion: ' + usuario.ultima_conexion)
                   
-                  res.redirect('/administracion')
+                  if(usuario.ultima_conexion == undefined){
+                    
+                	  //sin comporvar
+                	  //console.log("actualizacion1")
+                    Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { ultima_conexion: fecha }, function(err, user) {})
+                    
+                    res.redirect('/perfil')
+                    
+                  } else {
+                    
+                    //console.log("actualizacion2")
+                    Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { ultima_conexion: fecha }, function(err, user) {})
+                  
+                    //redirect no render desde compra o render desde index
+                    //if pagina_form=index
+                    //var array_index={usuario:sess.id_usuario}
+                    //res.render('index', array_index)
+                    //else if pagina_form=compra
+                    //res.render(compra, array_compra)
+                    
+                    //console.log('pre redirect')
+                    res.redirect('/administracion')
+                  }
+                  
                 } else {
                   console.log('usuario NO activado')
                   //res.redirect('/')
                   //flash de errores
-                  req.flash('success', 'El nombre de usuario no esta activado..');
-                  res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+                  req.flash('error', ' El usuario no esta activado..');
+                  res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
                 }
               } else {
                 console.log('contraseña incorrecta')
                 //res.redirect('/')
                 //flash de errores
-                req.flash('success', 'El nombre de usuario o la contraseña son incorrectos.');
-                res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+                req.flash('error', ' El nombre de usuario o la contraseña son incorrectos.');
+                res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
               }                     
             })
           } else {
@@ -57,8 +80,8 @@ exports.login = function(req, res) {
             //flash de errores
             /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
                 });*/
-            req.flash('success', 'El usuario no está registrado.');
-            res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+            req.flash('error', ' El usuario no está registrado.');
+            res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
           } 
         }
     })
@@ -115,7 +138,7 @@ exports.registro = function(req, res) {
           //creacion de usuario
           //var usuario = new Usuario({usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
           //var usuario = new Usuario({ _id: ,usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
-          var usuario = new Usuario({ usuario : form_usuario,nombre: null, apellidos : null, dni: null, direccion : null, codigo_postal : null, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
+          var usuario = new Usuario({ usuario : form_usuario,nombre: null, apellidos : null, dni: null, direccion : null, codigo_postal : null, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0, ultima_conexion: null})
           
           //guardar usuario en la base de datos
           usuario.save(function (err) {
@@ -134,6 +157,8 @@ exports.registro = function(req, res) {
         }
       } else {
         console.log('el usuario ya existe')
+        req.flash('error', ' El usuario ya existe.');
+        res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
       }
     }  
   })
