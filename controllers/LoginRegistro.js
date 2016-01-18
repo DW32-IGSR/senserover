@@ -31,6 +31,13 @@ exports.login = function(req, res) {
                   sess.usuario=usuario.usuario;
                   sess.id_usuario=usuario._id;
                   console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
+                  
+                  //redirect no render desde compra o render desde index
+                  //if pagina_form=index
+                  //res.render(index, array_index)
+                  //else if pagina_form=compra
+                  //res.render(compra, array_compra)
+                  
                   res.redirect('/administracion')
                 } else {
                   console.log('usuario NO activado')
@@ -52,7 +59,7 @@ exports.login = function(req, res) {
             //res.redirect('/')
             //flash de errores
             /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
-                            });*/
+                });*/
             req.flash('success', 'El usuario no está registrado.');
             res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
           } 

@@ -7,7 +7,8 @@ exports.index = function(req, res) {
         //
         //render de index con idicadores de sesion iniciada
         //
-        res.render('index')
+        var usuario = {nombre_usuario: sess.usuario}
+        res.render('index', usuario)
     }
 };
 

@@ -461,6 +461,31 @@ p {
   padding-bottom: 0px;
   text-align: center;
 }
+
+  /* INICIO FORGET PASSWORD */
+  .modal-wrapper-forget-pass {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 9999;
+    display: none;
+    height: 100%;
+    padding-top: 90px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
+  .forget_pass_wrapper {
+    display: block;
+    width: 450px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px 40px;
+    background-color: white;
+  }
+  /* FIN FORGET PASSWORD  */
 /* FIN MODAL */
 
 /* SESION */

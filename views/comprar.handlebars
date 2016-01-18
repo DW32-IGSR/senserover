@@ -7,64 +7,8 @@
   <link rel="stylesheet" type="text/css" href="css/dron-terrestre.webflow.css">
 <!--</head>
 <body class="body">-->
-  <div class="modal-wrapper">
-    <div class="iniciar-sesion-wrapper"><a href="#" data-ix="cerrar-login" class="w-editable cerrar-link">x</a>
-      <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper-modal">
-        <div class="w-tab-menu tab-menu-modal">
-          <a data-w-tab="Tab Login" class="w-tab-link w--current w-inline-block button tab">
-            <div>Login</div>
-          </a>
-          <a data-w-tab="Tab Registro" class="w-tab-link w-inline-block button tab">
-            <div>Registro</div>
-          </a>
-        </div>
-        <div class="w-tab-content">
-          <div data-w-tab="Tab Login" class="w-tab-pane w--tab-active">
-            <div>
-              <h3>INICIAR SESIóN</h3>
-              <div class="w-form">
-                <form id="email-form-2" name="email-form-2" data-name="Email Form 2" action="/login" method="post">
-                  <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
-                  <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
-                  <div class="w-row">
-                    <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="boton2">
-                  </div>
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
-                </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
-                </div>
-              </div> <!-- Formulario inicio sesión -->
-            </div> <!-- iniciar-sesion-wrapper -->
-          </div> <!-- Tab Login -->
-          <div data-w-tab="Tab Registro" class="w-tab-pane">
-            <div>
-              <h3>REGISTRO</h3>
-              <div class="w-form">
-                <form id="email-form-2-registro" name="email-form-2-registro" data-name="Email Form 2" action="/register" method="post">
-                  <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
-                  <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-email">
-                  <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
-                  <input id="contrasenya2" type="password" placeholder="Repetir Contraseña" name="contrasenya2" data-name="Contraseña2" required="required" class="w-input pass-text">
-                  <div class="w-row">
-                    <input type="submit" value="Registrar" data-wait="Please wait..." class="w-button login-submit" id="boton3">
-                  </div>
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
-                </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
-                </div>
-              </div> <!-- Formulario registro -->
-            </div> <!-- registro-wrapper -->
-          </div> <!-- Tab Registro -->
-        </div> <!-- w-tab-content-->
-      </div>
-    </div> <!-- iniciar-sesion-wrapper -->
-  </div> <!-- Modal Inicio sesión-->
+
+  {{>modal}}
 
   <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
     <div class="w-container">
@@ -81,8 +25,14 @@
       <div class="w-nav-button hamburger-button">
         <div class="w-icon-nav-menu"></div>
       </div>
-      <a class="w-nav-iniciarS" data-ix="login" role="button">Iniciar sesión</a>
-      <a class="btn btn-primary boton-registro" data-ix="login" role="button">Registro</a>
+      <!--<a class="w-nav-iniciarS" data-ix="login" role="button">Iniciar sesión</a>-->
+      <!--<a class="btn btn-primary boton-registro" data-ix="login" role="button">Entrar</a>-->
+      {{#if nombre_usuario}}
+        <button class="btn btn-box-tool boton-logout"><a href="/cerrar"><i class="glyphicon glyphicon-log-out"></i></a></button>
+        <p class="btn btn-box-tool usuario">Bienvenido <a href="/perfil"><strong>{{nombre_usuario}}</strong></a></p>
+      {{else}}
+        <a class="btn btn-primary boton-registro" data-ix="login" role="button">Entrar</a>
+      {{/if}}
     </div> <!-- navbar: w-container -->
   </div><!-- navbar: w-nav navigation-bar -->
   <div id="seccion-producto" class="w-section section">
@@ -181,43 +131,59 @@
         <h2 class="section-heading centered white">DATOS DEL COMPRADOR</h2>
       </div>
       <div class="w-form form-wrapper">
-        <form id="formulario_compra" name="email-form" data-name="formulario_compra" class="form" action="/comprar" method="post">
+        <form id="formulario_compra" name="formulario_compra" data-name="formulario_compra" class="form" action="/comprar" method="post">
           <div class="w-row">
             <div class="w-col w-col-4">
               <div class="text_form">Nombre:</div>
-              <input id="nombre_compra" type="text" placeholder="Nombre" name="nombre_compra" required="required" data-name="Name 2" class="w-input form-field">
+              <div class="form-group">
+                <input id="nombre_compra" type="text" placeholder="Nombre" name="nombre_compra" required="required" data-name="nombre_compra" class="w-input form-field" value={{datosUsuario.nombre}}>
+              </div>
             </div>
             <div class="w-col w-col-4">
               <div class="text_form">Apellidos:</div>
-              <input id="apellidos_compra" type="text" placeholder="Apellidos" name="apellidos_compra" required="required" data-name="Name 3" class="w-input form-field">
+              <div class="form-group">
+                <input id="apellidos_compra" type="text" placeholder="Apellidos" name="apellidos_compra" required="required" data-name="apellidos_compra" class="w-input form-field" value={{datosUsuario.apellidos}}>
+              </div>
             </div>
             <div class="w-col w-col-4">
               <div class="text_form">DNI:</div>
-              <input id="dni_compra" type="text" placeholder="DNI" name="dni_compra" required="required" data-name="Name 4" class="w-input form-field">
+              <div class="form-group">
+                <input id="dni_compra" type="text" placeholder="DNI" name="dni_compra" required="required" data-name="dni_compra" class="w-input form-field" value={{datosUsuario.dni}}>
+              </div>
             </div>
           </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(1º row) -->
           <div class="w-row">
             <div class="w-col w-col-7">
               <div class="text_form">Dirección:</div>
-              <input id="direccion_compra" type="text" placeholder="Dirección" name="direccion_compra" required="required" data-name="Email 2" class="w-input form-field">
+              <div class="form-group">
+                <input id="direccion_compra" type="text" placeholder="Dirección" name="direccion_compra" required="required" data-name="direccion_compra" class="w-input form-field" value={{datosUsuario.direccion}}>
+              </div>
             </div>
             <div class="w-col w-col-5">
               <div class="text_form">Código Postal:</div>
-              <input id="cp_compra" type="text" placeholder="Código Postal" name="cp_compra" required="required" data-name="Name 5" class="w-input form-field">
+              <div class="form-group">
+                <input id="cp_compra" type="text" placeholder="Código Postal" name="cp_compra" required="required" data-name="cp_compra" class="w-input form-field" value={{datosUsuario.codigo_postal}}>
+              </div>
             </div>
           </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(2º row) -->
           <div class="w-row">
             <div class="w-col w-col-6">
               <div class="text_form">Email:</div>
-              <input id="email_compra" type="email" placeholder="Email" name="email_compra" required="required" data-name="Email 3" class="w-input form-field">
+              <div class="form-group">
+                <input id="email_compra" type="email" placeholder="Email" name="email_compra" required="required" data-name="email_compra" class="w-input form-field" value={{datosUsuario.email}}>
+              </div>
             </div>
             <div class="w-col w-col-6">
               <div class="text_form">Producto:</div>
-              <input id="producto_compra" type="text" placeholder="Producto 1" name="producto_compra" required="required" data-name="Email 4" class="w-input form-field" value="Producto 1">
+              <div class="form-group">
+                <input id="producto_compra" type="text" placeholder="Producto 1" name="producto_compra" required="required" data-name="producto_compra" class="w-input form-field" value="Producto 1">
+              </div>
               <input hidden id="id_producto_compra" type="text" name="id_producto_compra" required="required" data-name="id_producto_compra" value="5693728d3890294f10406189">
             </div>
           </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(3º row) -->
-          <input type="submit" value="Comprar" data-wait="Please wait..." class="w-button button full-width" id="boton3">
+          <div class="form-group">
+            <input type="submit" value="Comprar" data-wait="Please wait..." class="w-button button full-width" id="btn_form_comprar">
+          </div>
         </form>
         <div class="w-form-done">
           <p>Thank you! Your submission has been received!</p>
@@ -282,46 +248,19 @@
 				</div>
       </div>
       <div>
-        
-Nota: puede cambiar o cancelar su plan en cualquier momento en la configuración de su cuenta.
+        Nota: puede cambiar o cancelar su plan en cualquier momento en la configuración de su cuenta.
       </div>
     </div>
   </div>
   
+  {{>footer}}
   
-  <div class="w-section footer center">
-    <div class="w-container">
-      <div class="footer-text">Sense-Rover</div>
-      <div class="w-row">
-        <div class="w-col w-col-6">
-          <h1 class="section-heading centered white">Redes sociales</h1>
-          <div class="w-row">
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2"></div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social linkedin"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social g-mas"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social twita"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social fasebok"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2"></div>
-          </div> <!-- footer: w-col w-col-6: w-row -->
-        </div> <!-- footer: w-col w-col-6 -->
-        <div class="w-col w-col-6">
-          <img src="images/SIXlogo.png" height="128" width="128">
-        </div>
-      </div> <!-- footer: w-row -->
-      <div class="footer-text">© 2016 Six Technologies Rights Reserved</div>
-    </div> <!-- footer: w-container -->
-  </div> <!-- footer: w-section footer center -->
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src=js/validar_compra.js ></script> 
+  <script src="js/validar_compra.js" type="text/javascript"></script>
+  <script src="js/validar_index.js" type="text/javascript"></script>
+  <script src="js/forget_pass.js" type="text/javascript"></script>
+  <script src="js/bootstrapValidator.min.js"></script>
   <script src=js/comprar.js ></script> 
 <!--</body>
 </html>-->

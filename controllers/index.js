@@ -50,6 +50,10 @@ router.route('/tienda')
 router.route('/perfil')
   .get(Perfil.perfil)
 
+// Perfil - Datos Personales
+router.route('/perfil/datos')
+  .post(Perfil.datosPerfil)
+
 // Rango_Fecha gráficas
 router.route('/rangofecha')
   .post(RangoFecha.rangoFecha)
@@ -78,7 +82,19 @@ router.route('/comprar')
 router.route('/activate/:activation/:email')
   .get(Email.activacion)
 
-// Activación de email
+// Forget contraseña
+router.route('/forgetPassword')
+  .post(Email.forgetPassword)
+
+// Recover contraseña
+router.route('/recoverPassword/:key/:email')
+  .get(Email.recoverPassword)
+
+// New contraseña
+router.route('/newPassword')
+  .post(Email.newPassword)
+
+// Formulario contacto
 router.route('/contactar')
   .post(Email.contacto)
 
