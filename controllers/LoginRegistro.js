@@ -71,14 +71,16 @@ exports.login = function(req, res) {
                   //res.redirect('/')
                   //flash de errores
                   req.flash('error', ' El usuario no esta activado..');
-                  res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+                  //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+                  res.redirect('/')
                 }
               } else {
                 console.log('contraseña incorrecta')
                 //res.redirect('/')
                 //flash de errores
                 req.flash('error', ' El nombre de usuario o la contraseña son incorrectos.');
-                res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+                //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+                res.redirect('/')
               }                     
             })
           } else {
@@ -88,7 +90,8 @@ exports.login = function(req, res) {
             /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
                 });*/
             req.flash('error', ' El usuario no está registrado.');
-            res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+            //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+            res.redirect('/')
           } 
         }
     })
@@ -172,4 +175,4 @@ exports.registro = function(req, res) {
   })
   //res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),});
   res.render("index.handlebars", {layout: 'main.handlebars', action: 'Register', error: req.flash('error')});
-};
+}

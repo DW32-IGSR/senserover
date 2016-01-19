@@ -24,6 +24,7 @@ var Home = require('./Home')
 var Tienda = require('./Tienda')
 var Comprar = require('./Comprar')
 var Email = require('./Email')
+var Alertas = require('./Alertas')
 
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
@@ -38,17 +39,17 @@ router.use(session({resave: true, saveUninitialized: true, secret: 'rubenonrails
 router.route('/')
   .get(Home.index)
 
+// Login
+router.route('/login')
+  .post(LoginRegistro.login)
+
+// Registro
+router.route('/register')
+  .post(LoginRegistro.registro)
+
 // Página Administración
 router.route('/administracion')
   .get(Administracion.admin)
-
-// Tienda
-router.route('/tienda/:id_producto')
-  .get(Tienda.tienda)
-
-// Tienda
-router.route('/tienda')
-  .get(Tienda.tienda)
 
 // Perfil
 router.route('/perfil')
@@ -58,29 +59,25 @@ router.route('/perfil')
 router.route('/perfil/datos')
   .post(Perfil.datosPerfil)
 
-// Rango_Fecha gráficas
-router.route('/rangofecha')
-  .post(RangoFecha.rangoFecha)
+// Formulario contacto
+router.route('/contactar')
+  .post(Email.contacto)
 
-// Cerrar - destroySession
-router.route('/cerrar')
-  .get(Home.destroySession)
+// Tienda
+router.route('/tienda')
+  .get(Tienda.tienda)
 
-// Login
-router.route('/login')
-  .post(LoginRegistro.login)
+// Tienda
+router.route('/tienda/:id_producto')
+  .get(Tienda.tienda)
 
-// Registro
-router.route('/register')
-  .post(LoginRegistro.registro)
-
-// Temporal para introducir productos
-router.route('/productos')
-  .get(ProductosCtrl.addProducto)
-  
 // Comprar
 router.route('/comprar')
   .post(Comprar.comprar)
+
+// Rango_Fecha gráficas
+router.route('/rangofecha')
+  .post(RangoFecha.rangoFecha)
 
 // Activación de email
 router.route('/activate/:activation/:email')
@@ -97,17 +94,34 @@ router.route('/recoverPassword/:key/:email')
 // New contraseña
 router.route('/newPassword')
   .post(Email.newPassword)
+  
+//formulario de alertas //en  marcha
+router.route('/alertas/update')
+  .post(Alertas.update)
 
-// Formulario contacto
-router.route('/contactar')
-  .post(Email.contacto)
+// Temporal para introducir productos
+/*router.route('/addProductos')
+  .get(ProductosCtrl.addProducto)*/
 
-router.use("*",function(req,res){
+// Cerrar - destroySession
+router.route('/cerrar')
+  .get(Home.destroySession)
+
+// No funciona bien
+/*router.use("*",function(req,res){
   res.redirect('/')
-})
+})*/
 
 // ------ API ------
 // BÚSQUEDAS
+// Búsqueda de todos los productos
+router.route('/productos')
+  .get(DatosAPI.findProductos)
+
+// Búsqueda de producto por ID_PRODUCTO
+router.route('/productos/:id_producto')
+  .get(DatosAPI.findProductosById)
+
 // Búsqueda de TODOS los datos
 router.route('/datos')
   .get(DatosAPI.findDatos)
@@ -116,6 +130,10 @@ router.route('/datos')
 router.route('/drones/:id_dron')
   .get(DronesAPI.findDronesById)
 
+// Búsqueda de dron por ID_USUARIO
+router.route('/drones/usuario/:id_usuario')
+  .get(DronesAPI.findDronesUsuarioById)
+
 // Búsqueda de datos por ID_DRON
 router.route('/datos/:id_dron')
   .get(DatosAPI.findDatosById)
@@ -123,9 +141,5 @@ router.route('/datos/:id_dron')
 // INSERCIÓN
 router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad')
   .get(DatosAPI.addDato)
-
-router.get('/prueba', function(req, res) {
-  res.render('recoverPassword')
-})
 
 module.exports = router

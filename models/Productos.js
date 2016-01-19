@@ -1,6 +1,6 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 var productosModel = function () {
     
@@ -8,9 +8,9 @@ var productosModel = function () {
         nombre: String,
         descripcion: String,
         precio: String
-    },{collection : 'productos'});  
+    },{collection : 'productos'})  
     
-    return mongoose.model('Productos', productosSchema);
-};
+    return mongoose.model('Productos', productosSchema)
+}
 
-module.exports = new productosModel();
+module.exports = new productosModel()

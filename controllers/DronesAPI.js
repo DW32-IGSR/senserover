@@ -20,13 +20,27 @@ var Drones  = mongoose.model('Drones')
     });
 };*/
 
+// Búsqueda de dron por ID_DRON
 exports.findDronesById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Drones
     var id_dron = req.params.id_dron
     Drones.find({ _id: id_dron}, function(err, drones) {
         if (err) return console.error(err);
         //Obtenemos un array de drones (objetos json)
-        console.log("GET - /drones/:id");
-    	res.send(drones);
-    });
-};
+        console.log("GET - /drones/:id")
+    	res.send(drones)
+    })
+}
+
+// Búsqueda de dron por ID_USUARIO
+exports.findDronesUsuarioById = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Drones
+    var id_usuario = req.params.id_usuario
+    Drones.find({ id_usuario: id_usuario}, function(err, dronesUsuario) {
+        if (err) return console.error(err);
+        //Obtenemos un array de drones (objetos json)
+        console.log("GET - /drones/:id_usuario")
+        console.log(dronesUsuario)
+    	res.send(dronesUsuario)
+    })
+}

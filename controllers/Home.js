@@ -1,4 +1,4 @@
-exports.index = function(req, res) {
+/*exports.index = function(req, res) {
     //ruta de pagina principal
     var sess = req.session;
     if (sess.usuario==""||sess.usuario==undefined) {
@@ -9,6 +9,20 @@ exports.index = function(req, res) {
         //
         var usuario = {nombre_usuario: sess.usuario}
         res.render('index', usuario)
+    }
+};*/
+
+exports.index = function(req, res) {
+    //ruta de pagina principal
+    var sess = req.session;
+    if (sess.usuario==""||sess.usuario==undefined) {
+        res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+    } else {
+        //
+        //render de index con idicadores de sesion iniciada
+        //
+        var usuario = {nombre_usuario: sess.usuario}
+        res.render('index', usuario, { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
     }
 };
 

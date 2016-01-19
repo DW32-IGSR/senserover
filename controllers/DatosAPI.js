@@ -2,20 +2,21 @@ var mongoose = require('mongoose')
 var Dato  = mongoose.model('Dato')
 var Producto  = mongoose.model('Productos')
 
-//GET - Return all tvshows in the DB
+// Búsqueda de TODOS los datos
 exports.findDatos = function(req, res) {
 	Dato.find({}, function(err, datos) {
         //if(err) res.send(500, err.message);
         if (err) return console.error(err);
         
-        console.log("GET - /datos");
-        res.send(datos);
+        console.log("GET - /datos")
+        res.send(datos)
     
         /*console.log('GET /datos')
     		res.status(200).jsonp(datos);*/
-	});
-};
+	})
+}
 
+// Búsqueda de datos por ID_DRON
 exports.findDatosById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
@@ -23,11 +24,12 @@ exports.findDatosById = function(req, res) {
 	
 		if (err) return console.error(err);
 	 	//Obtenemos un array de drones (objetos json)
-	 	console.log("GET - /datos/:id_dron");
-		res.send(drones);
-	});
-};
+	 	console.log("GET - /datos/:id_dron")
+		res.send(drones)
+	})
+}
 
+// INSERCIÓN
 exports.addDato = function(req, res) {
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
@@ -44,7 +46,7 @@ exports.addDato = function(req, res) {
 	//var luminosidad = req.params.luminosidad
 	
 	var fecha = new Date();
-	var fecha = fecha.setHours(fecha.getHours()+1);
+	var fecha = fecha.setHours(fecha.getHours()+1)
 	//console.log("fecha en milisegundos " + fecha)
 	var fecha=new Date(fecha)
 	console.log("fecha +1 "+ fecha)
@@ -65,32 +67,35 @@ exports.addDato = function(req, res) {
 		  console.log('save error', err)
 		} else{
 		  //mensaje de ok si se guarda en bd
-		  res.send('Dato guardado correctamente');
+		  res.send('Dato guardado correctamente')
 		}
 	})
-};
+}
 
+// --- PRODUCTOS ---
+// Búsqueda de todos los productos
 exports.findProductos = function(req, res) {
-	Producto.find({}, function(err, productos) {
+    Producto.find({}, function(err, productos) {
         //if(err) res.send(500, err.message);
         if (err) return console.error(err);
         
-        console.log("GET - /productos");
-        res.send(productos);
+        console.log("GET - /productos")
+        res.send(productos)
     
         /*console.log('GET /datos')
     		res.status(200).jsonp(datos);*/
-	});
-};
+	})
+}
 
-exports.findDatosById = function(req, res) {
+// Búsqueda de producto por ID_PRODUCTO
+exports.findProductosById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_producto = req.params.id_producto
 	Producto.find({ _id: id_producto }, function(err, productos) {
 	
 		if (err) return console.error(err);
 	 	//Obtenemos un array de drones (objetos json)
-	 	console.log("GET - /productos/:id_dron");
-		res.send(productos);
-	});
-};
+	 	console.log("GET - /productos/:id_producto")
+		res.send(productos)
+	})
+}

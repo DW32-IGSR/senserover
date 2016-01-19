@@ -118,6 +118,7 @@ exports.forgetPassword = function(req, res) {
             mailgun.messages().send(data, function (error, body) {
                 console.log(body)
             });
+            res.redirect('/')
         } else {
             console.log('Email no encontrado')
             req.flash('error', ' El correo no existe.');
