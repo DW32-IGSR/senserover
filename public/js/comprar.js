@@ -1,9 +1,12 @@
-
-$("#btn_compra").click(function(){
-    if($("#usuario").value!=""){
-        $("#seccion-form-compra").fadeIn()
-        $("#seccion-paquete").fadeIn()
+$("a[name$='comprar_pak']").click(function(){
+    if($("#nombre_usuario").html()!=undefined){
+        $("#seccion-compra").fadeIn()
+        
+        //comprobado
+        var offset = -12; //Offset of 20px
+        $('html, body').animate({
+            scrollTop: $("#seccion-compra").offset().top + offset}, 1000)
     } else {
-        $("#seccion-form-compra").append('<a class="btn btn-primary boton-registro" data-ix="login" role="button">Entrar</a>')
-    }    
+        $('#ModalLogeado').modal('show');
+    }
 })

@@ -28,14 +28,21 @@ exports.login = function(req, res) {
                   sess.id_usuario=usuario._id;
                   console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
                   
-                  var fecha = new Date();
+                  var fecha = new Date()
                 	var fecha = fecha.setHours(fecha.getHours()+1);
+                	//fecha.setUTCHours(12)
+                	//fecha=fecha.setUTCHours(15)
+                	console.log(fecha)
                 	//console.log("fecha en milisegundos " + fecha)
-                	fecha=new Date(fecha)
+                	//fecha=new Date(fecha)
                 	
                 	console.log('ultima conexion: ' + usuario.ultima_conexion)
-                  
-                  if(usuario.ultima_conexion == undefined){
+                  //console.log('prueba pagina:'+req.body.pagina)
+                  if(req.body.pagina=="compra"){
+                    Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { ultima_conexion: fecha }, function(err, user) {
+                      res.redirect('tienda/'+sess.id_producto)
+                    })
+                  }else if(usuario.ultima_conexion == undefined){
                     
                 	  //sin comporvar
                 	  //console.log("actualizacion1")
@@ -101,7 +108,7 @@ exports.registro = function(req, res) {
   //console.log("Pass 1: " + form_pass)
   //console.log("Pass 2: " + form_pass2)
   
-  Usuario.findOne({usuario: form_usuario}, function (err, usuario) {   
+  Usuario.findOne({usuario: form_usuario}, function (err, usuario) {
     if (err) {
         console.error(err)
     } else {
@@ -156,6 +163,7 @@ exports.registro = function(req, res) {
             console.log('Las pass no es la misma')
         }
       } else {
+        //console.log('el usuario ya existe')
         console.log('el usuario ya existe')
         req.flash('error', ' El usuario ya existe.');
         res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });

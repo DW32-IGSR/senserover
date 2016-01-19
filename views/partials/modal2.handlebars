@@ -12,7 +12,7 @@
       <div class="w-tab-content">
         <div data-w-tab="Tab Login" class="w-tab-pane w--tab-active">
           <div>
-            <h3>INICIAR SESIóN</h3>
+            <h3>INICIAR SESIóN COMPRA</h3>
             <div class="w-form">
               <form id="inicio-session" name="inicio-session" data-name="inicio-session" action="/login" method="post">
                 <div class="form-group">
@@ -24,6 +24,7 @@
                 <div class="form-group">
                     <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="btn_login">
                 </div>
+                <input hidden id="pagina" type="text" name="pagina" required="required" data-name="pagina" value="compra">
               </form>
               <a href="#" id="forget_pass">¿Has olvidado la contraseña?</a>
               <div>

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
 var Dato  = mongoose.model('Dato')
+var Producto  = mongoose.model('Productos')
 
 //GET - Return all tvshows in the DB
 exports.findDatos = function(req, res) {
@@ -22,7 +23,7 @@ exports.findDatosById = function(req, res) {
 	
 		if (err) return console.error(err);
 	 	//Obtenemos un array de drones (objetos json)
-	 	console.log("GET - /datos:id_dron");
+	 	console.log("GET - /datos/:id_dron");
 		res.send(drones);
 	});
 };
@@ -67,4 +68,29 @@ exports.addDato = function(req, res) {
 		  res.send('Dato guardado correctamente');
 		}
 	})
+};
+
+exports.findProductos = function(req, res) {
+	Producto.find({}, function(err, productos) {
+        //if(err) res.send(500, err.message);
+        if (err) return console.error(err);
+        
+        console.log("GET - /productos");
+        res.send(productos);
+    
+        /*console.log('GET /datos')
+    		res.status(200).jsonp(datos);*/
+	});
+};
+
+exports.findDatosById = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_producto = req.params.id_producto
+	Producto.find({ _id: id_producto }, function(err, productos) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /productos/:id_dron");
+		res.send(productos);
+	});
 };

@@ -43,6 +43,10 @@ router.route('/administracion')
   .get(Administracion.admin)
 
 // Tienda
+router.route('/tienda/:id_producto')
+  .get(Tienda.tienda)
+
+// Tienda
 router.route('/tienda')
   .get(Tienda.tienda)
 
@@ -98,6 +102,10 @@ router.route('/newPassword')
 router.route('/contactar')
   .post(Email.contacto)
 
+router.use("*",function(req,res){
+  res.redirect('/')
+})
+
 // ------ API ------
 // BÚSQUEDAS
 // Búsqueda de TODOS los datos
@@ -115,5 +123,9 @@ router.route('/datos/:id_dron')
 // INSERCIÓN
 router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad')
   .get(DatosAPI.addDato)
+
+router.get('/prueba', function(req, res) {
+  res.render('recoverPassword')
+})
 
 module.exports = router
