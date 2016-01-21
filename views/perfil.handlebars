@@ -2,22 +2,20 @@
 <!--<head>-->
   <title>Perfil</title>
   <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
-  <link rel="stylesheet" type="text/css" href="/css/menu.css">
+
 <!--</head>
 <body class="body">-->
   <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
     <div class="w-container">
       <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
       
-      <header>
-     		<nav role="navigation">
-    			<ul>
-    				<li><a href="/">Home</a></li>
-    				<li><a href="/administracion"></span>Administración</a></li>
-    				<li><a href="/cerrar">Cerrar sesión</a></li>
-    			</ul>
+     
+     		<nav role="navigation" class="w-nav-menu navigation-menu">
+        <a href="/" class="w-nav-link navigation-link">Home</a>
+        <a href="/administracion" class="w-nav-link navigation-link">Administracion</a>
+        <a href="/cerrar" class="w-nav-link navigation-link">Cerrar Sesión</a>
     		</nav>
-	    </header>
+	    
              
       <div class="w-nav-button hamburger-button" id="menu1">
         <div class="w-icon-nav-menu" id="menu2"></div>
@@ -219,7 +217,7 @@
               </tbody>
             </table>
           </div>
-          {{else}}
+        {{else}}
           No tienes drones
           <br>
           <a id="btn_compra" href="/tienda/5693728d3890294f10406189" class="button">Comprar</a>
@@ -228,36 +226,8 @@
     </div> <!-- Perfil-Drones: container -->
   </div> <!-- Perfil_Drones -->
   
-  <div class="w-section footer center">
-    <div class="w-container">
-      <div class="footer-text">Sense-Rover</div>
-      <div class="w-row">
-        <div class="w-col w-col-6">
-          <h1 class="section-heading centered white">Redes sociales</h1>
-          <div class="w-row">
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2"></div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social linkedin"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social g-mas"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social twita"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-              <a href="#" class="w-button boton-red-social fasebok"></a>
-            </div>
-            <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2"></div>
-          </div> <!-- footer: w-col w-col-6: w-row -->
-        </div> <!-- footer: w-col w-col-6 -->
-        <div class="w-col w-col-6">
-          <img src="images/SIXlogo.png" height="128" width="128">
-        </div>
-      </div> <!-- footer: w-row -->
-      <div class="footer-text">© 2016 Six Technologies Rights Reserved</div>
-    </div> <!-- footer: w-container -->
-  </div> <!-- footer: w-section footer center -->
+  {{>footer}}
+  
   <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->

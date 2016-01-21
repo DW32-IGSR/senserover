@@ -36,7 +36,9 @@
         <a href="#about" class="w-nav-link navigation-link">About</a>
         <a href="#donde-estamos" class="w-nav-link navigation-link">Dónde estamos</a>
         <a href="#contacto" class="w-nav-link navigation-link">Contacto</a>
-        <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
+        {{#if nombre_usuario}}
+          <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
+        {{/if}}
         <a data-ix="login" class="w-nav-link navigation-link login2 login-menu">Inicio de Sesión / Registro</a>
       </nav>
       <div class="w-nav-button hamburger-button">

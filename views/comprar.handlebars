@@ -18,8 +18,10 @@
       <nav role="navigation" class="w-nav-menu navigation-menu">
         <a href="/" class="w-nav-link navigation-link">Home</a>
         <a href="#seccion-producto" class="w-nav-link navigation-link">Producto</a>
-        <a href="#seccion-compra" class="w-nav-link navigation-link">Compra</a>
-        <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
+        <a href="#seccion-paquete" class="w-nav-link navigation-link">Compra</a>
+        {{#if nombre_usuario}}
+          <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
+        {{/if}}
         <a data-ix="login" class="w-nav-link navigation-link login2 login-menu">Inicio de Sesión / Registro</a>
       </nav>
       <div class="w-nav-button hamburger-button">
@@ -254,22 +256,22 @@
         </div> <!-- seccion-producto: w-container: w-form form-wrapper -->
       </div> <!-- seccion-producto: w-container -->
     {{else}}
-      
-        <div class="modal fade" id="ModalLogeado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              </div>
-              <div class="modal-body">
-                <div class="alert alert-danger">
-                  <strong>¡Error!</strong> Tienes que estar logueado.
-                </div>
+        
+      <div class="modal fade" id="ModalLogeado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger">
+                <strong>¡Error!</strong> Tienes que estar logueado.
               </div>
             </div>
           </div>
         </div>
-      </div> <!-- seccion-compra -->
+      </div>
+    </div> <!-- seccion-compra -->
     {{/if}}
   
   {{>footer}}
