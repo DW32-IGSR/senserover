@@ -28,7 +28,7 @@
       <!--<a class="w-nav-iniciarS" data-ix="login" role="button">Iniciar sesión</a>-->
       <!--<a class="btn btn-primary boton-registro" data-ix="login" role="button">Entrar</a>-->
       {{#if nombre_usuario}}
-        <button class="btn btn-box-tool boton-logout"><a href="/cerrar"><i class="glyphicon glyphicon-log-out"></i></a></button>
+        <a href="/cerrar"><button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button></a>
         <p class="btn btn-box-tool usuario">Bienvenido <strong><a href="/perfil" id=nombre_usuario >{{nombre_usuario}}</a></strong></p>
       {{else}}
         <a class="btn btn-primary boton-registro" data-ix="login" role="button">Entrar</a>
@@ -254,9 +254,6 @@
         </div> <!-- seccion-producto: w-container: w-form form-wrapper -->
       </div> <!-- seccion-producto: w-container -->
     {{else}}
-      <!-- No funciona -->
-      {{>modal2}}
-      
       
         <div class="modal fade" id="ModalLogeado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">

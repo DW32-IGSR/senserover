@@ -9,19 +9,18 @@
     <div class="w-container">
       <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
       
-        <header>
- 		<nav role="navigation">
-			<ul>
-				<li><a href="/"><span class="icon-house"></span>Home</a></li>
-				<li><a href="/administracion"><span class="icon-suitcase"></span>Administración</a></li>
-				<li><a href="/cerrar"><span class="icon-earth"></span>Cerrar sesión</a></li>
-			</ul>
-		</nav>
-	</header>
+      <header>
+     		<nav role="navigation">
+    			<ul>
+    				<li><a href="/">Home</a></li>
+    				<li><a href="/administracion"></span>Administración</a></li>
+    				<li><a href="/cerrar">Cerrar sesión</a></li>
+    			</ul>
+    		</nav>
+	    </header>
              
-      
-      <div class="w-nav-button hamburger-button">
-        <div class="w-icon-nav-menu"></div>
+      <div class="w-nav-button hamburger-button" id="menu1">
+        <div class="w-icon-nav-menu" id="menu2"></div>
       </div>
       <a href="/cerrar"><button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button></a>
       <p class="btn btn-box-tool usuario">Bienvenido <a href="/perfil"><strong>{{nombre_usuario}}</strong></a></p>
@@ -222,6 +221,8 @@
           </div>
           {{else}}
           No tienes drones
+          <br>
+          <a id="btn_compra" href="/tienda/5693728d3890294f10406189" class="button">Comprar</a>
         {{/if}}
       </div>
     </div> <!-- Perfil-Drones: container -->
@@ -257,10 +258,11 @@
       <div class="footer-text">© 2016 Six Technologies Rights Reserved</div>
     </div> <!-- footer: w-container -->
   </div> <!-- footer: w-section footer center -->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
   <script src="/js/validar_perfil.js" type="text/javascript"></script>
+  <script src="/js/modernizr.js" type="text/javascript"></script>
   <script src="/js/bootstrapValidator.min.js"></script>
 <!--</body>
 </html>-->

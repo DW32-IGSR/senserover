@@ -71,6 +71,7 @@ exports.comprar = function(req, res) {
                                             }else {
                                                 console.log('Compra realizada')
                                                 //Aqui viene flash de success
+                                                res.redirect('/perfil')
                                             }
                                         })
                                     }
@@ -86,6 +87,6 @@ exports.comprar = function(req, res) {
         //donde vera que en la tabla de drones se añadio uno nuevo
         
         //en administracion no tiene datos ni alertas configuradas
-        res.redirect('/perfil')
+        //res.redirect('/perfil')
     }
 };

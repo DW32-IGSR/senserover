@@ -1,6 +1,7 @@
 var mongoose = require('mongoose')
 var Drones  = mongoose.model('Drones')
 var Usuario  = mongoose.model('Usuario')
+var bcrypt = require('bcrypt')
 
 exports.perfil = function(req, res) {
     //ruta a la pagina de perfil
@@ -70,13 +71,45 @@ exports.datosPerfil = function(req, res) {
 };
 
 exports.changePassword = function(req, res) {
-   var pass_actual = req.body.pass_actual
-   var pass_nueva = req.body.pass_nueva
-   var pass_nueva_conf = req.body.pass_nueva_conf
-   var id_usuario = req.body.id_usuario
+    var pass_actual = req.body.pass_actual
+    var pass_nueva = req.body.pass_nueva
+    var pass_nueva_conf = req.body.pass_nueva_conf
+    var id_usuario = req.body.id_usuario
    
-   console.log('actual: ' + pass_actual)
-   console.log('nueva: ' + pass_nueva)
-   console.log('nueva conf: ' + pass_nueva_conf)
-   console.log('id_usuario: ' + id_usuario)
+    var salt = bcrypt.genSaltSync(10)
+    var pass_coded_actual = bcrypt.hashSync(pass_actual, salt)
+    var pass_coded_nueva = bcrypt.hashSync(pass_nueva, salt)
+
+    Usuario.findOne({ _id: id_usuario }, function (err, usuario) {   
+        if (err) {
+            console.error(err)
+        } else {
+            if (usuario!=null) {
+                
+                usuario.comparePassword(pass_actual, function(err, isMatch) {
+                    if (err) throw err
+                    
+                    if (isMatch) {
+                        console.log('bien')
+                        if (bcrypt.compareSync(pass_nueva_conf, pass_coded_nueva)) {
+                            Usuario.findOneAndUpdate({ _id: id_usuario }, { pass: pass_coded_nueva }, function(err, user) {
+                                if (err) {
+                                    console.error(err)
+                                } else {
+                                    console.log('La contraseña ha sido cambiada correctamente')
+                                }
+                            })
+                        } else {
+                            console.log('Las contraseñas no coinciden')
+                        }
+
+                    } else {
+                        console.log('No coincide la contraseña actual')
+                    }                     
+                })
+            } else {
+                console.log('No se puede cambiar la contraseña de ese usuario')
+            } 
+        }
+    })
 };

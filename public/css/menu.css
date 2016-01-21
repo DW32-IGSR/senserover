@@ -17,7 +17,7 @@ header {
 }
  
 header nav {
-	background:#023859;
+	background:#2E9AFE;
 	z-index:1000;
 	max-width: 1000px;
 	width:95%;
@@ -35,7 +35,7 @@ header nav ul li {
 }
  
 header nav ul li:hover {
-	background:#E6344A;
+	background:#CEECF5;
 }
  
 header nav ul li a {
@@ -85,12 +85,6 @@ header nav ul li .caret {
 	margin-left:10px;
 	margin-right:0px;
 }
- 
-
-	body {
-		padding-top:80px;
-	}
- 
 	.menu_bar {
 		display:block;
 		width:100%;

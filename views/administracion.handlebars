@@ -55,6 +55,7 @@
           <form id="email-form" name="email-form" data-name="Email Form">
             <label for="name">Selección de dron</label>
             <select id="seleccionador" name="seleccionador" class="w-select">
+              <!-- myscriptmongo change--> 
               <option value="selecciona">Selecciona el dron</option>
               <!--<option value="modelo 200c">modelo 200c</option>
               <option value="modelo 300v">modelo 300v</option>
@@ -89,7 +90,7 @@
   </div>-->
   <div id="alertas" class="w-section section grafic">
     <div class="w-container">
-      <h1 class="section-heading centered white">Alertas</h1>
+      <h1 class="section-heading centered white">PANEL DE ESTADO</h1>
         <div align="right">
           <button class="btn btn-box-tool" style="font-size:20px;" data-toggle="modal" data-target="#ModalAlertas"><i class="glyphicon glyphicon-cog"></i></button>
         </div>
@@ -100,7 +101,7 @@
             <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Temperatura</span>
-              <span class="info-box-number">33º</span>
+              <span id="temp-ultimo" class="info-box-number">33º</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -115,7 +116,7 @@
             <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Humedad</span>
-              <span class="info-box-number">92,050</span>
+              <span id="hum-ultimo" class="info-box-number">92,050</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -130,7 +131,7 @@
             <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">CO2</span>
-              <span class="info-box-number">114,381</span>
+              <span id="co2-ultimo" class="info-box-number">114,381</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -145,7 +146,7 @@
             <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Radiacion Solar</span>
-              <span class="info-box-number">33º</span>
+              <span id="rad-ultimo" class="info-box-number">33º</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -160,7 +161,7 @@
             <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Luminosidad</span>
-              <span class="info-box-number">33º</span>
+              <span id="lum-ultimo" class="info-box-number">33º</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -175,7 +176,7 @@
             <span class="info-box-icon"><img src="icons/bateria.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Bateria del Dron</span>
-              <span class="info-box-number">10%</span>
+              <span id="bat-ultimo" class="info-box-number">10%</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -549,7 +550,7 @@
   </div> <!-- graficas: w-section section grafic grafica-a -->
   <div id="panel-estado" class="w-section section">
     <div class="centrado-a-3">
-      <h1 class="section-heading centered">Panel de estado</h1>
+      <h1 class="section-heading centered">PANEL DE DRON</h1>
       <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
         <div class="w-tab-menu">
           <a data-w-tab="descripcion_dron" class="w-tab-link w--current w-inline-block button tab">

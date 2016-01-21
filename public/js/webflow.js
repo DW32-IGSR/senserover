@@ -4331,12 +4331,14 @@ Webflow.require('ix').init([
   {"slug":"login","name":"login","value":{"style":{},"triggers":[{"type":"click","selector":".modal-wrapper","stepsA":[{"display":"block"},{"opacity":1,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1}],"stepsB":[]}]}},
   {"slug":"cerrar-login","name":"cerrar login","value":{"style":{},"triggers":[{"type":"click","selector":".modal-wrapper","stepsA":[{"display":"none","opacity":0,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1}],"stepsB":[]}]}}
 ]);
+
 $(document).ready(menu);
  
 var contador = 1;
  
 function menu () {
-	$('.w-icon-nav-menu').click(function(){
+	
+	$('#menu1').click(function(){
 		if (contador == 1) {
 			$('nav').animate({
 				left: '0'

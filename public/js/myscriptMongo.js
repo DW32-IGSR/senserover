@@ -1,21 +1,23 @@
-var fechas=[]; 
-var datosTemp=[];
-var datosHum=[];
-var datosCO2=[];
-var datosRad=[];
-var datosLum=[];
+var fechas=[] 
+var datosTemp=[]
+var datosHum=[]
+var datosCO2=[]
+var datosRad=[]
+var datosLum=[]
+
 //funcion (id_dron)
 $(document).ready(function() {
     
     //$("#seleccionador").selected(function (){
     $("#seleccionador").change(function (){
+        //se cambian las graficas y se cambian los valores en la seccion de estado
         //alert("hola")
-        //console.log(this.value)
+        //console.log("prueba jueves "+this.value)
         //var url_dron="http://senserover-terrestre.rhcloud.com/datos/"+this.value
         var url_dron="http://sense-rover-nohtrim.c9users.io/datos/"+this.value
         //id dron pruebas 56939648e4b0166e3b6a60f6
         //http://senserover-terrestre.rhcloud.com/datos/56939648e4b0166e3b6a60f6
-        
+        //console.log($("#temp-ultimo").html())
         console.log(url_dron)
         //id de dron en input de rangos de fecha
         document.getElementsByName('name_dron_rango')[0].value = this.value
@@ -44,14 +46,21 @@ $(document).ready(function() {
                             "<td align='center'>" + data[i].fecha + "</td>" +
                             "<td align='center'> <a href='borrarDatos.php?id=" + data[i].id + "'> Eliminar </a> </td>" +
                         "</tr>"
-                    );
+                    )
                     fechas.push(data[i].fecha);
                     datosTemp.push(parseFloat(data[i].temperatura));
+                    //console.log("cambio"+parseFloat(data[i].temperatura))
+                    $("#temp-ultimo").html(parseFloat(data[i].temperatura)+"º")
                     datosHum.push(parseInt(data[i].humedad));
+                    $("#hum-ultimo").html(parseInt(data[i].humedad)+"%")
                     datosCO2.push(parseFloat(data[i].co2));
+                    $("#co2-ultimo").html(parseFloat(data[i].co2)+" ppm")
                     datosRad.push(parseFloat(data[i].radiacion));
+                    $("#rad-ultimo").html(parseFloat(data[i].radiacion)+" w/m^2")
                     datosLum.push(parseFloat(data[i].luminosidad));
-                };
+                    $("#lum-ultimo").html(parseFloat(data[i].luminosidad)+" lux")
+                    $("#bat-ultimo").html(20+"%")
+                }
                 //fechas=["January", "February", "March", "April", "May", "June", "July"];
                 //console.log(fechas);
                 //console.log(datosTemp);
@@ -66,4 +75,4 @@ $(document).ready(function() {
             }
         })//ajax
     })//selected (funcion(){    
-});
+})

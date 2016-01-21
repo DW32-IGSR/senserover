@@ -59,7 +59,7 @@ router.route('/perfil')
 router.route('/perfil/datos')
   .post(Perfil.datosPerfil)
 
-// Perfil - Datos Personales
+// Perfil - Cambiar contraseña
 router.route('/perfil/changePassword')
   .post(Perfil.changePassword)
 
