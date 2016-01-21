@@ -3,8 +3,6 @@ var Usuario  = mongoose.model('Usuario')
 var Productos  = mongoose.model('Productos')
 var Drones  = mongoose.model('Drones')
 
-console.log('entro al principio')
-
 exports.comprar = function(req, res) {
     //post del formulario de compra
     //insert en la bd el usuario y el dron que compro
@@ -70,6 +68,9 @@ exports.comprar = function(req, res) {
                                         dron.save(function (err) {
                                             if (err) {
                                               console.log('save error', err)
+                                            }else {
+                                                console.log('Compra realizada')
+                                                //Aqui viene flash de success
                                             }
                                         })
                                     }
