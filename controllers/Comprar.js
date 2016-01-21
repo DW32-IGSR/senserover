@@ -3,15 +3,19 @@ var Usuario  = mongoose.model('Usuario')
 var Productos  = mongoose.model('Productos')
 var Drones  = mongoose.model('Drones')
 
+console.log('entro al principio')
+
 exports.comprar = function(req, res) {
     //post del formulario de compra
     //insert en la bd el usuario y el dron que compro
     
     var sess = req.session
+    console.log('entro')
     
     if (sess.usuario==""||sess.usuario==undefined) {
         //algun mensaje de usuario no conectado
-        //res.redirect('/')      
+        //res.redirect('/')
+        console.log("No estas logeado")
     } else { 
         console.log("comprar")
         

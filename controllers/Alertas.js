@@ -31,7 +31,8 @@ exports.update = function(req, res) {
   //console.log("Pass 1: " + form_pass)
   //console.log("Pass 2: " + form_pass2)
   
-  Usuario.findOne({usuario: form_usuario}, function (err, usuario) {
+  //busqueda de alertas del dron seleccionado
+  Alertas.find({dron: sess}, function (err, usuario) {
     if (err) {
         console.error(err)
     } else {

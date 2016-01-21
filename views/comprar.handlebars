@@ -238,7 +238,7 @@
                 <div class="form-group">
                   <input id="producto_compra" type="text" placeholder="Producto 1" name="producto_compra" required="required" data-name="producto_compra" class="w-input form-field" value="Producto 1">
                 </div>
-                <input  id="id_producto_compra" type="text" name="id_producto_compra" required="required" data-name="id_producto_compra" value="{{ datos_producto._id }}">
+                <input hidden id="id_producto_compra" type="text" name="id_producto_compra" required="required" data-name="id_producto_compra" value="{{ datos_producto._id }}">
               </div>
             </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(3º row) -->
             <div class="form-group">
@@ -272,11 +272,8 @@
             </div>
           </div>
         </div>
-      
-      
+      </div> <!-- seccion-compra -->
     {{/if}}
-  </div> <!-- seccion-compra -->
-
   
   {{>footer}}
   
