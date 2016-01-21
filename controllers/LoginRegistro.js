@@ -23,6 +23,7 @@ exports.login = function(req, res) {
               if (isMatch) {
                 if (usuario.validated) {
                   console.log('usuario activado')
+                  console.log(req.ip)
                   //crear sesion
                   sess.usuario=usuario.usuario;
                   sess.id_usuario=usuario._id;

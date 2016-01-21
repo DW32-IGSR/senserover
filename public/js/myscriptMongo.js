@@ -11,7 +11,8 @@ $(document).ready(function() {
     $("#seleccionador").change(function (){
         //alert("hola")
         //console.log(this.value)
-        var url_dron="http://senserover-terrestre.rhcloud.com/datos/"+this.value
+        //var url_dron="http://senserover-terrestre.rhcloud.com/datos/"+this.value
+        var url_dron="http://sense-rover-nohtrim.c9users.io/datos/"+this.value
         //id dron pruebas 56939648e4b0166e3b6a60f6
         //http://senserover-terrestre.rhcloud.com/datos/56939648e4b0166e3b6a60f6
         

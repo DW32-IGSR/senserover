@@ -59,11 +59,15 @@ router.route('/perfil')
 router.route('/perfil/datos')
   .post(Perfil.datosPerfil)
 
+// Perfil - Datos Personales
+router.route('/perfil/changePassword')
+  .post(Perfil.changePassword)
+
 // Formulario contacto
 router.route('/contactar')
   .post(Email.contacto)
 
-// Tienda
+// Tienda //deprecated
 router.route('/tienda')
   .get(Tienda.tienda)
 
@@ -107,10 +111,6 @@ router.route('/alertas/update')
 router.route('/cerrar')
   .get(Home.destroySession)
 
-// No funciona bien
-/*router.use("*",function(req,res){
-  res.redirect('/')
-})*/
 
 // ------ API ------
 // BÚSQUEDAS
@@ -141,5 +141,9 @@ router.route('/datos/:id_dron')
 // INSERCIÓN
 router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad')
   .get(DatosAPI.addDato)
+  
+router.use("*", function(req,res){
+  res.redirect('/')
+})
 
 module.exports = router

@@ -22,7 +22,7 @@ exports.index = function(req, res) {
         //render de index con idicadores de sesion iniciada
         //
         var usuario = {nombre_usuario: sess.usuario}
-        res.render('index', usuario, { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+        res.render('index', usuario);
     }
 };
 

@@ -68,3 +68,15 @@ exports.datosPerfil = function(req, res) {
         });//find update
     }
 };
+
+exports.changePassword = function(req, res) {
+   var pass_actual = req.body.pass_actual
+   var pass_nueva = req.body.pass_nueva
+   var pass_nueva_conf = req.body.pass_nueva_conf
+   var id_usuario = req.body.id_usuario
+   
+   console.log('actual: ' + pass_actual)
+   console.log('nueva: ' + pass_nueva)
+   console.log('nueva conf: ' + pass_nueva_conf)
+   console.log('id_usuario: ' + id_usuario)
+};

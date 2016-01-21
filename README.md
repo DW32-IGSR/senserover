@@ -1,5 +1,17 @@
-# Your starting point for your next great web app
+SENSE-ROVER
 
-The purpose for this repository is to serve as a base project for your next [Node](http://nodejs.org/) and [Express](http://expressjs.com/) web app. Clone it and you are ready to go.
+"dependencies": {
+"bcrypt": "^0.8.5",
+"body-parser": "^1.12.3",
+"express": "^4.12.3",
+"express-flash": "0.0.2",
+"express-handlebars": "^2.0.1",
+"express-session": "^1.12.1",
+"handlebars": "^4.0.5",
+"mailgun-js": "^0.7.7",
+"mongoose": "^4.3.2"
+}
 
-It will provide you with a simple but solid structure on which to build on. We will do our best to keep it up to date with the latest node and express versions.
+
+Demostracion
+http://senserover-terrestre.rhcloud.com/
