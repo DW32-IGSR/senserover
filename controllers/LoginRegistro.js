@@ -2,9 +2,6 @@ var mongoose = require('mongoose')
 var Usuario  = mongoose.model('Usuario')
 var bcrypt = require('bcrypt')
 var express = require('express')
-var util = require('util')
-var bodyParser = require('body-parser')
-var expressValidator = require('express-validator')
 var validator = require('validator')
 
 
@@ -13,6 +10,8 @@ exports.login = function(req, res) {
     var sess = req.session;
     var form_usuario = req.body.usuario
     var form_pass = req.body.contrasenya
+    
+    //req.checkBody('contrasenya', '3 to 20 characters required').len(3,20)
     
     /*req.checkBody('usuario', 'Usuario es requerido').notEmpty()
     req.checkBody('contrasenya', '3 to 20 characters required').len(3, 20)

@@ -70,7 +70,8 @@ exports.comprar = function(req, res) {
                                               console.log('save error', err)
                                             }else {
                                                 console.log('Compra realizada')
-                                                //Aqui viene flash de success
+                                                req.flash('success', ' Compra realizada con éxito.');
+                                                res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
                                                 res.redirect('/perfil')
                                             }
                                         })
