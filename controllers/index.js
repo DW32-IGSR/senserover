@@ -2,8 +2,7 @@ var express = require('express')
   , router = express.Router()
   , bcrypt = require('bcrypt')
   , session = require('express-session')
-  , flash = require('express-flash')
-  , expressValidator = require('express-validator');
+  , flash = require('express-flash');
 
   //http://sense-rover-nohtrim.c9users.io
   //http://senserover-terrestre.rhcloud.com/

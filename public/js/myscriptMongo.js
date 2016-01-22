@@ -72,12 +72,12 @@ $(document).ready(function() {
                 $("#rad-ultimo").html(datosRad[datosRad.length-1]+" w/m^2")
                 $("#lum-ultimo").html(datosLum[datosLum.length-1]+" lux")
                 $("#bat-ultimo").html(20+"%")
-                dibujargrafica2();
+                dibujargrafica2()
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 //alert("Status: " + textStatus); alert("Error: " + errorThrown);
                 console.log(XMLHttpRequest.responseText);
-                $( "#resultado" ).html(XMLHttpRequest.responseText);
+                $( "#resultado" ).html(XMLHttpRequest.responseText)
             }
         })//ajax
     })//selected (funcion(){    

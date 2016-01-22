@@ -1,12 +1,18 @@
 var mongoose = require('mongoose')
 var Usuario  = mongoose.model('Usuario')
 var bcrypt = require('bcrypt')
+var expressValidator = require('express-validator')
 
 exports.login = function(req, res) {
     //post de formulario de login
     var sess = req.session;
     var form_usuario = req.body.usuario
     var form_pass = req.body.contrasenya
+    
+    req.checkBody('username', 'Username is required').notEmpty()
+    
+    
+    
     console.log("Usuario login: " + form_usuario)
     console.log("Pass login: " + form_pass)
     
@@ -25,12 +31,12 @@ exports.login = function(req, res) {
                   console.log('usuario activado')
                   console.log(req.ip)
                   //crear sesion
-                  sess.usuario=usuario.usuario;
-                  sess.id_usuario=usuario._id;
+                  sess.usuario=usuario.usuario
+                  sess.id_usuario=usuario._id
                   console.log(" id de usuario "+sess.id_usuario+" usuario "+sess.usuario)
                   
                   var fecha = new Date()
-                	var fecha = fecha.setHours(fecha.getHours()+1);
+                	var fecha = fecha.setHours(fecha.getHours()+1)
                 	//fecha.setUTCHours(12)
                 	//fecha=fecha.setUTCHours(15)
                 	console.log(fecha)
@@ -169,11 +175,11 @@ exports.registro = function(req, res) {
       } else {
         //console.log('el usuario ya existe')
         console.log('el usuario ya existe')
-        req.flash('error', ' El usuario ya existe.');
-        res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+        req.flash('error', ' El usuario ya existe.')
+        res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash })
       }
     }  
   })
   //res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),});
-  res.render("index.handlebars", {layout: 'main.handlebars', action: 'Register', error: req.flash('error')});
+  res.render("index.handlebars", {layout: 'main.handlebars', action: 'Register', error: req.flash('error')})
 }
