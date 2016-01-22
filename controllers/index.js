@@ -2,7 +2,8 @@ var express = require('express')
   , router = express.Router()
   , bcrypt = require('bcrypt')
   , session = require('express-session')
-  , flash = require('express-flash');
+  , flash = require('express-flash')
+  , expressValidator = require('express-validator');
 
   //http://sense-rover-nohtrim.c9users.io
   //http://senserover-terrestre.rhcloud.com/
@@ -138,8 +139,28 @@ router.route('/drones/usuario/:id_usuario')
 router.route('/datos/:id_dron')
   .get(DatosAPI.findDatosById)
 
+// Búsqueda de datos de temperatura por ID_DRON
+router.route('/datos/:id_dron/temperatura')
+  .get(DatosAPI.findDatosTempById)
+
+// Búsqueda de datos de humedad por ID_DRON
+router.route('/datos/:id_dron/humedad')
+  .get(DatosAPI.findDatosHumById)
+
+// Búsqueda de datos de co2 por ID_DRON
+router.route('/datos/:id_dron/co2')
+  .get(DatosAPI.findDatosCo2ById)
+
+// Búsqueda de datos de radiación por ID_DRON
+router.route('/datos/:id_dron/radiacion')
+  .get(DatosAPI.findDatosRadById)
+
+// Búsqueda de datos de luminosidad por ID_DRON
+router.route('/datos/:id_dron/luminosidad')
+  .get(DatosAPI.findDatosLumById)
+
 // INSERCIÓN
-router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad')
+router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria')
   .get(DatosAPI.addDato)
   
 router.use("*", function(req,res){

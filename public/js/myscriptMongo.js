@@ -4,6 +4,12 @@ var datosHum=[]
 var datosCO2=[]
 var datosRad=[]
 var datosLum=[]
+var temp_ultimo
+var hum_ultimo
+var co2_ultimo
+var rad_ultimo
+var lum_ultimo
+var bat_ultimo
 
 //funcion (id_dron)
 $(document).ready(function() {
@@ -48,24 +54,24 @@ $(document).ready(function() {
                         "</tr>"
                     )
                     fechas.push(data[i].fecha);
-                    datosTemp.push(parseFloat(data[i].temperatura));
+                    datosTemp.push(parseFloat(data[i].temperatura))
                     //console.log("cambio"+parseFloat(data[i].temperatura))
-                    $("#temp-ultimo").html(parseFloat(data[i].temperatura)+"º")
-                    datosHum.push(parseInt(data[i].humedad));
-                    $("#hum-ultimo").html(parseInt(data[i].humedad)+"%")
-                    datosCO2.push(parseFloat(data[i].co2));
-                    $("#co2-ultimo").html(parseFloat(data[i].co2)+" ppm")
-                    datosRad.push(parseFloat(data[i].radiacion));
-                    $("#rad-ultimo").html(parseFloat(data[i].radiacion)+" w/m^2")
-                    datosLum.push(parseFloat(data[i].luminosidad));
-                    $("#lum-ultimo").html(parseFloat(data[i].luminosidad)+" lux")
-                    $("#bat-ultimo").html(20+"%")
+                    datosHum.push(parseInt(data[i].humedad))
+                    datosCO2.push(parseFloat(data[i].co2))
+                    datosRad.push(parseFloat(data[i].radiacion))
+                    datosLum.push(parseFloat(data[i].luminosidad))
                 }
                 //fechas=["January", "February", "March", "April", "May", "June", "July"];
                 //console.log(fechas);
                 //console.log(datosTemp);
                 //console.log(datosHum);
                 //dibujargrafica(); 
+                $("#temp-ultimo").html(datosTemp[datosTemp.length-1]+"º")
+                $("#hum-ultimo").html(datosHum[datosHum.length-1]+"%")
+                $("#co2-ultimo").html(datosCO2[datosCO2.length-1]+" ppm")
+                $("#rad-ultimo").html(datosRad[datosRad.length-1]+" w/m^2")
+                $("#lum-ultimo").html(datosLum[datosLum.length-1]+" lux")
+                $("#bat-ultimo").html(20+"%")
                 dibujargrafica2();
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {

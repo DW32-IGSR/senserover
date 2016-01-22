@@ -12,6 +12,7 @@ var datoModel = function () {
         co2: String,
         radiacion: String,
         luminosidad: String,
+        bateria: String,
         fecha: String
     },{collection : 'datos'});
     

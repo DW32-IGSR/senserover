@@ -4332,28 +4332,3 @@ Webflow.require('ix').init([
   {"slug":"cerrar-login","name":"cerrar login","value":{"style":{},"triggers":[{"type":"click","selector":".modal-wrapper","stepsA":[{"display":"none","opacity":0,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","scale":1}],"stepsB":[]}]}}
 ]);
 
-$(document).ready(menu);
- 
-var contador = 1;
- 
-function menu () {
-	
-	$('#menu1').click(function(){
-		if (contador == 1) {
-			$('nav').animate({
-				left: '0'
-			});
-			contador = 0;
-		} else {
-			contador = 1;
-			$('nav').animate({
-				left: '-100%'
-			});
-		}
-	});
- 
-	// Mostramos y ocultamos submenus
-	$('.submenu').click(function(){
-		$(this).children('.children').slideToggle();
-	});
-}
