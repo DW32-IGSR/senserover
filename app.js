@@ -1,6 +1,9 @@
 var express = require('express')
   , app = express()
+  //, util = require('util')
   , bodyParser = require('body-parser')
+  //, expressValidator = require('express-validator')
+  , validator = require('validator')
   , port = process.env.PORT || 3000
 var mongoose = require('mongoose')
 var exphbs  = require('express-handlebars')
@@ -13,8 +16,10 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
+//app.use(expressValidator)
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(require('./controllers'))
+
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '127.0.0.1'

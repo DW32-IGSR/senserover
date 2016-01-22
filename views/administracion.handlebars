@@ -52,7 +52,7 @@
     <div class="w-container">
       <div class="white-box formulario">
         <div class="w-form">
-          <form id="email-form" name="email-form" data-name="Email Form">
+          <form>
             <label for="name">Selección de dron</label>
             <select id="seleccionador" name="seleccionador" class="w-select">
               <!-- myscriptmongo change--> 
@@ -64,9 +64,7 @@
                   <option value={{_id}} >{{nombre}}</option>
     	        {{/each}}
             </select>
-            <!--  {{#each drones}}
-                  <p>{{_id}}: {{nombre}}</p>
-              {{/each}} -->
+              <p hidden id="dron_seleccionado">id_dron</p>
           </form>
           <div class="w-form-done">
             <p>Thank you! Your submission has been received!</p>
@@ -97,7 +95,7 @@
         
         <div class="col-md-6">
           <!-- Info Boxes Style 2 -->
-          <div class="info-box bg-green">
+          <div id="estado_tem" class="info-box bg-green">
             <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Temperatura</span>
@@ -112,7 +110,7 @@
           </div><!-- /.info-box -->
         </div>
         <div class="col-md-6">
-          <div class="info-box bg-green">
+          <div id="estado_hum" class="info-box bg-green">
             <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Humedad</span>
@@ -127,7 +125,7 @@
           </div><!-- /.info-box -->
         </div>
         <div class="col-md-6">
-          <div class="info-box bg-red">
+          <div id="estado_co2" class="info-box bg-green">
             <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">CO2</span>
@@ -142,7 +140,7 @@
           </div><!-- /.info-box -->
         </div>
         <div class="col-md-6">
-          <div class="info-box bg-green">
+          <div id="estado_rad" class="info-box bg-green">
             <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Radiacion Solar</span>
@@ -157,7 +155,7 @@
           </div><!-- /.info-box -->
         </div>
         <div class="col-md-6">
-          <div class="info-box bg-green">
+          <div id="estado_lum" class="info-box bg-green">
             <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Luminosidad</span>
@@ -172,7 +170,7 @@
           </div><!-- /.info-box -->
         </div>
         <div class="col-md-6">
-          <div class="info-box bg-orange">
+          <div id="estado_bat" class="info-box bg-green">
             <span class="info-box-icon"><img src="icons/bateria.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Bateria del Dron</span>
@@ -630,6 +628,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/myscriptMongo.js"></script>
   <script type="text/javascript" src="/js/migrafica2.js"></script>
+  <script type="text/javascript" src="/js/colorear.js"></script>
   
 <!--</body>
 </html>-->

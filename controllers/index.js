@@ -12,6 +12,7 @@ var Dato = require('../models/Dato')
 var Usuario = require('../models/Usuario')
 var Drones = require('../models/Drones')
 var Productos = require('../models/Productos')
+var AlertasModel = require('../models/Alertas')
 
 // Archivos de rutas
 var DatosAPI = require('./DatosAPI')
@@ -30,7 +31,6 @@ var Alertas = require('./Alertas')
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
 router.use(flash())
-//router.use(expressValidator)
 
 //parametros para la sesion
 router.use(session({resave: true, saveUninitialized: true, secret: 'rubenonrails'}))
@@ -105,6 +105,10 @@ router.route('/newPassword')
 router.route('/alertas/update')
   .post(Alertas.update)
 
+// prueba ruben
+router.route('/alertas/:id_dron/tmin/:tmin/tmax/:tmax/hmin/:hmin/hmax/:hmax/cmin/:cmin/cmax/:cmax/rmin/:rmin/rmax/:rmax/lmin/:lmin/lmax/:lmax/bmin/:bmin/bmax/:bmax')
+  .get(Alertas.prueba)
+
 // Temporal para introducir productos
 /*router.route('/addProductos')
   .get(ProductosCtrl.addProducto)*/
@@ -140,6 +144,7 @@ router.route('/drones/usuario/:id_usuario')
 router.route('/datos/:id_dron')
   .get(DatosAPI.findDatosById)
 
+// --- Por un dato concreto ---
 // Búsqueda de datos de temperatura por ID_DRON
 router.route('/datos/:id_dron/temperatura')
   .get(DatosAPI.findDatosTempById)
@@ -159,6 +164,35 @@ router.route('/datos/:id_dron/radiacion')
 // Búsqueda de datos de luminosidad por ID_DRON
 router.route('/datos/:id_dron/luminosidad')
   .get(DatosAPI.findDatosLumById)
+
+// Búsqueda de rango de alertas
+router.route('/alertas/rango/:id_dron')
+  .get(DatosAPI.findMinMaxDronId)
+
+// --- Por un dato concreto ---
+// Búsqueda de rango de alertas de temperatura
+router.route('/alertas/rango/temp/:id_dron')
+  .get(DatosAPI.findMinMaxTempDronId)
+
+// Búsqueda de rango de alertas de humedad
+router.route('/alertas/rango/hum/:id_dron')
+  .get(DatosAPI.findMinMaxHumDronId)
+
+// Búsqueda de rango de alertas de co2
+router.route('/alertas/rango/co2/:id_dron')
+  .get(DatosAPI.findMinMaxCo2DronId)
+
+// Búsqueda de rango de alertas de radiacion
+router.route('/alertas/rango/rad/:id_dron')
+  .get(DatosAPI.findMinMaxRadDronId)
+
+// Búsqueda de rango de alertas de luminosidad
+router.route('/alertas/rango/lum/:id_dron')
+  .get(DatosAPI.findMinMaxLumDronId)
+
+// Búsqueda de rango de alertas de bateria
+router.route('/alertas/rango/bat/:id_dron')
+  .get(DatosAPI.findMinMaxBatDronId)
 
 // INSERCIÓN
 router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria')

@@ -33,6 +33,8 @@ $(document).ready(function() {
         document.getElementsByName('name_dron_rango')[3].value = this.value
         document.getElementsByName('name_dron_rango')[4].value = this.value
         
+        $("#dron_seleccionado").html(this.value)
+        
         $.ajax({
         type: "GET",
         //url: "http://dron-terrestre.rhcloud.com/datosj.php",
@@ -67,15 +69,15 @@ $(document).ready(function() {
                 //console.log(fechas);
                 //console.log(datosTemp);
                 //console.log(datosHum);
-                //dibujargrafica(); 
+                //dibujargrafica();
                 $("#temp-ultimo").html(datosTemp[datosTemp.length-1]+"º")
                 $("#hum-ultimo").html(datosHum[datosHum.length-1]+"%")
                 $("#co2-ultimo").html(datosCO2[datosCO2.length-1]+" ppm")
                 $("#rad-ultimo").html(datosRad[datosRad.length-1]+" w/m^2")
                 $("#lum-ultimo").html(datosLum[datosLum.length-1]+" lux")
-                //$("#bat-ultimo").html(20+"%")
                 $("#bat-ultimo").html(datosBat[datosBat.length-1]+"%")
                 dibujargrafica2()
+                colorearEstado()
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 //alert("Status: " + textStatus); alert("Error: " + errorThrown);

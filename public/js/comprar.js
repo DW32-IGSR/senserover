@@ -1,3 +1,4 @@
+
 $("a[name$='comprar_pak']").click(function(){
     if($("#nombre_usuario").html()!=undefined){
         $("#seccion-compra").fadeIn()
@@ -9,4 +10,8 @@ $("a[name$='comprar_pak']").click(function(){
     } else {
         $('#ModalLogeado').modal('show');
     }
+})
+$("#btn_form_comprar").click(function() {
+   $('#ModalCompra').modal('show');
+    
 })

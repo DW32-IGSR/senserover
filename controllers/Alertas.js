@@ -1,3 +1,6 @@
+var mongoose = require('mongoose')
+var Alertas  = mongoose.model('Alertas')
+
 exports.update = function(req, res) {
   //post de formulario de registro
   //envio de correo de activacion
@@ -99,3 +102,39 @@ exports.update = function(req, res) {
 */
   res.redirect('/administracion')
 }
+
+exports.prueba = function(req, res) {
+  //http://sense-rover-nohtrim.c9users.io/alertas/aa/tmin/1/tmax/2/hmin/3/hmax/4/cmin/5/cmax/6/rmin/7/rmax/8/lmin/9/lmax/10/bmin/11/bmax/12
+  var id_dron = req.params.id_dron
+  var temperatura_min = req.params.tmin
+  var temperatura_max = req.params.tmax
+  var humedad_min = req.params.hmin
+  var humedad_max = req.params.hmax
+  var co2_min = req.params.cmin
+  var co2_max = req.params.cmax
+  var radiacion_min = req.params.rmin
+  var radiacion_max = req.params.rmax
+  var luminosidad_min = req.params.lmin
+  var luminosidad_max = req.params.lmax
+  var bateria_min = req.params.bmin
+  var bateria_max = req.params.bmax
+  
+  console.log('Id_dron: ' + id_dron)
+  console.log('Temperatura: ' + temperatura_min + ' ' + temperatura_max)
+  console.log('Humedad: ' + humedad_min + ' ' + humedad_max)
+  console.log('Co2: ' + co2_min + ' ' + co2_max)
+  console.log('Radiación: ' + radiacion_min + ' ' + radiacion_max)
+  console.log('Luminosidad: ' + luminosidad_min + ' ' + luminosidad_max)
+  console.log('Bateria: ' + bateria_min + ' ' + bateria_max)
+  
+  //var alerta = new Alertas({ id_dron: id_dron, temperatura.min: temperatura_min, temperatura.max: temperatura_max, humedad.min: humedad_min, humedad.max: humedad_max, co2.min: co2_min, co2.max: co2_max, radiacion.min: radiacion_min, radiacion.max: radiacion_max, luminosidad.min: luminosidad_min, luminosidad.max: luminosidad_max, bateria.min: bateria_min, bateria.max: bateria_max })
+  var alerta = new Alertas({ id_dron: id_dron, temperatura: {min: temperatura_min, max: temperatura_max}, humedad: {min: humedad_min, max: humedad_max}, co2: {min: co2_min, max: co2_max}, radiacion: {min: radiacion_min, max: radiacion_max}, luminosidad: {min: luminosidad_min, max: luminosidad_max}, bateria: {min: bateria_min, max: bateria_max}})
+  //guardar usuario en la base de datos
+  alerta.save(function (err) {
+    if (err) {
+      console.log('save error', err)
+    } else{
+      console.log('guardado')
+    }
+  })
+};

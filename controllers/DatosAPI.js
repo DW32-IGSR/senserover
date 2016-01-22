@@ -1,6 +1,7 @@
 var mongoose = require('mongoose')
 var Dato  = mongoose.model('Dato')
 var Producto  = mongoose.model('Productos')
+var Alertas  = mongoose.model('Alertas')
 
 // Búsqueda de TODOS los datos
 exports.findDatos = function(req, res) {
@@ -90,6 +91,97 @@ exports.findDatosLumById = function(req, res) {
 		if (err) return console.error(err);
 	 	//Obtenemos un array de drones (objetos json)
 	 	console.log("GET - /datos/:id_dron/luminosidad")
+		res.send(drones)
+	})
+}
+
+// Búsqueda del rango de alertas por ID_DRON
+exports.findMinMaxDronId = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_dron = req.params.id_dron
+	Alertas.find({ id_dron: id_dron }, function(err, drones) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /alertas/rango/:id_dron")
+		res.send(drones)
+	})
+}
+
+// Búsqueda del rango de alertas de temperatura por ID_DRON
+exports.findMinMaxTempDronId = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_dron = req.params.id_dron
+	Alertas.find({ id_dron: id_dron }, {temperatura: 1}, function(err, drones) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /alertas/rango/temp/:id_dron")
+		res.send(drones)
+	})
+}
+
+// Búsqueda del rango de alertas de humedad por ID_DRON
+exports.findMinMaxHumDronId = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_dron = req.params.id_dron
+	Alertas.find({ id_dron: id_dron }, {humedad: 1}, function(err, drones) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /alertas/rango/hum/:id_dron")
+		res.send(drones)
+	})
+}
+
+// Búsqueda del rango de alertas de co2 por ID_DRON
+exports.findMinMaxCo2DronId = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_dron = req.params.id_dron
+	Alertas.find({ id_dron: id_dron }, {co2: 1}, function(err, drones) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /alertas/rango/co2/:id_dron")
+		res.send(drones)
+	})
+}
+
+// Búsqueda del rango de alertas de radiacion por ID_DRON
+exports.findMinMaxRadDronId = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_dron = req.params.id_dron
+	Alertas.find({ id_dron: id_dron }, {radiacion: 1}, function(err, drones) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /alertas/rango/rad/:id_dron")
+		res.send(drones)
+	})
+}
+
+// Búsqueda del rango de alertas de luminosidad por ID_DRON
+exports.findMinMaxLumDronId = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_dron = req.params.id_dron
+	Alertas.find({ id_dron: id_dron }, {luminosidad: 1}, function(err, drones) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /alertas/rango/lum/:id_dron")
+		res.send(drones)
+	})
+}
+
+// Búsqueda del rango de alertas de bateria por ID_DRON
+exports.findMinMaxBatDronId = function(req, res) {
+	//Hacemos un find en la base de datos de la collección Dato
+	var id_dron = req.params.id_dron
+	Alertas.find({ id_dron: id_dron }, {bateria: 1}, function(err, drones) {
+	
+		if (err) return console.error(err);
+	 	//Obtenemos un array de drones (objetos json)
+	 	console.log("GET - /alertas/rango/bat/:id_dron")
 		res.send(drones)
 	})
 }

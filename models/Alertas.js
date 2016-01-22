@@ -6,7 +6,6 @@ var alertasModel = function () {
     
     var alertasSchema = new mongoose.Schema({
         id_dron: String,
-        //temperatura: String,
         temperatura: {
              min: String,
              max: String
@@ -30,10 +29,10 @@ var alertasModel = function () {
         bateria: {
              min: String,
              max: String
-        },
+        }
     },{collection : 'alertas'});  
     
-    return mongoose.model('alertas_dron', alertasSchema);
+    return mongoose.model('Alertas', alertasSchema);
 };
 
 module.exports = new alertasModel();
