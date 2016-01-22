@@ -2,7 +2,8 @@ var express = require('express')
   , router = express.Router()
   , bcrypt = require('bcrypt')
   , session = require('express-session')
-  , flash = require('express-flash');
+  , flash = require('express-flash')
+  //, expressValidator = require('express-validator')
 
   //http://sense-rover-nohtrim.c9users.io
   //http://senserover-terrestre.rhcloud.com/
@@ -28,7 +29,8 @@ var Alertas = require('./Alertas')
 
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
-router.use(flash());
+router.use(flash())
+//router.use(expressValidator)
 
 //parametros para la sesion
 router.use(session({resave: true, saveUninitialized: true, secret: 'rubenonrails'}))

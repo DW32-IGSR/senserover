@@ -178,25 +178,26 @@ exports.addDato = function(req, res) {
 	})
 }
 
-exports.addDatoPost = function(req, res) {
-	console.log('POST add Datos');
-	console.log(req.body);
+/*exports.addDatoPost = function(req, res) {
+	console.log('POST add Datos')
+	console.log(req.body)
 
 	var dato = new Dato({
-		id_dron:    req.body.id_dron,
-		temperatura: 	  req.body.temperatura,
-		humedad:  req.body.country,
-		co2:   req.body.poster,
-		radiacion:  req.body.seasons,
-		luminosidad:    req.body.genre,
-		fecha:  req.body.summary
+		id_dron: req.body.id_dron,
+		temperatura: req.body.temperatura,
+		humedad: req.body.humedad,
+		co2: req.body.co2,
+		radiacion: req.body.radiacion,
+		luminosidad: req.body.luminosidad,
+		bateria: req.body.bateria,
+		fecha: req.body.summary
 	});
 
-	Dato.save(function(err, tvshow) {
-		if(err) return res.send(500, err.message);
-    res.status(200).jsonp(tvshow);
-	});
-};
+	Dato.save(function(err, datos) {
+		if(err) return res.send(500, err.message)
+    	res.status(200).jsonp(datos)
+	})
+}*/
 
 // --- PRODUCTOS ---
 // Búsqueda de todos los productos

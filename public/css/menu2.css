@@ -123,13 +123,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .menu {
-  position: absolute;
+  position: fixed;
   right: 0px;
   top: 70px;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  z-index:999;
 }
 .menu span {
   display: block;

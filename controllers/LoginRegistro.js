@@ -2,6 +2,8 @@ var mongoose = require('mongoose')
 var Usuario  = mongoose.model('Usuario')
 var bcrypt = require('bcrypt')
 var expressValidator = require('express-validator')
+var express = require('express')
+
 
 exports.login = function(req, res) {
     //post de formulario de login
@@ -9,9 +11,24 @@ exports.login = function(req, res) {
     var form_usuario = req.body.usuario
     var form_pass = req.body.contrasenya
     
-    req.checkBody('username', 'Username is required').notEmpty()
+    /*req.check('usuario', 'Usuario es requerido').notEmpty()
+    req.check('contrasenya', '3 to 20 characters required').len(3, 20)
     
-    
+    var errors = req.validationErrors();  
+    if( !errors){   //No errors were found.  Passed Validation!
+        res.render('index', { 
+            title: 'Form Validation Example',
+                message: 'Passed Validation!',
+                errors: {}
+        });
+       
+    } else {   //Display errors to user
+        res.render('index', { 
+            title: 'Form Validation Example',
+            message: 'Error',
+            errors: errors
+        });
+    }*/
     
     console.log("Usuario login: " + form_usuario)
     console.log("Pass login: " + form_pass)

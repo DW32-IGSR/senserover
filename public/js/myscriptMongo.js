@@ -4,6 +4,7 @@ var datosHum=[]
 var datosCO2=[]
 var datosRad=[]
 var datosLum=[]
+var datosBat=[]
 var temp_ultimo
 var hum_ultimo
 var co2_ultimo
@@ -35,7 +36,7 @@ $(document).ready(function() {
         $.ajax({
         type: "GET",
         //url: "http://dron-terrestre.rhcloud.com/datosj.php",
-        //http://sense-rover-nohtrim.c9users.io/datos/56939648e4b0166e3b6a60f6
+        //http://sense-rover-nohtrim.c9users.io/datos/56a1dbef16d8dfdb5562113d
         url: url_dron,
         
         dataType: "json",
@@ -60,6 +61,7 @@ $(document).ready(function() {
                     datosCO2.push(parseFloat(data[i].co2))
                     datosRad.push(parseFloat(data[i].radiacion))
                     datosLum.push(parseFloat(data[i].luminosidad))
+                    datosBat.push(parseFloat(data[i].bateria))
                 }
                 //fechas=["January", "February", "March", "April", "May", "June", "July"];
                 //console.log(fechas);
@@ -71,7 +73,8 @@ $(document).ready(function() {
                 $("#co2-ultimo").html(datosCO2[datosCO2.length-1]+" ppm")
                 $("#rad-ultimo").html(datosRad[datosRad.length-1]+" w/m^2")
                 $("#lum-ultimo").html(datosLum[datosLum.length-1]+" lux")
-                $("#bat-ultimo").html(20+"%")
+                //$("#bat-ultimo").html(20+"%")
+                $("#bat-ultimo").html(datosBat[datosBat.length-1]+"%")
                 dibujargrafica2()
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
