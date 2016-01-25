@@ -5,12 +5,6 @@ var datosCO2=[]
 var datosRad=[]
 var datosLum=[]
 var datosBat=[]
-var temp_ultimo
-var hum_ultimo
-var co2_ultimo
-var rad_ultimo
-var lum_ultimo
-var bat_ultimo
 
 //funcion (id_dron)
 $(document).ready(function() {
@@ -21,9 +15,9 @@ $(document).ready(function() {
         //alert("hola")
         //console.log("prueba jueves "+this.value)
         //var url_dron="http://senserover-terrestre.rhcloud.com/datos/"+this.value
-        var url_dron="http://sense-rover-nohtrim.c9users.io/datos/"+this.value
+        var url_dron="https://sense-rover-nohtrim.c9users.io/datos/"+this.value
         //id dron pruebas 56939648e4b0166e3b6a60f6
-        //http://senserover-terrestre.rhcloud.com/datos/56939648e4b0166e3b6a60f6
+        //https://senserover-terrestre.rhcloud.com/datos/56939648e4b0166e3b6a60f6
         //console.log($("#temp-ultimo").html())
         console.log(url_dron)
         //id de dron en input de rangos de fecha

@@ -92,24 +92,3 @@
   </div> <!-- iniciar-sesion-wrapper -->
 </div> <!-- Modal Inicio sesión-->
 
-
-
-  {{#if expressFlash}}
-    <div class="modal fade" id="Mensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="alert alert-danger">
-              {{ error.msg }}
-              {{#each expressFlash}}
-                  {{ sessionFlash.msg }}
-              {{/each}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  {{/if}}
