@@ -70,8 +70,10 @@ exports.comprar = function(req, res) {
                                               console.log('save error', err)
                                             }else {
                                                 console.log('Compra realizada')
-                                                req.flash('success', ' Compra realizada con éxito.');
-                                                res.render('index', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+                                                //errores o este o el siguiente
+                                                //req.flash('success', ' Compra realizada con éxito.');
+                                                //errores
+                                                //res.render('comprar', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
                                                 res.redirect('/perfil')
                                             }
                                         })
@@ -82,7 +84,7 @@ exports.comprar = function(req, res) {
                     } //else error
                 }) //findone
             } //else error
-        });//find update
+        })//find update
         
         //despues de realizar la compra pasamos a perfil
         //donde vera que en la tabla de drones se añadio uno nuevo
@@ -90,4 +92,4 @@ exports.comprar = function(req, res) {
         //en administracion no tiene datos ni alertas configuradas
         //res.redirect('/perfil')
     }
-};
+}

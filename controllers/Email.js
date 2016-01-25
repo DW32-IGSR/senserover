@@ -70,7 +70,7 @@ exports.contacto = function(req, res) {
                     +"<br><br><h3>No responda a este mensaje</h3>"
     
     var data = {
-        from: 'sense-rover <dw32igsr@gmail.com>',
+        from: 'Sense-Rover <dw32igsr@gmail.com>',
         to: form_email,
         subject: "Formulario de contacto sense-rover: "+form_asunto,
         html: mensaje
@@ -109,7 +109,7 @@ exports.forgetPassword = function(req, res) {
                         "<a href='http://senserover-terrestre.rhcloud.com/recoverPassword/"+new_key+"/"+email+"'>Restablecer contraseña</a>"
             
             var data = {
-                from: 'sense-rover <dw32igsr@gmail.com>',
+                from: 'Sense-Rover <dw32igsr@gmail.com>',
                 to: email,
                 subject: "Reinicio de contraseña",
                 html: mensaje

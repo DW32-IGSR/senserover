@@ -32,7 +32,8 @@ $(document).ready(function() {
         document.getElementsByName('name_dron_rango')[2].value = this.value
         document.getElementsByName('name_dron_rango')[3].value = this.value
         document.getElementsByName('name_dron_rango')[4].value = this.value
-        $("#id_dron_rango").html(this.value)
+        //$("#id_dron_rango").html(this.value)
+        $('#id_dron_rango').attr('value', this.value)
         
         $("#dron_seleccionado").html(this.value)
         

@@ -28,7 +28,8 @@ var alertasModel = function () {
         },
         bateria: {
              min: String
-        }
+        },
+        recibir_alertas: Boolean
     },{collection : 'alertas'});  
     
     return mongoose.model('Alertas', alertasSchema);

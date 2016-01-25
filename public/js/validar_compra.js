@@ -100,7 +100,14 @@ $(document).ready(function() {
 	                    }
                     }
                 }
+            },
+            //en pruebas
+            submitHandler: function(validator, form, submitButton) {
+                //alert("Your alert come here");
+                $('#ModalLogeado').modal('show');
+                validator.defaultSubmit();
             }
-        });
-    });
-});
+            //en pruebas
+        })
+    })
+})

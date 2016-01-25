@@ -2,11 +2,11 @@ var express = require('express')
   , app = express()
   //, util = require('util')
   , bodyParser = require('body-parser')
-  //, expressValidator = require('express-validator')
   , validator = require('validator')
   , port = process.env.PORT || 3000
 var mongoose = require('mongoose')
 var exphbs  = require('express-handlebars')
+var expressValidator = require('express-validator');
 
 //configuracion handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
@@ -15,9 +15,9 @@ app.set('view engine', 'handlebars')
 
 
 app.use(express.static(__dirname + '/public'))
-app.use(bodyParser.json())
-//app.use(expressValidator)
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressValidator());
 app.use(require('./controllers'))
 
 

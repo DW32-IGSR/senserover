@@ -60,7 +60,7 @@
             </div> <!-- seccion-producto: w-slider -->
           </div> <!-- seccion-producto: w-col w-col-6 -->
           <div class="w-col w-col-6 precio">
-            <h1>500.000&nbsp;€</h1>
+            <h1>{{datos_producto.precio}}&nbsp;€</h1>
             <p>IVA incluido (precio*0.21)</p><a id="btn_compra" href="#seccion-paquete" class="button">Comprar</a>
           </div> <!-- seccion-producto: w-col w-col-6 precio -->
         </div> <!-- seccion-producto: w-row -->
@@ -81,45 +81,34 @@
           <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
             <div>
               <h2>Descripción</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
-                <br>Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
-                <br>Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                <p align=left>{{datos_producto.descripcion}}</p>
             </div>
           </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Descripción -->
           <div data-w-tab="Tab 2" class="w-tab-pane">
             <div>
               <h2>Especificaciones</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
-                <br>Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
-                <br>Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+              <p>
+                <ul align=left>
+                  {{#each datos_producto._doc.especificaciones}}
+                      <li>{{nombre}} : {{valor}}</li>
+                  {{/each}}
+                </ul>
+              </p>  
             </div>
           </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Especificaciones -->
           <div data-w-tab="Tab 3" class="w-tab-pane">
             <div>
               <h2>Opiniones</h2>
-              <div class="w-row row_opinion">
-                <div class="w-col w-col-3">
-                  <h1 class="heading-opinion">Rubén</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-                </div>
-                <div class="w-col w-col-9">
-                  <p class="text_opinion">Este producto cambio la forma de ver la vida.</p>
-                </div>
-              </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 1º Opinión -->
-              <div class="w-row row_opinion">
-                <div class="w-col w-col-3">
-                  <h1 class="heading-opinion">Gorka</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-                </div>
-                <div class="w-col w-col-9">
-                  <p class="text_opinion">No sé como pude vivir sin él.</p>
-                </div>
-              </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 2º Opinión -->
-              <div class="w-row row_opinion">
-                <div class="w-col w-col-3">
-                  <h1 class="heading-opinion">Sergio</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-                </div>
-                <div class="w-col w-col-9">
-                  <p class="text_opinion">No puedo parar de comprarlo.</p>
-                </div>
+                {{#each datos_producto._doc.opiniones}}
+                  <div class="w-row row_opinion">
+                    <div class="w-col w-col-3">
+                      <h1 class="heading-opinion">{{nombre}}</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+                    </div>
+                    <div class="w-col w-col-9">
+                      <p class="text_opinion">{{opinion}}</p>
+                    </div>
+                  </div>
+                {{/each}}
               </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 3º Opinión -->
             </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: div -->
           </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Opiniones -->
@@ -254,6 +243,7 @@
             <p>Oops! Something went wrong while submitting the form :(</p>
           </div>
           
+          <!-- modal succes -->
           <div class="modal fade" id="ModalCompra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -262,7 +252,7 @@
                 </div>
               <div class="modal-body">
                 <div class="alert alert-success">
-                    Compra realizada con éxito
+                    Compra realizada con éxito, visite su perfil para más información.
                 </div>
               </div>
             </div>
@@ -272,7 +262,8 @@
       </div> <!-- seccion-producto: w-container -->
     </div> <!-- seccion-compra -->
     {{else}}
-        
+      
+      <!-- modal error -->  
       <div class="modal fade" id="ModalLogeado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">

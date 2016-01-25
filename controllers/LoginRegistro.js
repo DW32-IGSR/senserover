@@ -11,31 +11,21 @@ exports.login = function(req, res) {
     var form_usuario = req.body.usuario
     var form_pass = req.body.contrasenya
     
-    //req.checkBody('contrasenya', '3 to 20 characters required').len(3,20)
-    
-    /*req.checkBody('usuario', 'Usuario es requerido').notEmpty()
-    req.checkBody('contrasenya', '3 to 20 characters required').len(3, 20)
-    
-    var errors = req.validationErrors();  
-    if( !errors){   //No errors were found.  Passed Validation!
-        res.render('index', { 
-            title: 'Form Validation Example',
-                message: 'Passed Validation!',
-                errors: {}
-        });
-        //console.log('no hay errores')
-       
-    } else {   //Display errors to user
-        res.render('index', { 
-            title: 'Form Validation Example',
-            message: 'Error',
-            errors: errors
-        });
-        //console.log('Estos son los ' + errors)
-    }*/
-    
     console.log("Usuario login: " + form_usuario)
     console.log("Pass login: " + form_pass)
+    
+    req.assert('usuario', 'Usuario es requerido.').notEmpty();
+    req.assert('contrasenya', 'La contraseña es requerida.').notEmpty();
+    req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(2,20) //Hay que cambiar el valor 2 por 3
+    
+    var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      req.flash('error', errors);
+      return res.redirect('/');
+    }
     
     Usuario.findOne({ usuario: form_usuario }, function (err, usuario) {   
         if (err) {
@@ -139,6 +129,23 @@ exports.registro = function(req, res) {
   //console.log("Pass 1: " + form_pass)
   //console.log("Pass 2: " + form_pass2)
   
+    req.assert('usuario', 'Usuario es requerido.').notEmpty();
+    req.assert('email', 'La contraseña es requerida.').notEmpty();
+    req.assert('email', 'La contraseña es requerida.').isEmail();
+    req.assert('contrasenya', 'La contraseña es requerida.').notEmpty();
+    req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(3,20) //Hay que cambiar el valor 2 por 3
+    req.assert('contrasenya2', 'La contraseña es requerida.').notEmpty();
+    req.assert('contrasenya2', 'Usa al menos 8 caracteres.').len(3,20) //Hay que cambiar el valor 2 por 3
+    
+    var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      req.flash('error', {sessionFlash: errors.mgs});
+      return res.redirect('/');
+    }
+  
   Usuario.findOne({usuario: form_usuario}, function (err, usuario) {
     if (err) {
         console.error(err)
@@ -167,7 +174,7 @@ exports.registro = function(req, res) {
           var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/"+new_key+"/"+form_email+"'>Activar la cuenta</a>"
           
           var data = {
-            from: 'sense-rover <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
+            from: 'Sense-Rover <dw32igsr@gmail.com>',
             to: form_email,
             subject: 'Registro en sense-rover',
             html: mensaje

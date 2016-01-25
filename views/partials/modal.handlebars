@@ -103,7 +103,10 @@
           </div>
           <div class="modal-body">
             <div class="alert alert-danger">
-              ¡Error!{{ expressFlash }}
+              {{ error.msg }}
+              {{#each expressFlash}}
+                  {{ sessionFlash.msg }}
+              {{/each}}
             </div>
           </div>
         </div>

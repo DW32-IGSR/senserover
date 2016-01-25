@@ -1,16 +1,11 @@
 function colorearEstado(){
-    // verde=bg-green amarillo=bg-orange rojo=bg-red
-    // estado_tem estado_hum estado_co2 estado_rad estado_lum estado_bat
-    // http://www.desarrolloweb.com/articulos/anadir-quitar-class-jquery.html
     console.log("coloreando :D")
-    
     function colorear(id,color){
         $(id).removeClass("bg-green")
         $(id).removeClass("bg-red")
         $(id).removeClass("bg-orange")
         $(id).addClass(color)
     }
-    
     $.ajax({
         type: "GET",
         //http://senserover-terrestre.rhcloud.com/alertas/rango/56939648e4b0166e3b6a60f6
@@ -18,7 +13,6 @@ function colorearEstado(){
         url: "http://sense-rover-nohtrim.c9users.io/alertas/rango/"+$("#dron_seleccionado").html(),
         dataType: "json",
         success: function(data) {
-            console.log("exito buscar rangos")
             if(datosTemp[datosTemp.length-1]>data[0].temperatura.max||datosTemp[datosTemp.length-1]<data[0].temperatura.min){
                 colorear("#estado_tem","bg-red")
             }else{
@@ -52,7 +46,7 @@ function colorearEstado(){
             if(datosBat[datosBat.length-1]<data[0].bateria.min){
                 colorear("#estado_bat","bg-red")
             }else{
-                if(datosBat[datosBat.length-1]<10){
+                if(datosBat[datosBat.length-1]<15){
                     colorear("#estado_bat","bg-orange")
                 }else{
                     colorear("#estado_bat","bg-green")
