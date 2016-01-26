@@ -14,6 +14,8 @@ var Drones = require('../models/Drones')
 var Productos = require('../models/Productos')
 var AlertasModel = require('../models/Alertas')
 
+//var delicados = require('../delicados.js');
+
 // Archivos de rutas
 var DatosAPI = require('./DatosAPI')
 var DronesAPI = require('./DronesAPI')

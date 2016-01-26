@@ -26,7 +26,7 @@ exports.findDatosById = function(req, res) {
 	// Validacion por servidor
 	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
 	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
-    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+  req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
     
 	var errors = req.validationErrors();
     
@@ -414,7 +414,8 @@ exports.addDato = function(req, res) {
 		if (err) {
 			console.error(err)
 		} else {
-			if (drones != undefined) {
+			console.log(drones)
+			/*if (drones != undefined) {
 				
 				var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, fecha : fecha2})
 	
@@ -432,8 +433,8 @@ exports.addDato = function(req, res) {
 				res.send('Error a la hora de guardar')
 				/*console.log("GET - /datos/put/");
 				console.log('Error. Id_dron no encontrado')
-				res.redirect('/');*/
-			}
+				res.redirect('/');
+			}*/
 		}
 	})
 }
