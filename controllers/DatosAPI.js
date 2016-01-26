@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
 var Dato  = mongoose.model('Dato')
 var Producto  = mongoose.model('Productos')
 var Alertas  = mongoose.model('Alertas')
+var Drones  = mongoose.model('Drones')
 
 // Búsqueda de TODOS los datos
 exports.findDatos = function(req, res) {
@@ -21,6 +22,21 @@ exports.findDatos = function(req, res) {
 exports.findDatosById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+	
 	Dato.find({ id_dron: id_dron }, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -34,6 +50,21 @@ exports.findDatosById = function(req, res) {
 exports.findDatosTempById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+	
 	Dato.find({ id_dron: id_dron }, {temperatura: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -47,6 +78,21 @@ exports.findDatosTempById = function(req, res) {
 exports.findDatosHumById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+	
 	Dato.find({ id_dron: id_dron }, {humedad: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -60,6 +106,21 @@ exports.findDatosHumById = function(req, res) {
 exports.findDatosCo2ById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Dato.find({ id_dron: id_dron }, {co2: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -73,6 +134,21 @@ exports.findDatosCo2ById = function(req, res) {
 exports.findDatosRadById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Dato.find({ id_dron: id_dron }, {radiacion: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -86,6 +162,21 @@ exports.findDatosRadById = function(req, res) {
 exports.findDatosLumById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Dato.find({ id_dron: id_dron }, {luminosidad: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -99,6 +190,21 @@ exports.findDatosLumById = function(req, res) {
 exports.findMinMaxDronId = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Alertas.find({ id_dron: id_dron }, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -112,6 +218,21 @@ exports.findMinMaxDronId = function(req, res) {
 exports.findMinMaxTempDronId = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Alertas.find({ id_dron: id_dron }, {temperatura: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -125,6 +246,21 @@ exports.findMinMaxTempDronId = function(req, res) {
 exports.findMinMaxHumDronId = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+	
 	Alertas.find({ id_dron: id_dron }, {humedad: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -138,6 +274,21 @@ exports.findMinMaxHumDronId = function(req, res) {
 exports.findMinMaxCo2DronId = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Alertas.find({ id_dron: id_dron }, {co2: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -151,6 +302,21 @@ exports.findMinMaxCo2DronId = function(req, res) {
 exports.findMinMaxRadDronId = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Alertas.find({ id_dron: id_dron }, {radiacion: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -164,6 +330,21 @@ exports.findMinMaxRadDronId = function(req, res) {
 exports.findMinMaxLumDronId = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Alertas.find({ id_dron: id_dron }, {luminosidad: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -177,6 +358,21 @@ exports.findMinMaxLumDronId = function(req, res) {
 exports.findMinMaxBatDronId = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_dron = req.params.id_dron
+	
+	// Validacion por servidor
+	req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+    
 	Alertas.find({ id_dron: id_dron }, {bateria: 1}, function(err, drones) {
 	
 		if (err) return console.error(err);
@@ -187,7 +383,7 @@ exports.findMinMaxBatDronId = function(req, res) {
 }
 
 // INSERCIÓN
-/*exports.addDato = function(req, res) {
+exports.addDato = function(req, res) {
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
 	//http://sense-rover-nohtrim.c9users.io/datos/put/5693998f4c3faa7e218027ce/t/66/h/66/co2/66/r/66/l/66
@@ -199,8 +395,7 @@ exports.findMinMaxBatDronId = function(req, res) {
 	var co2 = req.params.co2
 	var radiacion = req.params.radiacion
 	var luminosidad = req.params.luminosidad
-	//bateria
-	//var luminosidad = req.params.luminosidad
+	var bateria = req.params.bateria
 	
 	var fecha = new Date();
 	var fecha = fecha.setHours(fecha.getHours()+1)
@@ -215,19 +410,35 @@ exports.findMinMaxBatDronId = function(req, res) {
 	
 	console.log("prueba put "+id_dron+" temperatura: "+temperatura+" humedad: "+humedad+" co2: "+co2+" radiacion: "+radiacion+" luminosidad: "+luminosidad+" fecha: " + fecha2)
 	
-	var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, fecha : fecha2})
-	
-	console.log("GET - /datos/put/");
-	//guardar dato en la base de datos
-	dato.save(function (err) {
+	Drones.find({_id: id_dron}, function(err, drones) {
 		if (err) {
-		  console.log('save error', err)
-		} else{
-		  //mensaje de ok si se guarda en bd
-		  res.send('Dato guardado correctamente')
+			console.error(err)
+		} else {
+			if (drones != undefined) {
+				
+				var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, fecha : fecha2})
+	
+				console.log("GET - /datos/put/");
+				//guardar dato en la base de datos
+				dato.save(function (err) {
+					if (err) {
+					  console.log('save error', err)
+					} else{
+					  //mensaje de ok si se guarda en bd
+					  res.send('Dato guardado correctamente')
+					}
+				})
+			} else {
+				res.send('Error a la hora de guardar')
+				/*console.log("GET - /datos/put/");
+				console.log('Error. Id_dron no encontrado')
+				res.redirect('/');*/
+			}
 		}
 	})
-}*/
+}
+
+/*
 
 exports.addDato = function(req, res) {
 	//Hacemos un insert en la base de datos de la collección Dato
@@ -270,6 +481,8 @@ exports.addDato = function(req, res) {
 	})
 }
 
+*/
+
 /*exports.addDatoPost = function(req, res) {
 	console.log('POST add Datos')
 	console.log(req.body)
@@ -310,6 +523,21 @@ exports.findProductos = function(req, res) {
 exports.findProductosById = function(req, res) {
 	//Hacemos un find en la base de datos de la collección Dato
 	var id_producto = req.params.id_producto
+	
+	// Validacion por servidor
+	req.checkParams('id_producto', 'La ID dron es requerida.').notEmpty();
+	req.checkParams('id_producto', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_producto', 'La ID dron no cumple con la cantidad de caracteres.').len(24,24);
+    
+	var errors = req.validationErrors();
+    
+    console.log(errors)
+    
+    if (errors) {
+      //req.flash('error', errors);
+      return res.redirect('/');
+    }
+	
 	Producto.find({ _id: id_producto }, function(err, productos) {
 	
 		if (err) return console.error(err);

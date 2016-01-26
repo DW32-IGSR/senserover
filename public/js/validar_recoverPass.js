@@ -41,6 +41,12 @@ $(document).ready(function() {
             }
         })
     })
+    
+    //error abrir sun hacer submit
+    //http://sense-rover-nohtrim.c9users.io/recoverPassword/ii3vdu5qn5bg7q20qaosdn4z3l7f1spp/irecaldema14dw@ikzubirimanteo.com
+    //http://stackoverflow.com/questions/25265667/maximum-call-stack-size-exceeded-when-changing-a-class-bootstrap-jquery
+    //http://stackoverflow.com/questions/6095530/maximum-call-stack-size-exceeded-error
+    //http://formvalidation.io/getting-started/#writing-form
     $('#recover_pass_form').on('submit', function(e) {
         $('#mrecuperacion').modal('show')
         /*setTimeout(function () {
