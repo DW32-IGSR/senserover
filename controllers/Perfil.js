@@ -1,34 +1,34 @@
-var mongoose = require('mongoose')
-var Drones  = mongoose.model('Drones')
-var Usuario  = mongoose.model('Usuario')
-var bcrypt = require('bcrypt')
+var mongoose = require('mongoose');
+var Drones  = mongoose.model('Drones');
+var Usuario  = mongoose.model('Usuario');
+var bcrypt = require('bcrypt');
 
 exports.perfil = function(req, res) {
     //ruta a la pagina de perfil
     
     var sess = req.session;
-    console.log(sess.usuario)
+    console.log(sess.usuario);
     if(sess.usuario==""||sess.usuario==undefined) {
-        res.redirect('/')  
+        res.redirect('/');
     } else { //si no redireccion a pagina de inicio
 
         Usuario.findOne({ _id : sess.id_usuario }, function (err, datos_usuario) {
             if(err) {
-                console.log(err)
+                console.log(err);
             } else {
                 Drones.find({ 'id_usuario': sess.id_usuario }, function (err, drones_encontrados) {
                     if(err) {
-                        console.log(err)
+                        console.log(err);
                     } else {
-                        var array_perfil = { drones_perfil:drones_encontrados, nombre_usuario: sess.usuario }
-                        var array_perfil_datos = { datos_perfil:datos_usuario }
-                        var arrays = {drones_perfil:drones_encontrados, datos_perfil:datos_usuario, nombre_usuario: sess.usuario}
+                        //var array_perfil = { drones_perfil:drones_encontrados, nombre_usuario: sess.usuario };
+                        //var array_perfil_datos = { datos_perfil:datos_usuario };
+                        var arrays = {drones_perfil:drones_encontrados, datos_perfil:datos_usuario, nombre_usuario: sess.usuario};
                         //var arrays = {array_perfil, array_perfil_datos} // No funciona
-                        res.render('perfil', arrays)
+                        res.render('perfil', arrays);
                     }
-                })
+                });
             }
-        })
+        });
     }
 };
 

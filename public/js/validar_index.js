@@ -86,7 +86,7 @@ $(document).ready(function() {
 	                        message: 'La contraseña no puede ser igual al usuario'
 	                    },
                         stringLength: {
-                        	min: 8,
+                        	min: 3,
 	                        max: 20,
 	                        message: 'Mínimo 8 y máximo 20 carácteres'
 	                    }
@@ -102,7 +102,7 @@ $(document).ready(function() {
 		                    message: 'Las contraseñas no coinciden'
 		                },
                         stringLength: {
-                        	min: 8,
+                        	min: 3,
 	                        max: 20,
 	                        message: 'Mínimo 8 y máximo 20 carácteres'
 	                    }
@@ -204,19 +204,19 @@ $(document).ready(function() {
                     }
                 }
             }
-     	})
-	})
+     	});
+	});
     $('#formulario_contacto').on('submit', function(e) {
-        $('#memail').modal('show')
+        $('#memail').modal('show');
         /*setTimeout(function () {
            window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
         }, 1000)*/
-    })
+    });
     $('#forget_pass_form').on('submit', function(e) {
-        $('#modalPassOlvidada').modal('hide')
-        $('#mforget_pass').modal('show')
+        $('#modalPassOlvidada').modal('hide');
+        $('#mforget_pass').modal('show');
         /*setTimeout(function () {
            window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
         }, 1000)*/
-    })   
+    });   
 })

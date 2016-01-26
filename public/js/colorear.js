@@ -1,10 +1,10 @@
 function colorearEstado(){
-    console.log("coloreando :D")
+    console.log("coloreando :D");
     function colorear(id,color){
-        $(id).removeClass("bg-green")
-        $(id).removeClass("bg-red")
-        $(id).removeClass("bg-orange")
-        $(id).addClass(color)
+        $(id).removeClass("bg-green");
+        $(id).removeClass("bg-red");
+        $(id).removeClass("bg-orange");
+        $(id).addClass(color);
     }
     $.ajax({
         type: "GET",
@@ -14,42 +14,42 @@ function colorearEstado(){
         dataType: "json",
         success: function(data) {
             if(datosTemp[datosTemp.length-1]>data[0].temperatura.max||datosTemp[datosTemp.length-1]<data[0].temperatura.min){
-                colorear("#estado_tem","bg-red")
+                colorear("#estado_tem","bg-red");
             }else{
-                colorear("#estado_tem","bg-green")
+                colorear("#estado_tem","bg-green");
             }
             
             if(datosHum[datosHum.length-1]>data[0].humedad.max||datosHum[datosHum.length-1]<data[0].humedad.min){
-                colorear("#estado_hum","bg-red")
+                colorear("#estado_hum","bg-red");
             }else{
-                colorear("#estado_hum","bg-green")
+                colorear("#estado_hum","bg-green");
             }
             
             if(datosCO2[datosCO2.length-1]>data[0].co2.max||datosCO2[datosCO2.length-1]<data[0].co2.min){
-                colorear("#estado_co2","bg-red")
+                colorear("#estado_co2","bg-red");
             }else{
-                colorear("#estado_co2","bg-green")
+                colorear("#estado_co2","bg-green");
             }
             
             if(datosRad[datosRad.length-1]>data[0].radiacion.max||datosRad[datosRad.length-1]<data[0].radiacion.min ){
-                colorear("#estado_rad","bg-red")
+                colorear("#estado_rad","bg-red");
             }else{
-                colorear("#estado_rad","bg-green")
+                colorear("#estado_rad","bg-green");
             }
             
             if(datosLum[datosLum.length-1]>data[0].luminosidad.max||datosLum[datosLum.length-1] < data[0].luminosidad.min){
-                colorear("#estado_lum","bg-red")
+                colorear("#estado_lum","bg-red");
             }else{
-                colorear("#estado_lum","bg-green")
+                colorear("#estado_lum","bg-green");
             }
             
             if(datosBat[datosBat.length-1]<data[0].bateria.min){
-                colorear("#estado_bat","bg-red")
+                colorear("#estado_bat","bg-red");
             }else{
                 if(datosBat[datosBat.length-1]<15){
-                    colorear("#estado_bat","bg-orange")
+                    colorear("#estado_bat","bg-orange");
                 }else{
-                    colorear("#estado_bat","bg-green")
+                    colorear("#estado_bat","bg-green");
                 }
             }
         },
@@ -57,5 +57,5 @@ function colorearEstado(){
             //alert("Status: " + textStatus); alert("Error: " + errorThrown);
             console.log(XMLHttpRequest.responseText);
         }
-    })
+    });
 }

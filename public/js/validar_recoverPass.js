@@ -39,8 +39,8 @@ $(document).ready(function() {
                     }
             	}
             }
-        })
-    })
+        });
+    });
     
     //error abrir sun hacer submit
     //http://sense-rover-nohtrim.c9users.io/recoverPassword/ii3vdu5qn5bg7q20qaosdn4z3l7f1spp/irecaldema14dw@ikzubirimanteo.com
@@ -48,9 +48,9 @@ $(document).ready(function() {
     //http://stackoverflow.com/questions/6095530/maximum-call-stack-size-exceeded-error
     //http://formvalidation.io/getting-started/#writing-form
     $('#recover_pass_form').on('submit', function(e) {
-        $('#mrecuperacion').modal('show')
+        $('#mrecuperacion').modal('show');
         /*setTimeout(function () {
            window.location.href = "/"; //will redirect to your blog page (an ex: blog.html)
         }, 3000)*/
-    })  
+    });  
 })

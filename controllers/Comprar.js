@@ -1,32 +1,33 @@
-var mongoose = require('mongoose')
-var Usuario  = mongoose.model('Usuario')
-var Productos  = mongoose.model('Productos')
-var Drones  = mongoose.model('Drones')
+var mongoose = require('mongoose');
+var Usuario  = mongoose.model('Usuario');
+var Productos  = mongoose.model('Productos');
+var Drones  = mongoose.model('Drones');
 
 exports.comprar = function(req, res) {
     //post del formulario de compra
     //insert en la bd el usuario y el dron que compro
     
-    var sess = req.session
-    console.log('entro')
+    var sess = req.session;
+    console.log('entro');
     
     if (sess.usuario==""||sess.usuario==undefined) {
         //algun mensaje de usuario no conectado
         //res.redirect('/')
-        console.log("No estas logeado")
+        console.log("No estas logeado");
     } else { 
-        console.log("comprar")
+        console.log("comprar");
         
         //variables de formulario
         //los importantes usuario, direccion y producto
-        var form_nombre = req.body.nombre_compra
-        var form_apellidos = req.body.apellidos_compra
-        var form_dni = req.body.dni_compra
-        var form_direccion = req.body.direccion_compra
-        var form_cp = req.body.cp_compra
-        var form_email = req.body.email_compra
-        var form_nombre_producto = req.body.producto_compra
-        var form_id_producto = req.body.id_producto_compra
+        var form_nombre = req.body.nombre_compra;
+        var form_apellidos = req.body.apellidos_compra;
+        var form_dni = req.body.dni_compra;
+        var form_direccion = req.body.direccion_compra;
+        var form_cp = req.body.cp_compra;
+        //posible error revisar
+        var form_email = req.body.email_compra;
+        var form_nombre_producto = req.body.producto_compra;
+        var form_id_producto = req.body.id_producto_compra;
         //pendiente tipo de subscripcion
         //var form_sub = req.body.subscripcion  
         
