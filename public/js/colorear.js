@@ -8,9 +8,9 @@ function colorearEstado(){
     }
     $.ajax({
         type: "GET",
-        //http://senserover-terrestre.rhcloud.com/alertas/rango/56939648e4b0166e3b6a60f6
-        //http://sense-rover-nohtrim.c9users.io/alertas/rango/56939648e4b0166e3b6a60f6
-        url: "https://sense-rover-nohtrim.c9users.io/alertas/rango/"+$("#dron_seleccionado").html(),
+        //https://senserover-terrestre.rhcloud.com/alertas/rango/56939648e4b0166e3b6a60f6
+        //https://sense-rover-nohtrim.c9users.io/alertas/rango/56939648e4b0166e3b6a60f6
+        url: "http://sense-rover-nohtrim.c9users.io/alertas/rango/"+$("#dron_seleccionado").html(),
         dataType: "json",
         success: function(data) {
             if(datosTemp[datosTemp.length-1]>data[0].temperatura.max||datosTemp[datosTemp.length-1]<data[0].temperatura.min){

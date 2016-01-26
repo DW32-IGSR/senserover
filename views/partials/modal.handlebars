@@ -27,9 +27,6 @@
               </form>
               <a href="#" id="forget_pass">¿Has olvidado la contraseña?</a>
               <div>
-                {{#if error}}
-                  <div class="alert alert-danger">{{error}}</div>
-                {{/if}}
               </div>
             </div> <!-- Formulario inicio sesión -->
           </div> <!-- iniciar-sesion-wrapper -->
@@ -65,10 +62,10 @@
       </div> <!-- w-tab-content-->
     </div>
   </div> <!-- iniciar-sesion-wrapper -->
-</div> <!-- Modal Inicio sesión-->
+</div> <!-- Modal Inicio sesión 123-->
 
-<div class="modal-wrapper-forget-pass">
-  <div class="forget_pass_wrapper"><a href="#" data-ix="cerrar-forget-pass" class="w-editable cerrar-link">x</a>
+<div id="modalPassOlvidada" class="modal-wrapper-forget-pass">
+  <div id="segundo_intento" class="forget_pass_wrapper"><a href="#" data-ix="cerrar-forget-pass" class="w-editable cerrar-link">x</a>
     <h3>Recupera tu cuenta</h3>
     <p> Para restablecer la contraseña, introduce la dirección de correo electrónico que utilizas para iniciar sesión. </p>
     <div class="w-form">
@@ -82,13 +79,30 @@
           </div>
         </div>
       </form>
-      <div class="w-form-done">
+      <!--<div class="w-form-done">
         <p>Thank you! Your submission has been received!</p>
       </div>
       <div class="w-form-fail">
         <p>Oops! Something went wrong while submitting the form</p>
-      </div>
+      </div>-->
     </div> <!-- Formulario inicio sesión -->
   </div> <!-- iniciar-sesion-wrapper -->
 </div> <!-- Modal Inicio sesión-->
+
+<!-- modal on succes -->
+<div class="modal fade" id="mforget_pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+      <div class="modal-body">
+        <div class="alert alert-success">
+            Mensaje de recuperacion enviado.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /modal on succes -->  
 

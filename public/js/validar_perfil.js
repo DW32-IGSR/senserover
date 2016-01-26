@@ -117,7 +117,7 @@ $(document).ready(function() {
                 pass_nueva: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce tu contraseña actual'
+                            message: 'Introduce tu nueva contraseña'
                         },
 	                    different: {
 	                        field: 'pass_actual',
@@ -133,7 +133,7 @@ $(document).ready(function() {
             	pass_nueva_conf: {
             		validators: {
             		    notEmpty: {
-                            message: 'Introduce tu contraseña actual'
+                            message: 'Introduce tu nuea contraseña'
                         },
                         identical: {
 		                    field: 'pass_nueva',

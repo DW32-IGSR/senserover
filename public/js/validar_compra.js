@@ -41,9 +41,9 @@ $(document).ready(function() {
                             message: 'Introduce tu DNI'
                         },
                         id: {
-                        country: 'ES',
-                        message: 'El DNI introducido no es válido en %s'
-                    }
+                            country: 'ES',
+                            message: 'El DNI introducido no es válido en %s'
+                        }
                     }
                 },
                 direccion_compra: {
@@ -100,14 +100,13 @@ $(document).ready(function() {
 	                    }
                     }
                 }
-            },
-            //en pruebas
-            submitHandler: function(validator, form, submitButton) {
-                //alert("Your alert come here");
-                $('#ModalLogeado').modal('show');
-                validator.defaultSubmit();
             }
-            //en pruebas
         })
     })
+    $('#formulario_compra').on('submit', function(e) {
+        $('#mcompra').modal('show')
+        setTimeout(function () {
+           window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
+        }, 1000)
+    })    
 })

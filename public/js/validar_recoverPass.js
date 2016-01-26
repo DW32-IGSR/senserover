@@ -39,6 +39,12 @@ $(document).ready(function() {
                     }
             	}
             }
-        });
-    });
-});
+        })
+    })
+    $('#recover_pass_form').on('submit', function(e) {
+        $('#mrecuperacion').modal('show')
+        /*setTimeout(function () {
+           window.location.href = "/"; //will redirect to your blog page (an ex: blog.html)
+        }, 3000)*/
+    })  
+})

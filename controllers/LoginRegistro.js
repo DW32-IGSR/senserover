@@ -14,16 +14,17 @@ exports.login = function(req, res) {
     console.log("Usuario login: " + form_usuario)
     console.log("Pass login: " + form_pass)
     
+    // Validacion servidor
     req.assert('usuario', 'Usuario es requerido.').notEmpty();
     req.assert('contrasenya', 'La contraseña es requerida.').notEmpty();
-    req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(2,20) //Hay que cambiar el valor 2 por 3
+    req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(3,20) //Hay que cambiar el valor 2 por 3
     
     var errors = req.validationErrors();
     
     console.log(errors)
     
     if (errors) {
-      req.flash('error', errors);
+      //req.flash('error', errors);
       return res.redirect('/');
     }
     
@@ -81,7 +82,7 @@ exports.login = function(req, res) {
                     //res.render(compra, array_compra)
                     
                     //console.log('pre redirect')
-                    res.redirect('/administracion')
+                    res.redirect('/')
                   }
                   
                 } else {
@@ -129,20 +130,21 @@ exports.registro = function(req, res) {
   //console.log("Pass 1: " + form_pass)
   //console.log("Pass 2: " + form_pass2)
   
+    // Validacion servidor
     req.assert('usuario', 'Usuario es requerido.').notEmpty();
-    req.assert('email', 'La contraseña es requerida.').notEmpty();
-    req.assert('email', 'La contraseña es requerida.').isEmail();
+    req.assert('email', 'El campo email es requerido.').notEmpty();
+    req.assert('email', 'Email no valido.').isEmail();
     req.assert('contrasenya', 'La contraseña es requerida.').notEmpty();
-    req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(3,20) //Hay que cambiar el valor 2 por 3
+    req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(3,20); //Hay que cambiar el valor 2 por 3
     req.assert('contrasenya2', 'La contraseña es requerida.').notEmpty();
-    req.assert('contrasenya2', 'Usa al menos 8 caracteres.').len(3,20) //Hay que cambiar el valor 2 por 3
+    req.assert('contrasenya2', 'Usa al menos 8 caracteres.').len(3,20); //Hay que cambiar el valor 2 por 3
     
     var errors = req.validationErrors();
     
     console.log(errors)
     
     if (errors) {
-      req.flash('error', {sessionFlash: errors.mgs});
+      //req.flash('error', errors);
       return res.redirect('/');
     }
   

@@ -15,7 +15,7 @@ $(document).ready(function() {
         //alert("hola")
         //console.log("prueba jueves "+this.value)
         //var url_dron="http://senserover-terrestre.rhcloud.com/datos/"+this.value
-        var url_dron="https://sense-rover-nohtrim.c9users.io/datos/"+this.value
+        var url_dron="http://sense-rover-nohtrim.c9users.io/datos/"+this.value
         //id dron pruebas 56939648e4b0166e3b6a60f6
         //https://senserover-terrestre.rhcloud.com/datos/56939648e4b0166e3b6a60f6
         //console.log($("#temp-ultimo").html())
@@ -74,6 +74,7 @@ $(document).ready(function() {
                 $("#bat-ultimo").html(datosBat[datosBat.length-1]+"%")
                 dibujargrafica2()
                 colorearEstado()
+                describir()
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 //alert("Status: " + textStatus); alert("Error: " + errorThrown);

@@ -27,9 +27,10 @@ var Tienda = require('./Tienda')
 var Comprar = require('./Comprar')
 var Email = require('./Email')
 var Alertas = require('./Alertas')
+var Pronosticos = require('./Pronosticos')
 
-router.use('/comments', require('./comments'))
-router.use('/users', require('./users'))
+//router.use('/comments', require('./comments'))
+//router.use('/users', require('./users'))
 router.use(flash())
 
 //parametros para la sesion
@@ -144,6 +145,10 @@ router.route('/drones/usuario/:id_usuario')
 router.route('/datos/:id_dron')
   .get(DatosAPI.findDatosById)
 
+// Búsqueda de datos por ID_DRON
+router.route('/drones/producto/:id_dron')
+  .get(DronesAPI.datosProductoPorIdDron)  
+
 // --- Por un dato concreto ---
 // Búsqueda de datos de temperatura por ID_DRON
 router.route('/datos/:id_dron/temperatura')
@@ -198,6 +203,9 @@ router.route('/alertas/rango/bat/:id_dron')
 router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria')
   .get(DatosAPI.addDato)
   
+router.route('/pronostico')
+  .get(Pronosticos.get)  
+
 router.use("*", function(req,res){
   res.redirect('/')
 })

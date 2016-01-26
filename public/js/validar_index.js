@@ -68,6 +68,11 @@ $(document).ready(function() {
 	                    },
 	                    emailAddress: {
 	                        message: 'Email no válido'
+	                    },
+                        stringLength: {
+                        	min: 3,
+	                        max: 60,
+	                        message: 'Mínimo 3 y máximo 60 carácteres'
 	                    }
                 	}
             	},
@@ -124,6 +129,11 @@ $(document).ready(function() {
 	                    },
 	                    emailAddress: {
 	                        message: 'Email no válido'
+	                    },
+                        stringLength: {
+                        	min: 3,
+	                        max: 60,
+	                        message: 'Mínimo 3 y máximo 60 carácteres'
 	                    }
                 	}
             	}
@@ -147,13 +157,23 @@ $(document).ready(function() {
                         notEmpty: {
                             message: 'Introduce tu nombre'
                         }
+                    },
+                    stringLength: {
+                    	min: 3,
+                        max: 30,
+                        message: 'El mínimo permitido es de 3 caracteres y máximo de 30'
                     }
                 },
                 asunto_contacto: {
                     validators: {
                         notEmpty: {
-                            message: 'Introduce el asunto del correo'
+                            message: 'Introduce el asunto del formulario'
                         }
+                    },
+                    stringLength: {
+                    	min: 3,
+                        max: 50,
+                        message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
                     }
                 },
                 email_contacto: {
@@ -163,6 +183,11 @@ $(document).ready(function() {
 	                    },
 	                    emailAddress: {
 	                        message: 'Email no válido'
+	                    },
+                        stringLength: {
+                        	min: 3,
+	                        max: 60,
+	                        message: 'Mínimo 3 y máximo 60 carácteres'
 	                    }
                     }
                 },
@@ -171,9 +196,27 @@ $(document).ready(function() {
                         notEmpty: {
                             message: 'Introduce el mensaje'
                         }
+                    },
+                    stringLength: {
+                    	min: 5,
+                        max: 400,
+                        message: 'El mínimo permitido es de 10 caracteres y máximo de 400'
                     }
                 }
             }
-     	});
-	});
-});
+     	})
+	})
+    $('#formulario_contacto').on('submit', function(e) {
+        $('#memail').modal('show')
+        /*setTimeout(function () {
+           window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
+        }, 1000)*/
+    })
+    $('#forget_pass_form').on('submit', function(e) {
+        $('#modalPassOlvidada').modal('hide')
+        $('#mforget_pass').modal('show')
+        /*setTimeout(function () {
+           window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
+        }, 1000)*/
+    })   
+})

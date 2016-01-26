@@ -9,5 +9,5 @@ exports.addProducto = function(req, res) {
         if (err) {
             console.log('save error', err)
         }
-    });
-};
+    })
+}

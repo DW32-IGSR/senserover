@@ -30,6 +30,33 @@ exports.comprar = function(req, res) {
         //pendiente tipo de subscripcion
         //var form_sub = req.body.subscripcion  
         
+        // Validacion servidor
+        req.assert('nombre_compra', 'El nombre es requerido.').notEmpty();
+        req.assert('nombre_compra', 'Nombre usa al menos 3 a 20 caracteres.').len(3,20);
+        req.assert('apellidos_compra', 'Los apellidos son requeridos.').notEmpty();
+        req.assert('apellidos_compra', 'Apellidos usa al menos 3 a 20 caracteres.').len(3,20);
+        req.assert('dni_compra', 'El DNI es requerido.').notEmpty();
+        req.assert('dni_compra', 'El DNI usa al menos 9 caracteres.').len(9,9);
+        req.assert('direccion_compra', 'La direccion es requerido.').notEmpty();
+        req.assert('direccion_compra', 'La direccion usa al menos 3 a 50 caracteres.').len(3,50);
+        req.assert('cp_compra', 'El CP es requerido.').notEmpty();
+        req.assert('cp_compra', 'El CP usa al menos 5 caracteres.').len(5,5);
+        req.assert('cp_compra', 'El CP tiene que ser numerico.').isInt();
+        req.assert('email_compra', 'El email es requerido.').notEmpty();
+        req.assert('email_compra', 'Email no valido.').isEmail();
+        req.assert('producto_compra', 'El producto es requeridos.').notEmpty();
+        req.assert('producto_compra', 'El producto usa al menos 3 a 20 caracteres.').len(3,20);
+        req.assert('id_producto_compra', 'Tiene que ser un ID de mongodb valido.').isMongoId();
+        
+        var errors = req.validationErrors();
+        
+        console.log(errors)
+        
+        if (errors) {
+          //req.flash('error', errors);
+          return res.redirect('/');
+        }
+            
         // prueba ruben
         console.log('Nombre: ' + form_nombre)
         console.log('nombre pre compra: ' + form_nombre_producto)
@@ -70,11 +97,7 @@ exports.comprar = function(req, res) {
                                               console.log('save error', err)
                                             }else {
                                                 console.log('Compra realizada')
-                                                //errores o este o el siguiente
-                                                //req.flash('success', ' Compra realizada con éxito.');
-                                                //errores
-                                                //res.render('comprar', { expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
-                                                res.redirect('/perfil')
+                                                //res.redirect('/perfil')
                                             }
                                         })
                                     }
