@@ -81,7 +81,6 @@ exports.contacto = function(req, res) {
       return res.redirect('/');
     }
     
-    
     var nombre_remitente = form_nombre;
     var email_remitente = form_email;
     var nombre_destinatario = 'Sense-Rover';

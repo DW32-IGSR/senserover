@@ -149,4 +149,17 @@ $(document).ready(function() {
             }
         });
     });
+    
+    $('#form_datos_personales').on('submit', function(e) {
+        $('#mperfil').modal('show');
+        setTimeout(function () {
+           $('#mperfil').modal('hide');
+        }, 3000);
+    }); 
+    $('#form_change_pass').on('submit', function(e) {
+        $('#mperfil2').modal('show');
+        setTimeout(function () {
+           $('#mperfil2').modal('hide');
+        }, 3000);
+    });     
 });

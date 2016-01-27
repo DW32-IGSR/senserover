@@ -111,3 +111,7 @@ exports.prueba = function(req, res) {
     }
   });
 };
+
+
+exports.enviar_alertas = function(req, res) {
+};

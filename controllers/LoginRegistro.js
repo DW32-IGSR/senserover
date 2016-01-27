@@ -57,38 +57,17 @@ exports.login = function(req, res) {
                 	//fecha=new Date(fecha)
                 	
                 	console.log('ultima conexion: ' + usuario.ultima_conexion);
-                  //console.log('prueba pagina:'+req.body.pagina)
-                  if(req.body.pagina=="compra"){
+                	
+                  if(usuario.ultima_conexion == undefined){
                     Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { ultima_conexion: fecha }, function(err, user) {
                       if (err) throw err;
-                      res.redirect('tienda/'+sess.id_producto);
+                      res.redirect('/perfil');
                     });
-                  }else if(usuario.ultima_conexion == undefined){
-                    
-                	  //sin comporvar
-                	  //console.log("actualizacion1")
-                    Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { ultima_conexion: fecha }, function(err, user) {
-                      if (err) throw err;
-                    });
-                    
-                    res.redirect('/perfil');
-                    
                   } else {
-                    
-                    //console.log("actualizacion2")
                     Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { ultima_conexion: fecha }, function(err, user) {
-                      if (err) throw err;
+                      if(err){throw err;}
+                      res.redirect(req.get('referer'));
                     });
-                  
-                    //redirect no render desde compra o render desde index
-                    //if pagina_form=index
-                    //var array_index={usuario:sess.id_usuario}
-                    //res.render('index', array_index)
-                    //else if pagina_form=compra
-                    //res.render(compra, array_compra)
-                    
-                    //console.log('pre redirect')
-                    res.redirect('/');
                   }
                   
                 } else {
@@ -105,6 +84,8 @@ exports.login = function(req, res) {
                 //flash de errores
                 req.flash('error', ' El nombre de usuario o la contraseña son incorrectos.');
                 //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+                
+
                 res.redirect('/');
               }                     
             });
@@ -202,10 +183,10 @@ exports.registro = function(req, res) {
         //console.log('el usuario ya existe')
         console.log('el usuario ya existe');
         req.flash('error', ' El usuario ya existe.');
-        res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+        res.redirect('/');
       }
     }  
   });
   //res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),});
-  res.render("index.handlebars", {layout: 'main.handlebars', action: 'Register', error: req.flash('error')});
+  res.redirect('/');
 };

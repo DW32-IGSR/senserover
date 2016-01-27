@@ -27,7 +27,7 @@ var alertasModel = function () {
              max: String
         },
         bateria: {
-             min: String
+             min: Number
         },
         recibir_alertas: Boolean
     },{collection : 'alertas'});  

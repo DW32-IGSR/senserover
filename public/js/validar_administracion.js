@@ -157,4 +157,12 @@ $(document).ready(function() {
             }
         });
     });
+    
+    //en proceso
+    $('#form_alertas').on('submit', function(e) {
+        $('#malertas').modal('show');
+        setTimeout(function () {
+           $('#malertas').modal('hide');
+        }, 3000);
+    }); 
 });

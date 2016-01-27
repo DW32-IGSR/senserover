@@ -254,7 +254,6 @@ exports.addDato = function(req, res) {
 	var co2 = req.params.co2;
 	var radiacion = req.params.radiacion;
 	var luminosidad = req.params.luminosidad;
-	//ERROR REVISAME PORFA QUE ME MUERO ;D
 	var bateria = req.params.bateria;
 	
 	var fecha = new Date();
@@ -275,26 +274,93 @@ exports.addDato = function(req, res) {
 			console.error(err);
 		} else {
 			console.log(drones);
-			/*if (drones != undefined) {
+			if (drones != undefined || drones != null) {
 				
-				var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, fecha : fecha2})
+				var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, fecha : fecha2});
 	
 				console.log("GET - /datos/put/");
 				//guardar dato en la base de datos
 				dato.save(function (err) {
 					if (err) {
-					  console.log('save error', err)
+						console.log('save error', err);
 					} else{
-					  //mensaje de ok si se guarda en bd
-					  res.send('Dato guardado correctamente')
+						//mensaje de ok si se guarda en bd
+						res.send('Dato guardado correctamente');
+					  
+						// ALERTAS
+					  
+						// Variables para mensajes de alertas
+						var msg_temp;
+						var msg_hum;
+						var msg_co2;
+						var msg_rad;
+						var msg_lum;
+						var msg_bat;
+						var msg_total;
+						var nombre_dron;
+						var alerta;
+						
+						Alertas.find({ id_dron: id_dron }, function (err, alertas) {
+							if (err) return console.error(err);
+							//console.log(alertas[0].temperatura.max)
+							if (alertas[0].recibir_alertas) {
+								if (temperatura < alertas[0].temperatura.min || temperatura > alertas[0].temperatura.max) {
+									alerta = true;
+									msg_temp = 'La temperatura del dron ' + nombre_dron + ' no está en el rango indicado';
+									msg_temp += 'La temperatura actual es de ' + temperatura + ' y el rango es de ' + alertas[0].temperatura.min + ' a ' + alertas[0].temperatura.max;
+									//console.log(msg_temp);	
+								}
+								if (humedad < alertas[0].humedad.min || temperatura > alertas[0].humedad.max) {
+									alerta = true;
+									msg_hum = 'La humedad del dron ' + nombre_dron + ' no está en el rango indicado';
+									msg_hum += 'La humedad actual es de ' + humedad + ' y el rango es de ' + alertas[0].humedad.min + ' a ' + alertas[0].humedad.max;
+									//console.log(msg_hum);	
+								}
+								if (co2 < alertas[0].co2.min || co2 > alertas[0].co2.max) {
+									alerta = true;
+									msg_co2 = 'El co2 del dron ' + nombre_dron + ' no está en el rango indicado';
+									msg_co2 += 'El co2 actual es de ' + co2 + ' y el rango es de ' + alertas[0].co2.min + ' a ' + alertas[0].co2.max;
+									//console.log(msg_co2);	
+								}
+								if (radiacion < alertas[0].radiacion.min || radiacion > alertas[0].radiacion.max) {
+									alerta = true;
+									msg_rad = 'La radiacion del dron ' + nombre_dron + ' no está en el rango indicado';
+									msg_rad += 'La radiacion actual es de ' + radiacion + ' y el rango es de ' + alertas[0].radiacion.min + ' a ' + alertas[0].radiacion.max;
+									//console.log(msg_rad);	
+								}
+								if (luminosidad < alertas[0].luminosidad.min || luminosidad > alertas[0].luminosidad.max) {
+									alerta = true;
+									msg_lum = 'La luminosidad del dron ' + nombre_dron + ' no está en el rango indicado';
+									msg_lum += 'La luminosidad actual es de ' + luminosidad + ' y el rango es de ' + alertas[0].luminosidad.min + ' a ' + alertas[0].luminosidad.max;
+									//console.log(msg_lum);	
+								}
+								if (bateria < alertas[0].bateria.min) {
+									alerta = true;
+									msg_bat = 'La bateria del dron ' + nombre_dron + ' no está en el rango indicado';
+									msg_bat += 'La bateria actual es de ' + bateria + ' y el rango es de ' + alertas[0].bateria.min;
+									//console.log(msg_bat);	
+								}
+							}
+							
+							if (alerta) {
+								//busqueda de correo y envio
+								//msgalerta=msg_temp+msg_hum
+								msg_total = msg_temp + msg_hum + msg_co2 + msg_rad + msg_lum + msg_bat;
+								console.log(msg_total);
+							}
+							
+							
+							
+						})
 					}
 				})
 			} else {
-				res.send('Error a la hora de guardar')
+				// No muestra mensaje ni va a /
+				//res.send('Error a la hora de guardar')
 				/*console.log("GET - /datos/put/");
-				console.log('Error. Id_dron no encontrado')
-				res.redirect('/');
-			}*/
+				console.log('Error. Id_dron no encontrado');
+				res.redirect('/');*/
+			}
 		}
 	});
 };

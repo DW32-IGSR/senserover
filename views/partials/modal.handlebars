@@ -1,68 +1,88 @@
-<div class="modal-wrapper">
-  <div class="iniciar-sesion-wrapper"><a href="#" data-ix="cerrar-login" class="w-editable cerrar-link">x</a>
-    <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper-modal">
-      <div class="w-tab-menu tab-menu-modal">
-        <a data-w-tab="Tab Login" class="w-tab-link w--current w-inline-block button tab">
-          <div>Login</div>
-        </a>
-        <a data-w-tab="Tab Registro" class="w-tab-link w-inline-block button tab">
-          <div>Registro</div>
-        </a>
+<!-- Boostrap Modal LOGIN/REGISTRO -->
+<div id="ModalLoginRegistro" class="modal fade bs-example-modal-sm" class="modal-wrapper" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
       </div>
-      <div class="w-tab-content">
-        <div data-w-tab="Tab Login" class="w-tab-pane w--tab-active">
-          <div>
-            <h3>INICIAR SESIóN</h3>
-            <div class="w-form">
-              <form id="inicio-session" name="inicio-session" data-name="inicio-session" action="/login" method="post">
-                <div class="form-group">
-                    <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+      <div class="modal-body">
+        <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper-modal"> 
+          <div class="w-tab-menu tab-menu-modal">
+            <a data-w-tab="Tab Login" class="w-tab-link w--current w-inline-block button tab">
+              <div><img src="/icons/login.png" height="24" width="24"></div>
+            </a>
+            <a data-w-tab="Tab Registro" class="w-tab-link w-inline-block button tab">
+              <div><img src="/icons/registro.png" height="24" width="24"></div>
+            </a>
+          </div>
+          <div class="w-tab-content">
+            <div data-w-tab="Tab Login" class="w-tab-pane w--tab-active">
+              <div class="w-row">
+                <div class="w-col w-col-12">
+                  <div>
+                    <h3>INICIAR SESIóN</h3>
+                    <div class="w-form">
+                      <form id="inicio-session" name="inicio-session" data-name="inicio-session" action="/login" method="post">
+                        <div class="form-group">
+                            <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+                        </div>
+                        <div class="form-group">
+                            <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="btn_login">
+                        </div>
+                      </form>
+                      <a href="#" id="forget_pass">¿Has olvidado la contraseña?</a>
+                      <div>
+                      </div>
+                    </div> <!-- Formulario inicio sesión -->
+                  </div> <!-- iniciar-sesion-wrapper -->
                 </div>
-                <div class="form-group">
-                    <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+              </div> <!-- Tab Login -->
+            </div>
+            <div data-w-tab="Tab Registro" class="w-tab-pane">
+              <div class="w-row">
+                <div class="w-col w-col-12">
+                  <div id="registro">
+                    <h3>REGISTRO</h3>
+                    <div class="w-form">
+                      <form id="email-form-2-registro" name="email-form-2-registro" data-name="Email Form 2" action="/register" method="post">
+                        <div class="form-group">
+                          <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+                        </div>
+                        <div class="form-group">
+                          <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-email">
+                        </div>
+                        <div class="form-group">
+                          <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                        </div>
+                        <div class="form-group">
+                          <input id="contrasenya2" type="password" placeholder="Repetir Contraseña" name="contrasenya2" data-name="Contraseña2" required="required" class="w-input pass-text">
+                        </div>
+                        <div class="w-row">
+                          <div class="form-group">
+                            <input type="submit" value="Registrar" data-wait="Please wait..." class="w-button login-submit" id="btn_registro">
+                          </div>
+                        </div>
+                      </form>
+                      <div>
+                      </div>
+                    </div> <!-- Formulario registro -->
+                  </div> <!-- registro-wrapper -->
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="btn_login">
-                </div>
-              </form>
-              <a href="#" id="forget_pass">¿Has olvidado la contraseña?</a>
-              <div>
               </div>
-            </div> <!-- Formulario inicio sesión -->
-          </div> <!-- iniciar-sesion-wrapper -->
-        </div> <!-- Tab Login -->
-        <div data-w-tab="Tab Registro" class="w-tab-pane">
-          <div id="registro">
-            <h3>REGISTRO</h3>
-            <div class="w-form">
-              <form id="email-form-2-registro" name="email-form-2-registro" data-name="Email Form 2" action="/register" method="post">
-                <div class="form-group">
-                  <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
-                </div>
-                <div class="form-group">
-                  <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-email">
-                </div>
-                <div class="form-group">
-                  <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
-                </div>
-                <div class="form-group">
-                  <input id="contrasenya2" type="password" placeholder="Repetir Contraseña" name="contrasenya2" data-name="Contraseña2" required="required" class="w-input pass-text">
-                </div>
-                <div class="w-row">
-                  <div class="form-group">
-                    <input type="submit" value="Registrar" data-wait="Please wait..." class="w-button login-submit" id="btn_registro">
-                  </div>
-                </div>
-              </form>
-              <div>
-              </div>
-            </div> <!-- Formulario registro -->
-          </div> <!-- registro-wrapper -->
-        </div> <!-- Tab Registro -->
-      </div> <!-- w-tab-content-->
-    </div>
-  </div> <!-- iniciar-sesion-wrapper -->
-</div> <!-- Modal Inicio sesión 123-->
+            </div> <!-- Tab Registro -->
+              
+          </div> <!-- w-tab-content-->
+        </div>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <div id="modalPassOlvidada" class="modal-wrapper-forget-pass">
   <div id="segundo_intento" class="forget_pass_wrapper"><a href="#" data-ix="cerrar-forget-pass" class="w-editable cerrar-link">x</a>
@@ -105,4 +125,36 @@
   </div>
 </div>
 <!-- /modal on succes -->  
+<!-- modal on succes -->
+<div class="modal fade" id="miniciosesion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+      <div class="modal-body">
+        <div class="alert alert-success">
+            Bienvenido a sense-rover.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /modal on succes --> 
+<!-- modal on succes -->
+<div class="modal fade" id="mregistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+      <div class="modal-body">
+        <div class="alert alert-success">
+            Usuario registrado, activelo desde el correo electronico.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /modal on succes --> 
 

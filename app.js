@@ -9,7 +9,9 @@ var exphbs  = require('express-handlebars');
 var expressValidator = require('express-validator');
 var dotenv = require('dotenv');
 
-dotenv.load({path: './.env'});
+if(process.env.MONGODB==null){
+  dotenv.load({path: './.env'});
+}
 
 //configuracion handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

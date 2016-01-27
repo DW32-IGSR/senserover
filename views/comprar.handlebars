@@ -5,10 +5,10 @@
 <!--<head>-->
   <title>Comprar</title>
   <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
-<!--</head>
-<body class="body">-->
+<!-- </head>
+<body class="body"> -->
 
-  {{>modal2}}
+  {{>modal}}
 
   <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
     <div class="w-container">
@@ -33,7 +33,7 @@
         <a href="/cerrar"><button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button></a>
         <p class="btn btn-box-tool usuario">Bienvenido <strong><a href="/perfil" id=nombre_usuario >{{nombre_usuario}}</a></strong></p>
       {{else}}
-        <a class="btn btn-primary boton-registro" data-ix="login" role="button">Entrar</a>
+        <a class="btn btn-primary boton-registro" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">Entrar</a>
       {{/if}}
     </div> <!-- navbar: w-container -->
   </div><!-- navbar: w-nav navigation-bar -->
