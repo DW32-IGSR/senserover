@@ -113,10 +113,11 @@ exports.prueba = function(req, res) {
 };
 
 
-exports.enviar_alertas = function(req, res, nombre_ron, tabla, campo_tabla, dato) {
-  var alerta;
+exports.mensaje_alerta = function(dato, valor_actual, valor_minimo, valor_maximo) {
+  
   var mensaje;
-  alerta = true;
-	mensaje = 'La temperatura del dron ' + nombre_ron + ' no está en el rango indicado';
-	mensaje += 'La temperatura actual es de ' + dato + ' y el rango es de ' + tabla[0].campo_tabla.min + ' a ' + tabla[0].campo_tabla.max;
+	mensaje = '<br>La ' + dato + ' está fuera del rango indicado';
+	mensaje += '<br>La ' + dato + ' actual es de <span style="color:red">' + valor_actual + '</span> y el rango es de ' + valor_minimo + ' a ' + valor_maximo;
+	
+	return mensaje;
 };

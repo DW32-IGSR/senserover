@@ -69,7 +69,7 @@ exports.datosProductoPorIdDron = function(req, res) {
 
 // Búsqueda de dron por ID_USUARIO
 exports.findDronesUsuarioById = function(req, res) {
-  //http://sense-rover-nohtrim.c9users.io/drones/usuario/:id_usuario
+  //http://sense-rover-nohtrim.c9users.io/drones/usuario/568e13ff15c98a4154e4a8a4
 	//Hacemos un find en la base de datos de la collección Drones
     var id_usuario = req.params.id_usuario;
     

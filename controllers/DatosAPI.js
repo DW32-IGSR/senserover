@@ -375,9 +375,10 @@ exports.addDato = function(req, res) {
 							if (alertas[0].recibir_alertas) {
 								if (temperatura < alertas[0].temperatura.min || temperatura > alertas[0].temperatura.max) {
 									alerta = true;
-									//msg_temp = '<br>La temperatura del dron <b>' + drones[0].nombre + '</b> no está en el rango indicado';
-									msg_temp = '<br>La temperatura está fuera del rango indicado';
-									msg_temp += '<br>La temperatura actual es de <span style="color:red">' + temperatura + '</span> y el rango es de ' + alertas[0].temperatura.min + ' a ' + alertas[0].temperatura.max;
+									msg_temp = Alertas.mensaje_alerta('temperatura', temperatura, alertas[0].temperatura.min, alertas[0].temperatura.max);
+									console.log(msg_temp)
+									//msg_temp = '<br>La temperatura está fuera del rango indicado';
+									//msg_temp += '<br>La temperatura actual es de <span style="color:red">' + temperatura + '</span> y el rango es de ' + alertas[0].temperatura.min + ' a ' + alertas[0].temperatura.max;
 									//console.log(msg_temp);	
 								}
 								if (humedad < alertas[0].humedad.min || temperatura > alertas[0].humedad.max) {
@@ -412,7 +413,7 @@ exports.addDato = function(req, res) {
 								}
 							}
 							
-							if (alerta) {
+							/*if (alerta) {
 								//busqueda de correo y envio
 								Usuario.find({_id: drones[0].id_usuario}, function (err, usuarios) {
 									var nombre_remitente = 'Sense-Rover';
@@ -431,7 +432,7 @@ exports.addDato = function(req, res) {
 									
 									//console.log(msg_total);
 								});
-							}
+							}*/
 							
 							
 							
@@ -449,50 +450,6 @@ exports.addDato = function(req, res) {
 	});
 };
 
-/*
-
-exports.addDato = function(req, res) {
-	//Hacemos un insert en la base de datos de la collección Dato
-	//ejemplo
-	//http://sense-rover-nohtrim.c9users.io/datos/put/5693998f4c3faa7e218027ce/t/66/h/66/co2/66/r/66/l/66
-	//resultado 
-	
-	var id_dron = req.params.id_dron
-	var temperatura = req.params.temperatura
-	var humedad = req.params.humedad
-	var co2 = req.params.co2
-	var radiacion = req.params.radiacion
-	var luminosidad = req.params.luminosidad
-	var bateria = req.params.bateria
-	
-	var fecha = new Date();
-	var fecha = fecha.setHours(fecha.getHours()+1)
-	//console.log("fecha en milisegundos " + fecha)
-	var fecha=new Date(fecha)
-	console.log("fecha +1 "+ fecha)
-	
-	//console.log(d)
-	// 2015-12-03 11:39:09
-	var fecha2 = fecha.getFullYear()+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds()
-	//console.log("fecha2:"+fecha2)
-	
-	console.log("prueba put "+id_dron+" temperatura: "+temperatura+" humedad: "+humedad+" co2: "+co2+" radiacion: "+radiacion+" luminosidad: "+luminosidad+" fecha: " + fecha2)
-	
-	var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, fecha : fecha2})
-	
-	console.log("GET - /datos/put/");
-	//guardar dato en la base de datos
-	dato.save(function (err) {
-		if (err) {
-		  console.log('save error', err)
-		} else{
-		  //mensaje de ok si se guarda en bd
-		  res.send('Dato guardado correctamente')
-		}
-	})
-}
-
-*/
 
 /*exports.addDatoPost = function(req, res) {
 	console.log('POST add Datos')
