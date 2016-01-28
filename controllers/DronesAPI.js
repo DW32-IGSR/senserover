@@ -25,6 +25,7 @@ var validadarAPI = require('./validadarAPI');
 
 // Búsqueda de dron por ID_DRON
 exports.findDronesById = function(req, res) {
+  //http://sense-rover-nohtrim.c9users.io/drones/56992dd0c8bdac92101a7766
 	//Hacemos un find en la base de datos de la collección Drones
     var id_dron = req.params.id_dron;
     
@@ -68,6 +69,7 @@ exports.datosProductoPorIdDron = function(req, res) {
 
 // Búsqueda de dron por ID_USUARIO
 exports.findDronesUsuarioById = function(req, res) {
+  //http://sense-rover-nohtrim.c9users.io/drones/usuario/:id_usuario
 	//Hacemos un find en la base de datos de la collección Drones
     var id_usuario = req.params.id_usuario;
     

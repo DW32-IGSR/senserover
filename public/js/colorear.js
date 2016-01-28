@@ -23,7 +23,6 @@ function colorearEstado(){
             var r_min = data[0].radiacion.min;
             var l_max = data[0].luminosidad.max;
             var l_min = data[0].luminosidad.min;
-            var b_min = data[0].bateria.min;
             
             if(datosTemp[datosTemp.length-1]>t_max||datosTemp[datosTemp.length-1]<t_min){
                 colorear("#estado_tem","bg-red");

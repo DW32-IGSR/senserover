@@ -32,6 +32,7 @@ var Comprar = require('./Comprar');
 var Email = require('./Email');
 var Alertas = require('./Alertas');
 var Pronosticos = require('./Pronosticos');
+var error404 = require('./error404');
 
 //router.use('/comments', require('./comments'))
 //router.use('/users', require('./users'))
@@ -121,6 +122,10 @@ router.route('/alertas/update')
 // Cerrar - destroySession
 router.route('/cerrar')
   .get(Home.destroySession);
+
+// Error 404 - Para las APIs
+router.route('/404')
+  .get(error404.error);  
 
 
 // ------ API ------
