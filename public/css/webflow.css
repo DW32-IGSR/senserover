@@ -1851,6 +1851,20 @@ textarea.w-select {
 }
 /* FIN BIENVENIDO_USUARIO */
 
+/* INICIO PERFIL */
+.w-tab-link-btnsubs {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+  padding: 9px 20px;
+  text-align: left;
+  cursor: pointer;
+  color: #222222;
+  background-color: #dddddd;
+}
+/* FIN PERFIL */
+
 .boton-registro {
   position: relative;
   top: 14px;

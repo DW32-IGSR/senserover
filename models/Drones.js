@@ -8,7 +8,12 @@ var dronesModel = function () {
         //_id: String,
         id_producto: String,
         id_usuario: String,
-        nombre: String
+        nombre: String,
+        tipo_subscripcion: String,
+        fecha_compra: String,
+        fecha_caducidad: String,
+        activo: Boolean
+        
     },{collection : 'drones'});  
     
     return mongoose.model('Drones', dronSchema);

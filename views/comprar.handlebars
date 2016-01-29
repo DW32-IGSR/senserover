@@ -40,7 +40,7 @@
   <div id="seccion-producto" class="w-section section">
     <div class="w-container">
       <div class="section-title-group">
-        <h2 class="section-heading centered">Super dron 3000</h2>
+        <h2 class="section-heading centered">{{datos_producto.nombre}}</h2>
       </div>
       <div>
         <div class="w-row">
@@ -135,7 +135,7 @@
 						<hr>
   						<p><b>1 Mes GRATIS</b></p>
 						<hr>
-						<a href="#" name="comprar_pak" class="btn btn-default btn-block">Comprar</a>
+						<a href="#" name="comprar_pak" class="btn btn-default btn-block" id="tipo_basico">Comprar</a>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -150,7 +150,7 @@
 						<hr>
 						<p><b>5,99€ /Mes</b></p>
 						<hr>
-						<a href="#" name="comprar_pak" class="btn btn-success btn-block">Comprar</a>
+						<a href="#" name="comprar_pak" class="btn btn-success btn-block" id="tipo_estandar">Comprar</a>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -165,7 +165,7 @@
 						<hr>
 						<p><b>€ 5,99 /PM</b></p>
 						<hr>
-						<a href="#" name="comprar_pak" class="btn btn-primary btn-block">Comprar</a>
+						<a href="#" name="comprar_pak" class="btn btn-primary btn-block" id="tipo_profesional">Comprar</a>
 					</div>
 				</div>
       </div>
@@ -231,6 +231,29 @@
                 </div>
                 <input hidden id="id_producto_compra" type="text" name="id_producto_compra" required="required" data-name="id_producto_compra" value="{{ datos_producto._id }}">
               </div>
+              <div class="w-col w-col-4">
+              </div>
+              <div class="w-col w-col-4">
+                <div class="w-col w-col-3">
+                  </div>
+                <div class="w-col w-col-6">
+                  <div class="text_form">Tipo de suscripción</div>
+                </div>
+                
+                <div class="btn-group form-group" data-toggle="buttons">
+                  <label class="btn btn-default" id="lbl_basico">
+                    <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="Básico"> Básico
+                  </label>
+                  <label class="btn btn-success" id="lbl_estandar">
+                    <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="Estándar"> Estándar
+                  </label>
+                  <label class="btn btn-primary" id="lbl_profesional">
+                    <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="Profesional"> Profesional
+                  </label>
+                </div>
+              </div>
+              <div class="w-col w-col-4">
+              </div>
             </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(3º row) -->
             <div class="form-group">
               <input type="submit" value="Comprar" data-wait="Please wait..." class="w-button button full-width" id="btn_form_comprar">
@@ -242,8 +265,6 @@
           <div class="w-form-fail">
             <p>Oops! Something went wrong while submitting the form :(</p>
           </div>
-          
-
         </div> <!-- seccion-producto: w-container: w-form form-wrapper -->
       </div> <!-- seccion-producto: w-container -->
     </div> <!-- seccion-compra -->

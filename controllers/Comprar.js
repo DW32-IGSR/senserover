@@ -28,8 +28,11 @@ exports.comprar = function(req, res) {
         var form_email = req.body.email_compra;
         var form_nombre_producto = req.body.producto_compra;
         var form_id_producto = req.body.id_producto_compra;
-        //pendiente tipo de subscripcion
-        //var form_sub = req.body.subscripcion  
+        var form_tipo_sub = req.body.tipo_subscripcion;
+        
+        // basico --> 1mes
+        // estandar --> 6meses
+        // profesional --> 12meses
         
         // Validacion servidor
         req.assert('nombre_compra', 'El nombre es requerido.').notEmpty();
@@ -92,7 +95,34 @@ exports.comprar = function(req, res) {
                                     } else {
                                         //console.log("no hay duplicados")
                                         //console.log("nombre final"+form_nombre_final)
-                                        var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_nombre_final });
+                                        
+                                        var fecha = new Date();
+                                		var fecha = fecha.setHours(fecha.getHours()+1);
+                                		//console.log("fecha en milisegundos " + fecha)
+                                		var fecha=new Date(fecha);
+                                		//console.log("fecha +1 "+ fecha);
+                                		
+                                		var fecha_caducidad;
+                                		
+                                		if (form_tipo_sub == 'basico') {
+                                		    // básico
+                                    		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+2+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                    		//console.log("fecha_caducidad1:"+fecha_caducidad)
+                                		} else if (form_tipo_sub == 'estandar') {
+                                		    // estandar
+                                    		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+7+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                    		//console.log("fecha_caducidad1:"+fecha_caducidad)
+                                		} else if (form_tipo_sub == 'profesional') {
+                                		    //profesional
+                                    		fecha_caducidad = fecha.getFullYear()+1+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                    		//console.log("fecha_caducidad2:"+fecha_caducidad)
+                                		}
+                                		
+                                		// fecha_compra
+                                		var fecha_compra = fecha.getFullYear()+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                		//console.log("fecha2:"+fecha_compra)
+                                		
+                                        var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_nombre_final, tipo_subscripcion: form_tipo_sub, fecha_compra: fecha_compra, fecha_caducidad: fecha_caducidad, activo: true});
                                         dron.save(function (err) {
                                             if (err) {
                                               console.log('save error', err)

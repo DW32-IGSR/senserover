@@ -8,6 +8,8 @@ var express = require('express')
   //http://sense-rover-nohtrim.c9users.io
   //http://senserover-terrestre.rhcloud.com/
 
+
+
 //PENDIENTE MOVER 
 var Dato = require('../models/Dato');
 var Usuario = require('../models/Usuario');
@@ -111,10 +113,6 @@ router.route('/newPassword')
 router.route('/alertas/update')
   .post(Alertas.update);
 
-// prueba ruben
-/*router.route('/alertas/:id_dron/tmin/:tmin/tmax/:tmax/hmin/:hmin/hmax/:hmax/cmin/:cmin/cmax/:cmax/rmin/:rmin/rmax/:rmax/lmin/:lmin/lmax/:lmax/bmin/:bmin/bmax/:bmax')
-  .get(Alertas.prueba)*/
-
 // Temporal para introducir productos
 /*router.route('/addProductos')
   .get(ProductosCtrl.addProducto)*/
@@ -149,6 +147,10 @@ router.route('/drones/:id_dron')
 // Búsqueda de dron por ID_USUARIO
 router.route('/drones/usuario/:id_usuario')
   .get(DronesAPI.findDronesUsuarioById);
+
+// Búsqueda de dron por ID_DRON
+router.route('/drones/update/:id_dron')
+  .put(DronesAPI.updateDronName);
 
 // Búsqueda de datos por ID_DRON
 router.route('/datos/:id_dron')
@@ -211,6 +213,10 @@ router.route('/alertas/rango/bat/:id_dron')
 // INSERCIÓN
 router.route('/datos/put/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria')
   .get(DatosAPI.addDato);
+
+// INSERCIÓN POST
+router.route('/datos/put')
+  .post(DatosAPI.addDatoPost);
   
 router.route('/pronostico')
   .get(Pronosticos.get);  

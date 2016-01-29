@@ -239,16 +239,24 @@
                   <th class="text-center">Dron</th>
                   <th class="text-center">Tipo de subscripción</th>
                   <th class="text-center">Fecha de caducidad</th>
-                  <th class="text-center">Dias hasta fin de caducidad</th>
+                  <th class="text-center">Días hasta fin de caducidad</th>
+                  <th class="text-center">Renovar</th>
                 </tr>
               </thead>
               <tbody>
                 {{#each drones_perfil}}
                   <tr>
-                    <td> {{nombre}} </td>
-                    <td> premium plus </td>
-                    <td> 25/02/2017 </td>
-                    <td> 383 </td>
+                    <td style="vertical-align:middle"> {{nombre}} </td>
+                    <td style="vertical-align:middle"> {{tipo_subscripcion}} </td>
+                    <td style="vertical-align:middle"> {{fecha_caducidad}} </td>
+                    <td style="vertical-align:middle"> 383 </td>
+                    <!--<td> <img src="/icons/plus-subscripcion.png" height="24" width="24"> </td>-->
+                    <td>
+                      <!--<a class="w-tab-link w-inline-block button-subs">
+                        <img src="/icons/plus-subscripcion.png" height="24" width="24">
+                      </a>-->
+                      <button class="w-tab-link-btnsubs w-inline-block button-subs" data-toggle="modal" data-target="#RenovarSubscripcion"> <img src="/icons/plus-subscripcion.png" height="24" width="24"> </button>
+                    </td>
                   </tr>
                 {{/each}}
               </tbody>
@@ -262,6 +270,71 @@
       </div>
     </div> <!-- Perfil-Drones: container -->
   </div> <!-- Perfil_Drones -->
+  
+  <!-- Modal renovar subscripción alertas -->
+  <div class="modal fade" id="RenovarSubscripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Renovar Subscripción</h4>
+        </div>
+        <div class="modal-body">
+          <div class="w-form form-wrapper">
+            <form id="form_renovar_subscripcion" name="form_renovar_subscripcion" data-name="Renovar Subscripción Form" class="form" action="#" method="post">
+              <div class="w-row">
+                <h3 align="center">Aquí nombre del Dron</h3>
+              </div> <br>
+              <div class="row pricing">
+                <div class="col-md-6">
+        					<div class="well">
+        						<h3><b>ESTÁNDAR</b></h3>
+        						<hr>
+        						<p>Datos en tiempo real</p>
+        						<hr>
+        						<p>Alertas en tiempo real</p>
+        						<hr>
+        						<p>Y mucho más</p>
+        						<hr>
+        						<p><b>5,99€ /Mes</b></p>
+        						<hr>
+        						<div class="form-group">
+                      <input type="submit" value="Renovar" data-wait="Please wait..." class="btn btn-success btn-block" id="btn_form_renovar_estandar">
+                    </div>
+        					</div>
+        				</div>
+        				
+        				<div class="col-md-6">
+        					<div class="well">
+        						<h3><b>PROFESIONAL</b></h3>
+        						<hr>
+        						<p>4 GB Datatransfer</p>
+        						<hr>
+        						<p>4 GB Storage</p>
+        						<hr>
+        						<p>Y mucho más</p>
+        						<hr>
+        						<p><b>€ 5,99 /PM</b></p>
+        						<hr>
+        						<div class="form-group">
+                      <input type="submit" value="Renovar" data-wait="Please wait..." class="btn btn-primary btn-block" id="btn_form_renovar_profesional">
+                    </div>
+        					</div>
+        				</div>
+              </div>
+              <input hidden id="id_dron" type="text" name="id_dron">
+            </form>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div class="w-form-fail">
+              <p>Oops! Something went wrong while submitting the form :(</p>
+            </div>
+          </div> <!-- seccion-perfil: w-container: w-form form-wrapper -->
+        </div>
+      </div>
+    </div>
+  </div>
   
   {{>footer}}
   

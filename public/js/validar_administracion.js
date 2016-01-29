@@ -14,143 +14,228 @@ $(document).ready(function() {
                 tempMinima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la temperatura mínima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
                         }
                 	}
             	},
             	tempMaxima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la temperatura máxima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
+                        },
+                        between: {
+                            min: 'tempMinima',
+                            max: '100',
+                            message: ' '
                         }
                 	}
             	},
             	humMinima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la humedad mínima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
                         }
                 	}
             	},
             	humMaxima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la humedad máxima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
+                        },
+                        between: {
+                            min: 'humMinima',
+                            max: '100',
+                            message: ' '
                         }
                 	}
             	},
             	co2Minima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce el co2 mínimo'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
                         }
                 	}
             	},
             	co2Maxima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce el co2 máximo'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
+                        },
+                        between: {
+                            min: 'co2Minima',
+                            max: '100',
+                            message: ' '
                         }
                 	}
             	},
             	radMinima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la radiación mínima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
                         }
                 	}
             	},
             	radMaxima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la radiación máxima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
+                        },
+                        between: {
+                            min: 'radMinima',
+                            max: '100',
+                            message: ' '
                         }
                 	}
             	},
             	luxMinima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la luminosidad mínima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
                         }
                 	}
             	},
             	luxMaxima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la luminosidad máxima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 6.6',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
+                        },
+                        between: {
+                            min: 'radMinima',
+                            max: '100',
+                            message: ' '
                         }
                 	}
             	},
             	batMinima: {
                 	validators: {
 	                    notEmpty: {
-                            message: 'Introduce la batería mínima'
+                            message: ' '
                         },
                         numeric: {
                             message: 'Ej: 25.5',
                             // The default separators
                             thousandsSeparator: '',
                             decimalSeparator: '.'
+                        },
+                        stringLength: {
+                        	min: 1,
+                            max: 5,
+                            message: ' '
+                        },
+                        between: {
+                            min: '0',
+                            max: '100',
+                            message: ' '
                         }
                 	}
             	}

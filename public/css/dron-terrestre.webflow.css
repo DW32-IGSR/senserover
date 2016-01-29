@@ -516,6 +516,26 @@ p {
 .img-perfil {
   margin-bottom: 17px;
 }
+
+.button-subs {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #69b9ff;
+  -webkit-transition: background-color 300ms ease;
+  transition: background-color 300ms ease;
+  color: white;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.button-subs:hover {
+  background-color: #2e9dff;
+}
 /* FIN PERFIL */
 
 /* INICIO COMPRA */

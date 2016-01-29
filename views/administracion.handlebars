@@ -99,7 +99,7 @@
             <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Temperatura</span>
-              <span id="temp-ultimo" class="info-box-number">33º</span>
+              <span id="temp-ultimo" class="info-box-number"  style="display: inline;">33</span><span> ºC</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -114,7 +114,7 @@
             <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Humedad</span>
-              <span id="hum-ultimo" class="info-box-number">92,050</span>
+              <span id="hum-ultimo" class="info-box-number" style="display: inline;">92,050</span><span> %</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -129,7 +129,7 @@
             <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">CO2</span>
-              <span id="co2-ultimo" class="info-box-number">114,381</span>
+              <span id="co2-ultimo" class="info-box-number" style="display: inline;">114,381</span><span> ppm</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -144,7 +144,7 @@
             <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Radiacion Solar</span>
-              <span id="rad-ultimo" class="info-box-number">33º</span>
+              <span id="rad-ultimo" class="info-box-number" style="display: inline;">33</span><span> w/m^2</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -159,7 +159,7 @@
             <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Luminosidad</span>
-              <span id="lum-ultimo" class="info-box-number">33º</span>
+              <span id="lum-ultimo" class="info-box-number" style="display: inline;">33</span><span> lux</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -174,7 +174,7 @@
             <span class="info-box-icon"><img src="icons/bateria.png" height="48" width="48"></span>
             <div class="info-box-content">
               <span class="info-box-text">Bateria del Dron</span>
-              <span id="bat-ultimo" class="info-box-number">10%</span>
+              <span id="bat-ultimo" class="info-box-number" style="display: inline;">10</span><span> %</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -209,13 +209,13 @@
                 <div class="w-col w-col-2">
                   <div class="text_form">Minima:</div>
                   <div class="form-group">
-                    <input id="tempMinima" type="number" name="tempMinima" data-name="tempMinima" class="w-input form-field">
+                    <input id="tempMinima" type="number" step="any" name="tempMinima" data-name="tempMinima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
                   <div class="text_form">Maxima:</div>
                   <div class="form-group">
-                    <input id="tempMaxima" type="number" name="tempMaxima" data-name="tempMaxima" class="w-input form-field">
+                    <input id="tempMaxima" type="number" step="any" name="tempMaxima" data-name="tempMaxima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
@@ -233,13 +233,13 @@
                 <div class="w-col w-col-2">
                   <div class="text_form">Minima:</div>
                   <div class="form-group">
-                    <input id="humMinima" type="number" name="humMinima" data-name="humMinima" class="w-input form-field">
+                    <input id="humMinima" type="number" step="any" name="humMinima" data-name="humMinima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
                   <div class="text_form">Maxima:</div>
                   <div class="form-group">
-                    <input id="humMaxima" type="number" name="humMaxima" data-name="humMaxima" class="w-input form-field">
+                    <input id="humMaxima" type="number" step="any" name="humMaxima" data-name="humMaxima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
@@ -257,13 +257,13 @@
                 <div class="w-col w-col-2">
                   <div class="text_form">Minima:</div>
                   <div class="form-group">
-                    <input id="co2Minima" type="number" name="co2Minima" data-name="co2Minima" class="w-input form-field">
+                    <input id="co2Minima" type="number" step="any" name="co2Minima" data-name="co2Minima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
                   <div class="text_form">Maxima:</div>
                   <div class="form-group">
-                    <input id="co2Maxima" type="number" name="co2Maxima" data-name="co2Maxima" class="w-input form-field">
+                    <input id="co2Maxima" type="number" step="any" name="co2Maxima" data-name="co2Maxima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
@@ -281,13 +281,13 @@
                 <div class="w-col w-col-2">
                   <div class="text_form">Minima:</div>
                   <div class="form-group">
-                    <input id="radMinima" type="number" name="radMinima" data-name="radMinima" class="w-input form-field">
+                    <input id="radMinima" type="number" step="any" name="radMinima" data-name="radMinima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
                   <div class="text_form">Maxima:</div>
                   <div class="form-group">
-                    <input id="radMaxima" type="number" name="radMaxima" data-name="radMaxima" class="w-input form-field">
+                    <input id="radMaxima" type="number" step="any" name="radMaxima" data-name="radMaxima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
@@ -305,13 +305,13 @@
                 <div class="w-col w-col-2">
                   <div class="text_form">Minima:</div>
                   <div class="form-group">
-                    <input id="luxMinima" type="number" name="luxMinima" data-name="luxMinima" class="w-input form-field">
+                    <input id="luxMinima" type="number" step="any" name="luxMinima" data-name="luxMinima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
                   <div class="text_form">Maxima:</div>
                   <div class="form-group">
-                    <input id="luxMaxima" type="number" name="luxMaxima" data-name="luxMaxima" class="w-input form-field">
+                    <input id="luxMaxima" type="number" step="any" name="luxMaxima" data-name="luxMaxima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
@@ -329,7 +329,7 @@
                 <div class="w-col w-col-2">
                   <div class="text_form">Minima:</div>
                   <div class="form-group">
-                    <input id="batMinima" type="number" name="batMinima" data-name="batMinima" class="w-input form-field">
+                    <input id="batMinima" type="number" step="any" name="batMinima" data-name="batMinima" class="w-input form-field">
                   </div>
                 </div>
                 <div class="w-col w-col-2">
@@ -352,18 +352,9 @@
                   <input type="submit" value="Guardar" data-wait="Please wait..." class="w-button button full-width perfil" id="btn_form_alertas">
                 </div>
               </div>
-              <input hidden id="id_dron_rango" type="text" name="id_dron_rango">
+              <input hidden id="id_dron_alertas" type="text" name="id_dron_alertas">
             </form>
-            <div class="w-form-done">
-              <p>Thank you! Your submission has been received!</p>
-            </div>
-            <div class="w-form-fail">
-              <p>Oops! Something went wrong while submitting the form :(</p>
-            </div>
           </div> <!-- seccion-perfil: w-container: w-form form-wrapper -->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -677,6 +668,9 @@
   <script type="text/javascript" src="/js/describir.js"></script>
   <script src="/js/validar_administracion.js" type="text/javascript"></script>
   <script src="/js/bootstrapValidator.min.js"></script>
+  <!-- en pruebas -->
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="/js/pruebas_socket.js"></script>
   
 <!--</body>
 </html>-->
