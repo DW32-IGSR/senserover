@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-var Productos  = mongoose.model('Productos');
+var Productos  = require("../models/Productos");
 
 exports.addProducto = function(req, res) {
     var producto = new Productos ({ nombre : 'Producto 2', descripcion : 'Descripción producto 2', precio : '200' });

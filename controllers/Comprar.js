@@ -1,7 +1,6 @@
-var mongoose = require('mongoose');
-var Usuario  = mongoose.model('Usuario');
-var Productos  = mongoose.model('Productos');
-var Drones  = mongoose.model('Drones');
+var Drones  = require("../models/Drones");
+var Usuario  = require("../models/Usuario");
+var Productos  = require("../models/Productos");
 
 exports.comprar = function(req, res) {
     //post del formulario de compra

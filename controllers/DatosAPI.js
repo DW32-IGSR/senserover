@@ -1,12 +1,8 @@
-var mongoose = require('mongoose');
-//en pruebas
-//var io = require('socket.io');
-//
-var Dato  = mongoose.model('Dato');
-var Producto  = mongoose.model('Productos');
-var Alertas  = mongoose.model('Alertas');
-var Drones  = mongoose.model('Drones');
-var Usuario  = mongoose.model('Usuario');
+var Dato  = require("../models/Dato");
+var Producto  = require("../models/Productos");
+var Alertas  = require("../models/Alertas");
+var Drones  = require("../models/Drones");
+var Usuario  = require("../models/Usuario");
 
 var validadarAPI = require('./validadarAPI');
 var estructura_email = require('./Estructura_Email');

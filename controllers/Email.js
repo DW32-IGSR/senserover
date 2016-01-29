@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var Usuario  = mongoose.model('Usuario');
+var Usuario  = require("../models/Usuario");
+
 var bcrypt = require('bcrypt');
 
 var estructura_email = require('./Estructura_Email');

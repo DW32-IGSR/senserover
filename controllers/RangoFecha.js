@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-var Dato  = mongoose.model('Dato');
+var Dato  = require("../models/Dato");
 
 exports.rangoFecha = function(req, res) {
     var dato_form = req.body.dato;

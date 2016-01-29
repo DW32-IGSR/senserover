@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-var Usuario  = mongoose.model('Usuario');
+var Usuario  = require("../models/Usuario");
 var bcrypt = require('bcrypt');
 //var express = require('express');
 //var validator = require('validator');

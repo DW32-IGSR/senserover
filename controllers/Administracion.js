@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-var Drones  = mongoose.model('Drones');
+var Drones  = require("../models/Drones");
 
 exports.admin = function(req, res) {
     //ruta a administracion

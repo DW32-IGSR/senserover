@@ -1,6 +1,5 @@
-var mongoose = require('mongoose');
-var Drones  = mongoose.model('Drones');
-var Producto  = mongoose.model('Productos');
+var Drones  = require("../models/Drones");
+var Producto  = require("../models/Productos");
 
 var validadarAPI = require('./validadarAPI');
 

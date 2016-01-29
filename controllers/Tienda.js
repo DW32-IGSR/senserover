@@ -1,6 +1,5 @@
-var mongoose = require('mongoose');
-var Usuario  = mongoose.model('Usuario');
-var Producto  = mongoose.model('Productos');
+var Usuario  = require("../models/Usuario");
+var Producto  = require("../models/Productos");
 
 exports.tienda = function(req, res) {
   //ruta a la tienda

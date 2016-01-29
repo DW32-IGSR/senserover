@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-var Alertas  = mongoose.model('Alertas');
+var Alertas  = require("../models/Alertas");
 
 var validadarAPI = require('./validadarAPI');
 

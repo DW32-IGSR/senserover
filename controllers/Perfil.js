@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Drones  = mongoose.model('Drones');
-var Usuario  = mongoose.model('Usuario');
+var Drones  = require("../models/Drones");
+var Usuario  = require("../models/Usuario");
+
 var bcrypt = require('bcrypt');
 
 exports.perfil = function(req, res) {
