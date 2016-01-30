@@ -51,7 +51,9 @@ var emailController = require('./controllers/Email');
 var error404Controller = require('./controllers/error404');
 var loginRegistroController = require('./controllers/LoginRegistro');
 var perfilController = require('./controllers/Perfil');
+//error
 var productosController = require('./controllers/Productos');
+//ruta addProducto sin crear
 var pronosticosController = require('./controllers/Pronosticos');
 var rangoFechaController = require('./controllers/RangoFecha');
 var tiendaController = require('./controllers/Tienda');
@@ -118,13 +120,24 @@ app.use("*", function(req,res){
   res.redirect('/');
 });  
 
+
+app.io = require('socket.io')();
+
+
+var http = require('http');
+var server = http.createServer(app);
+app.io.attach(server); 
+
+app.set('io',app.io);
+
+
 /**
  * Start Express server.
  */
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '127.0.0.1';
 
-app.listen(server_port, server_ip_address, function(){
+server.listen(server_port, server_ip_address, function(){
   console.log("Listening on " + server_ip_address + ", server_port " + server_port);
   
   //console.log("intento de conexion")

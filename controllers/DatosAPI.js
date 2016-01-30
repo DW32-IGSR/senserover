@@ -326,8 +326,9 @@ exports.addDato = function(req, res) {
 	var validado = validadarAPI.APIinsertar(req, res);
 	if (validado) {
 		//en pruebas socket
-		//var socket = io();
-		//socket.emit('chat '+id_dron, temperatura,humedad,co2,radiacion,luminosidad,bateria);
+		var io = req.app.io;
+		//io.emit('chat 56939648e4b0166e3b6a60f6', "entro alguien a la sala");
+		io.emit('chat '+id_dron, temperatura,humedad,co2,radiacion,luminosidad,bateria);
 		//console.log("prueba socket: chat "+id_dron+" datos: "+temperatura+" "+humedad+" "+co2+" "+radiacion+" "+luminosidad+" "+bateria)
 		//en pruebas
 		

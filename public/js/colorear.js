@@ -1,11 +1,22 @@
 function colorearEstado(){
     console.log("coloreando :D");
-    function colorear(id,color){
+    function colorear(id,color,id_texto){
         $(id).removeClass("bg-green");
         $(id).removeClass("bg-red");
         $(id).removeClass("bg-orange");
         $(id).addClass(color);
+        var mensaje;
+        if(color=="bg-red"){
+            mensaje="El valor supera el rango establecido";
+        }else if(color=="bg-orange"){
+            mensaje="El valor esta al limite del rango establecido";
+        }else{
+            mensaje="El valor es optimo";
+        }
+        //console.log("texto: "+id_texto+" mensaje: "+mensaje);
+        $(id_texto).html(mensaje);   
     }
+
     $.ajax({
         type: "GET",
         //https://senserover-terrestre.rhcloud.com/alertas/rango/56939648e4b0166e3b6a60f6
@@ -48,51 +59,51 @@ function colorearEstado(){
             
                         
             if(t_ultimo>t_max||t_ultimo<t_min){
-                colorear("#estado_tem","bg-red");
+                colorear("#estado_tem","bg-red","#tempText");
             }else if(t_ultimo>t_max+t_max*0.1||t_ultimo<t_min+t_max*0.1){
-                colorear("#estado_tem","bg-orange");
+                colorear("#estado_tem","bg-orange","#tempText");
             }else{
-                colorear("#estado_tem","bg-green");
+                colorear("#estado_tem","bg-green","#tempText");
             }
             
             if(h_ultimo>h_max||h_ultimo<h_min){
-                colorear("#estado_hum","bg-red");
+                colorear("#estado_hum","bg-red","#humText");
             }else if(h_ultimo>h_max+h_max*0.1||h_ultimo<h_min+h_max*0.1){
-                colorear("#estado_hum","bg-orange");
+                colorear("#estado_hum","bg-orange","#humText");
             }else{
-                colorear("#estado_hum","bg-green");
+                colorear("#estado_hum","bg-green","#humText");
             }
             
             if(c_ultimo>c_max||c_ultimo<c_min){
-                colorear("#estado_co2","bg-red");
+                colorear("#estado_co2","bg-red","#co2Text");
             }else if(c_ultimo>c_max+c_max*0.1||c_ultimo<c_min+c_max*0.1){
-                colorear("#estado_co2","bg-orange");
+                colorear("#estado_co2","bg-orange","#co2Text");
             }else{
-                colorear("#estado_co2","bg-green");
+                colorear("#estado_co2","bg-green","#co2Text");
             }
             
             if(r_ultimo>r_max||r_ultimo<r_min){
-                colorear("#estado_rad","bg-red");
+                colorear("#estado_rad","bg-red","#radText");
             }else if(r_ultimo>r_max+r_max*0.1||r_ultimo<r_min+r_max*0.1){
-                colorear("#estado_rad","bg-orange");
+                colorear("#estado_rad","bg-orange","#radText");
             }else{
-                colorear("#estado_rad","bg-green");
+                colorear("#estado_rad","bg-green","#radText");
             }
             
             if(l_ultimo>l_max||l_ultimo<l_min){
-                colorear("#estado_lum","bg-red");
+                colorear("#estado_lum","bg-red","#lumText");
             }else if(l_ultimo>l_max+l_max*0.1||l_ultimo<l_min+l_max*0.1){
-                colorear("#estado_lum","bg-orange");
+                colorear("#estado_lum","bg-orange","#lumText");
             }else{
-                colorear("#estado_lum","bg-green");
+                colorear("#estado_lum","bg-green","#lumText");
             }
             
             if(b_ultimo<b_min){
-                colorear("#estado_bat","bg-red");
+                colorear("#estado_bat","bg-red","#batText");
             }else if(b_ultimo<15){
-                colorear("#estado_bat","bg-orange");
+                colorear("#estado_bat","bg-orange","#batText");
             }else{
-                colorear("#estado_bat","bg-green");
+                colorear("#estado_bat","bg-green","#batText");
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {

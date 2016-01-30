@@ -246,24 +246,23 @@ exports.newPassword = function(req, res) {
 
 exports.emailAlert = function(req, res) {
     
-var email = req.params.email;
-//if para enviar email dependiendo del valor de la alerta
-//if(){
-var api_key = 'key-116da3f3cd011ad01d454a632a599587';
-            var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org';
-            var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-            
-var alerta = "El valor de 'tipo de la alerta' ha superado los máximos o mínimos establecidos. Acceda al panel de control para obtener mas datos";
-
-var data = {
-                from: 'Sense-Rover <dw32igsr@gmail.com>',
-                to: email,
-                subject: "Envio de alerta",
-                html: alerta
-            };
-            
-            mailgun.messages().send(data, function (error, body) {
-                console.log(body);
-            });
+    var email = req.params.email;
+    //if para enviar email dependiendo del valor de la alerta
+    //if(){
+    var api_key = 'key-116da3f3cd011ad01d454a632a599587';
+    var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org';
+    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+                
+    var alerta = "El valor de 'tipo de la alerta' ha superado los máximos o mínimos establecidos. Acceda al panel de control para obtener mas datos";
+    var data = {
+        from: 'Sense-Rover <dw32igsr@gmail.com>',
+        to: email,
+        subject: "Envio de alerta",
+        html: alerta
+    };
+                
+    mailgun.messages().send(data, function (error, body) {
+        console.log(body);
+    });
 
 };
