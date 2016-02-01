@@ -21,7 +21,8 @@ function colorearEstado(){
         type: "GET",
         //https://senserover-terrestre.rhcloud.com/alertas/rango/56939648e4b0166e3b6a60f6
         //https://sense-rover-nohtrim.c9users.io/alertas/rango/56939648e4b0166e3b6a60f6
-        url: "http://sense-rover-nohtrim.c9users.io/alertas/rango/"+$("#dron_seleccionado").html(),
+        url: "https://senserover-terrestre.rhcloud.com/alertas/rango/"+$("#dron_seleccionado").html(),
+        //url: "http://sense-rover-nohtrim.c9users.io/alertas/rango/"+$("#dron_seleccionado").html(),
         dataType: "json",
         success: function(data) {
             var t_max = parseFloat(data[0].temperatura.max);

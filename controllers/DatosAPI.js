@@ -355,7 +355,7 @@ exports.addDato = function(req, res) {
 					
 					var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, fecha : fecha2});
 		
-					console.log("GET - /datos/put/");
+					console.log("GET - /api/datos/");
 					//guardar dato en la base de datos
 					dato.save(function (err) {
 						if (err) {
