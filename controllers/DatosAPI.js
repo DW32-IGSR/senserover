@@ -327,9 +327,8 @@ exports.addDato = function(req, res) {
 	if (validado) {
 		//en pruebas socket
 		var io = req.app.io;
-		//io.emit('chat 56939648e4b0166e3b6a60f6', "entro alguien a la sala");
-		io.emit('chat '+id_dron, temperatura,humedad,co2,radiacion,luminosidad,bateria);
-		//console.log("prueba socket: chat "+id_dron+" datos: "+temperatura+" "+humedad+" "+co2+" "+radiacion+" "+luminosidad+" "+bateria)
+		io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
+		console.log("addDato socket: chat "+id_dron+" datos: "+temperatura+" "+humedad+" "+co2+" "+radiacion+" "+luminosidad+" "+bateria);
 		//en pruebas
 		
 		var fecha = new Date();
@@ -383,10 +382,10 @@ exports.addDato = function(req, res) {
 								if (alertas[0].recibir_alertas) {
 									if (temperatura < alertas[0].temperatura.min || temperatura > alertas[0].temperatura.max) {
 										alerta = true;
-										msg_temp = Alertas.mensaje_alerta('temperatura', temperatura, alertas[0].temperatura.min, alertas[0].temperatura.max);
-										console.log(msg_temp)
-										//msg_temp = '<br>La temperatura está fuera del rango indicado';
-										//msg_temp += '<br>La temperatura actual es de <span style="color:red">' + temperatura + '</span> y el rango es de ' + alertas[0].temperatura.min + ' a ' + alertas[0].temperatura.max;
+										//msg_temp = Alertas.mensaje_alerta('temperatura', temperatura, alertas[0].temperatura.min, alertas[0].temperatura.max);
+										//console.log(msg_temp)
+										msg_temp = '<br>La temperatura está fuera del rango indicado';
+										msg_temp += '<br>La temperatura actual es de <span style="color:red">' + temperatura + '</span> y el rango es de ' + alertas[0].temperatura.min + ' a ' + alertas[0].temperatura.max;
 										//console.log(msg_temp);	
 									}
 									if (humedad < alertas[0].humedad.min || temperatura > alertas[0].humedad.max) {
@@ -491,19 +490,8 @@ exports.addDatoPost = function(req, res) {
 	
 	//en pruebas socket
 	var io = req.app.io;
-	//var socket = io();
-	//var socket = req.app.io;
-	//socket.emit('chat '+dato.id_dron, dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.datoluminosidad, dato.bateria);
-	//var io = req.app.io;
-	
-	io.on('connection', function(socket){
-	console.log("algo");
-	  //socket.emit('chat 56939648e4b0166e3b6a60f6', 'hi');
-	  socket.emit('chat 56939648e4b0166e3b6a60f6', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.datoluminosidad, dato.bateria);
-	});
-	
-	//io.emit('chat 56939648e4b0166e3b6a60f6', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.datoluminosidad, dato.bateria);
-	console.log("prueba socket: chat "+dato.id_dron+" datos: "+dato.temperatura+" "+dato.humedad+" "+dato.co2+" "+dato.radiacion+" "+dato.luminosidad+" "+dato.bateria);
+	io.emit('chat '+dato.id_dron, dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
+	console.log("addDato post socket: chat "+dato.id_dron+" datos: "+dato.temperatura+" "+dato.humedad+" "+dato.co2+" "+dato.radiacion+" "+dato.luminosidad+" "+dato.bateria);
 	//en pruebas	
 	
 	// Validacion por servidor

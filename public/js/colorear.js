@@ -60,7 +60,7 @@ function colorearEstado(){
                         
             if(t_ultimo>t_max||t_ultimo<t_min){
                 colorear("#estado_tem","bg-red","#tempText");
-            }else if(t_ultimo>t_max+t_max*0.1||t_ultimo<t_min+t_max*0.1){
+            }else if(t_ultimo>t_max-t_max*0.1||t_ultimo<t_min+t_max*0.1){
                 colorear("#estado_tem","bg-orange","#tempText");
             }else{
                 colorear("#estado_tem","bg-green","#tempText");
@@ -68,7 +68,7 @@ function colorearEstado(){
             
             if(h_ultimo>h_max||h_ultimo<h_min){
                 colorear("#estado_hum","bg-red","#humText");
-            }else if(h_ultimo>h_max+h_max*0.1||h_ultimo<h_min+h_max*0.1){
+            }else if(h_ultimo>h_max-h_max*0.1||h_ultimo<h_min+h_max*0.1){
                 colorear("#estado_hum","bg-orange","#humText");
             }else{
                 colorear("#estado_hum","bg-green","#humText");
@@ -76,7 +76,7 @@ function colorearEstado(){
             
             if(c_ultimo>c_max||c_ultimo<c_min){
                 colorear("#estado_co2","bg-red","#co2Text");
-            }else if(c_ultimo>c_max+c_max*0.1||c_ultimo<c_min+c_max*0.1){
+            }else if(c_ultimo>c_max-c_max*0.1||c_ultimo<c_min+c_max*0.1){
                 colorear("#estado_co2","bg-orange","#co2Text");
             }else{
                 colorear("#estado_co2","bg-green","#co2Text");
@@ -84,7 +84,7 @@ function colorearEstado(){
             
             if(r_ultimo>r_max||r_ultimo<r_min){
                 colorear("#estado_rad","bg-red","#radText");
-            }else if(r_ultimo>r_max+r_max*0.1||r_ultimo<r_min+r_max*0.1){
+            }else if(r_ultimo>r_max-r_max*0.1||r_ultimo<r_min+r_max*0.1){
                 colorear("#estado_rad","bg-orange","#radText");
             }else{
                 colorear("#estado_rad","bg-green","#radText");
@@ -92,7 +92,7 @@ function colorearEstado(){
             
             if(l_ultimo>l_max||l_ultimo<l_min){
                 colorear("#estado_lum","bg-red","#lumText");
-            }else if(l_ultimo>l_max+l_max*0.1||l_ultimo<l_min+l_max*0.1){
+            }else if(l_ultimo>l_max-l_max*0.1||l_ultimo<l_min+l_max*0.1){
                 colorear("#estado_lum","bg-orange","#lumText");
             }else{
                 colorear("#estado_lum","bg-green","#lumText");

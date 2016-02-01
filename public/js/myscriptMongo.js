@@ -67,7 +67,8 @@ $(document).ready(function() {
                 //console.log(datosHum);
                 
                 var socket = io();
-                socket.emit('chat '+$("#dron_seleccionado").html(this.value), datosTemp[datosTemp.length-1],datosHum[datosHum.length-1],datosCO2[datosCO2.length-1],datosRad[datosRad.length-1],datosLum[datosLum.length-1],datosBat[datosBat.length-1]);
+                socket.emit('chat 56939648e4b0166e3b6a60f6', datosTemp[datosTemp.length-1], datosHum[datosHum.length-1], datosCO2[datosCO2.length-1], datosRad[datosRad.length-1], datosLum[datosLum.length-1], datosBat[datosBat.length-1]);
+                //socket.emit('chat '+$("#dron_seleccionado").html(), datosTemp[datosTemp.length-1], datosHum[datosHum.length-1], datosCO2[datosCO2.length-1], datosRad[datosRad.length-1], datosLum[datosLum.length-1], datosBat[datosBat.length-1]);
                 
                 /*$("#temp-ultimo").html(datosTemp[datosTemp.length-1]);
                 $("#hum-ultimo").html(datosHum[datosHum.length-1]);

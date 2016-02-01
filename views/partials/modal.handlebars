@@ -1,5 +1,5 @@
 <!-- Boostrap Modal LOGIN/REGISTRO -->
-<div id="ModalLoginRegistro" class="modal fade bs-example-modal-sm" class="modal-wrapper" tabindex="-1" role="dialog">
+<div id="ModalLoginRegistro" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,7 +7,7 @@
         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
-        <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper-modal"> 
+        <div class="w-tabs tabs-wrapper-modal"> 
           <div class="w-tab-menu tab-menu-modal">
             <a data-w-tab="Tab Login" class="w-tab-link w--current w-inline-block button tab">
               <div><img src="/icons/login.png" height="24" width="24"></div>
@@ -34,7 +34,7 @@
                             <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="btn_login">
                         </div>
                       </form>
-                      <a href="#" id="forget_pass">¿Has olvidado la contraseña?</a>
+                      <a href="#" data-target="#modalPassOlvidada" data-toggle="modal" data-dismiss="modal">¿Has olvidado la contraseña?</a>
                       <div>
                       </div>
                     </div> <!-- Formulario inicio sesión -->
@@ -74,17 +74,49 @@
                 </div>
               </div>
             </div> <!-- Tab Registro -->
-              
           </div> <!-- w-tab-content-->
         </div>
-        
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 
-<div id="modalPassOlvidada" class="modal-wrapper-forget-pass">
+<!-- Boostrap Modal RECUPERAR CONTRASEÑA -->
+<div id="modalPassOlvidada" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <div class="w-row">
+          <div class="w-col w-col-12">
+            <div>
+              <h3>Recupera tu cuenta</h3>
+              <p> Para restablecer la contraseña, introduce la dirección de correo electrónico que utilizas para iniciar sesión. </p>
+              <div class="w-form">
+                <form id="forget_pass_form" name="inicio-session" data-name="inicio-session" action="/forgetPassword" method="post">
+                  <div class="form-group">
+                      <input  id="email" type="text" placeholder="Email" name="email" data-name="email" required="required" class="w-input text-usuario">
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" value="Recuperar contraseña" data-wait="Please wait..." class="w-button login-submit" id="btn_forget_pass">
+                  </div>
+                </form>
+              </div> <!-- Formulario inicio sesión -->
+            </div> <!-- iniciar-sesion-wrapper -->
+          </div>
+        </div> <!-- Tab Login -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<!--<div id="modalPassOlvidada" class="modal-wrapper-forget-pass">
   <div id="segundo_intento" class="forget_pass_wrapper"><a href="#" data-ix="cerrar-forget-pass" class="w-editable cerrar-link">x</a>
     <h3>Recupera tu cuenta</h3>
     <p> Para restablecer la contraseña, introduce la dirección de correo electrónico que utilizas para iniciar sesión. </p>
@@ -99,15 +131,9 @@
           </div>
         </div>
       </form>
-      <!--<div class="w-form-done">
-        <p>Thank you! Your submission has been received!</p>
-      </div>
-      <div class="w-form-fail">
-        <p>Oops! Something went wrong while submitting the form</p>
-      </div>-->
-    </div> <!-- Formulario inicio sesión -->
-  </div> <!-- iniciar-sesion-wrapper -->
-</div> <!-- Modal Inicio sesión-->
+    </div> 
+  </div>
+</div> -->
 
 <!-- modal on succes -->
 <div class="modal fade" id="mforget_pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -1,17 +1,7 @@
-SENSE-ROVER
+# Sense-Rover
 
-"dependencies": {
-"bcrypt": "^0.8.5",
-"body-parser": "^1.12.3",
-"express": "^4.12.3",
-"express-flash": "0.0.2",
-"express-handlebars": "^2.0.1",
-"express-session": "^1.12.1",
-"handlebars": "^4.0.5",
-"mailgun-js": "^0.7.7",
-"mongoose": "^4.3.2"
-}
+##Proyecto de fin de curso 2014-2016 del ciclo formativo de desarrollo de aplicaciones web
 
 
-Demostracion
+Demostracion:
 http://senserover-terrestre.rhcloud.com/

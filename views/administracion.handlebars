@@ -63,6 +63,13 @@
               {{#each drones}}
                   <option value={{_id}} >{{nombre}}</option>
     	        {{/each}}
+    	        
+    	        <!-- Mostrar únicamente los drones que están activos -->
+    	        <!--{{#each drones}}
+                {{#if activo}}
+                  <option value={{_id}} >{{nombre}}</option>
+                {{/if}}
+    	        {{/each}}-->
             </select>
               <p hidden id="dron_seleccionado">id_dron</p>
           </form>

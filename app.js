@@ -123,13 +123,19 @@ app.use("*", function(req,res){
 
 app.io = require('socket.io')();
 
-
 var http = require('http');
 var server = http.createServer(app);
 app.io.attach(server); 
 
 app.set('io',app.io);
 
+app.io.on('connection', function(socket){
+  console.log("algo");
+  //socket.emit('chat prueba', 'hi');
+  socket.on('chat 56939648e4b0166e3b6a60f6', function(temp,hum,co2,rad,lum,bat){
+    app.io.emit('chat 56939648e4b0166e3b6a60f6', temp,hum,co2,rad,lum,bat);
+  }); 
+});
 
 /**
  * Start Express server.

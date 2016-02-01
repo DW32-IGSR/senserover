@@ -53,96 +53,104 @@ exports.comprar = function(req, res) {
         
         var errors = req.validationErrors();
         
-        console.log(errors)
+        console.log(errors);
         
         if (errors) {
-          //req.flash('error', errors);
           return res.redirect('/');
-        }
+        } else {
             
-        // prueba ruben
-        console.log('Nombre: ' + form_nombre)
-        console.log('nombre pre compra: ' + form_nombre_producto)
-        
-        Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
-            if (err) {
-                console.error(err)
-            } else {
-                Productos.findOne({ _id: form_id_producto }, function (err, producto) {   
-                    if (err) {
-                        console.error(err)
-                    } else {
-                    
-                        var form_nombre_final = form_nombre_producto
+            // prueba ruben
+            console.log('Nombre: ' + form_nombre);
+            console.log('nombre pre compra: ' + form_nombre_producto);
+            
+            Usuario.findOneAndUpdate({ _id: sess.id_usuario }, { nombre: form_nombre, apellidos : form_apellidos, dni: form_dni, direccion : form_direccion, codigo_postal : form_cp }, function(err, user) {
+                if (err) {
+                    console.error(err);
+                } else {
+                    Productos.findOne({ _id: form_id_producto }, function (err, producto) {   
+                        if (err) {
+                            console.error(err);
+                        } else {
                         
-                        buscar()
-                        
-                        function buscar(){
-                            console.log(" busqueda ")
-                            //console.log("¿nombre duplicado? "+form_nombre_final)
-                            Drones.find({ nombre: form_nombre_final, 'id_usuario': sess.id_usuario }, function (err, resultados) {   
-                                if (err) {
-                                    console.error(err)
-                                } else {        
-                                    //console.log('ID Producto: ' + producto.id)
-                                    var duplicados = resultados.length
-                                    //console.log('Comprobación de duplicados: ' + duplicados)
-                                    if(duplicados!=0){
-                                        form_nombre_final+="*"
-                                        //console.log('Form nombre producto: ' + form_nombre_final)
-                                        buscar()
-                                    } else {
-                                        //console.log("no hay duplicados")
-                                        //console.log("nombre final"+form_nombre_final)
-                                        
-                                        var fecha = new Date();
-                                		var fecha = fecha.setHours(fecha.getHours()+1);
-                                		//console.log("fecha en milisegundos " + fecha)
-                                		var fecha=new Date(fecha);
-                                		//console.log("fecha +1 "+ fecha);
-                                		
-                                		var fecha_caducidad;
-                                		
-                                		if (form_tipo_sub == 'basico') {
-                                		    // básico
-                                    		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+2+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
-                                    		//console.log("fecha_caducidad1:"+fecha_caducidad)
-                                		} else if (form_tipo_sub == 'estandar') {
-                                		    // estandar
-                                    		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+7+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
-                                    		//console.log("fecha_caducidad1:"+fecha_caducidad)
-                                		} else if (form_tipo_sub == 'profesional') {
-                                		    //profesional
-                                    		fecha_caducidad = fecha.getFullYear()+1+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
-                                    		//console.log("fecha_caducidad2:"+fecha_caducidad)
-                                		}
-                                		
-                                		// fecha_compra
-                                		var fecha_compra = fecha.getFullYear()+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
-                                		//console.log("fecha2:"+fecha_compra)
-                                		
-                                        var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_nombre_final, tipo_subscripcion: form_tipo_sub, fecha_compra: fecha_compra, fecha_caducidad: fecha_caducidad, activo: true});
-                                        dron.save(function (err) {
-                                            if (err) {
-                                              console.log('save error', err)
-                                            }else {
-                                                console.log('Compra realizada')
-                                                //res.redirect('/perfil')
-                                            }
-                                        })
+                            var form_nombre_final = form_nombre_producto;
+                            
+                            buscar();
+                            
+                            function buscar(){
+                                console.log(" busqueda ");
+                                //console.log("¿nombre duplicado? "+form_nombre_final)
+                                Drones.find({ nombre: form_nombre_final, 'id_usuario': sess.id_usuario }, function (err, resultados) {   
+                                    if (err) {
+                                        console.error(err);
+                                    } else {        
+                                        //console.log('ID Producto: ' + producto.id)
+                                        var duplicados = resultados.length;
+                                        //console.log('Comprobación de duplicados: ' + duplicados)
+                                        if(duplicados!=0){
+                                            form_nombre_final+="*";
+                                            //console.log('Form nombre producto: ' + form_nombre_final)
+                                            buscar();
+                                        } else {
+                                            //console.log("no hay duplicados")
+                                            //console.log("nombre final"+form_nombre_final)
+                                            
+                                            var fecha = new Date();
+                                    		fecha = fecha.setHours(fecha.getHours()+1);
+                                    		//console.log("fecha en milisegundos " + fecha)
+                                    		fecha = new Date(fecha);
+                                    		//console.log("fecha +1 "+ fecha);
+                                    		
+                                    		var fecha_caducidad;
+                                    		
+                                    		if (form_tipo_sub == 'basico') {
+                                    		    // básico
+                                        		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+2+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                        		//console.log("fecha_caducidad1:"+fecha_caducidad)
+                                    		} else if (form_tipo_sub == 'estandar') {
+                                    		    // estandar
+                                        		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+7+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                        		//console.log("fecha_caducidad1:"+fecha_caducidad)
+                                    		} else if (form_tipo_sub == 'profesional') {
+                                    		    //profesional
+                                        		fecha_caducidad = fecha.getFullYear()+1+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                        		//console.log("fecha_caducidad2:"+fecha_caducidad)
+                                    		}
+                                    		
+                                    		// fecha_compra
+                                    		var fecha_compra = fecha.getFullYear()+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                    		//console.log("fecha2:"+fecha_compra)
+                                    		
+                                    		// comprobar si ha caducado
+                                    		// meter en otro archivo / export
+                                    		/*if (fecha_caducidad > fecha) {
+                                    		    Drones.findOneAndUpdate({ _id: id_dron }, { activo: false }, function(err, dron_cad) {
+                                    		    })
+                                    		}*/
+                                    		//Drones.find({fecha: {$gte: new Date(), $lte: fecha_caducidad}}, function(err, dron_cad) {)}
+                                    		
+                                            var dron = new Drones ({ id_usuario : sess.id_usuario, id_producto : producto.id, nombre: form_nombre_final, tipo_subscripcion: form_tipo_sub, fecha_compra: fecha_compra, fecha_caducidad: fecha_caducidad, activo: true});
+                                            dron.save(function (err) {
+                                                if (err) {
+                                                  console.log('save error', err);
+                                                }else {
+                                                    console.log('Compra realizada');
+                                                    //res.redirect('/perfil')
+                                                }
+                                            });
+                                        }
                                     }
-                                }
-                            }) // find
-                        } //funcion buscar
-                    } //else error
-                }) //findone
-            } //else error
-        })//find update
-        
-        //despues de realizar la compra pasamos a perfil
-        //donde vera que en la tabla de drones se añadio uno nuevo
-        
-        //en administracion no tiene datos ni alertas configuradas
-        //res.redirect('/perfil')
+                                }); // find
+                            } //funcion buscar
+                        } //else error
+                    }); //findone
+                } //else error
+            });//find update
+            
+            //despues de realizar la compra pasamos a perfil
+            //donde vera que en la tabla de drones se añadio uno nuevo
+            
+            //en administracion no tiene datos ni alertas configuradas
+            //res.redirect('/perfil')
+        }
     }
-}
+};
