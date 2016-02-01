@@ -13,8 +13,7 @@ exports.activacion = function(req, res) {
     
     // Validacion servidor
     req.assert('activation', 'La Activacion es requerida.').notEmpty();
-    req.assert('activation', 'Activacion no cumple con la cantidad de caracteres.').len(1,1);
-    req.assert('activation', 'La Activacion tiene que ser numerico.').isInt();
+    req.assert('activation', 'Activacion no cumple con la cantidad de caracteres.').len(32,32);
     req.assert('email', 'El Email es requerido.').notEmpty();
     req.assert('email', 'Email no valido.').isEmail();
     req.assert('email', 'El email no cumple con la cantidad de caracteres.').len(3,60);
