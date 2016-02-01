@@ -1,6 +1,7 @@
 var Drones  = require("../models/Drones");
 var Usuario  = require("../models/Usuario");
 var Productos  = require("../models/Productos");
+var Alertas  = require("../models/Alertas");
 
 exports.comprar = function(req, res) {
     //post del formulario de compra
@@ -134,6 +135,7 @@ exports.comprar = function(req, res) {
                                                   console.log('save error', err);
                                                 }else {
                                                     console.log('Compra realizada');
+                                                    var alertas = new Alertas(id_dron: dron._id, recibir_alertas: false);
                                                     //res.redirect('/perfil')
                                                 }
                                             });

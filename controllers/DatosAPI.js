@@ -314,6 +314,8 @@ exports.addDato = function(req, res) {
 	//http://sense-rover-nohtrim.c9users.io/datos/put/5693998f4c3faa7e218027ce/t/66/h/66/co2/66/r/66/l/66
 	//resultado 
 	
+	console.log('entro');
+	
 	var id_dron = req.params.id_dron;
 	var temperatura = req.params.temperatura;
 	var humedad = req.params.humedad;
@@ -323,8 +325,8 @@ exports.addDato = function(req, res) {
 	var bateria = req.params.bateria;
     
 	// Validacion por servidor
-	var validado = validadarAPI.APIinsertar(req, res);
-	if (validado) {
+	//var validado = validadarAPI.APIinsertar(req, res);
+	//if (validado) {
 		//en pruebas socket
 		var io = req.app.io;
 		io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
@@ -452,9 +454,9 @@ exports.addDato = function(req, res) {
 				}
 			}
 		});
-	} else {
+	/*} else {
 		return res.redirect('/404');
-	}
+	}*/
 };
 
 
