@@ -135,7 +135,17 @@ exports.comprar = function(req, res) {
                                                   console.log('save error', err);
                                                 }else {
                                                     console.log('Compra realizada');
-                                                    var alertas = new Alertas(id_dron: dron._id, recibir_alertas: false);
+                                                    var alertas = new Alertas({id_dron: dron._id, recibir_alertas: false});
+                                                    
+                                                    alertas.save(function (err) {
+                                                    if (err) {
+                                                      console.log('save error', err);
+                                                    }else {
+                                                        console.log('Alerta configurada');
+                                                        //res.redirect('/perfil')
+                                                    }
+                                                    
+                                                });
                                                     //res.redirect('/perfil')
                                                 }
                                             });
