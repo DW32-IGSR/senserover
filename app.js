@@ -107,7 +107,7 @@ app.get('/alertas/rango/co2/:id_dron', datosApiController.findMinMaxCo2DronId);
 app.get('/alertas/rango/rad/:id_dron', datosApiController.findMinMaxRadDronId);
 app.get('/alertas/rango/lum/:id_dron', datosApiController.findMinMaxLumDronId);
 app.get('/alertas/rango/bat/:id_dron', datosApiController.findMinMaxBatDronId);
-app.get('/api/datos/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria', datosApiController.addDato);
+app.get('/api/datos/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria/lat/:latitud/long/:longitud', datosApiController.addDato);
 app.post('/datos/put', datosApiController.addDatoPost);
 app.get('/pronostico', pronosticosController.get);
 

@@ -13,6 +13,8 @@ var datoModel = function () {
         radiacion: String,
         luminosidad: String,
         bateria: String,
+        latitud: String,
+        longitud: String,
         fecha: String
     },{collection : 'datos'});
     

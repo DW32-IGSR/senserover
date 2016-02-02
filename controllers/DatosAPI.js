@@ -312,9 +312,7 @@ exports.addDato = function(req, res) {
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
 	//http://sense-rover-nohtrim.c9users.io/datos/put/5693998f4c3faa7e218027ce/t/66/h/66/co2/66/r/66/l/66
-	//resultado 
-	
-	console.log('entro');
+	//resultado
 	
 	var id_dron = req.params.id_dron;
 	var temperatura = req.params.temperatura;
@@ -323,6 +321,8 @@ exports.addDato = function(req, res) {
 	var radiacion = req.params.radiacion;
 	var luminosidad = req.params.luminosidad;
 	var bateria = req.params.bateria;
+	var latitud = req.params.latitud;
+	var longitud = req.params.longitud;
     
 	// Validacion por servidor
 	//var validado = validadarAPI.APIinsertar(req, res);
@@ -353,7 +353,7 @@ exports.addDato = function(req, res) {
 				console.log(drones);
 				if (drones != undefined || drones != null) {
 					
-					var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, fecha : fecha2});
+					var dato = new Dato({ id_dron : id_dron, temperatura : temperatura, humedad : humedad, co2: co2, radiacion : radiacion, luminosidad: luminosidad, bateria: bateria, latitud : latitud, longitud : longitud, fecha : fecha2});
 		
 					console.log("GET - /api/datos/");
 					//guardar dato en la base de datos
