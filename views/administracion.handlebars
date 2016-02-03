@@ -1,89 +1,189 @@
 <!-- Last Published: Fri Dec 11 2015 12:48:18 GMT+0000 (UTC) -->
 <html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="564f081f5d65087935982588">
 <!--<head>-->
-  <title>Administrador</title>
-  <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
+<title>Administrador</title>
+<link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
 <!--</head>
 <body class="body">-->
-  <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
-    <div class="w-container">
-      <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
-      <nav role="navigation" class="w-nav-menu navigation-menu">
-        <a href="/" class="w-nav-link navigation-link">Home</a>
-        <a href="/perfil" class="w-nav-link navigation-link">Perfil</a>
-        <a href="#alertas" class="w-nav-link navigation-link">Alertas</a>
-        <a href="#seleccion-dron" class="w-nav-link navigation-link">Selección de Dron</a>
-        <div data-delay="0" class="w-dropdown">
-          <div class="w-dropdown-toggle">
-            <div class="navigation-link">Gráficas</div>
-            <div class="w-icon-dropdown-toggle"></div>
-          </div>
-          <nav class="w-dropdown-list">
-            <a href="#temperatura" class="w-dropdown-link navigation-link">Temperatura</a>
-            <a href="#humedad" class="w-dropdown-link navigation-link">Humedad</a>
-            <a href="#co2" class="w-dropdown-link navigation-link">CO2</a>
-            <a href="#radiacion-solar" class="w-dropdown-link navigation-link">Radiación solar</a>
-          </nav>
-        </div> <!-- w-dropdown -->
-        <div data-delay="0" class="w-dropdown">
-          <div class="w-dropdown-toggle">
-            <div class="navigation-link">Estado del dron</div>
-            <div class="w-icon-dropdown-toggle"></div>
-          </div>
-          <nav class="w-dropdown-list">
-            <a href="#descripcion-dron" class="w-dropdown-link navigation-link">Descripción del dron</a>
-            <a href="#posicion-actual" class="w-dropdown-link navigation-link">Posición actual</a>
-            <a href="#seguimiento-ruta" class="w-dropdown-link navigation-link">Seguimiento de ruta</a>
-            <a href="#configuracion" class="w-dropdown-link navigation-link">Configuración</a>
-            <a href="#registro" class="w-dropdown-link navigation-link">Registro</a>
-          </nav>
+<!--<div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
+  <div class="w-container">
+    <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
+    <nav role="navigation" class="w-nav-menu navigation-menu">
+      <a href="/" class="w-nav-link navigation-link">Home</a>
+      <a href="/perfil" class="w-nav-link navigation-link">Perfil</a>
+      <a href="#alertas" class="w-nav-link navigation-link">Alertas</a>
+      <a href="#seleccion-dron" class="w-nav-link navigation-link">Selección de Dron</a>
+      <div data-delay="0" class="w-dropdown">
+        <div class="w-dropdown-toggle">
+          <div class="navigation-link">Gráficas</div>
+          <div class="w-icon-dropdown-toggle"></div>
         </div>
-        <a href="#faq" class="w-nav-link navigation-link">Preguntas frecuentes</a>
-        <a href="/cerrar" class="w-nav-link navigation-link">Cerrar sesión</a>
-      </nav>
-      <div class="w-nav-button hamburger-button">
-        <div class="w-icon-nav-menu"></div>
+        <nav class="w-dropdown-list">
+          <a href="#temperatura" class="w-dropdown-link navigation-link">Temperatura</a>
+          <a href="#humedad" class="w-dropdown-link navigation-link">Humedad</a>
+          <a href="#co2" class="w-dropdown-link navigation-link">CO2</a>
+          <a href="#radiacion-solar" class="w-dropdown-link navigation-link">Radiación solar</a>
+        </nav>
       </div>
-      <a href="/cerrar"><button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button></a>
-      <p class="btn btn-box-tool usuario">Bienvenido <a href="/perfil"><strong>{{nombre_usuario}}</strong></a></p>
-    </div> <!-- w-container -->
-  </div> <!-- w-nav navigation-bar -->
-  <div id="seleccion-dron" class="w-section section grafic">
-    <div class="w-container">
-      <div class="white-box formulario">
-        <div class="w-form">
-          <form>
-            <label for="name">Selección de dron</label>
-            <select id="seleccionador" name="seleccionador" class="w-select">
-              <!-- myscriptmongo change--> 
-              <option value="selecciona">Selecciona el dron</option>
-              <!--<option value="modelo 200c">modelo 200c</option>
+      <div data-delay="0" class="w-dropdown">
+        <div class="w-dropdown-toggle">
+          <div class="navigation-link">Estado del dron</div>
+          <div class="w-icon-dropdown-toggle"></div>
+        </div>
+        <nav class="w-dropdown-list">
+          <a href="#descripcion-dron" class="w-dropdown-link navigation-link">Descripción del dron</a>
+          <a href="#posicion-actual" class="w-dropdown-link navigation-link">Posición actual</a>
+          <a href="#seguimiento-ruta" class="w-dropdown-link navigation-link">Seguimiento de ruta</a>
+          <a href="#configuracion" class="w-dropdown-link navigation-link">Configuración</a>
+          <a href="#registro" class="w-dropdown-link navigation-link">Registro</a>
+        </nav>
+      </div>
+      <a href="#faq" class="w-nav-link navigation-link">Preguntas frecuentes</a>
+      <a href="/cerrar" class="w-nav-link navigation-link">Cerrar sesión</a>
+    </nav>
+    <div class="w-nav-button hamburger-button">
+      <div class="w-icon-nav-menu"></div>
+    </div>
+    <a href="/cerrar">
+      <button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button>
+    </a>
+    <p class="btn btn-box-tool usuario">Bienvenido <a href="/perfil"><strong>{{nombre_usuario}}</strong></a></p>
+  </div>
+</div> -->
+
+<!-- INICIO MENU -->
+<div class="wrapper">
+  <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
+    <div class="w-container b-container">
+      <header class="main-header">
+        <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <div class="navbar-custom-menu menu-gork">
+            <ul class="nav navbar-nav">
+              <!-- User Account-->
+              <li class="dropdown user user-menu">
+                {{#if nombre_usuario}}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <span class="hidden-xs">{{nombre_usuario}}</span>
+                </a>
+                {{else}}
+                <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
+                  <span>Entrar</span> {{/if}}
+                  <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <p>
+                        {{datos_perfil.nombre}} {{datos_perfil.apellidos}}
+                      </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
+                      </div>
+                      <div class="pull-right">
+                        <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-bars"></i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <ul class="sidebar-menu">
+          <li class="header">MENÚ PRINCIPAL</li>
+          <li>
+            <a href="#slide">
+              <i class="fa fa-home"></i> <span>Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="#seleccion-dron">
+              <i class="fa fa-hand-pointer-o"></i> <span>Selección de Dron</span>
+            </a>
+          </li>
+          <li>
+            <a href="#alertas">
+              <i class="fa fa-tachometer"></i> <span>Estado</span>
+            </a>
+          </li>
+          <li>
+            <a href="#graficas">
+              <i class="fa fa-line-chart"></i> <span>Gráficas</span>
+            </a>
+          </li>
+          <li>
+            <a href="#panel-estado">
+              <i class="fa fa-car"></i> <span>Estado del dron</span>
+            </a>
+          </li>
+          <li>
+            <a href="#donde-estamos">
+              <i class="fa fa-shopping-cart"></i> <span>Tienda</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+                   immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div>
+  </div>
+</div>
+<!-- ./wrapper -->
+
+<!-- FIN MENU -->
+
+<!-- w-nav navigation-bar -->
+<div id="seleccion-dron" class="w-section section grafic">
+  <div class="w-container">
+    <div class="white-box formulario">
+      <div class="w-form">
+        <form>
+          <label for="name">Selección de dron</label>
+          <select id="seleccionador" name="seleccionador" class="w-select">
+            <!-- myscriptmongo change-->
+            <option value="selecciona">Selecciona el dron</option>
+            <!--<option value="modelo 200c">modelo 200c</option>
               <option value="modelo 300v">modelo 300v</option>
               <option value="modelo 400">modelo 400</option>-->
-              {{#each drones}}
-                  <option value={{_id}} >{{nombre}}</option>
-    	        {{/each}}
-    	        
-    	        <!-- Mostrar únicamente los drones que están activos -->
-    	        <!--{{#each drones}}
+            {{#each drones}}
+              <option value= {{_id}}>{{nombre}}</option>
+            {{/each}}
+
+            <!-- Mostrar únicamente los drones que están activos -->
+            <!--{{#each drones}}
                 {{#if activo}}
                   <option value={{_id}} >{{nombre}}</option>
                 {{/if}}
     	        {{/each}}-->
-            </select>
-              <p hidden id="dron_seleccionado">id_dron</p>
-          </form>
-          <div class="w-form-done">
-            <p>Thank you! Your submission has been received!</p>
-          </div>
-          <div class="w-form-fail">
-            <p>Oops! Something went wrong while submitting the form</p>
-          </div>
+          </select>
+          <p hidden id="dron_seleccionado">id_dron</p>
+        </form>
+        <div class="w-form-done">
+          <p>Thank you! Your submission has been received!</p>
+        </div>
+        <div class="w-form-fail">
+          <p>Oops! Something went wrong while submitting the form</p>
         </div>
       </div>
-    </div> 
-  </div> <!-- "w-section section grafic -->
-  <!--<div id="alertas" class="w-section section">
+    </div>
+  </div>
+</div>
+<!-- "w-section section grafic -->
+<!--<div id="alertas" class="w-section section">
     <div class="w-container">
       <h1 class="section-heading centered white">Alertas</h1>
       <h1 class="section-subheading center off-white">Temperatura</h1><img src="images/alerta3.PNG">
@@ -93,294 +193,314 @@
       <h1 class="section-subheading center off-white">Luminosidad</h1><img src="images/alerta1.PNG">
     </div>
   </div>-->
-  <div id="alertas" class="w-section section grafic">
-    <div class="w-container">
-      <h1 class="section-heading centered white">PANEL DE ESTADO</h1>
-        <div align="right">
-          <button class="btn btn-box-tool" style="font-size:20px;" data-toggle="modal" data-target="#ModalAlertas"><i class="glyphicon glyphicon-cog"></i></button>
+<div id="alertas" class="w-section section grafic">
+  <div class="w-container">
+    <h1 class="section-heading centered white">PANEL DE ESTADO</h1>
+    <div align="right">
+      <button class="btn btn-box-tool" style="font-size:20px;" data-toggle="modal" data-target="#ModalAlertas"><i class="glyphicon glyphicon-cog"></i></button>
+    </div>
+
+    <div class="col-md-6">
+      <!-- Info Boxes Style 2 -->
+      <div id="estado_tem" class="info-box bg-green">
+        <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Temperatura</span>
+          <span id="temp-ultimo" class="info-box-number" style="display: inline;">33</span><span> ºC</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span id="tempText" class="progress-description">Sin definir</span>
         </div>
-        
-        <div class="col-md-6">
-          <!-- Info Boxes Style 2 -->
-          <div id="estado_tem" class="info-box bg-green">
-            <span class="info-box-icon"><img src="icons/temp.png" height="48" width="48"></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Temperatura</span>
-              <span id="temp-ultimo" class="info-box-number"  style="display: inline;">33</span><span> ºC</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span id="tempText" class="progress-description">Sin definir</span>
-            </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-6">
+      <div id="estado_hum" class="info-box bg-green">
+        <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Humedad</span>
+          <span id="hum-ultimo" class="info-box-number" style="display: inline;">92,050</span><span> %</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span id="humText" class="progress-description">Sin definir</span>
         </div>
-        <div class="col-md-6">
-          <div id="estado_hum" class="info-box bg-green">
-            <span class="info-box-icon"><img src="icons/humedad.png" height="48" width="48"></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Humedad</span>
-              <span id="hum-ultimo" class="info-box-number" style="display: inline;">92,050</span><span> %</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span id="humText" class="progress-description">Sin definir</span>
-            </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-6">
+      <div id="estado_co2" class="info-box bg-green">
+        <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
+        <div class="info-box-content">
+          <span class="info-box-text">CO2</span>
+          <span id="co2-ultimo" class="info-box-number" style="display: inline;">114,381</span><span> ppm</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span id="co2Text" class="progress-description">Sin definir</span>
         </div>
-        <div class="col-md-6">
-          <div id="estado_co2" class="info-box bg-green">
-            <span class="info-box-icon"><img src="icons/co2.png" height="48" width="48"></span>
-            <div class="info-box-content">
-              <span class="info-box-text">CO2</span>
-              <span id="co2-ultimo" class="info-box-number" style="display: inline;">114,381</span><span> ppm</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span id="co2Text" class="progress-description">Sin definir</span>
-            </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-6">
+      <div id="estado_rad" class="info-box bg-green">
+        <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Radiacion Solar</span>
+          <span id="rad-ultimo" class="info-box-number" style="display: inline;">33</span><span> w/m^2</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span id="radText" class="progress-description">Sin definir</span>
         </div>
-        <div class="col-md-6">
-          <div id="estado_rad" class="info-box bg-green">
-            <span class="info-box-icon"><img src="icons/radiacion.png" height="48" width="48"></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Radiacion Solar</span>
-              <span id="rad-ultimo" class="info-box-number" style="display: inline;">33</span><span> w/m^2</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span id="radText" class="progress-description">Sin definir</span>
-            </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-6">
+      <div id="estado_lum" class="info-box bg-green">
+        <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Luminosidad</span>
+          <span id="lum-ultimo" class="info-box-number" style="display: inline;">33</span><span> lux</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span id="lumText" class="progress-description">Sin definir</span>
         </div>
-        <div class="col-md-6">
-          <div id="estado_lum" class="info-box bg-green">
-            <span class="info-box-icon"><img src="icons/luminosidad.png" height="48" width="48"></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Luminosidad</span>
-              <span id="lum-ultimo" class="info-box-number" style="display: inline;">33</span><span> lux</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span id="lumText" class="progress-description">Sin definir</span>
-            </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-6">
+      <div id="estado_bat" class="info-box bg-green">
+        <span class="info-box-icon"><img src="icons/bateria.png" height="48" width="48"></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Bateria del Dron</span>
+          <span id="bat-ultimo" class="info-box-number" style="display: inline;">10</span><span> %</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span id="batText" class="progress-description">Sin definir</span>
         </div>
-        <div class="col-md-6">
-          <div id="estado_bat" class="info-box bg-green">
-            <span class="info-box-icon"><img src="icons/bateria.png" height="48" width="48"></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Bateria del Dron</span>
-              <span id="bat-ultimo" class="info-box-number" style="display: inline;">10</span><span> %</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span id="batText" class="progress-description">Sin definir</span>
-            </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
-        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
     </div>
   </div>
-  
-  <!-- Modal configuracion alertas -->
-  <div class="modal fade" id="ModalAlertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Configuración de Alertas</h4>
-        </div>
-        <div class="modal-body">
-          <div class="w-form form-wrapper">
-            <form id="form_alertas" name="form_alertas" data-name="Alertas Form" class="form" action="/alertas/update" method="post" >
-              <div class="w-row">
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-3">
-                  <div class="w--current button tab iconos-alerta">
-                    <img src="icons/temp.png" height="32" width="32">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Minima:</div>
-                  <div class="form-group">
-                    <input id="tempMinima" type="number" step="any" name="tempMinima" data-name="tempMinima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Maxima:</div>
-                  <div class="form-group">
-                    <input id="tempMaxima" type="number" step="any" name="tempMaxima" data-name="tempMaxima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                </div>
-              </div> <!-- seccion-temperatura-->
-                
-              <div class="w-row">
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-3">
-                  <div class="w--current button tab iconos-alerta">
-                    <img src="icons/humedad.png" height="32" width="32">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Minima:</div>
-                  <div class="form-group">
-                    <input id="humMinima" type="number" step="any" name="humMinima" data-name="humMinima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Maxima:</div>
-                  <div class="form-group">
-                    <input id="humMaxima" type="number" step="any" name="humMaxima" data-name="humMaxima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                </div>
-              </div> <!-- seccion-humedad-->
-                
-              <div class="w-row">
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-3">
-                  <div class="w--current button tab iconos-alerta">
-                    <img src="icons/co2.png" height="32" width="32">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Minima:</div>
-                  <div class="form-group">
-                    <input id="co2Minima" type="number" step="any" name="co2Minima" data-name="co2Minima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Maxima:</div>
-                  <div class="form-group">
-                    <input id="co2Maxima" type="number" step="any" name="co2Maxima" data-name="co2Maxima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                </div>
-              </div> <!-- seccion-co2-->
-                
-              <div class="w-row">
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-3">
-                  <div class="w--current button tab iconos-alerta">
-                    <img src="icons/radiacion.png" height="32" width="32">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Minima:</div>
-                  <div class="form-group">
-                    <input id="radMinima" type="number" step="any" name="radMinima" data-name="radMinima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Maxima:</div>
-                  <div class="form-group">
-                    <input id="radMaxima" type="number" step="any" name="radMaxima" data-name="radMaxima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                </div>
-              </div> <!-- seccion-radiacion-->
-                
-              <div class="w-row">
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-3">
-                  <div class="w--current button tab iconos-alerta">
-                    <img src="icons/luminosidad.png" height="32" width="32">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Minima:</div>
-                  <div class="form-group">
-                    <input id="luxMinima" type="number" step="any" name="luxMinima" data-name="luxMinima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Maxima:</div>
-                  <div class="form-group">
-                    <input id="luxMaxima" type="number" step="any" name="luxMaxima" data-name="luxMaxima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                </div>
-              </div> <!-- seccion-luminosidad-->
-                
-              <div class="w-row">
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-3">
-                  <div class="w--current button tab iconos-alerta">
-                    <img src="icons/bateria.png" height="32" width="32">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                  <div class="text_form">Minima:</div>
-                  <div class="form-group">
-                    <input id="batMinima" type="number" step="any" name="batMinima" data-name="batMinima" class="w-input form-field">
-                  </div>
-                </div>
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-2">
-                </div>
-              </div> <!-- seccion-bateria-->
-              
-              <div class="w-row">
-                <div class="w-col w-col-2">
-                </div>
-                <div class="w-col w-col-10">
-                  <div class="checkbox">
-                    <label>
-                      <input id="alertas_email" type="checkbox" name="alertas_email"> Deseo recibir las alertas por correo electronico.
-                    </label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="submit" value="Guardar" data-wait="Please wait..." class="w-button button full-width perfil" id="btn_form_alertas">
+</div>
+
+<!-- Modal configuracion alertas -->
+<div class="modal fade" id="ModalAlertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Configuración de Alertas</h4>
+      </div>
+      <div class="modal-body">
+        <div class="w-form form-wrapper">
+          <form id="form_alertas" name="form_alertas" data-name="Alertas Form" class="form" action="/alertas/update" method="post">
+            <div class="w-row">
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-3">
+                <div class="w--current button tab iconos-alerta">
+                  <img src="icons/temp.png" height="32" width="32">
                 </div>
               </div>
-              <input hidden id="id_dron_alertas" type="text" name="id_dron_alertas">
-            </form>
-          </div> <!-- seccion-perfil: w-container: w-form form-wrapper -->
+              <div class="w-col w-col-2">
+                <div class="text_form">Minima:</div>
+                <div class="form-group">
+                  <input id="tempMinima" type="number" step="any" name="tempMinima" data-name="tempMinima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Maxima:</div>
+                <div class="form-group">
+                  <input id="tempMaxima" type="number" step="any" name="tempMaxima" data-name="tempMaxima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+              </div>
+            </div>
+            <!-- seccion-temperatura-->
+
+            <div class="w-row">
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-3">
+                <div class="w--current button tab iconos-alerta">
+                  <img src="icons/humedad.png" height="32" width="32">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Minima:</div>
+                <div class="form-group">
+                  <input id="humMinima" type="number" step="any" name="humMinima" data-name="humMinima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Maxima:</div>
+                <div class="form-group">
+                  <input id="humMaxima" type="number" step="any" name="humMaxima" data-name="humMaxima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+              </div>
+            </div>
+            <!-- seccion-humedad-->
+
+            <div class="w-row">
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-3">
+                <div class="w--current button tab iconos-alerta">
+                  <img src="icons/co2.png" height="32" width="32">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Minima:</div>
+                <div class="form-group">
+                  <input id="co2Minima" type="number" step="any" name="co2Minima" data-name="co2Minima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Maxima:</div>
+                <div class="form-group">
+                  <input id="co2Maxima" type="number" step="any" name="co2Maxima" data-name="co2Maxima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+              </div>
+            </div>
+            <!-- seccion-co2-->
+
+            <div class="w-row">
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-3">
+                <div class="w--current button tab iconos-alerta">
+                  <img src="icons/radiacion.png" height="32" width="32">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Minima:</div>
+                <div class="form-group">
+                  <input id="radMinima" type="number" step="any" name="radMinima" data-name="radMinima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Maxima:</div>
+                <div class="form-group">
+                  <input id="radMaxima" type="number" step="any" name="radMaxima" data-name="radMaxima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+              </div>
+            </div>
+            <!-- seccion-radiacion-->
+
+            <div class="w-row">
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-3">
+                <div class="w--current button tab iconos-alerta">
+                  <img src="icons/luminosidad.png" height="32" width="32">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Minima:</div>
+                <div class="form-group">
+                  <input id="luxMinima" type="number" step="any" name="luxMinima" data-name="luxMinima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Maxima:</div>
+                <div class="form-group">
+                  <input id="luxMaxima" type="number" step="any" name="luxMaxima" data-name="luxMaxima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+              </div>
+            </div>
+            <!-- seccion-luminosidad-->
+
+            <div class="w-row">
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-3">
+                <div class="w--current button tab iconos-alerta">
+                  <img src="icons/bateria.png" height="32" width="32">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+                <div class="text_form">Minima:</div>
+                <div class="form-group">
+                  <input id="batMinima" type="number" step="any" name="batMinima" data-name="batMinima" class="w-input form-field">
+                </div>
+              </div>
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-2">
+              </div>
+            </div>
+            <!-- seccion-bateria-->
+
+            <div class="w-row">
+              <div class="w-col w-col-2">
+              </div>
+              <div class="w-col w-col-10">
+                <div class="checkbox">
+                  <label>
+                    <input id="alertas_email" type="checkbox" name="alertas_email"> Deseo recibir las alertas por correo electronico.
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Guardar" data-wait="Please wait..." class="w-button button full-width perfil" id="btn_form_alertas">
+              </div>
+            </div>
+            <input hidden id="id_dron_alertas" type="text" name="id_dron_alertas">
+          </form>
         </div>
+        <!-- seccion-perfil: w-container: w-form form-wrapper -->
       </div>
     </div>
   </div>
+</div>
 
-  <div id="graficas" class="w-section section grafic grafica-a">
-    <div class="w-container">
-      <h1 class="section-heading centered">Gráficas</h1>
-      <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
-        <div class="w-tab-menu">
-          <!--<a data-w-tab="Tab 1" class="w-tab-link w--current w-inline-block button tab">
+<div id="graficas" class="w-section section grafic grafica-a">
+  <div class="w-container">
+    <h1 class="section-heading centered">Gráficas</h1>
+    <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
+      <div class="w-tab-menu">
+        <!--<a data-w-tab="Tab 1" class="w-tab-link w--current w-inline-block button tab">
             <div><img src="icons/realtime.png" height="24" width="24"></div>
           </a>-->
-          <a data-w-tab="Tab 2" class="w-tab-link w--current w-inline-block button tab">
-            <div><img src="icons/temp.png" height="24" width="24"></div>
-          </a>
-          <a data-w-tab="Tab 3" class="w-tab-link w-inline-block button tab">
-            <div><img src="icons/humedad.png" height="24" width="24"></div>
-          </a>
-          <a data-w-tab="Tab 4" class="w-tab-link w-inline-block button tab">
-            <div><img src="icons/co2.png" height="24" width="24"></div>
-          </a>
-          <a data-w-tab="Tab 5" class="w-tab-link w-inline-block button tab">
-            <div><img src="icons/radiacion.png" height="24" width="24"></div>
-          </a>
-          <a data-w-tab="Tab 6" class="w-tab-link w-inline-block button tab">
-            <div><img src="icons/luminosidad.png" height="24" width="24"></div>
-          </a>
-        </div> <!-- w-tab-menu -->
-        <div class="w-tab-content">
-          <!--<div id="tiempo-real" data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+        <a data-w-tab="Tab 2" class="w-tab-link w--current w-inline-block button tab">
+          <div><img src="icons/temp.png" height="24" width="24"></div>
+        </a>
+        <a data-w-tab="Tab 3" class="w-tab-link w-inline-block button tab">
+          <div><img src="icons/humedad.png" height="24" width="24"></div>
+        </a>
+        <a data-w-tab="Tab 4" class="w-tab-link w-inline-block button tab">
+          <div><img src="icons/co2.png" height="24" width="24"></div>
+        </a>
+        <a data-w-tab="Tab 5" class="w-tab-link w-inline-block button tab">
+          <div><img src="icons/radiacion.png" height="24" width="24"></div>
+        </a>
+        <a data-w-tab="Tab 6" class="w-tab-link w-inline-block button tab">
+          <div><img src="icons/luminosidad.png" height="24" width="24"></div>
+        </a>
+      </div>
+      <!-- w-tab-menu -->
+      <div class="w-tab-content">
+        <!--<div id="tiempo-real" data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
             <div class="white-box">
               <h1 class="section-subheading center">Temperatura</h1>
               <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
@@ -401,271 +521,292 @@
               <h1 class="section-subheading center">Luminosidad</h1>
               <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
             </div>
-          </div>--> <!-- tiempo real: w-tab-pane w--tab-active-->
-          <div data-w-tab="Tab 2" class="w-tab-pane">
-            <div id="temperatura">
-              <div class="white-box">
-                <!--<h1 class="section-subheading center">Temperatura</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
-                <div algin="center" id="Temperatura" style="min-width: 60%; height: 90%; margin: 0 auto"></div>
-              </div>
-              <div class="w-form">
-                <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
-                  <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" style="font-size:20px;" align="right"><i class="glyphicon glyphicon-refresh"></i></button>
+          </div>-->
+        <!-- tiempo real: w-tab-pane w--tab-active-->
+        <div data-w-tab="Tab 2" class="w-tab-pane">
+          <div id="temperatura">
+            <div class="white-box">
+              <!--<h1 class="section-subheading center">Temperatura</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
+              <div algin="center" id="Temperatura" style="min-width: 60%; height: 90%; margin: 0 auto"></div>
+            </div>
+            <div class="w-form">
+              <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
+                <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
+                <div class="box-tools pull-right">
+                  <button class="btn btn-box-tool" style="font-size:20px;" align="right"><i class="glyphicon glyphicon-refresh"></i></button>
+                </div>
+                <input id="dato" name="dato" type="text" value="temperatura" hidden="true">
+                <div class="w-row">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango de fechas" class="w-input">
                   </div>
-                  <input id="dato" name="dato" type="text" value="temperatura" hidden="true">
-                  <div class="w-row">
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango de fechas" class="w-input">
-                    </div>
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 2" class="w-input">
-                    </div>
-                    <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 2" class="w-input">
                   </div>
-                  <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
+                  <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
                 </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
-                </div>
-              </div>
-            </div> <!-- temperatura -->
-          </div> <!-- temperatura: w-tab-pane -->
-          <div data-w-tab="Tab 3" class="w-tab-pane">
-            <div id="humedad">
-              <div class="white-box">
-                <!--<h1 class="section-subheading center">Humedad</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
-                <div algin="center" id="Humedad" style="min-width: 50%; height: 100%; margin: 0 auto"></div>
-              </div>
-              <div class="w-form">
-                <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
-                  <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
-                  <input id="dato" name="dato" type="text" value="humedad" hidden="true">
-                  <div class="w-row">
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 9" class="w-input">
-                    </div>
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 10" class="w-input">
-                    </div>
-                     <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
+                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
+              </form>
+            </div>
+          </div>
+          <!-- temperatura -->
+        </div>
+        <!-- temperatura: w-tab-pane -->
+        <div data-w-tab="Tab 3" class="w-tab-pane">
+          <div id="humedad">
+            <div class="white-box">
+              <!--<h1 class="section-subheading center">Humedad</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
+              <div algin="center" id="Humedad" style="min-width: 50%; height: 100%; margin: 0 auto"></div>
+            </div>
+            <div class="w-form">
+              <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
+                <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
+                <input id="dato" name="dato" type="text" value="humedad" hidden="true">
+                <div class="w-row">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 9" class="w-input">
                   </div>
-                  <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
-                </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
-                </div>
-              </div> <!-- humedad: w-form -->
-            </div> <!-- humedad -->
-          </div> <!-- humedad: w-tab-pane -->
-          <div data-w-tab="Tab 4" class="w-tab-pane">
-            <div id="co2">
-              <div class="white-box">
-                <!--<h1 class="section-subheading center">CO2</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
-                <div id="CO2" style="min-width: 50%; height: 100%; margin: 0 auto"></div>
-              </div>
-              <div class="w-form">
-                <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
-                  <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
-                  <input id="dato" name="dato" type="text" value="co2" hidden="true">
-                  <div class="w-row">
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 11" class="w-input">
-                    </div>
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 12" class="w-input">
-                    </div>
-                    <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 10" class="w-input">
                   </div>
-                  <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
+                  <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
                 </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
-                </div>
-              </div> <!-- co2: w-form -->
-            </div> <!-- co2 -->
-          </div> <!-- co2: w-tab-pane -->
-          <div data-w-tab="Tab 5" class="w-tab-pane">
-            <div id="radiacion-solar">
-              <div class="white-box">
-                <!--<h1 class="section-subheading center">RADIACIÓN solar</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
-                <div id="Radiacion" style="min-width: 50%; height: 100%; margin: 0 auto"></div>
-              </div>
-              <div class="w-form">
-                <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
-                  <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
-                  <input id="dato" name="dato" type="text" value="radiacion" hidden="true">
-                  <div class="w-row">
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 13" class="w-input">
-                    </div>
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 14" class="w-input">
-                    </div>
-                    <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
+                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
+              </form>
+            </div>
+            <!-- humedad: w-form -->
+          </div>
+          <!-- humedad -->
+        </div>
+        <!-- humedad: w-tab-pane -->
+        <div data-w-tab="Tab 4" class="w-tab-pane">
+          <div id="co2">
+            <div class="white-box">
+              <!--<h1 class="section-subheading center">CO2</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
+              <div id="CO2" style="min-width: 50%; height: 100%; margin: 0 auto"></div>
+            </div>
+            <div class="w-form">
+              <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
+                <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
+                <input id="dato" name="dato" type="text" value="co2" hidden="true">
+                <div class="w-row">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 11" class="w-input">
                   </div>
-                  <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
-                </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
-                </div>
-              </div> <!-- radiacion-solar: w-form -->
-            </div> <!-- radiacion-solar -->
-          </div> <!-- radiacion-solar: w-tab-pane -->
-          <div data-w-tab="Tab 6" class="w-tab-pane">
-            <div id="luminosidad">
-              <div class="white-box">
-                <div id="Luminosidad" style="min-width: 55%; height: 100%; margin: 0 auto"></div>
-              </div>
-              <div class="w-form">
-                <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
-                  <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
-                  <input id="dato" name="dato" type="text" value="luminosidad" hidden="true">
-                  <div class="w-row">
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 13" class="w-input">
-                    </div>
-                    <div class="w-col w-col-6">
-                      <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 14" class="w-input">
-                    </div>
-                    <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 12" class="w-input">
                   </div>
-                  <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
+                  <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
                 </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
-                </div>
-              </div> <!-- luminosidad: w-form -->
-            </div> <!--luminosidad -->
-          </div> <!-- luminosidad: w-tab-pane -->
-        </div> <!-- w-tab-content -->
-      </div> <!-- "w-tabs tabs-wrapper -->
-    </div> <!-- w-container -->
-  </div> <!-- graficas: w-section section grafic grafica-a -->
-  <div id="panel-estado" class="w-section section">
-    <div class="centrado-a-3">
-      <h1 class="section-heading centered">PANEL DE DRON</h1>
-      <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
-        <div class="w-tab-menu">
-          <a data-w-tab="descripcion_dron" class="w-tab-link w--current w-inline-block button tab">
-            <div id="descripcion-dron"><img src="icons/info.png" height="24" width="24"></div>
-          </a>
-          <a data-w-tab="posicion_actual" class="w-tab-link w-inline-block button tab">
-            <div id="posicion-actual"><img src="icons/posicion-actual.png" height="24" width="24"></div>
-          </a>
-          <a data-w-tab="ruta" class="w-tab-link w-inline-block button tab">
-            <div id="seguimiento-ruta"><img src="icons/seguimiento-ruta.png" height="24" width="24"></div>
-          </a>
-          <a id="configuracion" data-w-tab="configuracion" class="w-tab-link w-inline-block button tab">
-            <div><img src="icons/conf.png" height="24" width="24"></div>
-          </a>
-          <a id="registro" data-w-tab="registro" class="w-tab-link w-inline-block button tab">
-            <div><img src="icons/log.png" height="24" width="24"></div>
-          </a>
-        </div> <!-- panel estado: w-tab-menu -->
-        <div class="w-tab-content">
-          <div data-w-tab="descripcion_dron" class="w-tab-pane w--tab-active">
-            <div class="w-row fila-a-1">
-              <div class="w-col w-col-6"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
+              </form>
+              <div class="w-form-done">
+                <p>Thank you! Your submission has been received!</p>
               </div>
-              <div class="w-col w-col-6">
-                <p class="white-text">
-                  <h1 id=desc_nombre></h1>
-                  <p id=desc_desc>El dron terrestre más rápido, alcanza la velocidad de 5 km/h en 5 segundos.</p>
-                </p>
+              <div class="w-form-fail">
+                <p>Oops! Something went wrong while submitting the form</p>
               </div>
             </div>
-          </div> <!-- panel estado: Tab-descripciónDron: w-tab-pane -->
-          <div data-w-tab="posicion_actual" class="w-tab-pane">
-            <div data-widget-latlng="43.318334,-1.981231" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div>
-          </div> <!-- panel estado: Tab-posiciónActual: w-tab-pane -->
-          <div data-w-tab="ruta" class="w-tab-pane">
-            <div data-widget-latlng="43.308111,-1.891282" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div>
-          </div> <!-- panel estado: Tab-seguimientoRuta: w-tab-pane -->
-          <div data-w-tab="configuracion" class="w-tab-pane">
-            <div class="centrado-a-2">
-              <div class="w-form">
-                <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
-                  <label for="name" class="white-text">Nombre del dron</label>
-                  <input id="name" type="text" placeholder="nombre actual" name="name" data-name="Name" class="w-input">
-                  <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
-                </form>
-                <div class="w-form-done">
-                  <p>Thank you! Your submission has been received!</p>
+            <!-- co2: w-form -->
+          </div>
+          <!-- co2 -->
+        </div>
+        <!-- co2: w-tab-pane -->
+        <div data-w-tab="Tab 5" class="w-tab-pane">
+          <div id="radiacion-solar">
+            <div class="white-box">
+              <!--<h1 class="section-subheading center">RADIACIÓN solar</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">-->
+              <div id="Radiacion" style="min-width: 50%; height: 100%; margin: 0 auto"></div>
+            </div>
+            <div class="w-form">
+              <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
+                <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
+                <input id="dato" name="dato" type="text" value="radiacion" hidden="true">
+                <div class="w-row">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 13" class="w-input">
+                  </div>
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 14" class="w-input">
+                  </div>
+                  <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
                 </div>
-                <div class="w-form-fail">
-                  <p>Oops! Something went wrong while submitting the form</p>
+                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
+              </form>
+              <div class="w-form-done">
+                <p>Thank you! Your submission has been received!</p>
+              </div>
+              <div class="w-form-fail">
+                <p>Oops! Something went wrong while submitting the form</p>
+              </div>
+            </div>
+            <!-- radiacion-solar: w-form -->
+          </div>
+          <!-- radiacion-solar -->
+        </div>
+        <!-- radiacion-solar: w-tab-pane -->
+        <div data-w-tab="Tab 6" class="w-tab-pane">
+          <div id="luminosidad">
+            <div class="white-box">
+              <div id="Luminosidad" style="min-width: 55%; height: 100%; margin: 0 auto"></div>
+            </div>
+            <div class="w-form">
+              <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="white-box formulario" action="rangofecha" method="post">
+                <label for="Rango-de-fechas" class="hero-subheading">Rango de fechas</label>
+                <input id="dato" name="dato" type="text" value="luminosidad" hidden="true">
+                <div class="w-row">
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango De Fechas 13" class="w-input">
+                  </div>
+                  <div class="w-col w-col-6">
+                    <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 14" class="w-input">
+                  </div>
+                  <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
                 </div>
-              </div> <!-- panel estado: Tab-configuración: "w-form -->
-            </div> <!-- panel estado: Tab-configuración: centrado-a-2 -->
-          </div> <!-- panel estado: Tab-configuración: w-tab-pane -->
-          <div data-w-tab="registro" class="w-tab-pane">
-            <div class="bordecito">
-              <p class="white-text">14:50 se encendió el dron
-                <br>14:52 el dron mando una muestra
-                <br>14:54 el dron mando una muestra
-                <br>14:56 se apagó el dron</p>
-                <a href="#" class="hollow-button">HACER COMPROBACIÓN</a>
-                <a href="#" class="hollow-button">exportar registro</a>
-            </div> <!-- panel estado: Tab-registro: bordecito -->
-          </div> <!-- panel estado: Tab-registro: w-tab-pane -->
-        </div> <!-- panel-estado: w-tab-content -->
-      </div> <!-- panel-estado: w-tabs tabs-wrapper -->
-    </div> <!-- panel-estado: centrado-a-3 -->
-  </div> <!-- panel-estado: w-section section -->
-  <div id="faq" class="w-section section grafic">
-    <div class="w-container">
-      <h1 class="section-heading centered">Preguntas frecuentes</h1>
-      <p>Si tienes algún problema no dudes en visitar la sección de preguntas frecuentes.</p>
-      <a href="/faq" class="w-button button">Soluciones</a>
+                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
+              </form>
+              <div class="w-form-done">
+                <p>Thank you! Your submission has been received!</p>
+              </div>
+              <div class="w-form-fail">
+                <p>Oops! Something went wrong while submitting the form</p>
+              </div>
+            </div>
+            <!-- luminosidad: w-form -->
+          </div>
+          <!--luminosidad -->
+        </div>
+        <!-- luminosidad: w-tab-pane -->
+      </div>
+      <!-- w-tab-content -->
     </div>
-  </div> <!-- preguntas frecuentes: w-section section grafic -->
-  
+    <!-- "w-tabs tabs-wrapper -->
+  </div>
+  <!-- w-container -->
+</div>
+<!-- graficas: w-section section grafic grafica-a -->
+<div id="panel-estado" class="w-section section">
+  <div class="centrado-a-3">
+    <h1 class="section-heading centered">PANEL DE DRON</h1>
+    <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
+      <div class="w-tab-menu">
+        <a data-w-tab="descripcion_dron" class="w-tab-link w--current w-inline-block button tab">
+          <div id="descripcion-dron"><img src="icons/info.png" height="24" width="24"></div>
+        </a>
+        <a data-w-tab="posicion_actual" class="w-tab-link w-inline-block button tab">
+          <div id="posicion-actual"><img src="icons/posicion-actual.png" height="24" width="24"></div>
+        </a>
+        <a data-w-tab="ruta" class="w-tab-link w-inline-block button tab">
+          <div id="seguimiento-ruta"><img src="icons/seguimiento-ruta.png" height="24" width="24"></div>
+        </a>
+        <a id="configuracion" data-w-tab="configuracion" class="w-tab-link w-inline-block button tab">
+          <div><img src="icons/conf.png" height="24" width="24"></div>
+        </a>
+        <a id="registro" data-w-tab="registro" class="w-tab-link w-inline-block button tab">
+          <div><img src="icons/log.png" height="24" width="24"></div>
+        </a>
+      </div>
+      <!-- panel estado: w-tab-menu -->
+      <div class="w-tab-content">
+        <div data-w-tab="descripcion_dron" class="w-tab-pane w--tab-active">
+          <div class="w-row fila-a-1">
+            <div class="w-col w-col-6"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+            </div>
+            <div class="w-col w-col-6">
+              <p class="white-text">
+                <h1 id=desc_nombre></h1>
+                <p id=desc_desc>El dron terrestre más rápido, alcanza la velocidad de 5 km/h en 5 segundos.</p>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- panel estado: Tab-descripciónDron: w-tab-pane -->
+        <div data-w-tab="posicion_actual" class="w-tab-pane">
+          <div data-widget-latlng="43.318334,-1.981231" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div>
+        </div>
+        <!-- panel estado: Tab-posiciónActual: w-tab-pane -->
+        <div data-w-tab="ruta" class="w-tab-pane">
+          <div data-widget-latlng="43.308111,-1.891282" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div>
+        </div>
+        <!-- panel estado: Tab-seguimientoRuta: w-tab-pane -->
+        <div data-w-tab="configuracion" class="w-tab-pane">
+          <div class="centrado-a-2">
+            <div class="w-form">
+              <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
+                <label for="name" class="white-text">Nombre del dron</label>
+                <input id="name" type="text" placeholder="nombre actual" name="name" data-name="Name" class="w-input">
+                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
+              </form>
+              <div class="w-form-done">
+                <p>Thank you! Your submission has been received!</p>
+              </div>
+              <div class="w-form-fail">
+                <p>Oops! Something went wrong while submitting the form</p>
+              </div>
+            </div>
+            <!-- panel estado: Tab-configuración: "w-form -->
+          </div>
+          <!-- panel estado: Tab-configuración: centrado-a-2 -->
+        </div>
+        <!-- panel estado: Tab-configuración: w-tab-pane -->
+        <div data-w-tab="registro" class="w-tab-pane">
+          <div class="bordecito">
+            <p class="white-text">14:50 se encendió el dron
+              <br>14:52 el dron mando una muestra
+              <br>14:54 el dron mando una muestra
+              <br>14:56 se apagó el dron</p>
+            <a href="#" class="hollow-button">HACER COMPROBACIÓN</a>
+            <a href="#" class="hollow-button">exportar registro</a>
+          </div>
+          <!-- panel estado: Tab-registro: bordecito -->
+        </div>
+        <!-- panel estado: Tab-registro: w-tab-pane -->
+      </div>
+      <!-- panel-estado: w-tab-content -->
+    </div>
+    <!-- panel-estado: w-tabs tabs-wrapper -->
+  </div>
+  <!-- panel-estado: centrado-a-3 -->
+</div>
+<!-- panel-estado: w-section section -->
+<div id="faq" class="w-section section grafic">
+  <div class="w-container">
+    <h1 class="section-heading centered">Preguntas frecuentes</h1>
+    <p>Si tienes algún problema no dudes en visitar la sección de preguntas frecuentes.</p>
+    <a href="/faq" class="w-button button">Soluciones</a>
+  </div>
+</div>
+<!-- preguntas frecuentes: w-section section grafic -->
+
 <!-- modal on succes -->
 <div class="modal fade" id="malertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
       <div class="modal-body">
         <div class="alert alert-success">
-            Alertas guardadas con exito.
+          Alertas guardadas con exito.
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- /modal on succes -->    
-  
-  {{>footer}}
-  
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/myscriptMongo.js"></script>
-  <script type="text/javascript" src="/js/migrafica2.js"></script>
-  <script type="text/javascript" src="/js/colorear.js"></script>
-  <script type="text/javascript" src="/js/describir.js"></script>
-  <script src="/js/validar_administracion.js" type="text/javascript"></script>
-  <script src="/js/bootstrapValidator.min.js"></script>
-  <!-- en pruebas -->
-  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-  <script src="/js/pruebas_socket.js"></script>
-  
+<!-- /modal on succes -->
+
+{{>footer}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script>var socket = io();</script>
+<script src="/js/pruebas_socket.js"></script>
+<script src="/js/myscriptMongo.js"></script>
+<script src="/js/migrafica2.js"></script>
+<script src="/js/colorear.js"></script>
+<script src="/js/describir.js"></script>
+<script src="/js/validar_administracion.js"></script>
+<script src="/js/bootstrapValidator.min.js"></script>
+
 <!--</body>
 </html>-->

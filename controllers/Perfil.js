@@ -20,9 +20,16 @@ exports.perfil = function(req, res) {
                     if(err) {
                         console.log(err);
                     } else {
+                        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                        var firstDate = new Date(2016,02,03);
+                        var secondDate = new Date(2016,02,06);
+                        
+                        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                        var prueba = "prueba";
+                        
                         //var array_perfil = { drones_perfil:drones_encontrados, nombre_usuario: sess.usuario };
                         //var array_perfil_datos = { datos_perfil:datos_usuario };
-                        var arrays = {drones_perfil:drones_encontrados, datos_perfil:datos_usuario, nombre_usuario: sess.usuario};
+                        var arrays = {drones_perfil:drones_encontrados, datos_perfil:datos_usuario, nombre_usuario: sess.usuario, dias_restantes: prueba};
                         //var arrays = {array_perfil, array_perfil_datos} // No funciona
                         res.render('perfil', arrays);
                     }

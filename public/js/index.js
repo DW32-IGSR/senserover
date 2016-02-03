@@ -7,7 +7,7 @@
   var burgerNav = document.getElementsByClassName('b-nav')[0];
 
   burgerMenu.addEventListener('click', function toggleClasses() {
-    [body, burgerContain, burgerNav].forEach(function (el) {
+    [body, burgerContain, burgerNav].forEach(function(el) {
       el.classList.toggle('open');
     });
   }, false);

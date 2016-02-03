@@ -374,7 +374,7 @@ a:focus {
   }
   .navbar-custom-menu .navbar-nav {
     margin: 0;
-    float: left;
+    float: right;
   }
   .navbar-custom-menu .navbar-nav > li > a {
     padding-top: 15px;
@@ -1090,7 +1090,7 @@ a:focus {
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
   z-index: 5;
   color: #fff;
-  color: rgba(255, 255, 255, 0.8);
+  color: #6A859C;
   font-size: 17px;
   margin-top: 10px;
 }

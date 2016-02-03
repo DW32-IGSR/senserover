@@ -329,7 +329,8 @@ exports.addDato = function(req, res) {
 	//if (validado) {
 		//en pruebas socket
 		var io = req.app.io;
-		io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
+		//io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
+		io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria);
 		console.log("addDato socket: chat "+id_dron+" datos: "+temperatura+" "+humedad+" "+co2+" "+radiacion+" "+luminosidad+" "+bateria);
 		//en pruebas
 		
@@ -341,7 +342,7 @@ exports.addDato = function(req, res) {
 		
 		//console.log(d)
 		// 2015-12-03 11:39:09
-		var fecha2 = fecha.getFullYear()+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+		var fecha2 = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
 		//console.log("fecha2:"+fecha2)
 		
 		console.log("prueba put "+id_dron+" temperatura: "+temperatura+" humedad: "+humedad+" co2: "+co2+" radiacion: "+radiacion+" luminosidad: "+luminosidad+" fecha: " + fecha2);
@@ -467,7 +468,7 @@ exports.addDatoPost = function(req, res) {
 	var fecha = fecha.setHours(fecha.getHours()+1);
 	var fecha=new Date(fecha);
 	
-	var fecha2 = fecha.getFullYear()+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+	var fecha2 = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
 
 	var dato = new Dato({
 		id_dron: req.body.id_dron,
@@ -492,7 +493,8 @@ exports.addDatoPost = function(req, res) {
 	
 	//en pruebas socket
 	var io = req.app.io;
-	io.emit('chat '+dato.id_dron, dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
+	//io.emit('chat '+dato.id_dron, dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
+	io.sockets.in(dato.id_dron).emit('updatechat', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
 	console.log("addDato post socket: chat "+dato.id_dron+" datos: "+dato.temperatura+" "+dato.humedad+" "+dato.co2+" "+dato.radiacion+" "+dato.luminosidad+" "+dato.bateria);
 	//en pruebas	
 	

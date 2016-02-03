@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Fri Dec 11 2015 12:48:18 GMT+0000 (UTC) -->
 <html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="5649c7bdd778ff2e6eb2fc05">
-<!--<head>-->
-  <title>Comprar</title>
-  <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
-<!-- </head>
-<body class="body"> -->
 
-  {{>modal}}
+<title>Comprar</title>
+<link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css"> {{>modal}}
 
-  <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
+<!-- <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
     <div class="w-container">
       <a href="/" class="w-nav-brand brand-link">
         <h1 class="brand-text">Sense-Rover</h1>
@@ -27,291 +21,397 @@
       <div class="w-nav-button hamburger-button">
         <div class="w-icon-nav-menu"></div>
       </div>
-      <!--<a class="w-nav-iniciarS" data-ix="login" role="button">Iniciar sesión</a>-->
-      <!--<a class="btn btn-primary boton-registro" data-ix="login" role="button">Entrar</a>-->
       {{#if nombre_usuario}}
         <a href="/cerrar"><button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button></a>
         <p class="btn btn-box-tool usuario">Bienvenido <strong><a href="/perfil" id=nombre_usuario >{{nombre_usuario}}</a></strong></p>
       {{else}}
         <a class="btn btn-primary boton-registro" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">Entrar</a>
       {{/if}}
-    </div> <!-- navbar: w-container -->
-  </div><!-- navbar: w-nav navigation-bar -->
-  <div id="seccion-producto" class="w-section section">
-    <div class="w-container">
-      <div class="section-title-group">
-        <h2 class="section-heading centered">{{datos_producto.nombre}}</h2>
+    </div>
+  </div> -->
+
+
+
+<!-- INICIO MENU -->
+<div class="wrapper">
+  <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
+    <div class="w-container b-container">
+      <header class="main-header">
+        <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <div class="navbar-custom-menu menu-gork">
+            <ul class="nav navbar-nav">
+              <!-- User Account-->
+              <li class="dropdown user user-menu">
+                {{#if nombre_usuario}}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <span class="hidden-xs">{{nombre_usuario}}</span>
+                </a>
+                <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
+                  <span>Entrar</span> {{/if}}
+                  <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <p>
+                        {{datos_perfil.nombre}} {{datos_perfil.apellidos}}
+                      </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
+                      </div>
+                      <div class="pull-right">
+                        <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-bars"></i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <ul class="sidebar-menu">
+          <li class="header">MENÚ PRINCIPAL</li>
+          <li>
+            <a href="/">
+              <i class="fa fa-home"></i> <span>Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="/administracion">
+              <i class="fa fa-inbox"></i> <span>Producto</span>
+            </a>
+          </li>
+          <li>
+            <a href="/tienda/5693728d3890294f10406189">
+              <i class="fa fa-shopping-cart"></i> <span>Compra</span>
+            </a>
+          </li>
+          {{#if nombre_usuario}}
+          <li>
+            <a href="/administracion">
+              <i class="fa fa-cogs"></i> <span>Administración</span>
+            </a>
+          </li>
+          {{/if}}
+        </ul>
+
+      </aside>
+      <!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+                   immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div>
+  </div>
+</div>
+<!-- ./wrapper -->
+
+<!-- FIN MENU -->
+
+<div id="seccion-producto" class="w-section section">
+  <div class="w-container">
+    <div class="section-title-group">
+      <h2 class="section-heading centered">{{datos_producto.nombre}}</h2>
+    </div>
+    <div>
+      <div class="w-row">
+        <div class="w-col w-col-6">
+          <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
+            <div class="w-slider-mask">
+              <div class="w-slide slide-dron1"></div>
+              <div class="w-slide slide-dron2"></div>
+            </div>
+            <div class="w-slider-arrow-left">
+              <div class="w-icon-slider-left"></div>
+            </div>
+            <div class="w-slider-arrow-right">
+              <div class="w-icon-slider-right"></div>
+            </div>
+            <div class="w-slider-nav w-round"></div>
+          </div>
+          <!-- seccion-producto: w-slider -->
+        </div>
+        <!-- seccion-producto: w-col w-col-6 -->
+        <div class="w-col w-col-6 precio">
+          <h1>{{datos_producto.precio}}&nbsp;€</h1>
+          <p>IVA incluido (precio*0.21)</p><a id="btn_compra" href="#seccion-paquete" class="button">Comprar</a>
+        </div>
+        <!-- seccion-producto: w-col w-col-6 precio -->
       </div>
-      <div>
+      <!-- seccion-producto: w-row -->
+    </div>
+    <!-- seccion-producto: 2º div -->
+    <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
+      <div class="w-tab-menu tab-menu">
+        <a data-w-tab="Tab 1" class="w-tab-link w--current w-inline-block button tab">
+          <div>DEscripción</div>
+        </a>
+        <a data-w-tab="Tab 2" class="w-tab-link w-inline-block button tab">
+          <div>especificaciones</div>
+        </a>
+        <a data-w-tab="Tab 3" class="w-tab-link w-inline-block button tab">
+          <div>opiniones</div>
+        </a>
+      </div>
+      <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-menu tab-menu -->
+      <div class="w-tab-content">
+        <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+          <div>
+            <h2>Descripción</h2>
+            <p align=left>{{datos_producto.descripcion}}</p>
+          </div>
+        </div>
+        <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Descripción -->
+        <div data-w-tab="Tab 2" class="w-tab-pane">
+          <div>
+            <h2>Especificaciones</h2>
+            <p>
+              <ul align=left>
+                {{#each datos_producto._doc.especificaciones}}
+                <li>{{nombre}} : {{valor}}</li>
+                {{/each}}
+              </ul>
+            </p>
+          </div>
+        </div>
+        <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Especificaciones -->
+        <div data-w-tab="Tab 3" class="w-tab-pane">
+          <div>
+            <h2>Opiniones</h2> {{#each datos_producto._doc.opiniones}}
+            <div class="w-row row_opinion">
+              <div class="w-col w-col-3">
+                <h1 class="heading-opinion">{{nombre}}</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+              </div>
+              <div class="w-col w-col-9">
+                <p class="text_opinion">{{opinion}}</p>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 3º Opinión -->
+        </div>
+        <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: div -->
+      </div>
+      <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Opiniones -->
+    </div>
+    <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content -->
+  </div>
+  <!-- seccion-producto: w-container: w-tabs tabs-wrapper -->
+</div>
+<!-- seccion-producto: w-container -->
+</div>
+<!-- seccion-producto -->
+
+<div id="seccion-paquete" class="w-section section grafic">
+  <div class="container">
+    <div class="section-title-group">
+      <h2 class="section-heading centered white">ELIJA SU PAQUETE</h2>
+    </div>
+    <div class="row pricing">
+      <div class="col-md-4">
+        <div class="well">
+          <h3><b>BÁSICO</b></h3>
+          <hr>
+          <p>Datos en tiempo real</p>
+          <hr>
+          <p>Alertas en tiempo real</p>
+          <hr>
+          <p>Y mucho más</p>
+          <hr>
+          <p><b>1 Mes GRATIS</b></p>
+          <hr>
+          <a href="#" name="comprar_pak" class="btn btn-default btn-block" id="tipo_basico">Comprar</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="well">
+          <h3><b>ESTÁNDAR</b></h3>
+          <hr>
+          <p>Datos en tiempo real</p>
+          <hr>
+          <p>Alertas en tiempo real</p>
+          <hr>
+          <p>Y mucho más</p>
+          <hr>
+          <p><b>5,99€ /Mes</b></p>
+          <hr>
+          <a href="#" name="comprar_pak" class="btn btn-success btn-block" id="tipo_estandar">Comprar</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="well">
+          <h3><b>PROFESIONAL</b></h3>
+          <hr>
+          <p>4 GB Datatransfer</p>
+          <hr>
+          <p>4 GB Storage</p>
+          <hr>
+          <p>Y mucho más</p>
+          <hr>
+          <p><b>€ 5,99 /PM</b></p>
+          <hr>
+          <a href="#" name="comprar_pak" class="btn btn-primary btn-block" id="tipo_profesional">Comprar</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      Nota: puede cambiar o cancelar su plan en cualquier momento en la configuración de su cuenta.
+    </div>
+  </div>
+</div>
+
+{{#if nombre_usuario}}
+<div id="seccion-compra" class="w-section section grafic" hidden>
+  <div id='seccion-form-compra' class="w-container">
+    <div class="section-title-group">
+      <h2 class="section-heading centered white">DATOS DEL COMPRADOR</h2>
+    </div>
+    <div class="w-form form-wrapper">
+      <form id="formulario_compra" name="formulario_compra" data-name="formulario_compra" class="form" action="/comprar" method="post">
+        <div class="w-row">
+          <div class="w-col w-col-4">
+            <div class="text_form">Nombre:</div>
+            <div class="form-group">
+              <input id="nombre_compra" type="text" placeholder="Nombre" name="nombre_compra" required="required" data-name="nombre_compra" class="w-input form-field" value={{datosUsuario.nombre}}>
+            </div>
+          </div>
+          <div class="w-col w-col-4">
+            <div class="text_form">Apellidos:</div>
+            <div class="form-group">
+              <input id="apellidos_compra" type="text" placeholder="Apellidos" name="apellidos_compra" required="required" data-name="apellidos_compra" class="w-input form-field" value={{datosUsuario.apellidos}}>
+            </div>
+          </div>
+          <div class="w-col w-col-4">
+            <div class="text_form">DNI:</div>
+            <div class="form-group">
+              <input id="dni_compra" type="text" placeholder="DNI" name="dni_compra" required="required" data-name="dni_compra" class="w-input form-field" value={{datosUsuario.dni}}>
+            </div>
+          </div>
+        </div>
+        <!-- seccion-producto: w-container: w-form form-wrapper: w-row(1º row) -->
+        <div class="w-row">
+          <div class="w-col w-col-7">
+            <div class="text_form">Dirección:</div>
+            <div class="form-group">
+              <input id="direccion_compra" type="text" placeholder="Dirección" name="direccion_compra" required="required" data-name="direccion_compra" class="w-input form-field" value={{datosUsuario.direccion}}>
+            </div>
+          </div>
+          <div class="w-col w-col-5">
+            <div class="text_form">Código Postal:</div>
+            <div class="form-group">
+              <input id="cp_compra" type="text" placeholder="Código Postal" name="cp_compra" required="required" data-name="cp_compra" class="w-input form-field" value={{datosUsuario.codigo_postal}}>
+            </div>
+          </div>
+        </div>
+        <!-- seccion-producto: w-container: w-form form-wrapper: w-row(2º row) -->
         <div class="w-row">
           <div class="w-col w-col-6">
-            <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
-              <div class="w-slider-mask">
-                <div class="w-slide slide-dron1"></div>
-                <div class="w-slide slide-dron2"></div>
-              </div>
-              <div class="w-slider-arrow-left">
-                <div class="w-icon-slider-left"></div>
-              </div>
-              <div class="w-slider-arrow-right">
-                <div class="w-icon-slider-right"></div>
-              </div>
-              <div class="w-slider-nav w-round"></div>
-            </div> <!-- seccion-producto: w-slider -->
-          </div> <!-- seccion-producto: w-col w-col-6 -->
-          <div class="w-col w-col-6 precio">
-            <h1>{{datos_producto.precio}}&nbsp;€</h1>
-            <p>IVA incluido (precio*0.21)</p><a id="btn_compra" href="#seccion-paquete" class="button">Comprar</a>
-          </div> <!-- seccion-producto: w-col w-col-6 precio -->
-        </div> <!-- seccion-producto: w-row -->
-      </div> <!-- seccion-producto: 2º div -->
-      <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
-        <div class="w-tab-menu tab-menu">
-          <a data-w-tab="Tab 1" class="w-tab-link w--current w-inline-block button tab">
-            <div>DEscripción</div>
-          </a>
-          <a data-w-tab="Tab 2" class="w-tab-link w-inline-block button tab">
-            <div>especificaciones</div>
-          </a>
-          <a data-w-tab="Tab 3" class="w-tab-link w-inline-block button tab">
-            <div>opiniones</div>
-          </a>
-        </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-menu tab-menu -->
-        <div class="w-tab-content">
-          <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
-            <div>
-              <h2>Descripción</h2>
-                <p align=left>{{datos_producto.descripcion}}</p>
+            <div class="text_form">Email:</div>
+            <div class="form-group">
+              <input id="email_compra" type="email" placeholder="Email" name="email_compra" required="required" data-name="email_compra" class="w-input form-field" value={{datosUsuario.email}}>
             </div>
-          </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Descripción -->
-          <div data-w-tab="Tab 2" class="w-tab-pane">
-            <div>
-              <h2>Especificaciones</h2>
-              <p>
-                <ul align=left>
-                  {{#each datos_producto._doc.especificaciones}}
-                      <li>{{nombre}} : {{valor}}</li>
-                  {{/each}}
-                </ul>
-              </p>  
+          </div>
+          <div class="w-col w-col-6">
+            <div class="text_form">Producto:</div>
+            <div class="form-group">
+              <input id="producto_compra" type="text" placeholder="Producto 1" name="producto_compra" required="required" data-name="producto_compra" class="w-input form-field" value="Producto 1">
             </div>
-          </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Especificaciones -->
-          <div data-w-tab="Tab 3" class="w-tab-pane">
-            <div>
-              <h2>Opiniones</h2>
-                {{#each datos_producto._doc.opiniones}}
-                  <div class="w-row row_opinion">
-                    <div class="w-col w-col-3">
-                      <h1 class="heading-opinion">{{nombre}}</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-                    </div>
-                    <div class="w-col w-col-9">
-                      <p class="text_opinion">{{opinion}}</p>
-                    </div>
-                  </div>
-                {{/each}}
-              </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: 3º Opinión -->
-            </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: div -->
-          </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Opiniones -->
-        </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content -->
-      </div> <!-- seccion-producto: w-container: w-tabs tabs-wrapper -->
-    </div> <!-- seccion-producto: w-container -->
-  </div> <!-- seccion-producto -->
-  
-  <div id="seccion-paquete" class="w-section section grafic">
-    <div class="container">
-      <div class="section-title-group">
-        <h2 class="section-heading centered white">ELIJA SU PAQUETE</h2>
+            <input hidden id="id_producto_compra" type="text" name="id_producto_compra" required="required" data-name="id_producto_compra" value="{{ datos_producto._id }}">
+          </div>
+          <div class="w-col w-col-4">
+          </div>
+          <div class="w-col w-col-4">
+            <div class="w-col w-col-3">
+            </div>
+            <div class="w-col w-col-6">
+              <div class="text_form">Tipo de suscripción</div>
+            </div>
+
+            <div class="btn-group form-group" data-toggle="buttons">
+              <label class="btn btn-default" id="lbl_basico">
+                <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="basico"> Básico
+              </label>
+              <label class="btn btn-success" id="lbl_estandar">
+                <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="estandar"> Estándar
+              </label>
+              <label class="btn btn-primary" id="lbl_profesional">
+                <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="profesional"> Profesional
+              </label>
+            </div>
+          </div>
+          <div class="w-col w-col-4">
+          </div>
+        </div>
+        <!-- seccion-producto: w-container: w-form form-wrapper: w-row(3º row) -->
+        <div class="form-group">
+          <input type="submit" value="Comprar" data-wait="Please wait..." class="w-button button full-width" id="btn_form_comprar">
+        </div>
+      </form>
+      <div class="w-form-done">
+        <p>Thank you! Your submission has been received!</p>
       </div>
-  		<div class="row pricing">
-				<div class="col-md-4">
-					<div class="well">
-						<h3><b>BÁSICO</b></h3>
-						<hr>
-						<p>Datos en tiempo real</p>
-						<hr>
-						<p>Alertas en tiempo real</p>
-						<hr>
-						<p>Y mucho más</p>
-						<hr>
-  						<p><b>1 Mes GRATIS</b></p>
-						<hr>
-						<a href="#" name="comprar_pak" class="btn btn-default btn-block" id="tipo_basico">Comprar</a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="well">
-						<h3><b>ESTÁNDAR</b></h3>
-						<hr>
-						<p>Datos en tiempo real</p>
-						<hr>
-						<p>Alertas en tiempo real</p>
-						<hr>
-						<p>Y mucho más</p>
-						<hr>
-						<p><b>5,99€ /Mes</b></p>
-						<hr>
-						<a href="#" name="comprar_pak" class="btn btn-success btn-block" id="tipo_estandar">Comprar</a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="well">
-						<h3><b>PROFESIONAL</b></h3>
-						<hr>
-						<p>4 GB Datatransfer</p>
-						<hr>
-						<p>4 GB Storage</p>
-						<hr>
-						<p>Y mucho más</p>
-						<hr>
-						<p><b>€ 5,99 /PM</b></p>
-						<hr>
-						<a href="#" name="comprar_pak" class="btn btn-primary btn-block" id="tipo_profesional">Comprar</a>
-					</div>
-				</div>
+      <div class="w-form-fail">
+        <p>Oops! Something went wrong while submitting the form :(</p>
       </div>
-      <div>
-        Nota: puede cambiar o cancelar su plan en cualquier momento en la configuración de su cuenta.
+    </div>
+    <!-- seccion-producto: w-container: w-form form-wrapper -->
+  </div>
+  <!-- seccion-producto: w-container -->
+</div>
+<!-- seccion-compra -->
+{{else}}
+
+<!-- modal error -->
+<div class="modal fade" id="ModalLogeado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger">
+          Tienes que estar logueado.
+        </div>
       </div>
     </div>
   </div>
-  
-  {{#if nombre_usuario}}
-    <div id="seccion-compra" class="w-section section grafic" hidden>
-      <div id='seccion-form-compra' class="w-container">
-        <div class="section-title-group">
-          <h2 class="section-heading centered white">DATOS DEL COMPRADOR</h2>
-        </div>
-        <div class="w-form form-wrapper">
-          <form id="formulario_compra" name="formulario_compra" data-name="formulario_compra" class="form" action="/comprar" method="post">
-            <div class="w-row">
-              <div class="w-col w-col-4">
-                <div class="text_form">Nombre:</div>
-                <div class="form-group">
-                  <input id="nombre_compra" type="text" placeholder="Nombre" name="nombre_compra" required="required" data-name="nombre_compra" class="w-input form-field" value={{datosUsuario.nombre}}>
-                </div>
-              </div>
-              <div class="w-col w-col-4">
-                <div class="text_form">Apellidos:</div>
-                <div class="form-group">
-                  <input id="apellidos_compra" type="text" placeholder="Apellidos" name="apellidos_compra" required="required" data-name="apellidos_compra" class="w-input form-field" value={{datosUsuario.apellidos}}>
-                </div>
-              </div>
-              <div class="w-col w-col-4">
-                <div class="text_form">DNI:</div>
-                <div class="form-group">
-                  <input id="dni_compra" type="text" placeholder="DNI" name="dni_compra" required="required" data-name="dni_compra" class="w-input form-field" value={{datosUsuario.dni}}>
-                </div>
-              </div>
-            </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(1º row) -->
-            <div class="w-row">
-              <div class="w-col w-col-7">
-                <div class="text_form">Dirección:</div>
-                <div class="form-group">
-                  <input id="direccion_compra" type="text" placeholder="Dirección" name="direccion_compra" required="required" data-name="direccion_compra" class="w-input form-field" value={{datosUsuario.direccion}}>
-                </div>
-              </div>
-              <div class="w-col w-col-5">
-                <div class="text_form">Código Postal:</div>
-                <div class="form-group">
-                  <input id="cp_compra" type="text" placeholder="Código Postal" name="cp_compra" required="required" data-name="cp_compra" class="w-input form-field" value={{datosUsuario.codigo_postal}}>
-                </div>
-              </div>
-            </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(2º row) -->
-            <div class="w-row">
-              <div class="w-col w-col-6">
-                <div class="text_form">Email:</div>
-                <div class="form-group">
-                  <input id="email_compra" type="email" placeholder="Email" name="email_compra" required="required" data-name="email_compra" class="w-input form-field" value={{datosUsuario.email}}>
-                </div>
-              </div>
-              <div class="w-col w-col-6">
-                <div class="text_form">Producto:</div>
-                <div class="form-group">
-                  <input id="producto_compra" type="text" placeholder="Producto 1" name="producto_compra" required="required" data-name="producto_compra" class="w-input form-field" value="Producto 1">
-                </div>
-                <input hidden id="id_producto_compra" type="text" name="id_producto_compra" required="required" data-name="id_producto_compra" value="{{ datos_producto._id }}">
-              </div>
-              <div class="w-col w-col-4">
-              </div>
-              <div class="w-col w-col-4">
-                <div class="w-col w-col-3">
-                  </div>
-                <div class="w-col w-col-6">
-                  <div class="text_form">Tipo de suscripción</div>
-                </div>
-                
-                <div class="btn-group form-group" data-toggle="buttons">
-                  <label class="btn btn-default" id="lbl_basico">
-                    <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="basico"> Básico
-                  </label>
-                  <label class="btn btn-success" id="lbl_estandar">
-                    <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="estandar"> Estándar
-                  </label>
-                  <label class="btn btn-primary" id="lbl_profesional">
-                    <input type="radio" name="tipo_subscripcion" id="tipo_subscripcion" autocomplete="off" value="profesional"> Profesional
-                  </label>
-                </div>
-              </div>
-              <div class="w-col w-col-4">
-              </div>
-            </div> <!-- seccion-producto: w-container: w-form form-wrapper: w-row(3º row) -->
-            <div class="form-group">
-              <input type="submit" value="Comprar" data-wait="Please wait..." class="w-button button full-width" id="btn_form_comprar">
-            </div>
-          </form>
-          <div class="w-form-done">
-            <p>Thank you! Your submission has been received!</p>
-          </div>
-          <div class="w-form-fail">
-            <p>Oops! Something went wrong while submitting the form :(</p>
-          </div>
-        </div> <!-- seccion-producto: w-container: w-form form-wrapper -->
-      </div> <!-- seccion-producto: w-container -->
-    </div> <!-- seccion-compra -->
-    {{else}}
-      
-      <!-- modal error -->  
-      <div class="modal fade" id="ModalLogeado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-              <div class="alert alert-danger">
-                Tienes que estar logueado.
-              </div>
-            </div>
-          </div>
-        </div>
+</div>
+{{/if}}
+
+<!-- modal on succes -->
+<div class="modal fade" id="mcompra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-    {{/if}}
-    
-    <!-- modal on succes -->
-    <div class="modal fade" id="mcompra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-          <div class="modal-body">
-            <div class="alert alert-success">
-                Compra realizada con éxito, visite su perfil para más información.
-            </div>
-          </div>
+      <div class="modal-body">
+        <div class="alert alert-success">
+          Compra realizada con éxito, visite su perfil para más información.
         </div>
       </div>
     </div>
-  <!-- /modal on succes -->  
-  
-  {{>footer}}
-  
-  <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="/js/validar_compra.js" type="text/javascript"></script>
-  <script src="/js/validar_index.js" type="text/javascript"></script>
-  <script src="/js/forget_pass.js" type="text/javascript"></script>
-  <script src="/js/bootstrapValidator.min.js"></script>
-  <script src="/js/comprar.js" ></script> 
+  </div>
+</div>
+<!-- /modal on succes -->
+
+{{>footer}}
+
+<script type="text/javascript" src="/libs/jQuery-2.1.4.min.js"></script>
+<script src="/js/validar_compra.js" type="text/javascript"></script>
+<script src="/js/validar_index.js" type="text/javascript"></script>
+<script src="/js/forget_pass.js" type="text/javascript"></script>
+<script src="/js/comprar.js"></script>
 <!--</body>
 </html>-->

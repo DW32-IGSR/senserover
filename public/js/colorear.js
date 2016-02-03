@@ -21,21 +21,37 @@ function colorearEstado(){
         type: "GET",
         //https://senserover-terrestre.rhcloud.com/alertas/rango/56939648e4b0166e3b6a60f6
         //https://sense-rover-nohtrim.c9users.io/alertas/rango/56939648e4b0166e3b6a60f6
-        url: "https://senserover-terrestre.rhcloud.com/alertas/rango/"+$("#dron_seleccionado").html(),
-        //url: "http://sense-rover-nohtrim.c9users.io/alertas/rango/"+$("#dron_seleccionado").html(),
+        //url: "https://senserover-terrestre.rhcloud.com/alertas/rango/"+$("#dron_seleccionado").html(),
+        url: "https://sense-rover-nohtrim.c9users.io/alertas/rango/"+$("#dron_seleccionado").html(),
         dataType: "json",
         success: function(data) {
-            var t_max = parseFloat(data[0].temperatura.max);
-            var t_min = parseFloat(data[0].temperatura.min);
-            var h_max = parseFloat(data[0].humedad.max);
-            var h_min = parseFloat(data[0].humedad.min);
-            var c_max = parseFloat(data[0].co2.max);
-            var c_min = parseFloat(data[0].co2.min);
-            var r_max = parseFloat(data[0].radiacion.max);
-            var r_min = parseFloat(data[0].radiacion.min);
-            var l_max = parseFloat(data[0].luminosidad.max);
-            var l_min = parseFloat(data[0].luminosidad.min);
-            var b_min = parseFloat(data[0].bateria.min);
+            if (data!=""){
+                var t_max = parseFloat(data[0].temperatura.max);
+                var t_min = parseFloat(data[0].temperatura.min);
+                var h_max = parseFloat(data[0].humedad.max);
+                var h_min = parseFloat(data[0].humedad.min);
+                var c_max = parseFloat(data[0].co2.max);
+                var c_min = parseFloat(data[0].co2.min);
+                var r_max = parseFloat(data[0].radiacion.max);
+                var r_min = parseFloat(data[0].radiacion.min);
+                var l_max = parseFloat(data[0].luminosidad.max);
+                var l_min = parseFloat(data[0].luminosidad.min);
+                var b_min = parseFloat(data[0].bateria.min);
+                var recibir_alertas = data[0].recibir_alertas;
+            }else{
+                var t_max = 0;
+                var t_min = 0;
+                var h_max = 0;
+                var h_min = 0;
+                var c_max = 0;
+                var c_min = 0;
+                var r_max = 0;
+                var r_min = 0;
+                var l_max = 0;
+                var l_min = 0;
+                var b_min = 0;
+                var recibir_alertas=false;
+            }
             
             // cargar configuracion de alertas 
             $("#tempMinima").val(t_min);
@@ -49,7 +65,7 @@ function colorearEstado(){
             $("#luxMinima").val(l_min);
             $("#luxMaxima").val(l_max);
             $("#batMinima").val(b_min);
-            $("#alertas_email").attr('checked', data[0].recibir_alertas);
+            $("#alertas_email").attr('checked', recibir_alertas);
             
             var t_ultimo = $("#temp-ultimo").html();
             var h_ultimo = $("#hum-ultimo").html();
@@ -114,6 +130,6 @@ function colorearEstado(){
     });
 }
 
-//http://senserover-terrestre.rhcloud.com/datos/56af4d51764ae2a8c2618218
+//https://senserover-terrestre.rhcloud.com/datos/56af4d51764ae2a8c2618218
 
-//http://senserover-terrestre.rhcloud.com/api/datos/56af4d51764ae2a8c2618218/t/25/h/25/co2/25/r/25/l/25/b/25
+//https://senserover-terrestre.rhcloud.com/api/datos/56af4d51764ae2a8c2618218/t/25/h/25/co2/25/r/25/l/25/b/25

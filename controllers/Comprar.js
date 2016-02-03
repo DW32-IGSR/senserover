@@ -3,6 +3,8 @@ var Usuario  = require("../models/Usuario");
 var Productos  = require("../models/Productos");
 var Alertas  = require("../models/Alertas");
 
+var estructura_email = require('./Estructura_Email');
+
 exports.comprar = function(req, res) {
     //post del formulario de compra
     //insert en la bd el usuario y el dron que compro
@@ -96,6 +98,10 @@ exports.comprar = function(req, res) {
                                             //console.log("nombre final"+form_nombre_final)
                                             
                                             var fecha = new Date();
+                                            console.log("Asi guarda la fecha: " + fecha);
+                                            var now;
+                                            now.setHours(fecha.getUTCHours()+1);
+                                            console.log("Fecha actual + 1h: "+now);
                                     		fecha = fecha.setHours(fecha.getHours()+1);
                                     		//console.log("fecha en milisegundos " + fecha)
                                     		fecha = new Date(fecha);
@@ -105,22 +111,22 @@ exports.comprar = function(req, res) {
                                     		
                                     		if (form_tipo_sub == 'basico') {
                                     		    // básico
-                                        		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+2+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                        		fecha_caducidad = fecha.getFullYear()+"-"+(fecha.getMonth()+2)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                                         		//console.log("fecha_caducidad1:"+fecha_caducidad)
                                     		} else if (form_tipo_sub == 'estandar') {
                                     		    // estandar
-                                        		fecha_caducidad = fecha.getFullYear()+"-"+fecha.getMonth()+7+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                        		fecha_caducidad = fecha.getFullYear()+"-"+(fecha.getMonth()+7)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                                         		//console.log("fecha_caducidad1:"+fecha_caducidad)
                                     		} else if (form_tipo_sub == 'profesional') {
                                     		    //profesional
-                                        		fecha_caducidad = fecha.getFullYear()+1+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                        		fecha_caducidad = fecha.getFullYear()+1+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                                         		//console.log("fecha_caducidad2:"+fecha_caducidad)
                                     		}
                                     		
                                     		// fecha_compra
-                                    		var fecha_compra = fecha.getFullYear()+"-"+fecha.getMonth()+1+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
+                                    		var fecha_compra = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                                     		//console.log("fecha2:"+fecha_compra)
-                                    		
+                                                                            		
                                     		// comprobar si ha caducado
                                     		// meter en otro archivo / export
                                     		/*if (fecha_caducidad > fecha) {
@@ -135,6 +141,16 @@ exports.comprar = function(req, res) {
                                                   console.log('save error', err);
                                                 }else {
                                                     console.log('Compra realizada');
+                                                    
+                                                    var nombre_remitente = 'Sense-Rover';
+                                                    var email_remitente = 'dw32igsr@gmail.com';
+                                                    var nombre_destinatario = user.usuario;
+                                                    var email_destinatario = user.email;
+                                                    var asunto = 'Compra del dron ' + dron.nombre;
+                                                    var mensaje = "<h1>Hola " + nombre_destinatario + "!</h1><br><p>Acabas de comprar el producto " + producto.nombre + " con el nombre " + dron.nombre + " con el tipo de subscripción " + form_tipo_sub + "</p>";
+                        
+                                                    estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
+                                                    
                                                     var alertas = new Alertas({id_dron: dron._id, recibir_alertas: false});
                                                     
                                                     alertas.save(function (err) {
@@ -164,5 +180,116 @@ exports.comprar = function(req, res) {
             //en administracion no tiene datos ni alertas configuradas
             //res.redirect('/perfil')
         }
+    }
+};
+
+exports.renovarSubscripcion = function(req, res) {
+    var sess = req.session;
+    //console.log('entro');
+
+    if (sess.usuario == "" || sess.usuario == undefined) {
+        //algun mensaje de usuario no conectado
+        //res.redirect('/')
+        console.log("No estas logeado");
+    }
+    else {
+        console.log("renovar");
+
+        var id_dron = req.body.id_dron_renovar;
+
+        Drones.findOne({
+            _id: id_dron
+        }, function(err, dron_encontrado) {
+
+            var fecha_caducidad_antigua = dron_encontrado.fecha_caducidad;
+            var fecha = new Date();
+
+            Usuario.findOne({
+                _id: dron_encontrado.id_usuario
+            }, function(err, usuario) {
+                var nombre_remitente = 'Sense-Rover';
+                var email_remitente = 'dw32igsr@gmail.com';
+                var nombre_destinatario = usuario.usuario;
+                var email_destinatario = usuario.email;
+                var asunto = 'Renovación del dron ' + dron_encontrado.nombre;
+
+                if (req.body.hasOwnProperty("btn_form_renovar_estandar")) {
+
+                    var fecha_nueva = new Date(fecha_caducidad_antigua);
+                    //console.log('fecha: ' + fecha_nueva);
+                    var fecha_caducidad_nueva;
+                    fecha_caducidad_nueva = fecha_nueva.getFullYear() + "-" + (fecha_nueva.getMonth() + 7) + "-" + fecha.getDate() + " " + (fecha.getHours() + 1) + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+                    //console.log(fecha_caducidad_nueva);
+                    var mes = (fecha_nueva.getMonth() + 7);
+                    //console.log('mes: ' + mes)
+                    var resta;
+                    var anyo;
+                    if (mes > 12) {
+                        resta = mes - 12;
+                        //console.log('resta mes: ' + resta);
+                        anyo = (fecha_nueva.getFullYear() + 1);
+                        if (resta < 10) {
+                            resta = "0" + resta;
+                        };
+                    }
+                    else if (mes > 0 && mes <= 12) {
+                        resta = mes;
+                        anyo = fecha_nueva.getFullYear();
+                    }
+
+                    var fecha_final = anyo + "-" + resta + "-" + fecha.getDate() + " " + (fecha.getHours() + 1) + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+                    //console.log('fecha final: ' + fecha_final);
+
+                    Drones.findOneAndUpdate({
+                        _id: id_dron
+                    }, {
+                        tipo_subscripcion: 'estandar',
+                        fecha_caducidad: fecha_final
+                    }, function(err, dron_actualizado) {
+                        if (err) {
+                            console.error(err);
+                        }
+                        else {
+                            console.log('Renovación realizada');
+                            // Crear mensaje de renovación
+                            var nombre_remitente = 'Sense-Rover';
+                            var email_remitente = 'dw32igsr@gmail.com';
+                            var nombre_destinatario = usuario.usuario;
+                            var email_destinatario = usuario.email;
+                            var asunto = 'Renovación del dron ' + dron_encontrado.nombre;
+                            var mensaje = "<h1>Hola " + nombre_destinatario + "!</h1><br><p>Has renovado durante seis meses más la subscripción estándar del dron " + dron_encontrado.nombre + "<br>La nueva fecha de caducidad es: " + fecha_final + "</p>";
+
+                            estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
+                        }
+                    });
+                }
+
+                if (req.body.hasOwnProperty("btn_form_renovar_profesional")) {
+
+                    var fecha_nueva = new Date(fecha_caducidad_antigua);
+                    //console.log('fecha: ' + fecha_nueva);
+                    var fecha_caducidad_nueva;
+                    fecha_caducidad_nueva = (fecha_nueva.getFullYear() + 1) + "-" + (fecha_nueva.getMonth() + 1) + "-" + fecha.getDate() + " " + (fecha.getHours() + 1) + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+                    //console.log(fecha_caducidad_nueva);
+
+                    Drones.findOneAndUpdate({
+                        _id: id_dron
+                    }, {
+                        tipo_subscripcion: 'profesional',
+                        fecha_caducidad: fecha_caducidad_nueva
+                    }, function(err, dron_actualizado) {
+                        if (err) {
+                            console.error(err);
+                        }
+                        else {
+                            console.log('Renovación realizada');
+                            // Crear mensaje de renovaciónombre_destinatario
+                            var mensaje = "<h1>Hola " + nombre_destinatario + "!</h1><br><p>Has renovado durante un año más la subscripción profesional del dron " + dron_encontrado.nombre + "<br>La nueva fecha de caducidad es: " + fecha_caducidad_nueva + "</p>";
+                            estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
+                        }
+                    });
+                }
+            });
+        })
     }
 };

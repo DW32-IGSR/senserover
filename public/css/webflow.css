@@ -1839,6 +1839,13 @@ textarea.w-select {
   cursor: pointer;
 }
 
+.menu-gork {
+  position: relative;
+  top: 2px;
+  right: 26px;
+  float: right;
+}
+
 /* INICIO BIENVENIDO_USUARIO*/
 .usuario {
   position: relative;
@@ -1867,8 +1874,8 @@ textarea.w-select {
 
 .boton-registro {
   position: relative;
-  top: 14px;
-  right: 12px;
+  top: 5px;
+  right: 20px;
   float: right;
 }
 
@@ -1930,6 +1937,12 @@ textarea.w-select {
     right: 0px;
     visibility: hidden;
     display: none;
+  }
+  .menu-gork {
+    position: static;
+    top: 2px;
+    right: 80px;
+    float: right;
   }
   
   .boton-registro {
