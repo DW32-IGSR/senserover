@@ -12,6 +12,7 @@ var dronesModel = function() {
         tipo_subscripcion: String,
         fecha_compra: String,
         fecha_caducidad: String,
+        hora_compra: String,
         activo: Boolean
 
     }, {

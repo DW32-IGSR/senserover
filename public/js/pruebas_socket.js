@@ -15,15 +15,15 @@
 });*/
 
 //socket.on('chat '+$("#dron_seleccionado").html(), function( temp, hum, co2, rad, lum, bat){
-socket.on('updatechat', function(temp,hum,co2,rad,lum,bat){
-    console.log("update chat"+temp+" "+hum+" "+co2+" "+rad+" "+lum+" "+bat);
+socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
+    console.log("update chat" + temp + " " + hum + " " + co2 + " " + rad + " " + lum + " " + bat);
     console.log("funciona?");
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum));
     datosCO2.push(parseFloat(co2));
     datosRad.push(parseFloat(rad));
     datosLum.push(parseFloat(lum));
-    datosBat.push(parseFloat(bat));    
+    datosBat.push(parseFloat(bat));
     dibujargrafica2();
     $("#temp-ultimo").html(temp);
     $("#hum-ultimo").html(hum);
@@ -33,6 +33,7 @@ socket.on('updatechat', function(temp,hum,co2,rad,lum,bat){
     $("#bat-ultimo").html(bat);
     colorearEstado();
 });
+
 function switchRoom(room) {
     console.log("funcion switchRoom(" + room + ")");
     socket.emit('switchRoom', room);

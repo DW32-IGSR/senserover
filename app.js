@@ -11,6 +11,7 @@ var expressValidator = require('express-validator');
 var dotenv = require('dotenv');
 var session = require('express-session');
 var flash = require('express-flash');
+var moment = require('moment');
 
 /**
  * path: .env
@@ -165,6 +166,7 @@ app.io.sockets.on('connection', function(socket) {
 
   //cuando se compra un dron se emite el create
   socket.on('create', function(room) {
+    console.log("room creada "+room);
     rooms.push(room);
     //se puede usar para rellenar el select
     //socket.emit('updaterooms', rooms, socket.room);
@@ -215,6 +217,6 @@ server.listen(server_port, server_ip_address, function() {
   });
 });
 
-//http://senserover-terrestre.rhcloud.com/
-//http://sense-rover-nohtrim.c9users.io/
+//https://senserover-terrestre.rhcloud.com/
+//https://sense-rover-nohtrim.c9users.io/
 //dw32igsr@gmail.com

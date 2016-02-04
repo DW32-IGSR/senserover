@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
     $("#btn_datos_personales").click(function() {
 
         $('#form_datos_personales').bootstrapValidator({
@@ -17,10 +17,10 @@ $(document).ready(function() {
                             message: 'Introduce tu nombre'
                         },
                         stringLength: {
-                        	min: 3,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
-	                    }
+                            min: 3,
+                            max: 20,
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
+                        }
                     }
                 },
                 apellidos: {
@@ -29,10 +29,10 @@ $(document).ready(function() {
                             message: 'Introduce tus apellidos'
                         },
                         stringLength: {
-                        	min: 3,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
-	                    }
+                            min: 3,
+                            max: 20,
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
+                        }
                     }
                 },
                 dni: {
@@ -41,9 +41,9 @@ $(document).ready(function() {
                             message: 'Introduce tu DNI'
                         },
                         id: {
-                        country: 'ES',
-                        message: 'El DNI introducido no es válido en %s'
-                    }
+                            country: 'ES',
+                            message: 'El DNI introducido no es válido en %s'
+                        }
                     }
                 },
                 direccion: {
@@ -52,10 +52,10 @@ $(document).ready(function() {
                             message: 'Introduce tu dirección'
                         },
                         stringLength: {
-                        	min: 3,
-	                        max: 50,
-	                        message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
-	                    }
+                            min: 3,
+                            max: 50,
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
+                        }
                     }
                 },
                 cp: {
@@ -71,11 +71,11 @@ $(document).ready(function() {
                             message: 'Formato incorrecto'
                         },
                         stringLength: {
-                        	min: 5,
-	                        max: 5,
-	                        message: 'Debe contener 5 dígitos'
-	                    }
-                        
+                            min: 5,
+                            max: 5,
+                            message: 'Debe contener 5 dígitos'
+                        }
+
                     }
                 },
                 email: {
@@ -91,10 +91,10 @@ $(document).ready(function() {
             }
         });
     });
-    
+
     $("#btn_change_pass").click(function() {
         $('#form_change_pass').bootstrapValidator({
-        	// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
             //container: '#errores',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -108,58 +108,58 @@ $(document).ready(function() {
                             message: 'Introduce tu contraseña actual'
                         },
                         stringLength: {
-                        	min: 8,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 8 caracteres y máximo de 20'
-	                    }
+                            min: 8,
+                            max: 20,
+                            message: 'El mínimo permitido es de 8 caracteres y máximo de 20'
+                        }
                     }
                 },
                 pass_nueva: {
-                	validators: {
-	                    notEmpty: {
+                    validators: {
+                        notEmpty: {
                             message: 'Introduce tu nueva contraseña'
                         },
-	                    different: {
-	                        field: 'pass_actual',
-	                        message: 'La nueva contraseña no puede ser igual a la contraseña actual'
-	                    },
+                        different: {
+                            field: 'pass_actual',
+                            message: 'La nueva contraseña no puede ser igual a la contraseña actual'
+                        },
                         stringLength: {
-                        	min: 8,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 8 caracteres y máximo de 20'
-	                    }
-                	}
-            	},
-            	pass_nueva_conf: {
-            		validators: {
-            		    notEmpty: {
+                            min: 8,
+                            max: 20,
+                            message: 'El mínimo permitido es de 8 caracteres y máximo de 20'
+                        }
+                    }
+                },
+                pass_nueva_conf: {
+                    validators: {
+                        notEmpty: {
                             message: 'Introduce tu nuea contraseña'
                         },
                         identical: {
-		                    field: 'pass_nueva',
-		                    message: 'Las contraseñas no coinciden'
-		                },
+                            field: 'pass_nueva',
+                            message: 'Las contraseñas no coinciden'
+                        },
                         stringLength: {
-                        	min: 8,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 8 caracteres y máximo de 20'
-	                    }
+                            min: 8,
+                            max: 20,
+                            message: 'El mínimo permitido es de 8 caracteres y máximo de 20'
+                        }
                     }
-            	}
+                }
             }
         });
     });
-    
+
     $('#form_datos_personales').on('submit', function(e) {
         $('#mperfil').modal('show');
-        setTimeout(function () {
-           $('#mperfil').modal('hide');
+        setTimeout(function() {
+            $('#mperfil').modal('hide');
         }, 3000);
-    }); 
+    });
     $('#form_change_pass').on('submit', function(e) {
         $('#mperfil2').modal('show');
-        setTimeout(function () {
-           $('#mperfil2').modal('hide');
+        setTimeout(function() {
+            $('#mperfil2').modal('hide');
         }, 3000);
-    });     
+    });
 });

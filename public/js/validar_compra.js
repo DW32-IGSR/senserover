@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
     $("#btn_form_comprar").click(function() {
 
         $('#formulario_compra').bootstrapValidator({
@@ -17,10 +17,10 @@ $(document).ready(function() {
                             message: 'Introduce tu nombre'
                         },
                         stringLength: {
-                        	min: 3,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
-	                    }
+                            min: 3,
+                            max: 20,
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
+                        }
                     }
                 },
                 apellidos_compra: {
@@ -29,10 +29,10 @@ $(document).ready(function() {
                             message: 'Introduce tus apellidos'
                         },
                         stringLength: {
-                        	min: 3,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
-	                    }
+                            min: 3,
+                            max: 20,
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
+                        }
                     }
                 },
                 dni_compra: {
@@ -52,10 +52,10 @@ $(document).ready(function() {
                             message: 'Introduce tu dirección'
                         },
                         stringLength: {
-                        	min: 3,
-	                        max: 50,
-	                        message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
-	                    }
+                            min: 3,
+                            max: 50,
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
+                        }
                     }
                 },
                 cp_compra: {
@@ -71,11 +71,11 @@ $(document).ready(function() {
                             message: 'Formato incorrecto'
                         },
                         stringLength: {
-                        	min: 5,
-	                        max: 5,
-	                        message: 'Debe contener 5 dígitos'
-	                    }
-                        
+                            min: 5,
+                            max: 5,
+                            message: 'Debe contener 5 dígitos'
+                        }
+
                     }
                 },
                 email_compra: {
@@ -94,10 +94,10 @@ $(document).ready(function() {
                             message: 'Introduce el nombre del producto'
                         },
                         stringLength: {
-                        	min: 1,
-	                        max: 20,
-	                        message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
-	                    }
+                            min: 1,
+                            max: 20,
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
+                        }
                     }
                 }
             }
@@ -105,8 +105,8 @@ $(document).ready(function() {
     });
     $('#formulario_compra').on('submit', function(e) {
         $('#mcompra').modal('show');
-        setTimeout(function () {
-           window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
+        setTimeout(function() {
+            window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
         }, 1000);
     });
 })

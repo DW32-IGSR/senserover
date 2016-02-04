@@ -1,4 +1,4 @@
-function dibujargrafica2(){
+function dibujargrafica2() {
     $('#Temperatura').highcharts({
         title: {
             text: 'Temperatura (°C)',
@@ -8,9 +8,9 @@ function dibujargrafica2(){
             //text: 'Source: WorldClimate.com',
             x: -20
         },
-        
+
         //meter array de fechasfechas
-        
+
         xAxis: {
             //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             categories: fechas
@@ -34,15 +34,13 @@ function dibujargrafica2(){
             verticalAlign: 'middle',
             borderWidth: 0
         },*/
-        
+
         //meter arrays de valores
-        
-        series: [
-            {
-                name: 'Temperatura',
-                data: datosTemp
-            }
-        ]
+
+        series: [{
+            name: 'Temperatura',
+            data: datosTemp
+        }]
     });
     $('#Humedad').highcharts({
         title: {
@@ -53,9 +51,9 @@ function dibujargrafica2(){
             //text: 'Temperatura, humedad, CO2, radiacion y luminosidad',
             x: -20
         },
-        
+
         //meter array de fechasfechas
-        
+
         xAxis: {
             //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             categories: fechas
@@ -79,15 +77,13 @@ function dibujargrafica2(){
             verticalAlign: 'middle',
             borderWidth: 0
         },*/
-        
+
         //meter arrays de valores
-        
-        series: [
-            {
-                name: 'Humedad',
-                data: datosHum
-            }
-        ]
+
+        series: [{
+            name: 'Humedad',
+            data: datosHum
+        }]
     });
     $('#CO2').highcharts({
         title: {
@@ -98,9 +94,9 @@ function dibujargrafica2(){
             //text: 'Source: WorldClimate.com',
             x: -20
         },
-        
+
         //meter array de fechasfechas
-        
+
         xAxis: {
             //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             categories: fechas
@@ -124,15 +120,13 @@ function dibujargrafica2(){
             verticalAlign: 'middle',
             borderWidth: 0
         },*/
-        
+
         //meter arrays de valores
-        
-        series: [
-            {
-                name: 'CO2',
-                data: datosCO2
-            }
-        ]
+
+        series: [{
+            name: 'CO2',
+            data: datosCO2
+        }]
     });
     $('#Radiacion').highcharts({
         title: {
@@ -143,9 +137,9 @@ function dibujargrafica2(){
             //text: 'Source: WorldClimate.com',
             x: -20
         },
-        
+
         //meter array de fechasfechas
-        
+
         xAxis: {
             //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             categories: fechas
@@ -169,15 +163,13 @@ function dibujargrafica2(){
             verticalAlign: 'middle',
             borderWidth: 0
         },*/
-        
+
         //meter arrays de valores
-        
-        series: [
-            {
-                name: 'Radiación',
-                data: datosRad
-            }
-        ]
+
+        series: [{
+            name: 'Radiación',
+            data: datosRad
+        }]
     });
     $('#Luminosidad').highcharts({
         title: {
@@ -188,9 +180,9 @@ function dibujargrafica2(){
             //text: 'Source: WorldClimate.com',
             x: -20
         },
-        
+
         //meter array de fechasfechas
-        
+
         xAxis: {
             //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             categories: fechas
@@ -214,14 +206,12 @@ function dibujargrafica2(){
             verticalAlign: 'middle',
             borderWidth: 0
         },*/
-        
+
         //meter arrays de valores
-        
-        series: [
-            {
-                name: 'Luminosidad',
-                data: datosLum
-            }
-        ]
+
+        series: [{
+            name: 'Luminosidad',
+            data: datosLum
+        }]
     });
-}    
+}

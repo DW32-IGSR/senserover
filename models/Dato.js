@@ -15,7 +15,8 @@ var datoModel = function() {
         bateria: String,
         latitud: String,
         longitud: String,
-        fecha: String
+        fecha: String,
+        hora: String
     }, {
         collection: 'datos'
     });

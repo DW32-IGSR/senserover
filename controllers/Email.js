@@ -271,7 +271,8 @@ exports.newPassword = function(req, res) {
     }
 };
 
-exports.emailAlert = function(req, res) {
+// Función para enviar alertas, no se usa
+/*exports.emailAlert = function(req, res) {
 
     var email = req.params.email;
     //if para enviar email dependiendo del valor de la alerta
@@ -294,5 +295,4 @@ exports.emailAlert = function(req, res) {
     mailgun.messages().send(data, function(error, body) {
         console.log(body);
     });
-
-};
+};*/

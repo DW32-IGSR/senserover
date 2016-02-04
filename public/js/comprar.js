@@ -15,21 +15,21 @@ $("a[name$='comprar_pak']").click(function() {
 
 $("#btn_form_comprar").click(function() {
     $('#ModalCompra').modal('show');
-})
+});
 
 $('#tipo_basico').click(function() {
     $("input[name=tipo_subscripcion][value='basico']").attr('checked', 'checked');
     $("#lbl_basico").addClass('active');
     $("#lbl_estandar").removeClass('active');
     $("#lbl_profesional").removeClass('active');
-})
+});
 
 $('#tipo_estandar').click(function() {
     $("input[name=tipo_subscripcion][value='estandar']").attr('checked', 'checked');
     $("#lbl_basico").removeClass('active');
     $("#lbl_estandar").addClass('active');
     $("#lbl_profesional").removeClass('active');
-})
+});
 
 $('#tipo_profesional').click(function() {
     $("input[name=tipo_subscripcion][value='profesional']").attr('checked', 'checked');

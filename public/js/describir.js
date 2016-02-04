@@ -1,6 +1,6 @@
 function describir() {
     console.log("describiendo :D");
-    var c_url="https://sense-rover-nohtrim.c9users.io/drones/producto/"+$("#dron_seleccionado").html();
+    var c_url = "https://sense-rover-nohtrim.c9users.io/drones/producto/" + $("#dron_seleccionado").html();
     //var c_url = "https://senserover-terrestre.rhcloud.com/drones/producto/" + $("#dron_seleccionado").html();
     console.log(c_url);
     $.ajax({

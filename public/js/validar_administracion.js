@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	
+
     $("#btn_form_alertas").click(function() {
-        
+
         $('#form_alertas').bootstrapValidator({
             // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
             //container: '#errores',
@@ -12,8 +12,8 @@ $(document).ready(function() {
             },
             fields: {
                 tempMinima: {
-                	validators: {
-	                    notEmpty: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -23,15 +23,15 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         }
-                	}
-            	},
-            	tempMaxima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                tempMaxima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -41,7 +41,7 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         },
@@ -50,11 +50,11 @@ $(document).ready(function() {
                             max: '100',
                             message: ' '
                         }
-                	}
-            	},
-            	humMinima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                humMinima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -64,15 +64,15 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         }
-                	}
-            	},
-            	humMaxima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                humMaxima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -82,7 +82,7 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         },
@@ -91,11 +91,11 @@ $(document).ready(function() {
                             max: '100',
                             message: ' '
                         }
-                	}
-            	},
-            	co2Minima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                co2Minima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -105,15 +105,15 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         }
-                	}
-            	},
-            	co2Maxima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                co2Maxima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -123,7 +123,7 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         },
@@ -132,11 +132,11 @@ $(document).ready(function() {
                             max: '100',
                             message: ' '
                         }
-                	}
-            	},
-            	radMinima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                radMinima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -146,15 +146,15 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         }
-                	}
-            	},
-            	radMaxima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                radMaxima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -164,48 +164,7 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
-                            max: 5,
-                            message: ' '
-                        },
-                        between: {
-                            min: 'radMinima',
-                            max: '100',
-                            message: ' '
-                        }
-                	}
-            	},
-            	luxMinima: {
-                	validators: {
-	                    notEmpty: {
-                            message: ' '
-                        },
-                        numeric: {
-                            message: 'Ej: 6.6',
-                            // The default separators
-                            thousandsSeparator: '',
-                            decimalSeparator: '.'
-                        },
-                        stringLength: {
-                        	min: 1,
-                            max: 5,
-                            message: ' '
-                        }
-                	}
-            	},
-            	luxMaxima: {
-                	validators: {
-	                    notEmpty: {
-                            message: ' '
-                        },
-                        numeric: {
-                            message: 'Ej: 6.6',
-                            // The default separators
-                            thousandsSeparator: '',
-                            decimalSeparator: '.'
-                        },
-                        stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         },
@@ -214,11 +173,52 @@ $(document).ready(function() {
                             max: '100',
                             message: ' '
                         }
-                	}
-            	},
-            	batMinima: {
-                	validators: {
-	                    notEmpty: {
+                    }
+                },
+                luxMinima: {
+                    validators: {
+                        notEmpty: {
+                            message: ' '
+                        },
+                        numeric: {
+                            message: 'Ej: 6.6',
+                            // The default separators
+                            thousandsSeparator: '',
+                            decimalSeparator: '.'
+                        },
+                        stringLength: {
+                            min: 1,
+                            max: 5,
+                            message: ' '
+                        }
+                    }
+                },
+                luxMaxima: {
+                    validators: {
+                        notEmpty: {
+                            message: ' '
+                        },
+                        numeric: {
+                            message: 'Ej: 6.6',
+                            // The default separators
+                            thousandsSeparator: '',
+                            decimalSeparator: '.'
+                        },
+                        stringLength: {
+                            min: 1,
+                            max: 5,
+                            message: ' '
+                        },
+                        between: {
+                            min: 'radMinima',
+                            max: '100',
+                            message: ' '
+                        }
+                    }
+                },
+                batMinima: {
+                    validators: {
+                        notEmpty: {
                             message: ' '
                         },
                         numeric: {
@@ -228,7 +228,7 @@ $(document).ready(function() {
                             decimalSeparator: '.'
                         },
                         stringLength: {
-                        	min: 1,
+                            min: 1,
                             max: 5,
                             message: ' '
                         },
@@ -237,17 +237,17 @@ $(document).ready(function() {
                             max: '100',
                             message: ' '
                         }
-                	}
-            	}
+                    }
+                }
             }
         });
     });
-    
+
     //en proceso
     $('#form_alertas').on('submit', function(e) {
         $('#malertas').modal('show');
-        setTimeout(function () {
-           $('#malertas').modal('hide');
+        setTimeout(function() {
+            $('#malertas').modal('hide');
         }, 3000);
-    }); 
+    });
 });

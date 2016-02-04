@@ -2,6 +2,7 @@ var Drones = require("../models/Drones");
 var Usuario = require("../models/Usuario");
 
 var bcrypt = require('bcrypt');
+var moment = require('moment');
 
 exports.perfil = function(req, res) {
     //ruta a la pagina de perfil
@@ -27,21 +28,41 @@ exports.perfil = function(req, res) {
                         console.log(err);
                     }
                     else {
-                        var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-                        var firstDate = new Date(2016, 02, 04);
-                        var secondDate = new Date(2016, 02, 06);
-                            
-                        console.log(drones_encontrados);
+                        /*var unDia = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                         
-                        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+                        var fechaActual = new Date();
+                        fechaActual.setHours(fechaActual.getUTCHours()+1);
+                        var dateFormat = require('dateformat');
+                        dateFormat(fechaActual, "Y-n-j");
+                        
+                        
+                        console.log(fechaActual);
+                        console.log(drones_encontrados);
+                        var fechaCaducidad = drones_encontrados[1].fecha_caducidad;
+                        
+                        console.log(fechaCaducidad);
+                        
+                        var diffDias = Math.round(Math.abs((fechaActual.getTime() - fechaCaducidad.getTime()) / (unDia)));
+                        
+                        var fechaCaducidad = drones_encontrados[1].fecha_caducidad;
+                        console.log(fechaCaducidad);
+                        var fechaActual = moment().format("Y-MM-DD");
+                        var fechaCaducidad2 = moment([fechaCaducidad]).format("Y-M-D");
+                        //console.log("Es esto: "+now);
+                        console.log("Es esto: "+fechaCaducidad2);
+                        
+                        //console.log(moment().format("Y-MM-DD"));
+                        var a = moment([2016, 2, 04]);
+                        var b = moment([2016, 2, 06]);
+                        var result = b.diff(a, 'days')
+                        console.log(result);               */
 
                         //var array_perfil = { drones_perfil:drones_encontrados, nombre_usuario: sess.usuario };
                         //var array_perfil_datos = { datos_perfil:datos_usuario };
                         var arrays = {
                             drones_perfil: drones_encontrados,
                             datos_perfil: datos_usuario,
-                            nombre_usuario: sess.usuario,
-                            dias_restantes: diffDays
+                            nombre_usuario: sess.usuario
                         };
                         //var arrays = {array_perfil, array_perfil_datos} // No funciona
                         res.render('perfil', arrays);

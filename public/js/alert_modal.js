@@ -1,3 +1,3 @@
-    $(window).load(function(){
-        $('#Mensajes').modal('show');
-    });
+$(window).load(function() {
+    $('#Mensajes').modal('show');
+});

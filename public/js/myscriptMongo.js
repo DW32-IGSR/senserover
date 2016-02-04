@@ -77,12 +77,12 @@ $(document).ready(function() {
                 //socket.emit('updatechat', datosTemp[datosTemp.length - 1], datosHum[datosHum.length - 1], datosCO2[datosCO2.length - 1], datosRad[datosRad.length - 1], datosLum[datosLum.length - 1], datosBat[datosBat.length - 1]);
                 //socket.emit('chat '+$("#dron_seleccionado").html(), datosTemp[datosTemp.length-1], datosHum[datosHum.length-1], datosCO2[datosCO2.length-1], datosRad[datosRad.length-1], datosLum[datosLum.length-1], datosBat[datosBat.length-1]);
 
-                $("#temp-ultimo").html(datosTemp[datosTemp.length-1]);
-                $("#hum-ultimo").html(datosHum[datosHum.length-1]);
-                $("#co2-ultimo").html(datosCO2[datosCO2.length-1]);
-                $("#rad-ultimo").html(datosRad[datosRad.length-1]);
-                $("#lum-ultimo").html(datosLum[datosLum.length-1]);
-                $("#bat-ultimo").html(datosBat[datosBat.length-1]);
+                $("#temp-ultimo").html(datosTemp[datosTemp.length - 1]);
+                $("#hum-ultimo").html(datosHum[datosHum.length - 1]);
+                $("#co2-ultimo").html(datosCO2[datosCO2.length - 1]);
+                $("#rad-ultimo").html(datosRad[datosRad.length - 1]);
+                $("#lum-ultimo").html(datosLum[datosLum.length - 1]);
+                $("#bat-ultimo").html(datosBat[datosBat.length - 1]);
 
                 dibujargrafica2();
                 colorearEstado();

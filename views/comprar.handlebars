@@ -2,35 +2,9 @@
 <html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="5649c7bdd778ff2e6eb2fc05">
 
 <title>Comprar</title>
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/dist/css/AdminLTE.css">
 <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css"> {{>modal}}
-
-<!-- <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
-    <div class="w-container">
-      <a href="/" class="w-nav-brand brand-link">
-        <h1 class="brand-text">Sense-Rover</h1>
-      </a>
-      <nav role="navigation" class="w-nav-menu navigation-menu">
-        <a href="/" class="w-nav-link navigation-link">Home</a>
-        <a href="#seccion-producto" class="w-nav-link navigation-link">Producto</a>
-        <a href="#seccion-paquete" class="w-nav-link navigation-link">Compra</a>
-        {{#if nombre_usuario}}
-          <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
-        {{/if}}
-        <a data-ix="login" class="w-nav-link navigation-link login2 login-menu">Inicio de Sesión / Registro</a>
-      </nav>
-      <div class="w-nav-button hamburger-button">
-        <div class="w-icon-nav-menu"></div>
-      </div>
-      {{#if nombre_usuario}}
-        <a href="/cerrar"><button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button></a>
-        <p class="btn btn-box-tool usuario">Bienvenido <strong><a href="/perfil" id=nombre_usuario >{{nombre_usuario}}</a></strong></p>
-      {{else}}
-        <a class="btn btn-primary boton-registro" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">Entrar</a>
-      {{/if}}
-    </div>
-  </div> -->
-
-
 
 <!-- INICIO MENU -->
 <div class="wrapper">
@@ -46,15 +20,16 @@
               <li class="dropdown user user-menu">
                 {{#if nombre_usuario}}
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{nombre_usuario}}</span>
+                  <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <span id="nombre_usuario" class="hidden-xs">{{nombre_usuario}}</span>
                 </a>
+                {{else}}
                 <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
                   <span>Entrar</span> {{/if}}
                   <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       <p>
                         {{datos_perfil.nombre}} {{datos_perfil.apellidos}}
                       </p>
@@ -94,7 +69,7 @@
             </a>
           </li>
           <li>
-            <a href="/tienda/5693728d3890294f10406189">
+            <a href="#seccion-paquete">
               <i class="fa fa-shopping-cart"></i> <span>Compra</span>
             </a>
           </li>
@@ -106,7 +81,6 @@
           </li>
           {{/if}}
         </ul>
-
       </aside>
       <!-- /.control-sidebar -->
       <!-- Add the sidebar's background. This div must be placed

@@ -6,6 +6,7 @@ var Usuario = require("../models/Usuario");
 
 var validadarAPI = require('./validadarAPI');
 var estructura_email = require('./Estructura_Email');
+var moment = require('moment');
 
 // Búsqueda de TODOS los datos
 exports.findDatos = function(req, res) {
@@ -389,24 +390,29 @@ exports.addDato = function(req, res) {
 	//var validado = validadarAPI.APIinsertar(req, res);
 	//if (validado) {
 	//en pruebas socket
-	var io = req.app.io;
+	//var io = req.app.io;
 	//io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
-	io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria);
+	req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria);
 	console.log("addDato socket: chat " + id_dron + " datos: " + temperatura + " " + humedad + " " + co2 + " " + radiacion + " " + luminosidad + " " + bateria);
 	//en pruebas
 
-	var fecha = new Date();
+	/*var fecha = new Date();
 	var fecha = fecha.setHours(fecha.getHours() + 1);
 	//console.log("fecha en milisegundos " + fecha)
 	var fecha = new Date(fecha);
-	console.log("fecha +1 " + fecha);
+	console.log("fecha +1 " + fecha);*/
+
+	var fecha = moment().format("Y-MM-DD");
+	var hora = moment().utcOffset("+0100").format("HH:mm:ss");
+	
+	console.log(hora);
 
 	//console.log(d)
 	// 2015-12-03 11:39:09
-	var fecha2 = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+	//var fecha2 = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
 	//console.log("fecha2:"+fecha2)
 
-	console.log("prueba put " + id_dron + " temperatura: " + temperatura + " humedad: " + humedad + " co2: " + co2 + " radiacion: " + radiacion + " luminosidad: " + luminosidad + " fecha: " + fecha2);
+	console.log("prueba put " + id_dron + " temperatura: " + temperatura + " humedad: " + humedad + " co2: " + co2 + " radiacion: " + radiacion + " luminosidad: " + luminosidad + " fecha: " + fecha);
 
 	Drones.find({
 		_id: id_dron
@@ -428,7 +434,8 @@ exports.addDato = function(req, res) {
 					bateria: bateria,
 					latitud: latitud,
 					longitud: longitud,
-					fecha: fecha2
+					fecha: fecha,
+					hora, hora
 				});
 
 				console.log("GET - /api/datos/");
@@ -545,12 +552,16 @@ exports.addDato = function(req, res) {
 exports.addDatoPost = function(req, res) {
 	console.log('POST add Datos');
 
-	var fecha = new Date();
+	/*var fecha = new Date();
 	var fecha = fecha.setHours(fecha.getHours() + 1);
 	var fecha = new Date(fecha);
 
-	var fecha2 = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+	var fecha2 = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();*/
 
+
+	var fecha = moment().format("Y-MM-DD");
+	var hora = moment().utcOffset("+0100").format("HH:mm:ss");
+	
 	var dato = new Dato({
 		id_dron: req.body.id_dron,
 		temperatura: req.body.temperatura,
@@ -559,7 +570,8 @@ exports.addDatoPost = function(req, res) {
 		radiacion: req.body.radiacion,
 		luminosidad: req.body.luminosidad,
 		bateria: req.body.bateria,
-		fecha: fecha2
+		fecha: fecha,
+		hora: hora
 	});
 
 	//var http = require('http').Server(router);
@@ -573,9 +585,9 @@ exports.addDatoPost = function(req, res) {
 	*/
 
 	//en pruebas socket
-	var io = req.app.io;
+	//var io = req.app.io;
 	//io.emit('chat '+dato.id_dron, dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
-	io.sockets.in(dato.id_dron).emit('updatechat', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
+	req.app.io.sockets.in(dato.id_dron).emit('updatechat', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
 	console.log("addDato post socket: chat " + dato.id_dron + " datos: " + dato.temperatura + " " + dato.humedad + " " + dato.co2 + " " + dato.radiacion + " " + dato.luminosidad + " " + dato.bateria);
 	//en pruebas	
 

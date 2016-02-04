@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt');
 //var validator = require('validator');
 
 var estructura_email = require('./Estructura_Email');
+var moment = require('moment');
 
 exports.login = function(req, res) {
   //post de formulario de login
@@ -11,8 +12,8 @@ exports.login = function(req, res) {
   var form_usuario = req.body.usuario;
   var form_pass = req.body.contrasenya;
 
-  console.log("Usuario login: " + form_usuario);
-  console.log("Pass login: " + form_pass);
+  //console.log("Usuario login: " + form_usuario);
+  //console.log("Pass login: " + form_pass);
 
   // Validacion servidor
   req.assert('usuario', 'Usuario es requerido.').notEmpty();
@@ -37,27 +38,29 @@ exports.login = function(req, res) {
       }
       else {
         if (usuario != null) {
-          console.log('Find one usuario:' + usuario.usuario);
+          //console.log('Find one usuario:' + usuario.usuario);
 
           usuario.comparePassword(form_pass, function(err, isMatch) {
             if (err) throw err;
-            console.log('comprobacion: ' + form_pass, isMatch);
+            //console.log('comprobacion: ' + form_pass, isMatch);
             if (isMatch) {
               if (usuario.validated) {
-                console.log('usuario activado');
-                console.log(req.ip);
+                //console.log('usuario activado');
+                console.log("ip cliente: "+req.ip);
                 //crear sesion
                 sess.usuario = usuario.usuario;
                 sess.id_usuario = usuario._id;
-                console.log(" id de usuario " + sess.id_usuario + " usuario " + sess.usuario);
+                console.log("id de usuario " + sess.id_usuario + " usuario " + sess.usuario);
 
-                var fecha = new Date();
+                /*var fecha = new Date();
                 var fecha = fecha.setHours(fecha.getHours() + 1);
                 //fecha.setUTCHours(12)
                 //fecha=fecha.setUTCHours(15)
-                console.log(fecha);
+                console.log(fecha);*/
                 //console.log("fecha en milisegundos " + fecha)
                 //fecha=new Date(fecha)
+                
+              	var fecha = moment().utcOffset("+0100").format("Y-MM-DD HH:mm:ss");
 
                 console.log('ultima conexion: ' + usuario.ultima_conexion);
 
