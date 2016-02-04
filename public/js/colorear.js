@@ -1,6 +1,5 @@
 function colorearEstado() {
-    console.log("coloreando :D");
-
+    //console.log("coloreando :D");
     function colorear(id, color, id_texto) {
         $(id).removeClass("bg-green");
         $(id).removeClass("bg-red");

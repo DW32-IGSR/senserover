@@ -404,7 +404,7 @@ exports.addDato = function(req, res) {
 
 	var fecha = moment().format("Y-MM-DD");
 	var hora = moment().utcOffset("+0100").format("HH:mm:ss");
-	
+
 	console.log(hora);
 
 	//console.log(d)
@@ -435,7 +435,8 @@ exports.addDato = function(req, res) {
 					latitud: latitud,
 					longitud: longitud,
 					fecha: fecha,
-					hora, hora
+					hora,
+					hora
 				});
 
 				console.log("GET - /api/datos/");
@@ -561,7 +562,7 @@ exports.addDatoPost = function(req, res) {
 
 	var fecha = moment().format("Y-MM-DD");
 	var hora = moment().utcOffset("+0100").format("HH:mm:ss");
-	
+
 	var dato = new Dato({
 		id_dron: req.body.id_dron,
 		temperatura: req.body.temperatura,
@@ -598,7 +599,7 @@ exports.addDatoPost = function(req, res) {
 		dato.save(function(err, datos) {
 			if (err) return res.send(500, err.message);
 			res.status(200).jsonp(datos);
-				//res.json({ message: 'durante el guardado' });
+			//res.json({ message: 'durante el guardado' });
 		});
 
 	}
