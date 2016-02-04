@@ -28,33 +28,58 @@ function colorearEstado() {
         url: "https://sense-rover-nohtrim.c9users.io/alertas/rango/" + $("#dron_seleccionado").html(),
         dataType: "json",
         success: function(data) {
-            if (data != "") {
+            var recibir_alertas = data[0].recibir_alertas;
+
+            if (data[0].temperatura != undefined) {
                 var t_max = parseFloat(data[0].temperatura.max);
                 var t_min = parseFloat(data[0].temperatura.min);
-                var h_max = parseFloat(data[0].humedad.max);
-                var h_min = parseFloat(data[0].humedad.min);
-                var c_max = parseFloat(data[0].co2.max);
-                var c_min = parseFloat(data[0].co2.min);
-                var r_max = parseFloat(data[0].radiacion.max);
-                var r_min = parseFloat(data[0].radiacion.min);
-                var l_max = parseFloat(data[0].luminosidad.max);
-                var l_min = parseFloat(data[0].luminosidad.min);
-                var b_min = parseFloat(data[0].bateria.min);
-                var recibir_alertas = data[0].recibir_alertas;
             }
             else {
                 var t_max = 0;
                 var t_min = 0;
+            }
+
+            if (data[0].humedad != undefined) {
+                var h_max = parseFloat(data[0].humedad.max);
+                var h_min = parseFloat(data[0].humedad.min);
+            }
+            else {
                 var h_max = 0;
                 var h_min = 0;
+            }
+
+            if (data[0].co2 != undefined) {
+                var c_max = parseFloat(data[0].co2.max);
+                var c_min = parseFloat(data[0].co2.min);
+            }
+            else {
                 var c_max = 0;
                 var c_min = 0;
+            }
+
+            if (data[0].radiacion != undefined) {
+                var r_max = parseFloat(data[0].radiacion.max);
+                var r_min = parseFloat(data[0].radiacion.min);
+            }
+            else {
                 var r_max = 0;
                 var r_min = 0;
+            }
+
+            if (data[0].luminosidad != undefined) {
+                var l_max = parseFloat(data[0].luminosidad.max);
+                var l_min = parseFloat(data[0].luminosidad.min);
+            }
+            else {
                 var l_max = 0;
                 var l_min = 0;
+            }
+
+            if (data[0].bateria != undefined) {
+                var b_min = parseFloat(data[0].bateria.min);
+            }
+            else {
                 var b_min = 0;
-                var recibir_alertas = false;
             }
 
             // cargar configuracion de alertas 

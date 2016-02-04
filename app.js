@@ -166,7 +166,7 @@ app.io.sockets.on('connection', function(socket) {
 
   //cuando se compra un dron se emite el create
   socket.on('create', function(room) {
-    console.log("room creada "+room);
+    console.log("room creada " + room);
     rooms.push(room);
     //se puede usar para rellenar el select
     //socket.emit('updaterooms', rooms, socket.room);
@@ -182,7 +182,14 @@ app.io.sockets.on('connection', function(socket) {
     //oldroom = socket.room;
     console.log("cambio de room " + socket.room + " nuevo room " + newroom);
     socket.leave(socket.room);
-    socket.join(newroom);
+    console.log("comprovacion index of: "+rooms.indexOf(newroom));
+    if (rooms.indexOf(newroom) == -1) {
+      console.log("if create rooms:"+newroom)
+      rooms.push(newroom);
+      socket.join(newroom);
+    }else{
+      socket.join(newroom);
+    }
     //socket.emit('updatechat', 'SERVER', 'you have connected to ' + newroom);
     //socket.broadcast.to(oldroom).emit('updatechat', 'SERVER', socket.username + ' has left this room');
     socket.room = newroom;
