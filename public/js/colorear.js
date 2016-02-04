@@ -20,12 +20,17 @@ function colorearEstado() {
         $(id_texto).html(mensaje);
     }
 
+    //url: "https://senserover-terrestre.rhcloud.com/alertas/rango/"+$("#dron_seleccionado").html(),
+    //url: "https://sense-rover-nohtrim.c9users.io/alertas/rango/" + $("#dron_seleccionado").html(),
+    var c_url = document.location.href; //"https://sense-rover-nohtrim.c9users.io/administracion"
+    c_url = c_url.replace("administracion", "alertas/rango/" + $("#dron_seleccionado").html());
+    //console.log("colorear " + c_url);
+    //"https://sense-rover-nohtrim.c9users.io/alertas/rango/" + $("#dron_seleccionado").html()    
     $.ajax({
         type: "GET",
         //https://senserover-terrestre.rhcloud.com/alertas/rango/56939648e4b0166e3b6a60f6
         //https://sense-rover-nohtrim.c9users.io/alertas/rango/56939648e4b0166e3b6a60f6
-        //url: "https://senserover-terrestre.rhcloud.com/alertas/rango/"+$("#dron_seleccionado").html(),
-        url: "https://sense-rover-nohtrim.c9users.io/alertas/rango/" + $("#dron_seleccionado").html(),
+        url: c_url,
         dataType: "json",
         success: function(data) {
             var recibir_alertas = data[0].recibir_alertas;

@@ -17,12 +17,14 @@ $(document).ready(function() {
         //se cambian las graficas y se cambian los valores en la seccion de estado
         //alert("hola")
         //console.log("prueba jueves "+this.value)
-        //var url_dron = "https://senserover-terrestre.rhcloud.com/datos/" + this.value;
-        var url_dron = "https://sense-rover-nohtrim.c9users.io/datos/" + this.value;
+        //var c_url = "https://senserover-terrestre.rhcloud.com/datos/" + this.value;
+        //var c_url = "https://sense-rover-nohtrim.c9users.io/datos/" + this.value;
+        var c_url = document.location.href; //"https://sense-rover-nohtrim.c9users.io/administracion"
+        c_url = c_url.replace("administracion", "datos/" + this.value);
         //id dron pruebas 56939648e4b0166e3b6a60f6
         //https://senserover-terrestre.rhcloud.com/datos/56939648e4b0166e3b6a60f6
         //console.log($("#temp-ultimo").html())
-        console.log(url_dron);
+        //console.log(c_url);
         //id de dron en input de rangos de fecha
         document.getElementsByName('name_dron_rango')[0].value = this.value;
         document.getElementsByName('name_dron_rango')[1].value = this.value;
@@ -38,7 +40,7 @@ $(document).ready(function() {
             type: "GET",
             //url: "https://dron-terrestre.rhcloud.com/datosj.php",
             //https://sense-rover-nohtrim.c9users.io/datos/56a1dbef16d8dfdb5562113d
-            url: url_dron,
+            url: c_url,
 
             dataType: "json",
 
