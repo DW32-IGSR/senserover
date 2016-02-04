@@ -435,8 +435,10 @@ exports.addDato = function(req, res) {
 					latitud: latitud,
 					longitud: longitud,
 					fecha: fecha,
-					hora,
-					hora
+					//revision
+					/*hora,
+					hora*/
+					hora: hora
 				});
 
 				console.log("GET - /api/datos/");
