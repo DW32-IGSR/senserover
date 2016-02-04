@@ -2,14 +2,16 @@
 
 var mongoose = require('mongoose');
 
-var productosModel = function () {
-    
+var productosModel = function() {
+
     var productosSchema = new mongoose.Schema({
         nombre: String,
         descripcion: String,
         precio: String
-    },{collection : 'productos'});  
-    
+    }, {
+        collection: 'productos'
+    });
+
     return mongoose.model('Productos', productosSchema);
 };
 

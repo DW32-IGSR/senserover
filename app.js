@@ -163,6 +163,7 @@ app.io.sockets.on('connection', function(socket) {
     socket.emit('updaterooms', rooms, 'Lobby');
   });*/
 
+  //cuando se compra un dron se emite el create
   socket.on('create', function(room) {
     rooms.push(room);
     //se puede usar para rellenar el select
@@ -173,6 +174,7 @@ app.io.sockets.on('connection', function(socket) {
     app.io.sockets["in"](socket.room).emit('updatechat', socket.username, data);
   });*/
 
+  //cuando se selecciona dron se cambia de room
   socket.on('switchRoom', function(newroom) {
     //var oldroom;
     //oldroom = socket.room;
@@ -186,6 +188,7 @@ app.io.sockets.on('connection', function(socket) {
     //socket.emit('updaterooms', rooms, newroom);
   });
 
+  //cuando se cierra se sesion sale de room
   /*socket.on('disconnect', function() {
     delete usernames[socket.username];
     app.io.sockets.emit('updateusers', usernames);
@@ -193,7 +196,6 @@ app.io.sockets.on('connection', function(socket) {
     socket.leave(socket.room);
   });*/
 });
-// en proceso
 
 /**
  * Start Express server.

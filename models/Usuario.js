@@ -3,8 +3,8 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
-var userModel = function () {
-    
+var userModel = function() {
+
     var userSchema = new mongoose.Schema({
         usuario: String,
         nombre: String,
@@ -17,33 +17,37 @@ var userModel = function () {
         activacion_key: String,
         validated: Boolean,
         ultima_conexion: String
-    },{collection : 'usuarios'});
+    }, {
+        collection: 'usuarios'
+    });
 
-    userSchema.methods.comp_validacion = function () {
-        if(this.validated){
+    userSchema.methods.comp_validacion = function() {
+        if (this.validated) {
             return 'esta validado';
-        }else{
+        }
+        else {
             return 'no esta validado';
         }
     };
-    
-    userSchema.methods.activarUsuario = function () {
-        if(this.validated){
+
+    userSchema.methods.activarUsuario = function() {
+        if (this.validated) {
             //no hacer nada
             return 'esta validado';
-        }else{
+        }
+        else {
             //update de usuario no validado
             return 'no esta validado';
         }
     };
-    
+
     userSchema.methods.comparePassword = function(candidatePassword, cb) {
         bcrypt.compare(candidatePassword, this.pass, function(err, isMatch) {
             if (err) return cb(err);
             cb(null, isMatch);
         });
-    };    
-    
+    };
+
     return mongoose.model('Usuario', userSchema);
 };
 

@@ -2,13 +2,15 @@
 
 var mongoose = require('mongoose');
 
-var especificacionesDronModel = function () {
-    
+var especificacionesDronModel = function() {
+
     var especificacionesdronSchema = new mongoose.Schema({
         id_producto: String,
         especificacion: String
-    },{collection : 'especificaciones'});  
-    
+    }, {
+        collection: 'especificaciones'
+    });
+
     return mongoose.model('Especificaciones_productos', especificacionesdronSchema);
 };
 

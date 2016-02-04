@@ -3,8 +3,8 @@
 var mongoose = require('mongoose');
 //var bcrypt = require('bcrypt');
 
-var datoModel = function () {
-    
+var datoModel = function() {
+
     var datoSchema = new mongoose.Schema({
         id_dron: String,
         temperatura: String,
@@ -16,8 +16,10 @@ var datoModel = function () {
         latitud: String,
         longitud: String,
         fecha: String
-    },{collection : 'datos'});
-    
+    }, {
+        collection: 'datos'
+    });
+
     /*
     {
         "_id": {
@@ -54,8 +56,8 @@ var datoModel = function () {
             if (err) return cb(err);
             cb(null, isMatch);
         });
-    };*/  
-    
+    };*/
+
     return mongoose.model('Dato', datoSchema);
 };
 

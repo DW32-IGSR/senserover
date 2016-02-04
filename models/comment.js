@@ -1,4 +1,3 @@
-
 // Create new comment in your database and return its id
 exports.create = function(user, text, cb) {
   cb('12345');
@@ -6,7 +5,10 @@ exports.create = function(user, text, cb) {
 
 // Get a particular comment
 exports.get = function(id, cb) {
-  cb(null, {id:id, text: 'Very nice example'});
+  cb(null, {
+    id: id,
+    text: 'Very nice example'
+  });
 };
 
 // Get all comments
