@@ -262,6 +262,9 @@ exports.renovarSubscripcion = function(req, res) {
                 var nombre_destinatario = usuario.usuario;
                 var email_destinatario = usuario.email;
                 var asunto = 'Renovación del dron ' + dron_encontrado.nombre;
+                
+                var fecha_renovar = moment().format("Y-MM-DD");
+                var hora_renovar = moment().utcOffset("+0100").format("HH:mm:ss");
 
                 if (req.body.hasOwnProperty("btn_form_renovar_estandar")) {
 
@@ -291,7 +294,7 @@ exports.renovarSubscripcion = function(req, res) {
                             var fecha_accion = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                             //var fecha_caducidad = fecha.getFullYear()+"-"+(fecha.getMonth()+7)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                             
-                            var regAccion = new HistorialPedidos ({ id_dron : id_dron, id_usuario: usuario._id, accion: 'renovar', fecha_accion: fecha_accion, tipo_subscripcion_viejo: dron_encontrado.tipo_subscripcion, tipo_subscripcion_nuevo: 'estandar', fecha_caducidad: fecha_final});
+                            var regAccion = new HistorialPedidos ({ id_dron : id_dron, id_usuario: usuario._id, accion: 'renovar', fecha_accion: fecha_renovar, hora_accion: fecha_renovar, tipo_subscripcion_viejo: dron_encontrado.tipo_subscripcion, tipo_subscripcion_nuevo: 'estandar', fecha_caducidad: fecha_final});
                             regAccion.save(function (err) {
                                 if (err) {
                                   console.log('save error', err);
@@ -335,7 +338,7 @@ exports.renovarSubscripcion = function(req, res) {
                             var fecha_accion = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                             //var fecha_caducidad = fecha.getFullYear()+1+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
                             
-                            var regAccion = new HistorialPedidos ({ id_dron : id_dron, id_usuario: usuario._id, accion: 'renovar', fecha_accion: fecha_accion, tipo_subscripcion_viejo: dron_encontrado.tipo_subscripcion, tipo_subscripcion_nuevo: 'profesional', fecha_caducidad: fecha_caducidad_nueva});
+                            var regAccion = new HistorialPedidos ({ id_dron : id_dron, id_usuario: usuario._id, accion: 'renovar', fecha_accion: fecha_accion, hora_accion: hora_compra, tipo_subscripcion_viejo: dron_encontrado.tipo_subscripcion, tipo_subscripcion_nuevo: 'profesional', fecha_caducidad: fecha_caducidad_nueva});
                             regAccion.save(function (err) {
                                 if (err) {
                                   console.log('save error', err);
