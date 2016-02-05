@@ -26,5 +26,5 @@ exports.rangoFecha = function(req, res) {
         console.log('prueba ruben ' + dato);
         res.send(dato);
         //console.log("prueba humedad: "+dato[0].humedad)
-    });
+    }).sort({fecha: 1});
 };
