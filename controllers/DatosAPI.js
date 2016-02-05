@@ -408,7 +408,7 @@ exports.addDato = function(req, res) {
 	console.log("fecha +1 " + fecha);*/
 
 	var fecha = moment().format("Y-MM-DD");
-	var hora = moment().utcOffset("+0000").format("HH:mm:ss");
+	var hora = moment().utcOffset("+0000").valueOf();
 
 	console.log(hora);
 

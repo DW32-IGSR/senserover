@@ -14,13 +14,13 @@ socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosRad.push(parseFloat(rad));
     datosLum.push(parseFloat(lum));
     datosBat.push(parseFloat(bat));
-    dibujargrafica2();
     $("#temp-ultimo").html(temp);
     $("#hum-ultimo").html(hum);
     $("#co2-ultimo").html(co2);
     $("#rad-ultimo").html(rad);
     $("#lum-ultimo").html(lum);
     $("#bat-ultimo").html(bat);
+    dibujargrafica2();    
     colorearEstado();
 });
 function switchRoom(room) {
