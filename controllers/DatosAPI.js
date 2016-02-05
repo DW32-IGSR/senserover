@@ -435,9 +435,6 @@ exports.addDato = function(req, res) {
 					latitud: latitud,
 					longitud: longitud,
 					fecha: fecha,
-					//revision
-					/*hora,
-					hora*/
 					hora: hora
 				});
 
