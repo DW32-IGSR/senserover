@@ -28,7 +28,8 @@ exports.perfil = function(req, res) {
                         console.log(err);
                     }
                     else {
-                        /*var unDia = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                        /*
+                        var unDia = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                         
                         var fechaActual = new Date();
                         fechaActual.setHours(fechaActual.getUTCHours()+1);
@@ -55,7 +56,8 @@ exports.perfil = function(req, res) {
                         var a = moment([2016, 2, 04]);
                         var b = moment([2016, 2, 06]);
                         var result = b.diff(a, 'days')
-                        console.log(result);               */
+                        console.log(result);               
+                        */
 
                         //var array_perfil = { drones_perfil:drones_encontrados, nombre_usuario: sess.usuario };
                         //var array_perfil_datos = { datos_perfil:datos_usuario };
