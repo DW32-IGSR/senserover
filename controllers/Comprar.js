@@ -167,7 +167,7 @@ exports.comprar = function(req, res) {
                                                 else {
                                                     console.log('Compra realizada');
                                                     
-                                                    var regAccion = new HistorialPedidos ({ id_dron : dron._id, id_usuario: user.usuario._id, accion: 'comprar', fecha_accion: fecha_compra, tipo_subscripcion_viejo: null, tipo_subscripcion_nuevo: form_tipo_sub, fecha_caducidad: fecha_caducidad});
+                                                    var regAccion = new HistorialPedidos ({ id_dron : dron._id, id_usuario: user._id, accion: 'comprar', fecha_accion: fecha_compra, hora_accion: hora_compra, tipo_subscripcion_viejo: null, tipo_subscripcion_nuevo: form_tipo_sub, fecha_caducidad: fecha_caducidad});
                                                     regAccion.save(function (err) {
                                                         if (err) {
                                                           console.log('save error', err);
@@ -176,12 +176,12 @@ exports.comprar = function(req, res) {
                                                     });
                                                     
                                                     //en pruebas
-                                                    console.log("pre intento crear room "+dron._id);
+                                                    //console.log("pre intento crear room "+dron._id);
                                                 	//var io = req.app.io;
                                                 	//socket.emit('create', roomname);
                                                     //io.sockets.emit('create', dron._id);
-                                                    req.app.io.emit('create', dron._id);
-                                                    console.log("post create");
+                                                    //req.app.io.emit('create', dron._id);
+                                                    //console.log("post create");
                                                     //en pruebas
 
                                                     var nombre_remitente = 'Sense-Rover';

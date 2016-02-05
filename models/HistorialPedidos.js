@@ -9,12 +9,13 @@ var historialPedidosModel = function () {
         id_usuario: String,
         accion: String, // comprar || renovar
         fecha_accion: String,
+        hora_accion: String,
         tipo_subscripcion_viejo: String,
         tipo_subscripcion_nuevo: String, // basico || estandar || profesional
         fecha_caducidad: String
-    },{collection : 'hisotialPedidos'});  
+    },{collection : 'historialPedidos'});  
     
-    return mongoose.model('hisotialPedidos', historialPedidosSchema);
+    return mongoose.model('historialPedidos', historialPedidosSchema);
 };
 
 module.exports = new historialPedidosModel();

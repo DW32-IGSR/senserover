@@ -165,12 +165,12 @@ app.io.sockets.on('connection', function(socket) {
   });*/
 
   //cuando se compra un dron se emite el create
-  socket.on('create', function(room) {
+  /*socket.on('create', function(room) {
     console.log("room creada " + room);
     rooms.push(room);
     //se puede usar para rellenar el select
     //socket.emit('updaterooms', rooms, socket.room);
-  });
+  });*/
 
   /*socket.on('sendchat', function(data) {
     app.io.sockets["in"](socket.room).emit('updatechat', socket.username, data);

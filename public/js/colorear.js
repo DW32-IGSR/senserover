@@ -21,6 +21,7 @@ function colorearEstado() {
 
     //url: "https://senserover-terrestre.rhcloud.com/alertas/rango/"+$("#dron_seleccionado").html(),
     //url: "https://sense-rover-nohtrim.c9users.io/alertas/rango/" + $("#dron_seleccionado").html(),
+    //document.URL
     var c_url = document.location.href; //"https://sense-rover-nohtrim.c9users.io/administracion"
     c_url = c_url.replace("administracion", "alertas/rango/" + $("#dron_seleccionado").html());
     //console.log("colorear " + c_url);
