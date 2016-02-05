@@ -34,26 +34,34 @@ exports.perfil = function(req, res) {
                         var fechaCaducidad = moment(drones_encontrados.fecha_caducidad);
                         fechaActual.diff(fechaCaducidad, 'days');*/
                         
-                        var hoy = moment(new Date());//todays date
-                        var final = moment("2016-6-1"); // another date
-                        var duration = moment.duration(hoy.diff(final));
-                        var dias = duration.asDays();
-                        console.log(dias)
-                        
-                        
                         /*
+                        var hoy = moment(new Date());//todays date
+                        var final = moment("2016-06-1"); // another date
+                        var duration = moment.duration(final.diff(hoy));
+                        var dias = duration.asDays();
+                        console.log('dias: ' + dias);
+                        
                             var now = moment(new Date()); //todays date
-                            var end = moment("2015-12-1"); // another date
+                            var end = moment("2016-12-1"); // another date
                             var duration = moment.duration(now.diff(end));
                             var days = duration.asDays();
                             console.log(days)
                         */
                         
                         /*
-                            var a = moment('1/1/2012', 'DD/MM/YYYY');
-                            var b = moment('1/2/2013', 'DD/MM/YYYY');
+                            // Funciona
+                            var a = moment('2016-02-04', 'Y-MM-DD');
+                            var b = moment('2016-02-06', 'Y-MM-DD');
                             var days = b.diff(a, 'days');
+                            
+                            console.log('ruben fecha: ' + days);
                         */
+                        
+                        var a = moment().format("Y-MM-DD");
+                        var b = moment('2016-02-07', 'Y-MM-DD');
+                        var days = b.diff(a, 'days');
+                        
+                        console.log('ruben fecha: ' + days);
 
                         var arrays = {
                             drones_perfil: drones_encontrados,
