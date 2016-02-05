@@ -29,11 +29,31 @@ exports.perfil = function(req, res) {
                     }
                     else {
                         
-                        var fechaActual = moment().format("Y-MM-DD");
+                        console.log(drones_encontrados);
+                       /* var fechaActual = moment().format("Y-MM-DD");
                         var fechaCaducidad = moment(drones_encontrados.fecha_caducidad);
-                        var resultado = fechaActual.diff(fechaCaducidad, 'days');
+                        fechaActual.diff(fechaCaducidad, 'days');*/
                         
-                        console.log("Dias restantes "+resultado);
+                        var hoy = moment(new Date());//todays date
+                        var final = moment("2016-6-1"); // another date
+                        var duration = moment.duration(hoy.diff(final));
+                        var dias = duration.asDays();
+                        console.log(dias)
+                        
+                        
+                        /*
+                            var now = moment(new Date()); //todays date
+                            var end = moment("2015-12-1"); // another date
+                            var duration = moment.duration(now.diff(end));
+                            var days = duration.asDays();
+                            console.log(days)
+                        */
+                        
+                        /*
+                            var a = moment('1/1/2012', 'DD/MM/YYYY');
+                            var b = moment('1/2/2013', 'DD/MM/YYYY');
+                            var days = b.diff(a, 'days');
+                        */
 
                         var arrays = {
                             drones_perfil: drones_encontrados,

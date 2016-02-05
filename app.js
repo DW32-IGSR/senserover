@@ -223,7 +223,6 @@ server.listen(server_port, server_ip_address, function() {
     console.log('db connection open');
   });
 });
-
 //https://senserover-terrestre.rhcloud.com/
 //https://sense-rover-nohtrim.c9users.io/
 //dw32igsr@gmail.com

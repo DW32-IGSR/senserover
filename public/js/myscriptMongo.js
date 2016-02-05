@@ -8,10 +8,8 @@ var datosBat = [];
 var id_dron = "";
 var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
-    console.log("update chat" + temp + " " + hum + " " + co2 + " " + rad + " " + lum + " " + bat);
-    console.log("funciona?");
     datosTemp.push(parseFloat(temp));
-    datosHum.push(parseInt(hum));
+    datosHum.push(parseInt(hum, 10));
     datosCO2.push(parseFloat(co2));
     datosRad.push(parseFloat(rad));
     datosLum.push(parseFloat(lum));
@@ -25,15 +23,12 @@ socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     $("#bat-ultimo").html(bat);
     colorearEstado();
 });
-
 function switchRoom(room) {
-    console.log("funcion switchRoom(" + room + ")");
     socket.emit('switchRoom', room);
 }
 function describir() {
     var c_url = document.location.href;
     c_url = c_url.replace("administracion", "drones/producto/" + $("#dron_seleccionado").html());
-    console.log(c_url);
     $.ajax({
         type: "GET",
         url: c_url,
@@ -48,6 +43,7 @@ function describir() {
         }
     });
 }
+
 function colorearEstado() {
     function colorear(id, color, id_texto) {
         $(id).removeClass("bg-green");
@@ -84,8 +80,8 @@ function colorearEstado() {
                 var t_min = 0;
             }
             if (data[0].humedad != undefined) {
-                var h_max = parseFloat(data[0].humedad.max);
-                var h_min = parseFloat(data[0].humedad.min);
+                var h_max = parseInt(data[0].humedad.max, 10);
+                var h_min = parseInt(data[0].humedad.min, 10);
             }
             else {
                 var h_max = 0;
@@ -199,7 +195,6 @@ function colorearEstado() {
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
-            //alert("Status: " + textStatus); alert("Error: " + errorThrown);
             console.log(XMLHttpRequest.responseText);
         }
     });
@@ -219,7 +214,6 @@ $(document).ready(function() {
             dataType: "json",
             success: function(data) {
                 for (var i = 0; i < data.length; i++) {
-                    //console.log(data)
                     $("#tabla").append(
                         "<tr> <td align='center'><b>" + data[i].temperatura + "</b> ºC</td>" +
                         "<td align='center'><b>" + data[i].humedad + "</b> %</td>" +
@@ -238,7 +232,6 @@ $(document).ready(function() {
                     datosLum.push(parseFloat(data[i].luminosidad));
                     datosBat.push(parseFloat(data[i].bateria));
                 }
-                //var socket = io();
                 switchRoom(id_dron);
                 $("#temp-ultimo").html(datosTemp[datosTemp.length - 1]);
                 $("#hum-ultimo").html(datosHum[datosHum.length - 1]);
@@ -251,9 +244,7 @@ $(document).ready(function() {
                 describir();
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
-                //alert("Status: " + textStatus); alert("Error: " + errorThrown);
                 console.log(XMLHttpRequest.responseText);
-                $("#resultado").html(XMLHttpRequest.responseText);
             }
         }); //ajax
     }); //selected (funcion(){    
