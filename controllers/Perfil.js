@@ -28,39 +28,13 @@ exports.perfil = function(req, res) {
                         console.log(err);
                     }
                     else {
-                        /*
-                        var unDia = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                         
-                        var fechaActual = new Date();
-                        fechaActual.setHours(fechaActual.getUTCHours()+1);
-                        var dateFormat = require('dateformat');
-                        dateFormat(fechaActual, "Y-n-j");
-                        
-                        
-                        console.log(fechaActual);
-                        console.log(drones_encontrados);
-                        var fechaCaducidad = drones_encontrados[1].fecha_caducidad;
-                        
-                        console.log(fechaCaducidad);
-                        
-                        var diffDias = Math.round(Math.abs((fechaActual.getTime() - fechaCaducidad.getTime()) / (unDia)));
-                        
-                        var fechaCaducidad = drones_encontrados[1].fecha_caducidad;
-                        console.log(fechaCaducidad);
                         var fechaActual = moment().format("Y-MM-DD");
-                        var fechaCaducidad2 = moment([fechaCaducidad]).format("Y-M-D");
-                        //console.log("Es esto: "+now);
-                        console.log("Es esto: "+fechaCaducidad2);
+                        var fechaCaducidad = moment(drones_encontrados.fecha_caducidad);
+                        var resultado = fechaActual.diff(fechaCaducidad, 'days');
                         
-                        //console.log(moment().format("Y-MM-DD"));
-                        var a = moment([2016, 2, 04]);
-                        var b = moment([2016, 2, 06]);
-                        var result = b.diff(a, 'days')
-                        console.log(result);               
-                        */
+                        console.log("Dias restantes "+resultado);
 
-                        //var array_perfil = { drones_perfil:drones_encontrados, nombre_usuario: sess.usuario };
-                        //var array_perfil_datos = { datos_perfil:datos_usuario };
                         var arrays = {
                             drones_perfil: drones_encontrados,
                             datos_perfil: datos_usuario,

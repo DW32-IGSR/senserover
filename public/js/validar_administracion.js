@@ -242,7 +242,7 @@ $(document).ready(function() {
             }
         });
         
-        $('#formulario').bootstrapValidator({
+        $('#form_rango_fecha').bootstrapValidator({
             // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
             //container: '#errores',
             feedbackIcons: {
@@ -251,64 +251,7 @@ $(document).ready(function() {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                nombre: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Introduce tu nombre'
-                        }
-                    }
-                },
-                apellido: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Introduce tu apellido'
-                        }
-                    }
-                },
-                edad:{ 
-                    validators: {
-                        notEmpty: {
-                            message: 'Introduce tu edad'
-                        },
-                        digits: {
-                            message: 'Solo números'
-                        },
-                        between: {
-                            min: 0,
-                            max: 105,
-                            message: 'La edad debe estar entre 0 y 105'
-                        }
-                    }
-                },
-                nif: {
-                    validators: {
-                        notEmpty: {
-                            message: 'NIF requerido'
-                        },
-                        id: {
-                            country: 'ES',
-                            message: 'El NIF introducido no es válido en %s'
-                        }
-                    }
-                },
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Email requerido'
-                        },
-                        emailAddress: {
-                            message: 'Email no válido'
-                        }
-                    }
-                },
-                provincias: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Provincia requerido'
-                        }
-                    }
-                },
-                fecha: {
+                Rango_fecha_inicio: {
                     validators: {
                         notEmpty: {
                             message: 'Fecha requerida'
@@ -319,25 +262,14 @@ $(document).ready(function() {
                         }
                     }
                 },
-                telefono: {
+                Rango_fecha_final: {
                     validators: {
                         notEmpty: {
-                            message: 'Teléfono requerido'
+                            message: 'Fecha requerida'
                         },
-                        phone: {
-                            country: 'ES',
-                            message: 'El número de teléfono introducido no es válido en %s'
-                        }
-                    }
-                },
-                hora: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Hora requerida'
-                        },
-                        regexp: {
-                            regexp: /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9]{2})(:([0-5]?[0-9]{2}))?$/, // /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/
-                            message: 'Hora incorrecta'
+                        date: {
+                            format: 'DD/MM/YYYY',
+                            message: 'La fecha no es válida'
                         }
                     }
                 }
