@@ -20,12 +20,14 @@ socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     $("#rad-ultimo").html(rad);
     $("#lum-ultimo").html(lum);
     $("#bat-ultimo").html(bat);
-    dibujargrafica2();    
+    dibujargrafica2();
     colorearEstado();
 });
+
 function switchRoom(room) {
     socket.emit('switchRoom', room);
 }
+
 function describir() {
     var c_url = document.location.href;
     c_url = c_url.replace("administracion", "drones/producto/" + $("#dron_seleccionado").html());
