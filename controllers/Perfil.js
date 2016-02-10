@@ -51,11 +51,15 @@ exports.perfil = function(req, res) {
                                     var a = moment().format("Y-MM-DD");
                                     var b = moment(drones_encontrados[i].fecha_caducidad, 'Y-MM-DD');
                                     var days = b.diff(a, 'days');
-
+                                    
+                                    prueba.push(days);
+                                    
                                     console.log('Fecha ' + i + 'Dias que faltan: ' + days);
 
                                     //console.log('Resultado array ' + diasRestantes.days);
                                 }
+                                
+                                console.log('ruben: ' + prueba);
 
                                 /*var prueba = [
                                     {variable:"contenido 1"},
@@ -150,6 +154,10 @@ exports.perfil = function(req, res) {
                                 var a = moment().format("Y-MM-DD");
                                 var b = moment(drones_encontrados[i].fecha_caducidad, 'Y-MM-DD');
                                 var days = b.diff(a, 'days');
+                                
+                                prueba.push(days);
+                                    
+                                console.log('ruben2: ' + prueba);
 
                                 console.log('Fecha ' + i + 'Dias que faltan: ' + days);
 

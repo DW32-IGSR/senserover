@@ -7,10 +7,11 @@ var datosLum = [];
 var datosBat = [];
 var id_dron = "";
 
-var socket = io.connect("http://senserover-terrestre.rhcloud.com:8000/", {'forceNew':true });
+//var socket = io.connect("http://senserover-terrestre.rhcloud.com:8000/", {'forceNew':true });
 //var socket = io.connect("https://senserover-terrestre.rhcloud.com:8443/", {'forceNew':true });
 //var socket = io.connect("https://senserover-terrestre.rhcloud.com:443/", {'forceNew':true });
-//var socket = io();
+//var socket = io.connect("http://sense-rover-nohtrim.c9users.io:8080/", {'forceNew':true });
+var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum, 10));
@@ -211,6 +212,7 @@ $(document).ready(function() {
         //se cambian las graficas y se cambian los valores en la seccion de estado
         var c_url = document.location.href;
         c_url = c_url.replace("administracion", "datos/" + this.value);
+        console.log(c_url);
         $("#id_dron_rango").val(this.value);
         $('#id_dron_alertas').attr('value', this.value);
         $("#dron_seleccionado").html(this.value);
