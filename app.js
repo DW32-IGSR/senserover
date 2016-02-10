@@ -11,6 +11,7 @@ var expressValidator = require('express-validator');
 var dotenv = require('dotenv');
 var session = require('express-session');
 var flash = require('express-flash');
+//
 var moment = require('moment');
 
 // GORKA en pruebas
@@ -265,7 +266,7 @@ app.io.sockets.on('connection', function(socket) {
 /**
  * Start Express server.
  */
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8000;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '127.0.0.1';
 
 server.listen(server_port, server_ip_address, function() {
