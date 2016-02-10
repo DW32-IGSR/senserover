@@ -153,10 +153,6 @@ exports.perfil = function(req, res) {
 
                                 console.log('Fecha ' + i + 'Dias que faltan: ' + days);
 
-                                prueba.push({
-                                    days
-                                });
-
                                 //console.log('Resultado array ' + diasRestantes.days);
                             }
                             res.render('perfil', arrays);
