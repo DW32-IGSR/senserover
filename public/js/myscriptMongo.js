@@ -6,8 +6,11 @@ var datosRad = [];
 var datosLum = [];
 var datosBat = [];
 var id_dron = "";
-//var socket = io("https://senserover-terrestre.rhcloud.com:8080");
-var socket = io();
+
+var socket = io.connect("http://senserover-terrestre.rhcloud.com:8000/", {'forceNew':true });
+//var socket = io.connect("https://senserover-terrestre.rhcloud.com:8443/", {'forceNew':true });
+//var socket = io.connect("https://senserover-terrestre.rhcloud.com:443/", {'forceNew':true });
+//var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum, 10));
