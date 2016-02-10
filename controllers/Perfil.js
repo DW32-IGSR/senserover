@@ -38,35 +38,40 @@ exports.perfil = function(req, res) {
                                 if (err) {
                                     console.log(err);
                                 }
-                                console.log('Tiene ' + dronesCant + ' Drones');
+                                //console.log('Tiene ' + dronesCant + ' Drones');
 
+                                /*var arrays = {
+                                    drones_perfil: drones_encontrados,
+                                    datos_perfil: datos_usuario,
+                                    nombre_usuario: sess.usuario,
+                                };*/
+                                var diasRestantesArray = [];
+                                for (var i = 0; i < dronesCant; i++) {
+
+                                    var fechaHoy = moment().format("Y-MM-DD");
+                                    var fechaCaducidadDron = moment(drones_encontrados[i].fecha_caducidad, 'Y-MM-DD');
+                                    var days = fechaCaducidadDron.diff(fechaHoy, 'days');
+                                    
+                                    diasRestantesArray.push(days);
+                                    
+                                    if (fechaCaducidadDron < fechaHoy) {
+                            		    Drones.findOneAndUpdate({ _id: drones_encontrados[i]._id }, { activo: false }, function(err, dron_cad) {
+                            		        if(err){
+                            		            console.log(err);
+                            		        }
+                            		        console.log("dron caducado");
+                            		    });
+                            		}
+                                }
+                                
+                                //console.log('ruben: ' + diasRestantesArray);
+                                
                                 var arrays = {
                                     drones_perfil: drones_encontrados,
                                     datos_perfil: datos_usuario,
                                     nombre_usuario: sess.usuario,
+                                    diasRestantes: diasRestantesArray
                                 };
-                                var prueba = [];
-                                for (var i = 0; i < dronesCant; i++) {
-
-                                    var a = moment().format("Y-MM-DD");
-                                    var b = moment(drones_encontrados[i].fecha_caducidad, 'Y-MM-DD');
-                                    var days = b.diff(a, 'days');
-                                    
-                                    prueba.push(days);
-                                    
-                                    console.log('Fecha ' + i + 'Dias que faltan: ' + days);
-
-                                    //console.log('Resultado array ' + diasRestantes.days);
-                                }
-                                
-                                console.log('ruben: ' + prueba);
-
-                                /*var prueba = [
-                                    {variable:"contenido 1"},
-                                    {variable:"contenido 2"},
-                                    {variable:"contenido 3"}
-                                ];*/
-
 
                                 //console.log(arrays);
                                 //var arrays = {array_perfil, array_perfil_datos} // No funciona
