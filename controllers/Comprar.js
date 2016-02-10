@@ -176,12 +176,12 @@ exports.comprar = function(req, res) {
                                                     });
                                                     
                                                     //en pruebas
-                                                    //console.log("pre intento crear room "+dron._id);
+                                                    console.log("pre intento crear room "+dron._id);
                                                 	//var io = req.app.io;
                                                 	//socket.emit('create', roomname);
                                                     //io.sockets.emit('create', dron._id);
-                                                    //req.app.io.emit('create', dron._id);
-                                                    //console.log("post create");
+                                                    req.app.io.emit('create', dron._id);
+                                                    console.log("post create");
                                                     //en pruebas
 
                                                     var nombre_remitente = 'Sense-Rover';

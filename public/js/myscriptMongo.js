@@ -6,7 +6,7 @@ var datosRad = [];
 var datosLum = [];
 var datosBat = [];
 var id_dron = "";
-var socket = io();
+var socket = io("https://senserover-terrestre.rhcloud.com:8000");
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum, 10));
@@ -216,16 +216,7 @@ $(document).ready(function() {
             dataType: "json",
             success: function(data) {
                 for (var i = 0; i < data.length; i++) {
-                    $("#tabla").append(
-                        "<tr> <td align='center'><b>" + data[i].temperatura + "</b> ºC</td>" +
-                        "<td align='center'><b>" + data[i].humedad + "</b> %</td>" +
-                        "<td align='center'><b>" + data[i].co2 + "</b> ppm</td>" +
-                        "<td align='center'><b>" + data[i].radiacion + "</b> W/m^2</td>" +
-                        "<td align='center'><b>" + data[i].luminosidad + "</b> lux</td>" +
-                        "<td align='center'>" + data[i].fecha + "</td>" +
-                        "<td align='center'> <a href='borrarDatos.php?id=" + data[i].id + "'> Eliminar </a> </td>" +
-                        "</tr>"
-                    );
+                    //inconsistencia de base de datos revision de la ruta
                     fechas.push(data[i].fecha);
                     datosTemp.push(parseFloat(data[i].temperatura));
                     datosHum.push(parseInt(data[i].humedad, 10));

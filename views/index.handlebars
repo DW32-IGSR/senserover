@@ -67,13 +67,10 @@
               <!-- User Account-->
               <li class="dropdown user user-menu">
                 {{#if nombre_usuario}}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{nombre_usuario}}</span>
-                </a>
-                {{else}}
-                <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
-                  <span>Entrar</span> {{/if}}
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                    <span class="hidden-xs">{{nombre_usuario}}</span>
+                  </a>
                   <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
@@ -92,6 +89,33 @@
                       </div>
                     </li>
                   </ul>
+                {{else if nombre_usuarioGoogle}}
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src='{{avatarGoogle}}' class="user-image" alt="User Image">
+                    <span class="hidden-xs">{{nombre_usuarioGoogle}}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                      <img src='{{avatarGoogle}}' class="img-circle" alt="User Image">
+                      <p>
+                        {{nombre_usuarioGoogle}}
+                      </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
+                      </div>
+                      <div class="pull-right">
+                        <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                      </div>
+                    </li>
+                  </ul>
+                {{else}}
+                <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
+                  <span>Entrar</span> </a>
+                {{/if}}
               </li>
               <!-- Control Sidebar Toggle Button -->
               <li>

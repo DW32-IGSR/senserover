@@ -13,6 +13,9 @@ var session = require('express-session');
 var flash = require('express-flash');
 var moment = require('moment');
 
+// GORKA en pruebas
+var passport = require('passport');
+
 /**
  * path: .env
  */
@@ -21,6 +24,23 @@ if (process.env.MONGODB == null) {
     path: './.env'
   });
 }
+
+/**
+ * path: .env  EN PRUEBAS
+ */
+
+if (process.env.GOOGLE_ID == null && process.env.GOOGLE_SECRET) {
+  dotenv.load({
+    path: './.env'
+  });
+}
+
+if (process.env.PAYPAL_ID == null && process.env.PAYPAL_SECRET) {
+  dotenv.load({
+    path: './.env'
+  });
+}
+
 
 /**
  * Configuracion handlebars
@@ -47,6 +67,11 @@ app.use(session({
   saveUninitialized: true,
   secret: 'rubenonrails'
 }));
+
+// EN PRUEBAS
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 
 /**
@@ -71,6 +96,18 @@ var tiendaController = require('./controllers/Tienda');
 //var homeController = require('./controllers/validadarAPI');
 //var homeController = require('./controllers/Estructura_Email');
 
+
+// PRUEBAS PAYPAL
+var paypalApiController = require('./controllers/paypalAPI');
+
+
+/**
+ * API keys and Passport configuration. EN PRUEBAS
+ */
+var passportConf = require('./config/passport');
+
+
+
 /**
  * Rutas principales
  */
@@ -93,6 +130,9 @@ app.get('/recoverPassword/:key/:email', emailController.recoverPassword);
 app.post('/newPassword', emailController.newPassword);
 app.post('/alertas/update', alertasController.update);
 app.get('/404', error404Controller.error);
+
+//EN PRUEBAS
+app.get('/login', passportConf.isAuthenticated, loginRegistroController.login);
 
 
 /**
@@ -122,6 +162,22 @@ app.get('/alertas/rango/bat/:id_dron', datosApiController.findMinMaxBatDronId);
 app.get('/api/datos/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria/lat/:latitud/long/:longitud', datosApiController.addDato);
 app.post('/datos/put', datosApiController.addDatoPost);
 app.get('/pronostico', pronosticosController.get);
+
+
+/**
+ * OAuth authentication routes. (Sign in) EN PRUEBAS
+ */
+
+app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
+
+// PRUEBAS PAYPAL
+app.get('/api/paypal', paypalApiController.getPayPal);
+app.get('/api/paypal/success', paypalApiController.getPayPalSuccess);
+app.get('/api/paypal/cancel', paypalApiController.getPayPalCancel);
+
 
 /**
  * Ruta por defecto

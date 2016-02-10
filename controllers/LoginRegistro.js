@@ -7,6 +7,28 @@ var estructura_email = require('./Estructura_Email');
 var moment = require('moment');
 
 exports.login = function(req, res) {
+  
+  /*
+    passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      req.flash('errors', { msg: info.message });
+      return res.redirect('/login');
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return next(err);
+      }
+      req.flash('success', { msg: 'Success! You are logged in.' });
+      res.redirect(req.session.returnTo || '/');
+    }); */
+  
+  
+  
+  
+  
   //post de formulario de login
   var sess = req.session;
   var form_usuario = req.body.usuario;
@@ -157,7 +179,11 @@ exports.registro = function(req, res) {
   else {
 
     Usuario.findOne({
-      usuario: form_usuario
+      $or: [{
+        usuario: form_usuario
+      }, {
+        email: form_email
+      }]
     }, function(err, usuario) {
       if (err) {
         console.error(err);
@@ -165,7 +191,7 @@ exports.registro = function(req, res) {
       else {
 
         if (usuario == null) {
-          console.log('el usuario no existe');
+          console.log('el usuario o el email no existe');
 
           var salt = bcrypt.genSaltSync(10);
           var pass_coded = bcrypt.hashSync(form_pass, salt);
@@ -221,9 +247,9 @@ exports.registro = function(req, res) {
         }
         else {
           //console.log('el usuario ya existe')
-          console.log('el usuario ya existe');
-          req.flash('error', ' El usuario ya existe.');
-          res.redirect('/');
+          console.log('El usuario y/o el correo ya existen');
+          req.flash('error', ' El usuario y/o el email ya existen.');
+          //res.redirect('/');
         }
       }
     });
