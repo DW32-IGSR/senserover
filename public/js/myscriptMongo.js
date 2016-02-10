@@ -11,7 +11,8 @@ var id_dron = "";
 //var socket = io.connect("https://senserover-terrestre.rhcloud.com:8443/", {'forceNew':true });
 //var socket = io.connect("https://senserover-terrestre.rhcloud.com:443/", {'forceNew':true });
 //var socket = io.connect("http://sense-rover-nohtrim.c9users.io:8080/", {'forceNew':true });
-var socket = io("/");
+var socket = io("ws://senserover-terrestre.rhcloud.com:8000");
+//var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum, 10));

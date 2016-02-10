@@ -54,7 +54,7 @@ exports.perfil = function(req, res) {
                                     
                                     diasRestantesArray.push(days);
                                     
-                                    if (fechaCaducidadDron < fechaHoy) {
+                                    if (drones_encontrados[i].fechaCaducidadDron < fechaHoy) {
                             		    Drones.findOneAndUpdate({ _id: drones_encontrados[i]._id }, { activo: false }, function(err, dron_cad) {
                             		        if(err){
                             		            console.log(err);

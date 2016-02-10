@@ -196,6 +196,11 @@ var http = require('http');
 var server = http.createServer(app);
 app.io.attach(server);
 
+//var app = require('express')();
+//var http = require('http').Server(app);
+//var io = require('socket.io')(http);
+
+
 app.set('io', app.io);
 
 //var rooms = ['56939648e4b0166e3b6a60f6', '56992dd0c8bdac92101a7766', '56a1dbef16d8dfdb5562113d'];
