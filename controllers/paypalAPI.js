@@ -39,13 +39,9 @@ exports.getPayPal = function(req, res, next) {
     var links = payment.links;
     for (var i = 0; i < links.length; i++) {
       if (links[i].rel === 'approval_url') {
-         var url = {
-            approvalUrl: links[i].href
-          };
-          res.render('comprar', url);
-        /*res.render('/', {
+        res.render('/', {
           approvalUrl: links[i].href
-        });*/
+        });
       }
     }
   });

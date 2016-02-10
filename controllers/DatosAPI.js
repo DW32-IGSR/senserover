@@ -20,7 +20,7 @@ exports.findDatos = function(req, res) {
 
 		/*console.log('GET /datos')
     		res.status(200).jsonp(datos);*/
-	}).sort({fecha: 1});
+	});
 };
 
 // Búsqueda de datos por ID_DRON
@@ -40,7 +40,7 @@ exports.findDatosById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron");
 			res.send(drones);
-		}).sort({fecha: 1});
+		});
 	}
 	else {
 		return res.redirect('/404');
@@ -67,7 +67,7 @@ exports.findDatosTempById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/temperatura");
 			res.send(drones);
-		}).sort({fecha: 1});
+		});
 	}
 	else {
 		return res.redirect('/404');
@@ -95,7 +95,7 @@ exports.findDatosHumById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/humedad");
 			res.send(drones);
-		}).sort({fecha: 1});
+		});
 	}
 	else {
 		return res.redirect('/404');
@@ -123,7 +123,7 @@ exports.findDatosCo2ById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/co2");
 			res.send(drones);
-		}).sort({fecha: 1});
+		});
 	}
 	else {
 		return res.redirect('/404');
@@ -151,7 +151,7 @@ exports.findDatosRadById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/radiacion");
 			res.send(drones);
-		}).sort({fecha: 1});
+		});
 	}
 	else {
 		return res.redirect('/404');
@@ -179,7 +179,7 @@ exports.findDatosLumById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/luminosidad");
 			res.send(drones);
-		}).sort({fecha: 1});
+		});
 	}
 	else {
 		return res.redirect('/404');
