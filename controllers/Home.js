@@ -2,6 +2,7 @@ exports.index = function(req, res) {
     //ruta de pagina principal
     //console.log('Valor user: '+req.user);
     var sess = req.session;
+    //sess.user = req.user;
     var user = req.user;
     //console.log(user);
     //console.log('EL USER ID: '+user.profile.name);
