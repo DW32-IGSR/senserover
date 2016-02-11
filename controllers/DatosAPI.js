@@ -380,6 +380,7 @@ exports.addDato = function(req, res) {
 	//ejemplo
 	//http://sense-rover-nohtrim.c9users.io/datos/put/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25
 	//http://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
+	//http://senserover-terrestre.rhcloud.com//api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
 	//resultado
 
 	var id_dron = req.params.id_dron;

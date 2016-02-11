@@ -7,7 +7,11 @@ var datosLum = [];
 var datosBat = [];
 var id_dron = "";
 
-var socket = io("http://senserover-terrestre.rhcloud.com:8000/");
+
+var c_url = document.location.href;
+c_url = c_url.replace("/administracion", ":8000");
+//c_url = c_url.split("/administracion")+":8000";
+var socket = io(c_url);
 //var socket = io.connect("https://senserover-terrestre.rhcloud.com:8443/", {'forceNew':true });
 //var socket = io.connect("https://senserover-terrestre.rhcloud.com:443/", {'forceNew':true });
 //var socket = io.connect("http://sense-rover-nohtrim.c9users.io:8080/", {'forceNew':true });
