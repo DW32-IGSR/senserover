@@ -9,7 +9,14 @@ var id_dron = "";
 
 
 var c_url = document.location.href;
-c_url = c_url.replace("/administracion", ":8000");
+if(c_url=='http:sense-rover-nohtrim.c9users.io'||c_url=='https:sense-rover-nohtrim.c9users.io'){
+    c_url = c_url.replace("/administracion", ":8080");    
+}else if(c_url=='http://senserover-terrestre.rhcloud.com'){
+    c_url = c_url.replace("/administracion", ":8000");
+}else{
+    c_url = c_url.replace("/administracion", ":8443");
+}
+//c_url = c_url.replace("/administracion", ":8000");
 //c_url = c_url.split("/administracion")+":8000";
 var socket = io(c_url);
 //var socket = io.connect("https://senserover-terrestre.rhcloud.com:8443/", {'forceNew':true });
