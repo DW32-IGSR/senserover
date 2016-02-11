@@ -12,18 +12,24 @@ var c_url = document.location.href;
 //console.log(c_url);
 //c_url = c_url.replace("/administracion", ":8000");
 //c_url = c_url.split("/administracion")+":8000";
-c_url = c_url.split("http");
 if (c_url == "http://sense-rover-nohtrim.c9users.io/administracion" || c_url == "https://sense-rover-nohtrim.c9users.io/administracion") {
+    //c_url = c_url.replace("/administracion", ":8080");
+    //c_url = c_url.replace("http", "ws");
     c_url = c_url.replace("/administracion", ":8080");
 }
 else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
+    //c_url = c_url.replace("/administracion", ":8000");
+    c_url = c_url.replace("http", "ws");
     c_url = c_url.replace("/administracion", ":8000");
 }
 else {
+    //c_url = c_url.replace("/administracion", ":443");
+    c_url = c_url.replace("http", "ws");
     c_url = c_url.replace("/administracion", ":443");
+    
 }
-console.log("ws"+c_url);
-var socket = io("ws"+c_url);
+console.log(c_url);
+var socket = io(c_url);
 //var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosTemp.push(parseFloat(temp));
