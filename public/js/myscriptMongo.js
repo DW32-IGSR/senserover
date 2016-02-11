@@ -15,7 +15,7 @@ var c_url = document.location.href;
 //this.ws_host = location.protocol.replace('http', 'ws') + "//" + location.host + ":8000";
 if (c_url == "http://sense-rover-nohtrim.c9users.io/administracion") {
     c_url = "ws://sense-rover-nohtrim.c9users.io:8080";
-}else if (c_url == "https://senserover-terrestre.rhcloud.com/administracion") {
+}else if (c_url == "https://sense-rover-nohtrim.c9users.io/administracion") {
     //error
     c_url = "wss://sense-rover-nohtrim.c9users.io:8080";
 }    
@@ -26,10 +26,9 @@ else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
 }
 else {
     //error 2
-    //c_url = c_url.replace("http", "ws");
-    //c_url = c_url.replace("/administracion", ":8443");
-    //c_url = c_url.replace("/administracion", ":443");
-    c_url = "wss://senserover-terrestre.rhcloud.com:8443";
+    //c_url = "wss://senserover-terrestre.rhcloud.com:8443";
+    //solucion 2
+    c_url = "wss://senserover-terrestre.rhcloud.com:443";
 }
 console.log(c_url);
 var socket = io(c_url);
