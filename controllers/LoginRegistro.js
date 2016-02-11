@@ -26,9 +26,6 @@ exports.login = function(req, res) {
     }); */
   
   
-  
-  
-  
   //post de formulario de login
   var sess = req.session;
   var form_usuario = req.body.usuario;

@@ -20,7 +20,7 @@ exports.findDatos = function(req, res) {
 
 		/*console.log('GET /datos')
     		res.status(200).jsonp(datos);*/
-	}).sort({fecha: 1, hora: 1});
+	}).sort({fecha: 'asc', hora: 'asc'});
 };
 
 // Búsqueda de datos por ID_DRON
@@ -40,7 +40,7 @@ exports.findDatosById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron");
 			res.send(drones);
-		}).sort({fecha: 1, hora: 1});
+		}).sort({fecha: 'asc', hora: 'asc'});
 	}
 	else {
 		return res.redirect('/404');
@@ -67,7 +67,7 @@ exports.findDatosTempById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/temperatura");
 			res.send(drones);
-		}).sort({fecha: 1, hora: 1});
+		}).sort({fecha: 'asc', hora: 'asc'});
 	}
 	else {
 		return res.redirect('/404');
@@ -95,7 +95,7 @@ exports.findDatosHumById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/humedad");
 			res.send(drones);
-		}).sort({fecha: 1, hora: 1});
+		}).sort({fecha: 'asc', hora: 'asc'});
 	}
 	else {
 		return res.redirect('/404');
@@ -123,7 +123,7 @@ exports.findDatosCo2ById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/co2");
 			res.send(drones);
-		}).sort({fecha: 1, hora: 1});
+		}).sort({fecha: 'asc', hora: 'asc'});
 	}
 	else {
 		return res.redirect('/404');
@@ -151,7 +151,7 @@ exports.findDatosRadById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/radiacion");
 			res.send(drones);
-		}).sort({fecha: 1, hora: 1});
+		}).sort({fecha: 'asc', hora: 'asc'});
 	}
 	else {
 		return res.redirect('/404');
@@ -179,7 +179,7 @@ exports.findDatosLumById = function(req, res) {
 			//Obtenemos un array de drones (objetos json)
 			console.log("GET - /datos/:id_dron/luminosidad");
 			res.send(drones);
-		}).sort({fecha: 1, hora: 1});
+		}).sort({fecha: 'asc', hora: 'asc'});
 	}
 	else {
 		return res.redirect('/404');
@@ -378,7 +378,8 @@ exports.addDato = function(req, res) {
 	//http://sense-rover-nohtrim.c9users.io/datos/put/56992dd0c8bdac92101a7766/t/22/h/40/co2/11/r/20/l/20/b/25
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
-	//http://sense-rover-nohtrim.c9users.io/datos/put/5693998f4c3faa7e218027ce/t/66/h/66/co2/66/r/66/l/66
+	//http://sense-rover-nohtrim.c9users.io/datos/put/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25
+	//http://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
 	//resultado
 
 	var id_dron = req.params.id_dron;
@@ -547,7 +548,7 @@ exports.addDato = function(req, res) {
 				res.redirect('/');*/
 			}
 		}
-	}).sort({fecha: 1, hora: 1});
+	}).sort({fecha: 'asc', hora: 'asc'});
 	/*} else {
 		return res.redirect('/404');
 	}*/

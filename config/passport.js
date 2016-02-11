@@ -9,8 +9,6 @@ var Usuario = require("../models/Usuario");
 
 passport.serializeUser(function(user, done) {
     //console.log('Entro a serializeUser '+ user.id);
-    
-    
     done(null, user.id);
 });
 

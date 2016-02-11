@@ -39,12 +39,7 @@ exports.perfil = function(req, res) {
                                     console.log(err);
                                 }
                                 //console.log('Tiene ' + dronesCant + ' Drones');
-
-                                /*var arrays = {
-                                    drones_perfil: drones_encontrados,
-                                    datos_perfil: datos_usuario,
-                                    nombre_usuario: sess.usuario,
-                                };*/
+                                
                                 var diasRestantesArray = [];
                                 for (var i = 0; i < dronesCant; i++) {
 
@@ -54,14 +49,14 @@ exports.perfil = function(req, res) {
                                     
                                     diasRestantesArray.push(days);
                                     
-                                    if (drones_encontrados[i].fechaCaducidadDron < fechaHoy) {
+                                    if (drones_encontrados[i].fecha_caducidad < fechaHoy) {
                             		    Drones.findOneAndUpdate({ _id: drones_encontrados[i]._id }, { activo: false }, function(err, dron_cad) {
                             		        if(err){
                             		            console.log(err);
                             		        }
                             		        console.log("dron caducado");
                             		    });
-                            		}
+                                	}
                                 }
                                 
                                 //console.log('ruben: ' + diasRestantesArray);
@@ -79,47 +74,11 @@ exports.perfil = function(req, res) {
 
 
                             });
-
-                            /* var fechaActual = moment().format("Y-MM-DD");
-                             var fechaCaducidad = moment(drones_encontrados.fecha_caducidad);
-                             fechaActual.diff(fechaCaducidad, 'days');*/
-
-                            /*
-                            var hoy = moment(new Date());//todays date
-                            var final = moment("2016-06-1"); // another date
-                            var duration = moment.duration(final.diff(hoy));
-                            var dias = duration.asDays();
-                            console.log('dias: ' + dias);
-                            
-                                var now = moment(new Date()); //todays date
-                                var end = moment("2016-12-1"); // another date
-                                var duration = moment.duration(now.diff(end));
-                                var days = duration.asDays();
-                                console.log(days)
-                            */
-
-                            /*
-                                // Funciona
-                                var a = moment('2016-02-04', 'Y-MM-DD');
-                                var b = moment('2016-02-06', 'Y-MM-DD');
-                                var days = b.diff(a, 'days');
-                                
-                                console.log('ruben fecha: ' + days);
-                            */
-
-                            /* EL QUE FUNCIONA
-                            var a = moment().format("Y-MM-DD");
-                            var b = moment('2016-02-07', 'Y-MM-DD');
-                            var days = b.diff(a, 'days');
-                            
-                            console.log('Dias que faltan: ' + days); */
-
                         }
                     });
                 }
             });
         }
-
     }
     else {
         //console.log('Entro return 2 ');

@@ -130,7 +130,7 @@
             </a>
           </li>
           <li>
-            <a href="#donde-estamos">
+            <a href="/tienda/5693728d3890294f10406189">
               <i class="fa fa-shopping-cart"></i> <span>Tienda</span>
             </a>
           </li>
@@ -161,15 +161,15 @@
               <option value="modelo 300v">modelo 300v</option>
               <option value="modelo 400">modelo 400</option>-->
             {{#each drones}}
-              <option value= {{_id}}>{{nombre}}</option>
+              <option value={{_id}}>{{nombre}}</option>
             {{/each}}
 
             <!-- Mostrar únicamente los drones que están activos -->
             <!--{{#each drones}}
-                {{#if activo}}
-                  <option value={{_id}} >{{nombre}}</option>
-                {{/if}}
-    	        {{/each}}-->
+              {{#if activo}}
+                <option value={{_id}}>{{nombre}}</option>
+              {{/if}}
+  	        {{/each}}-->
           </select>
           <p hidden id="dron_seleccionado">id_dron</p>
         </form>

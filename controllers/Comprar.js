@@ -142,14 +142,6 @@ exports.comprar = function(req, res) {
                                                 fecha_caducidad =  moment(fecha_compra).add(1, 'months').add(1, 'year').format('Y-MM-DD');
                                             }
 
-                                            // comprobar si ha caducado
-                                            // meter en otro archivo / export
-                                            /*if (fecha_caducidad > fecha) {
-                                    		    Drones.findOneAndUpdate({ _id: id_dron }, { activo: false }, function(err, dron_cad) {
-                                    		    })
-                                    		}*/
-                                            //Drones.find({fecha: {$gte: new Date(), $lte: fecha_caducidad}}, function(err, dron_cad) {)}
-
                                             var dron = new Drones({
                                                 id_usuario: sess.id_usuario,
                                                 id_producto: producto.id,
