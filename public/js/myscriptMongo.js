@@ -17,7 +17,8 @@ else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
     c_url = c_url.replace("/administracion", ":8000");
 }
 else {
-    c_url = c_url.replace("/administracion", ":8443");
+    //c_url = c_url.replace("/administracion", ":8443");
+    c_url = c_url.replace("/administracion", ":443");
 }
 console.log(c_url);
 //c_url = c_url.replace("/administracion", ":8000");
