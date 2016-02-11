@@ -12,13 +12,8 @@ var c_url = document.location.href;
 //console.log(c_url);
 //c_url = c_url.replace("/administracion", ":8000");
 //c_url = c_url.split("/administracion")+":8000";
-if (c_url == "http://sense-rover-nohtrim.c9users.io/administracion") {
-    c_url = "ws://sense-rover-nohtrim.c9users.io:8080";
-}else if (c_url == "https://sense-rover-nohtrim.c9users.io/administracion") {
-    //error
-    //c_url = "wss://sense-rover-nohtrim.c9users.io:8080";
-    //error https accesos a http
-    c_url = "ws://sense-rover-nohtrim.c9users.io:8080";
+if (c_url == "http://sense-rover-nohtrim.c9users.io/administracion" || c_url == "https://sense-rover-nohtrim.c9users.io/administracion") {
+    c_url = "";
 }    
 else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
     //c_url = c_url.replace("http", "ws");
