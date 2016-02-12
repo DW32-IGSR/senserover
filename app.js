@@ -123,7 +123,7 @@ app.post('/perfil/changePassword', perfilController.changePassword);
 app.post('/contactar', emailController.contacto);
 app.get('/tienda/:id_producto', tiendaController.tienda);
 app.post('/comprar', comprarController.comprar);
-app.post('/renovar/subscripcion', comprarController.renovarSubscripcion)
+app.post('/renovar/subscripcion', comprarController.renovarSubscripcion);
 app.post('/rangofecha', rangoFechaController.rangoFecha);
 app.get('/activate/:activation/:email', emailController.activacion);
 app.post('/forgetPassword', emailController.forgetPassword);
@@ -196,11 +196,6 @@ var http = require('http');
 var server = http.createServer(app);
 app.io.attach(server);
 
-//var app = require('express')();
-//var http = require('http').Server(app);
-//var io = require('socket.io')(http);
-
-
 app.set('io', app.io);
 
 //var rooms = ['56939648e4b0166e3b6a60f6', '56992dd0c8bdac92101a7766', '56a1dbef16d8dfdb5562113d'];
@@ -208,6 +203,9 @@ app.set('io', app.io);
 var rooms = [];
 var Drones = require("./models/Drones");
 Drones.find({}, function(err, drones) {
+  if(err){
+    console.log(err);
+  }
   //console.log("tamaño "+drones.length);
   for (var i = 0; i < drones.length; i++) {
     rooms.push(drones[i].id);
@@ -246,7 +244,7 @@ app.io.sockets.on('connection', function(socket) {
     socket.leave(socket.room);
     console.log("comprovacion index of: "+rooms.indexOf(newroom));
     if (rooms.indexOf(newroom) == -1) {
-      console.log("if create rooms:"+newroom)
+      console.log("if create rooms:"+newroom);
       rooms.push(newroom);
       socket.join(newroom);
     }else{

@@ -10,17 +10,15 @@ var id_dron = "";
 
 var c_url = document.location.href;
 //console.log(c_url);
-//c_url = c_url.replace("/administracion", ":8000");
-//c_url = c_url.split("/administracion")+":8000";
-if (c_url == "http://sense-rover-nohtrim.c9users.io/administracion" || c_url == "https://sense-rover-nohtrim.c9users.io/administracion") {
+if (location.hostname == "sense-rover-nohtrim.c9users.io") {
     c_url = "";
 }
 else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
-    c_url = c_url.replace("/administracion", ":8000");
+    c_url = "ws://"+location.hostname+"8000";
 }
 else {
     //c_url = c_url.replace("/administracion", ":8443"); error
-    c_url = c_url.replace("/administracion", ":443");
+    c_url = "wss://"+location.hostname+":443";
 }
 
 console.log(c_url);

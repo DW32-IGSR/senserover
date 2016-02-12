@@ -301,7 +301,7 @@
             </tr>
           </thead>
           <tbody>
-            {{#each drones_perfil}} {{#if activo }}
+            <!--{{#each drones_perfil}} {{#if activo }}
             <tr>
               {{else}}
               <tr bgcolor="#F6CECE">
@@ -320,6 +320,28 @@
                   $("#{{@index}}").html("{{this}}");
                 }else{
                   $("#{{@index}}").html("0");
+                }
+              </script>
+              {{/each}}-->
+              
+              {{#each drones_perfil}}
+              <tr>
+                <td style="vertical-align:middle"> {{nombre}} </td>
+                <td style="vertical-align:middle"> {{tipo_subscripcion}} </td>
+                <td style="vertical-align:middle"> {{fecha_caducidad}} </td>
+                {{#if activo}}
+                  <td style="vertical-align:middle" id="{{@index}}"></td>
+                {{else}}
+                  <td style="vertical-align:middle; color:red">Caducado</td>
+                {{/if}}
+                <td>
+                  <button class="w-tab-link-btnsubs w-inline-block button-subs" data-toggle="modal" data-target="#RenovarSubscripcion" id="{{_id}}" value="{{nombre}}"> <img src="/icons/plus-subscripcion.png" height="24" width="24"> </button>
+                </td>
+              </tr>
+              {{/each}} {{#each diasRestantes}}
+              <script>
+                if("{{this}}">=0){
+                  $("#{{@index}}").html("{{this}} días");
                 }
               </script>
               {{/each}}

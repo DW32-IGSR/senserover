@@ -70,7 +70,7 @@ exports.login = function(req, res) {
                 sess.usuario = usuario.usuario;
                 sess.id_usuario = usuario._id;
                 console.log("id de usuario " + sess.id_usuario + " usuario " + sess.usuario);
-
+                
                 /*var fecha = new Date();
                 var fecha = fecha.setHours(fecha.getHours() + 1);
                 //fecha.setUTCHours(12)
