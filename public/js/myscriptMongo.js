@@ -7,7 +7,6 @@ var datosLum = [];
 var datosBat = [];
 var id_dron = "";
 
-
 var c_url = document.location.href;
 //console.log(c_url);
 if (location.hostname == "sense-rover-nohtrim.c9users.io") {
