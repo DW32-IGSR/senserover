@@ -11,19 +11,22 @@ var id_dron = "";
 var c_url = document.location.href;
 //console.log(c_url);
 if (location.hostname == "sense-rover-nohtrim.c9users.io") {
-    c_url = "";
+    //c_url = "";
+    var socket = io("");
 }
 else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
-    c_url = "ws://"+location.hostname+":8000";
+    //c_url = "ws://"+location.hostname+":8000";
+    var socket = io("ws://"+location.hostname+":8000");
 }
 else {
     //c_url = "wss://"+location.hostname+":8443"; //error CONNECTION_FAILED
     //c_url = "wss://"+location.hostname+":8000"; //error CONNECTION_FAILED
-    c_url = "wss://"+location.hostname+":443"; //error handshake
+    //c_url = "wss://"+location.hostname+":443"; //error handshake
+    var socket = io("wss://"+location.hostname+":443");
 }
 
 console.log(c_url);
-var socket = io(c_url);
+//var socket = io(c_url);
 //var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosTemp.push(parseFloat(temp));
