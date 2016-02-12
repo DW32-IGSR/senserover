@@ -20,7 +20,8 @@ else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
 }
 else {
     //error
-    c_url = "wss://senserover-terrestre.rhcloud.com:8443";
+    //c_url = "wss://senserover-terrestre.rhcloud.com:8443";
+    c_url = "wss://senserover-terrestre.rhcloud.com:8000";
     //solucion error handshake
     //c_url = "wss://senserover-terrestre.rhcloud.com:443";
 }
