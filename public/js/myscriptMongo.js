@@ -14,7 +14,7 @@ if (location.hostname == "sense-rover-nohtrim.c9users.io") {
     c_url = "";
 }
 else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
-    c_url = "ws://"+location.hostname+"8000";
+    c_url = "ws://"+location.hostname+":8000";
 }
 else {
     //c_url = c_url.replace("/administracion", ":8443"); error
