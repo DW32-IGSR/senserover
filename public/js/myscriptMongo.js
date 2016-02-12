@@ -16,14 +16,12 @@ if (c_url == "http://sense-rover-nohtrim.c9users.io/administracion" || c_url == 
     c_url = "";
 }
 else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
-    c_url = "http://senserover-terrestre.rhcloud.com:8000";
+    c_url = c_url.replace("/administracion", ":8000");
 }
 else {
-    //error
-    c_url = "https://senserover-terrestre.rhcloud.com:443";
-    //solucion error handshake
-    //c_url = "wss://senserover-terrestre.rhcloud.com:443";
+    c_url = c_url.replace("/administracion", ":443");
 }
+
 console.log(c_url);
 var socket = io(c_url);
 //var socket = io();
