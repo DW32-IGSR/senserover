@@ -24,7 +24,7 @@ else {
     var socket = io("wss://"+location.hostname+":443");
 }
 
-console.log(c_url);
+//console.log(c_url);
 //var socket = io(c_url);
 //var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
