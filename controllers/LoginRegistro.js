@@ -70,7 +70,6 @@ exports.login = function(req, res) {
                 sess.usuario = usuario.usuario;
                 sess.id_usuario = usuario._id;
                 console.log("id de usuario " + sess.id_usuario + " usuario " + sess.usuario);
-                
                 /*var fecha = new Date();
                 var fecha = fecha.setHours(fecha.getHours() + 1);
                 //fecha.setUTCHours(12)
@@ -82,7 +81,7 @@ exports.login = function(req, res) {
               	var fecha = moment().utcOffset("+0100").format("Y-MM-DD HH:mm:ss");
 
                 console.log('ultima conexion: ' + usuario.ultima_conexion);
-
+                
                 if (usuario.ultima_conexion == undefined) {
                   Usuario.findOneAndUpdate({
                     _id: sess.id_usuario
