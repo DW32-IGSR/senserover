@@ -18,7 +18,7 @@ else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
 else {
     //c_url = "wss://"+location.hostname+":8443"; //error CONNECTION_FAILED
     //c_url = "wss://"+location.hostname+":8000"; //error CONNECTION_FAILED
-    c_url = "wss://"+location.hostname+":443"; //error handshake
+    c_url = "wss://"+location.hostname+":8443"; //error handshake
 }
 
 console.log("c_url "+c_url);
