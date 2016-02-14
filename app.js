@@ -190,13 +190,16 @@ app.use("*", function(req, res) {
 });
 
 
-app.io = require('socket.io')();
+/*app.io = require('socket.io')();
 
 var http = require('http');
 var server = http.createServer(app);
 app.io.attach(server);
 
-app.set('io', app.io);
+app.set('io', app.io);*/
+
+var server = require('http').Server(app);
+app.io = require('socket.io')(server);
 
 //var rooms = ['56939648e4b0166e3b6a60f6', '56992dd0c8bdac92101a7766', '56a1dbef16d8dfdb5562113d'];
 //busqueda de drones
