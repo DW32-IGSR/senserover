@@ -375,13 +375,10 @@ exports.findMinMaxBatDronId = function(req, res) {
 
 // INSERCIÓN
 exports.addDato = function(req, res) {
-	//http://sense-rover-nohtrim.c9users.io/datos/put/56992dd0c8bdac92101a7766/t/22/h/40/co2/11/r/20/l/20/b/25
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
-	//http://sense-rover-nohtrim.c9users.io/datos/put/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25
-	//http://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
-	//http://senserover-terrestre.rhcloud.com//api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
-	//resultado
+	//https://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
+	//https://senserover-terrestre.rhcloud.com//api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
 
 	var id_dron = req.params.id_dron;
 	var temperatura = req.params.temperatura;

@@ -183,20 +183,11 @@ app.get('/api/paypal/cancel', paypalApiController.getPayPalCancel);
 /**
  * Ruta por defecto
  */
-//app.use('*')
 
 app.use("*", function(req, res) {
   res.redirect('/');
 });
 
-
-/*app.io = require('socket.io')();
-
-var http = require('http');
-var server = http.createServer(app);
-app.io.attach(server);
-
-app.set('io', app.io);*/
 
 var server = require('http').Server(app);
 app.io = require('socket.io')(server);

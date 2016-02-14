@@ -16,14 +16,11 @@ else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
     c_url = "ws://"+location.hostname+":8000";
 }
 else {
-    //c_url = "wss://"+location.hostname+":8443"; //error CONNECTION_FAILED
-    //c_url = "wss://"+location.hostname+":8000"; //error CONNECTION_FAILED
     c_url = "wss://"+location.hostname+":8443"; //error handshake
 }
 
-console.log("c_url "+c_url);
+//console.log("c_url "+c_url);
 var socket = io(c_url);
-//var socket = io();
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum, 10));
@@ -224,7 +221,7 @@ $(document).ready(function() {
         //se cambian las graficas y se cambian los valores en la seccion de estado
         var c_url = document.location.href;
         c_url = c_url.replace("administracion", "datos/" + this.value);
-        console.log(c_url);
+        //console.log(c_url);
         $("#id_dron_rango").val(this.value);
         $('#id_dron_alertas').attr('value', this.value);
         $("#dron_seleccionado").html(this.value);
