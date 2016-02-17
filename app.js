@@ -26,6 +26,18 @@ if (process.env.MONGODB == null) {
   });
 }
 
+if (process.env.MAILGUN_USER == null) {
+  dotenv.load({
+    path: './.env'
+  });
+}
+
+if (process.env.MAILGUN_PASSWORD == null) {
+  dotenv.load({
+    path: './.env'
+  });
+}
+
 /**
  * path: .env  EN PRUEBAS
  */
@@ -66,7 +78,7 @@ app.use(expressValidator());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: 'rubenonrails'
+  secret: process.env.SESSION_SECRET
 }));
 
 // EN PRUEBAS
@@ -97,16 +109,13 @@ var tiendaController = require('./controllers/Tienda');
 //var homeController = require('./controllers/validadarAPI');
 //var homeController = require('./controllers/Estructura_Email');
 
-
 // PRUEBAS PAYPAL
 var paypalApiController = require('./controllers/paypalAPI');
-
 
 /**
  * API keys and Passport configuration. EN PRUEBAS
  */
 var passportConf = require('./config/passport');
-
 
 
 /**

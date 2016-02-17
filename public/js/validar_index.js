@@ -225,7 +225,7 @@ $(document).ready(function() {
         $('#ModalLoginRegistro').modal('hide');
         $('#mregistro').modal('show');
     });
-    $('#inicio-session').on('submit', function(e) {
+   $('#inicio-session').on('submit', function(e) {
         $('#ModalLoginRegistro').modal('hide');
         $('#miniciosesion').modal('show');
         setTimeout(function() {

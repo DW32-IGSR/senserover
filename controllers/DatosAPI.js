@@ -377,7 +377,7 @@ exports.findMinMaxBatDronId = function(req, res) {
 exports.addDato = function(req, res) {
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
-	//https://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
+	//https://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/43/long/-1.9
 	//https://senserover-terrestre.rhcloud.com//api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
 
 	var id_dron = req.params.id_dron;
@@ -396,7 +396,8 @@ exports.addDato = function(req, res) {
 	//en pruebas socket
 	//var io = req.app.io;
 	//io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
-	req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria);
+	//req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria);
+	req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria, latitud, longitud);
 	console.log("addDato socket: chat " + id_dron + " datos: " + temperatura + " " + humedad + " " + co2 + " " + radiacion + " " + luminosidad + " " + bateria);
 	//en pruebas
 
@@ -574,6 +575,9 @@ exports.addDatoPost = function(req, res) {
 		radiacion: req.body.radiacion,
 		luminosidad: req.body.luminosidad,
 		bateria: req.body.bateria,
+		//en desarrollo
+		latitud: req.body.latitud,
+		longitud: req.body.longitud,
 		fecha: fecha,
 		hora: hora
 	});
@@ -591,7 +595,8 @@ exports.addDatoPost = function(req, res) {
 	//en pruebas socket
 	//var io = req.app.io;
 	//io.emit('chat '+dato.id_dron, dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
-	req.app.io.sockets.in(dato.id_dron).emit('updatechat', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
+	//req.app.io.sockets.in(dato.id_dron).emit('updatechat', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria);
+	req.app.io.sockets.in(dato.id_dron).emit('updatechat', dato.temperatura, dato.humedad, dato.co2, dato.radiacion, dato.luminosidad, dato.bateria, dato.latitud, dato.longitud);
 	console.log("addDato post socket: chat " + dato.id_dron + " datos: " + dato.temperatura + " " + dato.humedad + " " + dato.co2 + " " + dato.radiacion + " " + dato.luminosidad + " " + dato.bateria);
 	//en pruebas	
 

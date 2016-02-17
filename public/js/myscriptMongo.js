@@ -5,29 +5,33 @@ var datosCO2 = [];
 var datosRad = [];
 var datosLum = [];
 var datosBat = [];
+var datosLat = [];
+var datosLon = [];
 var id_dron = "";
 
-
-var c_url = document.location.href;
+var c_url = "";
 if (location.hostname == "sense-rover-nohtrim.c9users.io") {
     c_url = "";
 }
-else if (c_url == "http://senserover-terrestre.rhcloud.com/administracion") {
-    c_url = "ws://"+location.hostname+":8000";
+else if (window.location.protocol == "http:") {
+    c_url = "ws://" + location.hostname + ":8000";
 }
 else {
-    c_url = "wss://"+location.hostname+":8443"; //error handshake
+    c_url = "wss://" + location.hostname + ":8443";
 }
 
 //console.log("c_url "+c_url);
 var socket = io(c_url);
-socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
+//socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) { 
+socket.on('updatechat', function(temp, hum, co2, rad, lum, bat, lat, lon) {
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum, 10));
     datosCO2.push(parseFloat(co2));
     datosRad.push(parseFloat(rad));
     datosLum.push(parseFloat(lum));
     datosBat.push(parseFloat(bat));
+    datosLat.push(parseFloat(lat));
+    datosLon.push(parseFloat(lon));
     $("#temp-ultimo").html(temp);
     $("#hum-ultimo").html(hum);
     $("#co2-ultimo").html(co2);
@@ -36,6 +40,9 @@ socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) {
     $("#bat-ultimo").html(bat);
     dibujargrafica2();
     colorearEstado();
+    //reinicio de mapas
+    iniciarMapa1(datosLat[datosLat.length - 1], datosLon[datosLon.length - 1]);
+    //en desarrollo
 });
 
 function switchRoom(room) {
@@ -43,7 +50,7 @@ function switchRoom(room) {
 }
 
 function describir() {
-    var c_url = document.location.href;
+    var c_url = window.location.href;
     c_url = c_url.replace("administracion", "drones/producto/" + $("#dron_seleccionado").html());
     $.ajax({
         type: "GET",
@@ -78,8 +85,7 @@ function colorearEstado() {
         }
         $(id_texto).html(mensaje);
     }
-    //document.URL
-    var c_url = document.location.href;
+    var c_url = window.location.href;
     c_url = c_url.replace("administracion", "alertas/rango/" + $("#dron_seleccionado").html());
     $.ajax({
         type: "GET",
@@ -219,9 +225,9 @@ $(document).ready(function() {
     $("#seleccionador").change(function() {
         id_dron = this.value;
         //se cambian las graficas y se cambian los valores en la seccion de estado
-        var c_url = document.location.href;
+        var c_url = window.location.href;
         c_url = c_url.replace("administracion", "datos/" + this.value);
-        //console.log(c_url);
+        console.log(c_url);
         $("#id_dron_rango").val(this.value);
         $('#id_dron_alertas').attr('value', this.value);
         $("#dron_seleccionado").html(this.value);
@@ -239,6 +245,9 @@ $(document).ready(function() {
                     datosRad.push(parseFloat(data[i].radiacion));
                     datosLum.push(parseFloat(data[i].luminosidad));
                     datosBat.push(parseFloat(data[i].bateria));
+                    //en desarrollo
+                    datosLat.push(parseFloat(data[i].latitud));
+                    datosLon.push(parseFloat(data[i].longitud));
                 }
                 switchRoom(id_dron);
                 $("#temp-ultimo").html(datosTemp[datosTemp.length - 1]);
@@ -250,6 +259,9 @@ $(document).ready(function() {
                 dibujargrafica2();
                 colorearEstado();
                 describir();
+                //reiniciar mapas
+                iniciarMapa1(datosLat[datosLat.length - 1], datosLon[datosLon.length - 1]);
+                iniciarMapa2(datosLat, datosLon);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest.responseText);

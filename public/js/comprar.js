@@ -13,6 +13,7 @@ $("a[name$='comprar_pak']").click(function() {
     }
 });
 
+//modal de comfirmación de compra
 $("#btn_form_comprar").click(function() {
     $('#ModalCompra').modal('show');
 });
