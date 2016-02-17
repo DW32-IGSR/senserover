@@ -11,10 +11,10 @@ exports.comprar = function(req, res) {
     //post del formulario de compra
     //insert en la bd el usuario y el dron que compro
 
-    var sess = req.session;
+    var user = req.user;
     console.log('entro');
 
-    if (sess.usuario == "" || sess.usuario == undefined) {
+    if (user == "" || user == undefined) {
         //algun mensaje de usuario no conectado
         //res.redirect('/')
         console.log("No estas logeado");
@@ -71,7 +71,7 @@ exports.comprar = function(req, res) {
             console.log('nombre pre compra: ' + form_nombre_producto);
 
             Usuario.findOneAndUpdate({
-                _id: sess.id_usuario
+                _id: user.id
             }, {
                 nombre: form_nombre,
                 apellidos: form_apellidos,
@@ -100,7 +100,7 @@ exports.comprar = function(req, res) {
                                 //console.log("¿nombre duplicado? "+form_nombre_final)
                                 Drones.find({
                                     nombre: form_nombre_final,
-                                    'id_usuario': sess.id_usuario
+                                    'id_usuario': user.id
                                 }, function(err, resultados) {
                                     if (err) {
                                         console.error(err);
@@ -119,7 +119,7 @@ exports.comprar = function(req, res) {
                                             //console.log("nombre final"+form_nombre_final)
                                             
                                             var fecha_compra = moment().format("Y-MM-DD");
-                                            var hora_compra = moment().utcOffset("+0100").format("HH:mm:ss");
+                                            var hora_compra = moment().utcOffset("+0000").format("HH:mm:ss");
 
                                             var fecha_caducidad;
 
@@ -143,7 +143,7 @@ exports.comprar = function(req, res) {
                                             }
 
                                             var dron = new Drones({
-                                                id_usuario: sess.id_usuario,
+                                                id_usuario: user.id,
                                                 id_producto: producto.id,
                                                 nombre: form_nombre_final,
                                                 tipo_subscripcion: form_tipo_sub,
@@ -222,10 +222,10 @@ exports.comprar = function(req, res) {
 };
 
 exports.renovarSubscripcion = function(req, res) {
-    var sess = req.session;
+    var user = req.user;
     //console.log('entro');
 
-    if (sess.usuario == "" || sess.usuario == undefined) {
+    if (user == "" || user == undefined) {
         //algun mensaje de usuario no conectado
         //res.redirect('/')
         console.log("No estas logeado");
@@ -256,7 +256,7 @@ exports.renovarSubscripcion = function(req, res) {
                 var asunto = 'Renovación del dron ' + dron_encontrado.nombre;
                 
                 var fecha_renovar = moment().format("Y-MM-DD");
-                var hora_renovar = moment().utcOffset("+0100").format("HH:mm:ss");
+                var hora_renovar = moment().utcOffset("+0000").format("HH:mm:ss");
 
                 if (req.body.hasOwnProperty("btn_form_renovar_estandar")) {
 
@@ -272,7 +272,8 @@ exports.renovarSubscripcion = function(req, res) {
                         _id: id_dron
                     }, {
                         tipo_subscripcion: 'estandar',
-                        fecha_caducidad: fecha_final
+                        fecha_caducidad: fecha_final,
+                        activo: true
                     }, function(err, dron_actualizado) {
                         if (err) {
                             console.error(err);
@@ -298,6 +299,8 @@ exports.renovarSubscripcion = function(req, res) {
                             var mensaje = "<h1>Hola " + nombre_destinatario + "!</h1><br><p>Has renovado durante seis meses más la subscripción estándar del dron " + dron_encontrado.nombre + "<br>La nueva fecha de caducidad es: " + fecha_final + "</p>";
 
                             estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
+                        
+                            res.redirect('/perfil');
                         }
                     });
                 }
@@ -306,7 +309,7 @@ exports.renovarSubscripcion = function(req, res) {
 
                     
                     var fecha = moment(fecha_caducidad_antigua).format("Y-MM-DD");
-                    console.log("Fecha caducidad antigua: "+fecha);
+                    console.log("Fecha caducidad antigua: "+ fecha);
                     
                     var fecha_caducidad_nueva =  moment(fecha).add(1, 'year').format('Y-MM-DD');
                     
@@ -316,7 +319,8 @@ exports.renovarSubscripcion = function(req, res) {
                         _id: id_dron
                     }, {
                         tipo_subscripcion: 'profesional',
-                        fecha_caducidad: fecha_caducidad_nueva
+                        fecha_caducidad: fecha_caducidad_nueva,
+                        activo: true
                     }, function(err, dron_actualizado) {
                         if (err) {
                             console.error(err);
@@ -341,6 +345,8 @@ exports.renovarSubscripcion = function(req, res) {
                             // Crear mensaje de renovaciónombre_destinatario
                             var mensaje = "<h1>Hola " + nombre_destinatario + "!</h1><br><p>Has renovado durante un año más la subscripción profesional del dron " + dron_encontrado.nombre + "<br>La nueva fecha de caducidad es: " + fecha_caducidad_nueva + "</p>";
                             estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
+                        
+                            res.redirect('/perfil');
                         }
                     });
                 }

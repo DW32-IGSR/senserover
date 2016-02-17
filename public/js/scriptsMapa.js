@@ -23,6 +23,7 @@ function iniciarMapa2(latitudes, longitudes) {
     });
     //array_push($markers, $lat, $lng, $titulo);
     var ruta = [];
+    
     for (var i = 0; i < latitudes.length; i++) {
         //console.log("bucle pos:" + i);
         var marker = new google.maps.Marker({
@@ -31,13 +32,15 @@ function iniciarMapa2(latitudes, longitudes) {
                 lng: longitudes[i]
             },
             map: mapa2,
+            //animation:google.maps.Animation.DROP,
+            draggable: false,
         });
         ruta.push({
             lat: latitudes[i],
             lng: longitudes[i]
         });
     }
-    
+
     var lineas = new google.maps.Polyline({
         path: ruta,
         map: mapa2,

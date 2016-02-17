@@ -7,8 +7,8 @@ exports.update = function(req, res) {
   //envio de correo de activacion
   console.log("actualizacion de alertas");
 
-  var sess = req.session;
-
+  var user = req.user;
+  
   var form_tempMinima = req.body.tempMinima;
   var form_tempMaxima = req.body.tempMaxima;
   var form_humMinima = req.body.humMinima;
@@ -29,7 +29,7 @@ exports.update = function(req, res) {
   // Validacion por servidor
   var validado = validadarAPI.APIconfAlertas(req, res);
   if (validado) {
-    console.log("Usuario: " + sess.usuario + " cambiando alertas");
+    console.log("Usuario: " + user.usuario + " cambiando alertas");
     //console.log(recibir_alertas)
     // no = undefined
     // si = on
@@ -123,17 +123,4 @@ exports.update = function(req, res) {
   else {
     return res.redirect('/404');
   }
-};
-
-exports.mensaje_alerta = function(dato, valor_actual, valor_minimo, valor_maximo) {
-
-  var mensaje;
-  console.log('dato: ' + dato);
-  console.log('valor_actual: ' + valor_actual);
-  console.log('valor_minimo: ' + valor_minimo);
-  console.log('valor_maximo: ' + valor_maximo);
-  mensaje = '<br>La ' + dato + ' está fuera del rango indicado';
-  mensaje += '<br>La ' + dato + ' actual es de <span style="color:red">' + valor_actual + '</span> y el rango es de ' + valor_minimo + ' a ' + valor_maximo;
-
-  return mensaje;
 };

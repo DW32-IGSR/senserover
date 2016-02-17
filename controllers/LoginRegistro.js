@@ -1,255 +1,166 @@
 var Usuario = require("../models/Usuario");
-var bcrypt = require('bcrypt');
+var Drones = require("../models/Drones");
+var email= require('./Estructura_Email');
+
+var moment = require('moment');
 //var express = require('express');
 //var validator = require('validator');
+var passport = require('passport');
 
-var estructura_email = require('./Estructura_Email');
-var moment = require('moment');
-
-exports.login = function(req, res) {
-  
-  /*
-    passport.authenticate('local', function(err, user, info) {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      req.flash('errors', { msg: info.message });
-      return res.redirect('/login');
-    }
-    req.logIn(user, function(err) {
-      if (err) {
-        return next(err);
-      }
-      req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo || '/');
-    }); */
-  
-  
-  //post de formulario de login
-  var sess = req.session;
-  var form_usuario = req.body.usuario;
-  var form_pass = req.body.contrasenya;
-
-  //console.log("Usuario login: " + form_usuario);
-  //console.log("Pass login: " + form_pass);
+/**
+ * POST /login
+ * Sign in using email and password.
+ */
+exports.postLogin = function(req, res, next) {
 
   // Validacion servidor
-  req.assert('usuario', 'Usuario es requerido.').notEmpty();
-  req.assert('contrasenya', 'La contraseña es requerida.').notEmpty();
-  req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(3, 20); //Hay que cambiar el valor 2 por 3
+  req.assert('email', 'El email es requerido.').notEmpty();
+  req.assert('email', 'Email no válido').isEmail();
+  req.assert('password', 'La contraseña es requerida.').notEmpty();
+  req.assert('password', 'Usa al menos 8 caracteres.').len(8, 20); //Hay que cambiar el valor 2 por 3
+  
+  console.log(req);
 
   var errors = req.validationErrors();
 
-  console.log(errors);
+  console.log('errores validacion: ' + errors);
+  
 
   if (errors) {
     //req.flash('error', errors);
     return res.redirect('/');
   }
-  else {
-
-    Usuario.findOne({
-      usuario: form_usuario
-    }, function(err, usuario) {
+  passport.authenticate('local', function(err, user, info) {
+    console.log('entro al passport');
+    if (err) {
+      console.log('error de passport');
+      return next(err);
+    }
+    if (!user) {
+      //req.flash('errors', { msg: info.message });
+      //req.flash('errors', 'Error, no existe usuario');
+      console.log('distinto a user');
+      return res.redirect('/');
+    }
+    req.logIn(user, function(err) {
+      console.log('entro a logIn');
       if (err) {
-        console.error(err);
+        console.log('error logIn');
+        //return next(err);
+        return res.redirect('/');
       }
-      else {
-        if (usuario != null) {
-          //console.log('Find one usuario:' + usuario.usuario);
-
-          usuario.comparePassword(form_pass, function(err, isMatch) {
-            if (err) throw err;
-            //console.log('comprobacion: ' + form_pass, isMatch);
-            if (isMatch) {
-              if (usuario.validated) {
-                //console.log('usuario activado');
-                console.log("ip cliente: "+req.ip);
-                //crear sesion
-                sess.usuario = usuario.usuario;
-                sess.id_usuario = usuario._id;
-                console.log("id de usuario " + sess.id_usuario + " usuario " + sess.usuario);
-                /*var fecha = new Date();
-                var fecha = fecha.setHours(fecha.getHours() + 1);
-                //fecha.setUTCHours(12)
-                //fecha=fecha.setUTCHours(15)
-                console.log(fecha);*/
-                //console.log("fecha en milisegundos " + fecha)
-                //fecha=new Date(fecha)
-                
-              	var fecha = moment().utcOffset("+0100").format("Y-MM-DD HH:mm:ss");
-
-                console.log('ultima conexion: ' + usuario.ultima_conexion);
-                
-                if (usuario.ultima_conexion == undefined) {
-                  Usuario.findOneAndUpdate({
-                    _id: sess.id_usuario
-                  }, {
-                    ultima_conexion: fecha
-                  }, function(err, user) {
-                    if (err) throw err;
-                    res.redirect('/perfil');
-                  });
-                }
-                else {
-                  Usuario.findOneAndUpdate({
-                    _id: sess.id_usuario
-                  }, {
-                    ultima_conexion: fecha
-                  }, function(err, user) {
-                    if (err) {
-                      throw err;
-                    }
-                    res.redirect(req.get('referer'));
-                  });
-                }
-
-              }
-              else {
-                console.log('usuario NO activado');
-                //res.redirect('/')
-                //flash de errores
-                req.flash('error', ' El usuario no esta activado..');
-                //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
-                res.redirect('/');
-              }
-            }
-            else {
-              console.log('contraseña incorrecta');
-              //res.redirect('/')
-              //flash de errores
-              req.flash('error', ' El nombre de usuario o la contraseña son incorrectos.');
-              //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
-
-
-              res.redirect('/');
-            }
-          });
-        }
-        else {
-          console.log('usuario no registrado');
-          //res.redirect('/')
-          //flash de errores
-          /* res.render("index.handlebars", {layout: 'main.handlebars', action: 'login', error: req.flash('error')
-              });*/
-          req.flash('error', ' El usuario no está registrado.');
-          //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
-          res.redirect('/');
-        }
-      }
+      console.log('ruben: ' + user.usuario + " " + user.validated);
+      console.log('entro a logIn 2');
+      
+      // pruebas
+      Drones.find({
+            'id_usuario': user.id
+      }, function(err, drones_encontrados) {
+          if (err) {
+              console.log(err);
+          }
+          else {
+              
+              Drones.count({id_usuario: user.id}, function(err, dronesCant) {
+                 
+                 if (err) {
+                      console.log(err);
+                  }
+                  
+                  var diasRestantesArray = [];
+                  for (var i = 0; i < dronesCant; i++) {
+                    
+                      var fechaHoy = moment().format("YYYY-MM-DD");
+                      
+                      if (drones_encontrados[i].fecha_caducidad < fechaHoy) {
+              		    Drones.findOneAndUpdate({ _id: drones_encontrados[i]._id }, { activo: false }, function(err, dron_cad) {
+              		        if(err){
+              		            console.log(err);
+              		        }
+              		        console.log("dron caducado");
+              		    });
+                  	}
+                  }
+              });
+          }
+      });
+      
+      //req.flash('success', { msg: 'Success! You are logged in.' });
+      console.log('LLego');
+      req.flash({
+        type: 'error',
+        message: 'Prueba flash',
+        redirect: false
+      })
+      res.redirect(req.session.returnTo || req.get('referer'));
     });
-  }
+  })(req, res, next);
+  
 };
 
-exports.registro = function(req, res) {
-  //post de formulario de registro
-  //envio de correo de activacion
-  console.log("registro");
-
-  var form_usuario = req.body.usuario;
-  var form_email = req.body.email;
-  var form_pass = req.body.contrasenya;
-  var form_pass2 = req.body.contrasenya2;
-  console.log("Usuario registro: " + form_usuario);
-  //console.log("email registro: " + form_email)
-  //console.log("Pass 1: " + form_pass)
-  //console.log("Pass 2: " + form_pass2)
-
-  // Validacion servidor
+/**
+ * POST /signup
+ * Create a new local account.
+ */
+exports.postSignup = function(req, res, next) {
+  req.assert('email', 'Email is not valid').isEmail();
   req.assert('usuario', 'Usuario es requerido.').notEmpty();
-  req.assert('email', 'El campo email es requerido.').notEmpty();
-  req.assert('email', 'Email no valido.').isEmail();
-  req.assert('contrasenya', 'La contraseña es requerida.').notEmpty();
-  req.assert('contrasenya', 'Usa al menos 8 caracteres.').len(3, 20); //Hay que cambiar el valor 2 por 3
-  req.assert('contrasenya2', 'La contraseña es requerida.').notEmpty();
-  req.assert('contrasenya2', 'Usa al menos 8 caracteres.').len(3, 20); //Hay que cambiar el valor 2 por 3
+  req.assert('usuario', 'Usuario is not valid').len(3, 20);
+  req.assert('password', 'Password must be at least 4 characters long').len(4);
+  req.assert('password2', 'Passwords do not match').equals(req.body.password);
+
+  console.log('Entro a registro');
+
 
   var errors = req.validationErrors();
 
-  console.log(errors);
-
   if (errors) {
+    //req.flash('errors', errors);
+    console.log('Error registro 1');
     return res.redirect('/');
   }
-  else {
-
-    Usuario.findOne({
-      $or: [{
-        usuario: form_usuario
-      }, {
-        email: form_email
-      }]
-    }, function(err, usuario) {
+  
+    var chars = process.env.KEY_CHAR;
+    var new_key = "";
+    for (var i = 0; i < 32; i++) {
+      new_key += chars[Math.floor(Math.random() * 35)];
+    }
+  
+  var user = new Usuario({
+    email: req.body.email,
+    password: req.body.password,
+    usuario: req.body.usuario,
+    activacion_key: new_key
+  });
+  
+  console.log(user);
+  
+  Usuario.findOne({ $or: [{usuario: req.body.usuario}, {email: req.body.email}]}, function(err, existingUser) {
+    if (existingUser) {
+      //req.flash('errors', { msg: 'Account with that email address already exists.' });
+      return res.redirect('/');
+    }
+    user.save(function(err) {
       if (err) {
-        console.error(err);
+        return next(err);
       }
-      else {
+      var nombre_remitente = 'Sense-Rover';
+      var email_remitente = 'dw32igsr@gmail.com';
+      var nombre_destinatario = req.body.usuario;
+      var email_destinatario = req.body.email;
+      var asunto = 'Registro en sense-rover';
+      //var mensaje = "<h1>Hola " + nombre_destinatario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/" + new_key + "/" + email_destinatario + "'>Activar la cuenta</a>";
+      var mensaje = "<h1>Hola " + nombre_destinatario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://" + req.headers.host + "/activate/" + new_key + "/" + email_destinatario + "'>Activar la cuenta</a>";
 
-        if (usuario == null) {
-          console.log('el usuario o el email no existe');
-
-          var salt = bcrypt.genSaltSync(10);
-          var pass_coded = bcrypt.hashSync(form_pass, salt);
-          console.log(bcrypt.compareSync(form_pass2, pass_coded));
-          console.log(pass_coded);
-
-          if (bcrypt.compareSync(form_pass2, pass_coded)) {
-            var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-            var new_key = "";
-            for (var i = 0; i < 32; i++) {
-              new_key += chars[Math.floor(Math.random() * 35)];
-            }
-
-            //creacion de usuario
-            //var usuario = new Usuario({usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
-            //var usuario = new Usuario({ _id: ,usuario : form_usuario, pass : pass_coded, email : form_email, activacion_key : new_key, validated : 0})
-            //pendiente revisar
-            var usuario = new Usuario({
-              usuario: form_usuario,
-              nombre: null,
-              apellidos: null,
-              dni: null,
-              direccion: null,
-              codigo_postal: null,
-              pass: pass_coded,
-              email: form_email,
-              activacion_key: new_key,
-              validated: 0,
-              ultima_conexion: null
-            });
-
-            //guardar usuario en la base de datos
-            usuario.save(function(err) {
-              if (err) {
-                console.log('save error', err);
-              }
-              else {
-                var nombre_remitente = 'Sense-Rover';
-                var email_remitente = 'dw32igsr@gmail.com';
-                var nombre_destinatario = form_usuario;
-                var email_destinatario = form_email;
-                var asunto = 'Registro en sense-rover';
-                var mensaje = "<h1>Hola " + form_usuario + "!</h1><br><p>Gracias por registrarse en nuestro sitio.<br>Su cuenta ha sido creada, y debe ser activada antes de poder ser utilizada.<br>Para activar la cuenta, haga click en el siguiente enlace:</p><br><a href='http://senserover-terrestre.rhcloud.com/activate/" + new_key + "/" + form_email + "'>Activar la cuenta</a>";
-
-                estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
-              }
-            });
-
-          }
-          else {
-            console.log('Las pass no es la misma');
-          }
+      email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
+      // Con esto se logea al registrarse directamente
+      /*req.logIn(user, function(err) {
+        if (err) {
+          return next(err);
         }
-        else {
-          //console.log('el usuario ya existe')
-          console.log('El usuario y/o el correo ya existen');
-          req.flash('error', ' El usuario y/o el email ya existen.');
-          //res.redirect('/');
-        }
-      }
-    });
-    //res.render("index.handlebars", {layout: 'index.handlebars', action: 'Register', error: req.flash('error'),});
-    res.redirect('/');
-  }
+        res.redirect('/');
+      });*/
+      res.redirect('/');
+    })
+  });
 };

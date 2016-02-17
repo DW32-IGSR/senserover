@@ -11,11 +11,10 @@ var expressValidator = require('express-validator');
 var dotenv = require('dotenv');
 var session = require('express-session');
 var flash = require('express-flash');
-//
 var moment = require('moment');
 
-// GORKA en pruebas
 var passport = require('passport');
+var multer = require('multer');
 
 /**
  * path: .env
@@ -38,9 +37,11 @@ if (process.env.MAILGUN_PASSWORD == null) {
   });
 }
 
-/**
- * path: .env  EN PRUEBAS
- */
+if (process.env.KEY_CHAR == null) {
+  dotenv.load({
+    path: './.env'
+  });
+}
 
 if (process.env.GOOGLE_ID == null && process.env.GOOGLE_SECRET) {
   dotenv.load({
@@ -53,7 +54,6 @@ if (process.env.PAYPAL_ID == null && process.env.PAYPAL_SECRET) {
     path: './.env'
   });
 }
-
 
 /**
  * Configuracion handlebars
@@ -72,9 +72,8 @@ app.use(bodyParser.urlencoded({
 app.use(expressValidator());
 //app.use(require('./controllers'));
 
-/**
- * Rutas
- */
+app.use(flash());
+
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -85,7 +84,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(flash());
 
 /**
  * Controladores
@@ -106,14 +104,12 @@ var productosController = require('./controllers/Productos');
 var pronosticosController = require('./controllers/Pronosticos');
 var rangoFechaController = require('./controllers/RangoFecha');
 var tiendaController = require('./controllers/Tienda');
+var uploadImageController = require('./controllers/UploadImage');
 //var homeController = require('./controllers/validadarAPI');
 //var homeController = require('./controllers/Estructura_Email');
 
-// PRUEBAS PAYPAL
-var paypalApiController = require('./controllers/paypalAPI');
-
 /**
- * API keys and Passport configuration. EN PRUEBAS
+ * API keys and Passport configuration.
  */
 var passportConf = require('./config/passport');
 
@@ -123,8 +119,14 @@ var passportConf = require('./config/passport');
  */
 app.get('/', homeController.index);
 app.get('/cerrar', homeController.destroySession);
-app.post('/login', loginRegistroController.login);
-app.post('/register', loginRegistroController.registro);
+// VIEJO
+//app.post('/login', loginRegistroController.login);
+// NUEVO
+app.post('/login', loginRegistroController.postLogin);
+// VIEJO
+//app.post('/register', loginRegistroController.registro);
+//NUEVO
+app.post('/register', loginRegistroController.postSignup);
 app.get('/administracion', administracionController.admin);
 app.get('/perfil', perfilController.perfil);
 app.post('/perfil/datos', perfilController.datosPerfil);
@@ -141,8 +143,40 @@ app.post('/newPassword', emailController.newPassword);
 app.post('/alertas/update', alertasController.update);
 app.get('/404', error404Controller.error);
 
-//EN PRUEBAS
-app.get('/login', passportConf.isAuthenticated, loginRegistroController.login);
+var storage = multer.diskStorage({
+  //limits: {fileSize: 1, files:1},
+  destination: function (req, file, cb) {
+    cb(null, './public/avatar/'); // Directirio donde se guardaran los archivos.
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now()+file.originalname);
+  }
+});
+
+var upload = multer({storage: storage, fileFilter: fileFilter     
+  
+  //Esto funciona pero abria que controlar el error que general y no queda tiempo
+  /*limits: {
+    fieldNameSize: 50,
+    files: 1,
+    fields: 5,
+    fileSize: 1024 * 1024
+  }*/
+  }
+);
+
+app.post('/upload/image', upload.single('imagen'), uploadImageController.upload);
+
+function fileFilter (req, file, cb){
+  console.log('Entro al filter');
+  var type = file.mimetype;
+  //var typeArray = type.split("/");
+  if (type == "image/jpg" || type == "image/jpeg" || type == "image/png") {
+    cb(null, true);
+  }else {
+    cb(null, false);
+  }
+}
 
 
 /**
@@ -183,11 +217,6 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
   res.redirect(req.session.returnTo || '/');
 });
 
-// PRUEBAS PAYPAL
-app.get('/api/paypal', paypalApiController.getPayPal);
-app.get('/api/paypal/success', paypalApiController.getPayPalSuccess);
-app.get('/api/paypal/cancel', paypalApiController.getPayPalCancel);
-
 
 /**
  * Ruta por defecto
@@ -195,6 +224,11 @@ app.get('/api/paypal/cancel', paypalApiController.getPayPalCancel);
 
 app.use("*", function(req, res) {
   res.redirect('/');
+});
+
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
 });
 
 

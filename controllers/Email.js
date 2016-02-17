@@ -1,15 +1,15 @@
 var Usuario = require("../models/Usuario");
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 
 var estructura_email = require('./Estructura_Email');
 
-exports.activacion = function(req, res) {
+exports.activacion = function(req, res, next) {
+    console.log('llego a activacion');
     //ruta de activacion que se envia en el correo de activacion
 
     var key = req.params.activation;
     var email = req.params.email;
-    var sess = req.session;
 
     // Validacion servidor
     req.assert('activation', 'La Activacion es requerida.').notEmpty();
@@ -30,22 +30,23 @@ exports.activacion = function(req, res) {
     Usuario.findOne({
         activacion_key: key,
         email: email
-    }, function(err, usuario) {
+    }, function(err, user) {
         if (err) {
             console.log(err);
         }
-        else if (usuario != null) {
-            usuario.validated = true;
-            usuario.save(function(err) {
+        else if (user != null) {
+            console.log('usuario encontrado');
+            user.validated = true;
+            user.save(function(err) {
                 if (err) {
                     console.log(err);
                 }
                 else {
-                    console.log('Updated', usuario);
+                    console.log('Updated', user);
                     //guardado de sesion
-                    sess.usuario = usuario.usuario;
-                    sess.id_usuario = usuario._id;
-                    res.redirect('/perfil');
+                    //sess.usuario = usuario.usuario;
+                    //sess.id_usuario = usuario._id;
+                    res.redirect('/'); // esto hay que cmabiar a perfil
                 }
             });
         }
@@ -130,7 +131,7 @@ exports.forgetPassword = function(req, res) {
         return res.redirect('/');
     }
 
-    var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    var chars = process.env.KEY_CHAR;
     var new_key = "";
     for (var i = 0; i < 32; i++) {
         new_key += chars[Math.floor(Math.random() * 35)];
@@ -155,7 +156,7 @@ exports.forgetPassword = function(req, res) {
                 "<p>Recientemente se ha enviado una solicitud de reinicio de tu contraseña para nuestra área de miembros.<br>" +
                 "Si no solicitaste esto, por favor ignora este correo.<br>" +
                 "Para reiniciar tu contraseña, por favor haga click en el siguiente enlance:</p><br>" +
-                "<a href='http://senserover-terrestre.rhcloud.com/recoverPassword/" + new_key + "/" + email + "'>Restablecer contraseña</a>";
+                "<a href='http://" + req.headers.host + "/recoverPassword/" + new_key + "/" + email + "'>Restablecer contraseña</a>";
 
             estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
             //res.redirect('/')
@@ -231,30 +232,38 @@ exports.newPassword = function(req, res) {
     req.assert('pass_nueva', 'La contraseña Usa al menos 8 caracteres.').len(8, 20); //Hay que cambiar el valor 2 por 3
     req.assert('pass_nueva_conf', 'La contraseña2 es requerida.').notEmpty();
     req.assert('pass_nueva_conf', 'La contraseña Usa al menos 8 caracteres.').len(8, 20); //Hay que cambiar el valor 2 por 3
+    req.assert('pass_nueva_conf', 'Passwords do not match').equals(req.body.pass_nueva);
 
     var errors = req.validationErrors();
 
     console.log(errors);
+    console.log('entro a new password');
 
     if (errors) {
         //req.flash('error', errors);
         return res.redirect('/');
     }
 
-
     if (nueva_pass != nueva_pass_conf) {
         console.log('Las contraseñas no coinciden');
     }
     else {
-        var salt = bcrypt.genSaltSync(10);
-        var pass_coded = bcrypt.hashSync(nueva_pass, salt);
-
-        if (bcrypt.compareSync(nueva_pass_conf, pass_coded)) {
-            Usuario.findOneAndUpdate({
+        console.log('else');
+      bcrypt.genSalt(10, function(err, salt) {
+        console.log('bcrypt');
+        if (err) {
+          return (err);
+        }
+        bcrypt.hash(nueva_pass_conf, salt, null, function(err, hash) {
+            console.log('bcrypt hash');
+          if (err) {
+            return (err);
+          }
+          Usuario.findOneAndUpdate({
                 activacion_key: key,
                 email: email
             }, {
-                pass: pass_coded
+                password: hash
             }, function(err, user) {
                 if (err) {
                     console.error(err);
@@ -264,35 +273,8 @@ exports.newPassword = function(req, res) {
                     res.redirect('/');
                 }
             });
-        }
-        else {
-            console.log('Las contraseñas no coinciden');
-        }
+
+        });
+      });
     }
 };
-
-// Función para enviar alertas, no se usa
-/*exports.emailAlert = function(req, res) {
-
-    var email = req.params.email;
-    //if para enviar email dependiendo del valor de la alerta
-    //if(){
-    var api_key = 'key-116da3f3cd011ad01d454a632a599587';
-    var domain = 'sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org';
-    var mailgun = require('mailgun-js')({
-        apiKey: api_key,
-        domain: domain
-    });
-
-    var alerta = "El valor de 'tipo de la alerta' ha superado los máximos o mínimos establecidos. Acceda al panel de control para obtener mas datos";
-    var data = {
-        from: 'Sense-Rover <dw32igsr@gmail.com>',
-        to: email,
-        subject: "Envio de alerta",
-        html: alerta
-    };
-
-    mailgun.messages().send(data, function(error, body) {
-        console.log(body);
-    });
-};*/

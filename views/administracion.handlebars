@@ -4,53 +4,6 @@
 <!--<head>-->
 <title>Administrador</title>
 <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
-<!--</head>
-<body class="body">-->
-<!--<div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
-  <div class="w-container">
-    <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
-    <nav role="navigation" class="w-nav-menu navigation-menu">
-      <a href="/" class="w-nav-link navigation-link">Home</a>
-      <a href="/perfil" class="w-nav-link navigation-link">Perfil</a>
-      <a href="#alertas" class="w-nav-link navigation-link">Alertas</a>
-      <a href="#seleccion-dron" class="w-nav-link navigation-link">Selección de Dron</a>
-      <div data-delay="0" class="w-dropdown">
-        <div class="w-dropdown-toggle">
-          <div class="navigation-link">Gráficas</div>
-          <div class="w-icon-dropdown-toggle"></div>
-        </div>
-        <nav class="w-dropdown-list">
-          <a href="#temperatura" class="w-dropdown-link navigation-link">Temperatura</a>
-          <a href="#humedad" class="w-dropdown-link navigation-link">Humedad</a>
-          <a href="#co2" class="w-dropdown-link navigation-link">CO2</a>
-          <a href="#radiacion-solar" class="w-dropdown-link navigation-link">Radiación solar</a>
-        </nav>
-      </div>
-      <div data-delay="0" class="w-dropdown">
-        <div class="w-dropdown-toggle">
-          <div class="navigation-link">Estado del dron</div>
-          <div class="w-icon-dropdown-toggle"></div>
-        </div>
-        <nav class="w-dropdown-list">
-          <a href="#descripcion-dron" class="w-dropdown-link navigation-link">Descripción del dron</a>
-          <a href="#posicion-actual" class="w-dropdown-link navigation-link">Posición actual</a>
-          <a href="#seguimiento-ruta" class="w-dropdown-link navigation-link">Seguimiento de ruta</a>
-          <a href="#configuracion" class="w-dropdown-link navigation-link">Configuración</a>
-          <a href="#registro" class="w-dropdown-link navigation-link">Registro</a>
-        </nav>
-      </div>
-      <a href="#faq" class="w-nav-link navigation-link">Preguntas frecuentes</a>
-      <a href="/cerrar" class="w-nav-link navigation-link">Cerrar sesión</a>
-    </nav>
-    <div class="w-nav-button hamburger-button">
-      <div class="w-icon-nav-menu"></div>
-    </div>
-    <a href="/cerrar">
-      <button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button>
-    </a>
-    <p class="btn btn-box-tool usuario">Bienvenido <a href="/perfil"><strong>{{nombre_usuario}}</strong></a></p>
-  </div>
-</div> -->
 
 <!-- INICIO MENU -->
 <div class="wrapper">
@@ -64,20 +17,17 @@
             <ul class="nav navbar-nav">
               <!-- User Account-->
               <li class="dropdown user user-menu">
-                {{#if nombre_usuario}}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{nombre_usuario}}</span>
-                </a>
-                {{else}}
-                <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
-                  <span>Entrar</span> {{/if}}
+                {{#if datosUsuario}}
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src='{{datosUsuario.avatar}}' class="user-image" alt="User Image">
+                    <span class="hidden-xs">{{datosUsuario.usuario}}</span>
+                  </a>
                   <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <img src='{{datosUsuario.avatar}}' class="img-circle" alt="User Image">
                       <p>
-                        {{datos_perfil.nombre}} {{datos_perfil.apellidos}}
+                        {{datosUsuario.usuario}}
                       </p>
                     </li>
                     <!-- Menu Footer-->
@@ -90,6 +40,10 @@
                       </div>
                     </li>
                   </ul>
+                {{else}}
+                <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
+                  <span>Entrar</span> </a>
+                {{/if}}
               </li>
               <!-- Control Sidebar Toggle Button -->
               <li>
@@ -144,10 +98,9 @@
   </div>
 </div>
 <!-- ./wrapper -->
-
 <!-- FIN MENU -->
 
-<!-- w-nav navigation-bar -->
+<!-- SELECCIÓN DE DRON -->
 <div id="seleccion-dron" class="w-section section grafic">
   <div class="w-container">
     <div class="white-box formulario">
@@ -157,43 +110,23 @@
           <select id="seleccionador" name="seleccionador" class="w-select">
             <!-- myscriptmongo change-->
             <option value="selecciona">Selecciona el dron</option>
-            <!--<option value="modelo 200c">modelo 200c</option>
-              <option value="modelo 300v">modelo 300v</option>
-              <option value="modelo 400">modelo 400</option>-->
-            {{#each drones}}
-              <option value={{_id}}>{{nombre}}</option>
-            {{/each}}
-
             <!-- Mostrar únicamente los drones que están activos -->
-            <!--{{#each drones}}
+            {{#each drones}}
               {{#if activo}}
                 <option value={{_id}}>{{nombre}}</option>
               {{/if}}
-  	        {{/each}}-->
+  	        {{/each}}
           </select>
           <p hidden id="dron_seleccionado">id_dron</p>
         </form>
-        <div class="w-form-done">
-          <p>Thank you! Your submission has been received!</p>
-        </div>
-        <div class="w-form-fail">
-          <p>Oops! Something went wrong while submitting the form</p>
-        </div>
       </div>
     </div>
   </div>
 </div>
-<!-- "w-section section grafic -->
-<!--<div id="alertas" class="w-section section">
-    <div class="w-container">
-      <h1 class="section-heading centered white">Alertas</h1>
-      <h1 class="section-subheading center off-white">Temperatura</h1><img src="images/alerta3.PNG">
-      <h1 class="section-subheading center off-white">Humedad</h1><img src="images/alerta2.PNG">
-      <h1 class="section-subheading center off-white">co2</h1><img src="images/alerta1.PNG">
-      <h1 class="section-subheading center off-white">RADIACIÓN solar</h1><img src="images/alerta1.PNG">
-      <h1 class="section-subheading center off-white">Luminosidad</h1><img src="images/alerta1.PNG">
-    </div>
-  </div>-->
+<!-- FIN SELECCIÓN DE DRON -->
+
+<!-- PANEL ESTADO -->
+{{#if drones}}
 <div id="alertas" class="w-section section grafic">
   <div class="w-container">
     <h1 class="section-heading centered white">PANEL DE ESTADO</h1>
@@ -294,6 +227,7 @@
     </div>
   </div>
 </div>
+<!-- FIN PANEL ESTADO -->
 
 <!-- Modal configuracion alertas -->
 <div class="modal fade" id="ModalAlertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -501,28 +435,6 @@
       </div>
       <!-- w-tab-menu -->
       <div class="w-tab-content">
-        <!--<div id="tiempo-real" data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
-            <div class="white-box">
-              <h1 class="section-subheading center">Temperatura</h1>
-              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-            </div>
-            <div class="white-box">
-              <h1 class="section-subheading center">Humedad</h1>
-              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-            </div>
-            <div class="white-box">
-              <h1 class="section-subheading center">co2</h1>
-              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-            </div>
-            <div class="white-box">
-              <h1 class="section-subheading center">RADIACIÓN solar</h1>
-              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-            </div>
-            <div class="white-box">
-              <h1 class="section-subheading center">Luminosidad</h1>
-              <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-            </div>
-          </div>-->
         <!-- tiempo real: w-tab-pane w--tab-active-->
         <div data-w-tab="Tab 2" class="w-tab-pane">
           <div id="temperatura">
@@ -625,7 +537,7 @@
       <div class="w-tab-content">
         <div data-w-tab="descripcion_dron" class="w-tab-pane w--tab-active">
           <div class="w-row fila-a-1">
-            <div class="w-col w-col-6"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+            <div class="w-col w-col-6"><img style='width:300px;' id="imagen_producto" src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
             </div>
             <div class="w-col w-col-6">
               <p class="white-text">
@@ -637,13 +549,12 @@
         </div>
         <!-- panel estado: Tab-descripciónDron: w-tab-pane -->
         <div data-w-tab="posicion_actual" class="w-tab-pane">
-          <div id="mapa1" style='width:100%;height:300px;'></div>
-          <!-- <div id="mapa1"></div> -->
+          <div id="mapa1" style='width:100%;height:400px;'></div>
           <!-- <div id="mapa1" data-widget-latlng="43.318334,-1.981231" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div> -->
         </div>
         <!-- panel estado: Tab-posiciónActual: w-tab-pane -->
         <div data-w-tab="ruta" class="w-tab-pane">
-          <div id="mapa2" style='width:100%;height:300px;'></div>
+          <div id="mapa2" style='width:100%;height:400px;'></div>
           <!-- <div data-widget-latlng="43.308111,-1.891282" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div> -->
         </div>
         <!-- panel estado: Tab-seguimientoRuta: w-tab-pane -->
@@ -673,8 +584,9 @@
               <br>14:52 el dron mando una muestra
               <br>14:54 el dron mando una muestra
               <br>14:56 se apagó el dron</p>
-            <a href="#" class="hollow-button">HACER COMPROBACIÓN</a>
-            <a href="#" class="hollow-button">exportar registro</a>
+            <a href="" class="hollow-button">HACER COMPROBACIÓN</a>
+            <a href="" class="hollow-button">exportar registro</a>
+            <a id="parada_dron"  href="" class="hollow-button">Parar dron</a>
           </div>
           <!-- panel estado: Tab-registro: bordecito -->
         </div>
@@ -687,6 +599,15 @@
   <!-- panel-estado: centrado-a-3 -->
 </div>
 <!-- panel-estado: w-section section -->
+{{else}} <!-- Si no tiene drones -->
+<div id="c_dron" class="w-section section grafic">
+  <div class="w-container">
+    <p>No tienes drones</p>
+    <a href="/tienda/5693728d3890294f10406189" class="w-button button" id="btn_compra">Comprar Dron</a>
+  </div>
+</div>
+{{/if}} <!-- If de no tener drones -->
+
 <div id="faq" class="w-section section grafic">
   <div class="w-container">
     <h1 class="section-heading centered">Preguntas frecuentes</h1>

@@ -52,6 +52,8 @@ function switchRoom(room) {
 function describir() {
     var c_url = window.location.href;
     c_url = c_url.replace("administracion", "drones/producto/" + $("#dron_seleccionado").html());
+    //https://sense-rover-nohtrim.c9users.io/drones/producto/56939648e4b0166e3b6a60f6
+    //console.log("datos de producto: "+c_url);
     $.ajax({
         type: "GET",
         url: c_url,
@@ -59,6 +61,7 @@ function describir() {
         success: function(data) {
             $("#desc_nombre").html(data[0].nombre);
             $("#desc_desc").html(data[0].descripcion);
+            $("#imagen_producto").attr('src', data[0].imagen);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
@@ -227,7 +230,8 @@ $(document).ready(function() {
         //se cambian las graficas y se cambian los valores en la seccion de estado
         var c_url = window.location.href;
         c_url = c_url.replace("administracion", "datos/" + this.value);
-        console.log(c_url);
+        //https://sense-rover-nohtrim.c9users.io/datos/56939648e4b0166e3b6a60f6
+        //console.log(c_url);
         $("#id_dron_rango").val(this.value);
         $('#id_dron_alertas').attr('value', this.value);
         $("#dron_seleccionado").html(this.value);

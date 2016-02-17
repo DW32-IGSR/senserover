@@ -25,16 +25,17 @@
                     <div class="w-form">
                       <form id="inicio-session" name="inicio-session" data-name="inicio-session" action="/login" method="post">
                         <div class="form-group">
-                            <input id="usuario" type="text" placeholder="Usuario" name="usuario" data-name="Usuario" required="required" class="w-input text-usuario">
+                            <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-usuario">
                         </div>
                         <div class="form-group">
-                            <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                            <input id="password" type="password" placeholder="Contraseña" name="password" data-name="Contraseña" required="required" class="w-input pass-text">
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Login" data-wait="Please wait..." class="w-button login-submit" id="btn_login">
                         </div>
                       </form>
                       <a href="#" data-target="#modalPassOlvidada" data-toggle="modal" data-dismiss="modal">¿Has olvidado la contraseña?</a>
+                      <hr>
                       <div>
                         <a href="/auth/google" class="btn btn-block btn-google btn-social"><i class="fa fa-google-plus"></i>Sign in with Google</a>
                       </div>
@@ -57,10 +58,10 @@
                           <input id="email" type="text" placeholder="Email" name="email" data-name="Email" required="required" class="w-input text-email">
                         </div>
                         <div class="form-group">
-                          <input id="contrasenya" type="password" placeholder="Contraseña" name="contrasenya" data-name="Contraseña" required="required" class="w-input pass-text">
+                          <input id="password" type="password" placeholder="Contraseña" name="password" data-name="Contraseña" required="required" class="w-input pass-text">
                         </div>
                         <div class="form-group">
-                          <input id="contrasenya2" type="password" placeholder="Repetir Contraseña" name="contrasenya2" data-name="Contraseña2" required="required" class="w-input pass-text">
+                          <input id="password2" type="password" placeholder="Repetir Contraseña" name="password2" data-name="Contraseña2" required="required" class="w-input pass-text">
                         </div>
                         <div class="w-row">
                           <div class="form-group">
@@ -68,6 +69,10 @@
                           </div>
                         </div>
                       </form>
+                      <hr>
+                      <div>
+                        <a href="/auth/google" class="btn btn-block btn-google btn-social"><i class="fa fa-google-plus"></i>Sign in with Google</a>
+                      </div>
                       <div>
                       </div>
                     </div> <!-- Formulario registro -->
@@ -115,29 +120,8 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
-
-<!--<div id="modalPassOlvidada" class="modal-wrapper-forget-pass">
-  <div id="segundo_intento" class="forget_pass_wrapper"><a href="#" data-ix="cerrar-forget-pass" class="w-editable cerrar-link">x</a>
-    <h3>Recupera tu cuenta</h3>
-    <p> Para restablecer la contraseña, introduce la dirección de correo electrónico que utilizas para iniciar sesión. </p>
-    <div class="w-form">
-      <form id="forget_pass_form" name="forget_pass_form" data-name="forget_pass_form" action="/forgetPassword" method="post">
-        <div class="form-group">
-          <input id="email" type="text" placeholder="Email" name="email" data-name="email" required="required" class="w-input text-email">
-        </div>
-        <div class="w-row">
-          <div class="form-group">
-            <input type="submit" value="Recuperar contraseña" data-wait="Please wait..." class="w-button login-submit" id="btn_forget_pass">
-          </div>
-        </div>
-      </form>
-    </div> 
-  </div>
-</div> -->
-
 <!-- modal on succes -->
-<div class="modal fade" id="mforget_pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!--<div class="modal fade" id="mforget_pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -150,38 +134,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 <!-- /modal on succes -->  
-<!-- modal on succes -->
-<div class="modal fade" id="miniciosesion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-      <div class="modal-body">
-        <div class="alert alert-success">
-            Bienvenido a sense-rover.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- /modal on succes --> 
-<!-- modal on succes -->
-<div class="modal fade" id="mregistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-      <div class="modal-body">
-        <div class="alert alert-success">
-            Usuario registrado, activelo desde el correo electronico.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- /modal on succes --> 
+
 

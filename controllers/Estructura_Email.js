@@ -7,15 +7,6 @@ exports.estructura_email = function(req, res, nombre_remitente, email_remitente,
     });
     var mensaje = msg;
 
-    /*console.log('Nombre remitente: ' + nombre_remitente);
-    console.log('Email remitente: ' + email_remitente);
-    
-    console.log('Nombre destinatario: ' + nombre_destinatario);
-    console.log('Email destinatario: ' + email_destinatario);
-    
-    console.log('Asunto: ' + asunto);
-    console.log('Mensaje: ' + msg);*/
-
     var data = {
         from: nombre_remitente + ' <' + email_remitente + '>',
         to: email_destinatario,

@@ -11,25 +11,28 @@ $(document).ready(function() {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                usuario: {
+                email: {
                     validators: {
                         notEmpty: {
-                            message: 'Introduce tu usuario'
+                            message: 'Email requerido'
+                        },
+                        emailAddress: {
+                            message: 'Email no válido'
                         },
                         stringLength: {
                             min: 3,
-                            max: 20,
-                            message: 'Mínimo 3 y máximo 20 carácteres'
+                            max: 60,
+                            message: 'Mínimo 3 y máximo 60 carácteres'
                         }
                     }
                 },
-                contrasenya: {
+                password: {
                     validators: {
                         notEmpty: {
                             message: 'Introduce tu contraseña'
                         },
                         stringLength: {
-                            min: 2,
+                            min: 8,
                             max: 20,
                             message: 'Mínimo 2 y máximo 20 carácteres'
                         }
@@ -76,7 +79,7 @@ $(document).ready(function() {
                         }
                     }
                 },
-                contrasenya: {
+                password: {
                     validators: {
                         notEmpty: {
                             message: 'Introduce tu contraseña'
@@ -86,23 +89,23 @@ $(document).ready(function() {
                             message: 'La contraseña no puede ser igual al usuario'
                         },
                         stringLength: {
-                            min: 3,
+                            min: 8,
                             max: 20,
                             message: 'Mínimo 8 y máximo 20 carácteres'
                         }
                     }
                 },
-                contrasenya2: {
+                password2: {
                     validators: {
                         notEmpty: {
                             message: 'Introduce tu contraseña'
                         },
                         identical: {
-                            field: 'contrasenya',
+                            field: 'password',
                             message: 'Las contraseñas no coinciden'
                         },
                         stringLength: {
-                            min: 3,
+                            min: 8,
                             max: 20,
                             message: 'Mínimo 8 y máximo 20 carácteres'
                         }
@@ -232,5 +235,7 @@ $(document).ready(function() {
             $('#miniciosesion').modal('hide');
         }, 1000);
     });
+
+
 
 })

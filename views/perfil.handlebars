@@ -17,52 +17,29 @@
             <ul class="nav navbar-nav">
               <!-- User Account-->
               <li class="dropdown user user-menu">
-                {{#if nombre_usuario}}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{nombre_usuario}}</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                    <p>
-                      {{datos_perfil.nombre}} {{datos_perfil.apellidos}}
-                    </p>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
-                    </div>
-                  </li>
-                </ul>
-                {{else if nombre_usuarioGoogle}}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src='{{avatarGoogle}}' class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{nombre_usuarioGoogle}}</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src='{{avatarGoogle}}' class="img-circle" alt="User Image">
-                    <p>
-                      {{nombre_usuarioGoogle}}
-                    </p>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
-                    </div>
-                  </li>
-                </ul>
+               {{#if datosUsuario}}
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src='{{datosUsuario.avatar}}' class="user-image" alt="User Image">
+                    <span class="hidden-xs">{{datosUsuario.usuario}}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                      <img src='{{datosUsuario.avatar}}' class="img-circle" alt="User Image">
+                      <p>
+                        {{datosUsuario.usuario}}
+                      </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
+                      </div>
+                      <div class="pull-right">
+                        <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                      </div>
+                    </li>
+                  </ul>
                 {{else}}
                 <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
                   <span>Entrar</span> </a>
@@ -120,9 +97,13 @@
         <a data-w-tab="Datos Personales" class="w-tab-link w--current w-inline-block button tab">
           <div>Datos Personales</div>
         </a>
+
+        {{#unless datosUsuario.google}}
         <a data-w-tab="Contrasenya" class="w-tab-link w-inline-block button tab">
           <div>Cambiar contraseña</div>
         </a>
+        {{/unless}}
+        
         <a data-w-tab="Imagen" class="w-tab-link w-inline-block button tab">
           <div>Cambiar imagen</div>
         </a>
@@ -141,19 +122,19 @@
                     <div class="text_form">Nombre:</div>
                     <div class="form-group">
                       <!--<input id="nombre" type="text" placeholder="Nombre" name="nombre" required="required" data-name="nombre" class="w-input form-field">-->
-                      <input id="nombre" type="text" placeholder="Nombre" name="nombre" required="required" data-name="nombre" class="w-input form-field" value='{{datos_perfil.nombre}}'>
+                      <input id="nombre" type="text" placeholder="Nombre" name="nombre" required="required" data-name="nombre" class="w-input form-field" value='{{datosUsuario.nombre}}'>
                     </div>
                   </div>
                   <div class="w-col w-col-4">
                     <div class="text_form">Apellidos:</div>
                     <div class="form-group">
-                      <input id="apellidos" type="text" placeholder="Apellidos" name="apellidos" required="required" data-name="apellidos" class="w-input form-field" value='{{datos_perfil.apellidos}}'>
+                      <input id="apellidos" type="text" placeholder="Apellidos" name="apellidos" required="required" data-name="apellidos" class="w-input form-field" value='{{datosUsuario.apellidos}}'>
                     </div>
                   </div>
                   <div class="w-col w-col-4">
                     <div class="text_form">DNI:</div>
                     <div class="form-group">
-                      <input id="dni" type="text" placeholder="DNI" name="dni" required="required" data-name="dni" class="w-input form-field" value='{{datos_perfil.dni}}'>
+                      <input id="dni" type="text" placeholder="DNI" name="dni" required="required" data-name="dni" class="w-input form-field" value='{{datosUsuario.dni}}'>
                     </div>
                   </div>
                 </div>
@@ -162,13 +143,13 @@
                   <div class="w-col w-col-7">
                     <div class="text_form">Dirección:</div>
                     <div class="form-group">
-                      <input id="direccion" type="text" placeholder="Dirección" name="direccion" required="required" data-name="direccion" class="w-input form-field" value='{{datos_perfil.direccion}}'>
+                      <input id="direccion" type="text" placeholder="Dirección" name="direccion" required="required" data-name="direccion" class="w-input form-field" value='{{datosUsuario.direccion}}'>
                     </div>
                   </div>
                   <div class="w-col w-col-5">
                     <div class="text_form">Código Postal:</div>
                     <div class="form-group">
-                      <input id="cp" type="text" placeholder="Código Postal" name="cp" required="required" data-name="cp" class="w-input form-field" value='{{datos_perfil.codigo_postal}}'>
+                      <input id="cp" type="text" placeholder="Código Postal" name="cp" required="required" data-name="cp" class="w-input form-field" value='{{datosUsuario.codigo_postal}}'>
                     </div>
                   </div>
                 </div>
@@ -177,7 +158,7 @@
                   <div class="w-col w-col-6">
                     <div class="text_form">Email:</div>
                     <div class="form-group">
-                      <input id="email" type="email" placeholder="Email" name="email" required="required" data-name="email" class="w-input form-field" value='{{datos_perfil.email}}'>
+                      <input id="email" type="email" placeholder="Email" name="email" required="required" data-name="email" class="w-input form-field" value='{{datosUsuario.email}}'>
                     </div>
                   </div>
                 </div>
@@ -192,6 +173,10 @@
           <!-- container Datos Personales-->
         </div>
         <!-- seccion-perfil: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Datos Personales -->
+        
+        
+        {{#unless datosUsuario.google}}
+        
         <div data-w-tab="Contrasenya" class="w-tab-pane">
           <div class="w-container">
             <div class="section-title-group-perfil">
@@ -232,7 +217,7 @@
                       <input id="pass_nueva_conf" type="password" placeholder="Repite la nueva contraseña" name="pass_nueva_conf" required="required" data-name="pass_nueva_conf" class="w-input form-field">
                     </div>
                   </div>
-                  <input id="id_usuario" hidden="true" type="text" name="id_usuario" required="required" data-name="id_usuario" class="w-input form-field" value='{{datos_perfil._id}}'>
+                  <input id="id_usuario" hidden="true" type="text" name="id_usuario" required="required" data-name="id_usuario" class="w-input form-field" value='{{datosUsuario._id}}'>
                 </div>
                 <!-- seccion-perfil: w-container: w-form form-wrapper: w-row(3º row) -->
                 <div class="form-group">
@@ -245,31 +230,36 @@
           <!-- container Cambiar Contraseña -->
         </div>
         <!-- seccion-perfil: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Cambiar Contraseña -->
+        {{/unless}}
+        
+        
         <div data-w-tab="Imagen" class="w-tab-pane">
           <div class="w-container">
             <div class="section-title-group-perfil">
               <h2 class="section-heading centered white">CAMBIAR IMAGEN</h2>
             </div>
             <div class="w-form form-wrapper">
-              <form id="email-form" name="email-form" data-name="Email Form" class="form" enctype="multipart/form-data">
+              <form id="form_change_image" name="form_change_image" data-name="form_change_image" class="form" action="/upload/image" method="post" enctype="multipart/form-data">
+              <!--<form id="form_change_image" name="form_change_image" data-name="form_change_image" class="form" action="/perfil/datos" enctype="multipart/form-data">-->
                 <div class="w-row">
                   <div class="w-col w-col-4">
                   </div>
                   <div class="w-col w-col-4">
                     <div class="text_form">Seleccionar imagen:</div>
-                    <input id="imagen" type="file" name="fichero" data-name="imagen" class="img-perfil">
+                    <div class="form-group">
+                      <input id="imagen" type="file" name="imagen" data-name="imagen" class="img-perfil">
+                      <span style="font-size:10px">NOTA: Únicamente se permiten imágenes (.jpg, .jpeg, .png)</spam>
+                    </div>
+                    <input id="id_usuario" hidden="true" type="text" name="id_usuario" required="required" data-name="id_usuario" class="w-input form-field" value='{{datosUsuario._id}}'>
                   </div>
                   <div class="w-col w-col-4">
                   </div>
                 </div>
-                <input type="submit" value="Guardar" data-wait="Please wait..." class="w-button button full-width perfil">
+                <!-- seccion-perfil: w-container: w-form form-wrapper: w-row(1º row) -->
+                <div class="form-group">
+                  <input type="submit" value="Guardar" data-wait="Please wait..." class="w-button button full-width perfil" id="btn_change_image">
+                </div>
               </form>
-              <div class="w-form-done">
-                <p>Thank you! Your submission has been received!</p>
-              </div>
-              <div class="w-form-fail">
-                <p>Oops! Something went wrong while submitting the form :(</p>
-              </div>
             </div>
             <!-- seccion-perfil: w-container: w-form form-wrapper -->
           </div>
@@ -345,13 +335,14 @@
                 }
               </script>
               {{/each}}
-
           </tbody>
         </table>
       </div>
-      {{else}} No tienes drones
-      <br>
-      <a id="btn_compra" href="/tienda/5693728d3890294f10406189" class="button">Tienda</a> {{/if}}
+      {{else}}
+      <div class="w-container">
+        <p>No tienes drones</p>
+        <a href="/tienda/5693728d3890294f10406189" class="w-button button" id="btn_compra">Comprar Dron</a>
+      </div> {{/if}}
     </div>
   </div>
   <!-- Perfil-Drones: container -->

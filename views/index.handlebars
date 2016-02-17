@@ -1,58 +1,25 @@
 <!--<html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="564c34ce2ff073d41da71d4b">-->
-<!--<head>
-  <meta charset="utf-8">-->
+
 <title>Sense-Rover</title>
-<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--<meta name="generator" content="Webflow">-->
 <link rel="stylesheet" type="text/css" href="/css/normalize.css">
 <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
-<!--<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script>
-    WebFont.load({
-      google: {
-        families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Roboto:300,regular,500"]
-      }
-    });
-  </script>
-  <script type="text/javascript" src="js/modernizr.js"></script>
-  
-  <!--<link rel="shortcut icon" type="image/x-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico">-->
-<!--<link rel="shortcut icon" type="image/x-icon" href="images/SIXlogo.png">-->
-<!--<link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">-->
-<!--</head>-->
-<!--<body class="body">-->
 
-{{>modal}} {{>flash}}
-
-<!-- <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
-    <div class="w-container">
-      <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
-      <nav role="navigation" class="w-nav-menu navigation-menu">
-        <a href="#slider" class="w-nav-link navigation-link">Home</a>
-        <a href="#articulos" class="w-nav-link navigation-link">Artículos</a>
-        <a href="#graficas" class="w-nav-link navigation-link">Gráficas</a>
-        <a href="#servicios" class="w-nav-link navigation-link">Servicios</a>
-        <a href="#about" class="w-nav-link navigation-link">About</a>
-        <a href="#donde-estamos" class="w-nav-link navigation-link">Dónde estamos</a>
-        <a href="#contacto" class="w-nav-link navigation-link">Contacto</a>
-        {{#if nombre_usuario}}
-          <a href="/administracion" class="w-nav-link navigation-link">Zona Administrativa</a>
-        {{/if}}
-        <a data-ix="login" class="w-nav-link navigation-link login2 login-menu">Inicio de Sesión / Registro</a>
-      </nav>
-      <div class="w-nav-button hamburger-button">
-        <div class="w-icon-nav-menu"></div>
+{{#if sessionFlash}}
+  <div class="modal fade"  id="Mensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+        <div class="modal-body">
+          <div class="alert alert-success">
+              {{ expressFlash }}
+          </div>
+        </div>
       </div>
-      {{#if nombre_usuario}}
-        <a href="/cerrar"><button class="btn btn-box-tool boton-logout"><i class="glyphicon glyphicon-log-out"></i></button></a>
-        <p class="btn btn-box-tool usuario">Bienvenido <a href="/perfil"><strong>{{nombre_usuario}}</strong></a></p>
-      {{else}}
-        <a class="btn btn-primary boton-registro" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">Entrar</a>
-      {{/if}}
-      
-    </div> 
-  </div> -->
+    </div>
+  </div>
+{{/if}}
 
 <!-- INICIO MENU -->
 <div class="wrapper">
@@ -66,40 +33,17 @@
             <ul class="nav navbar-nav">
               <!-- User Account-->
               <li class="dropdown user user-menu">
-                {{#if nombre_usuario}}
+                {{#if datosUsuario}}
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                    <span class="hidden-xs">{{nombre_usuario}}</span>
+                    <img src='{{datosUsuario.avatar}}' class="user-image" alt="User Image">
+                    <span class="hidden-xs">{{datosUsuario.usuario}}</span>
                   </a>
                   <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <img src='{{datosUsuario.avatar}}' class="img-circle" alt="User Image">
                       <p>
-                        {{datos_perfil.nombre}} {{datos_perfil.apellidos}}
-                      </p>
-                    </li>
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                      <div class="pull-left">
-                        <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
-                      </div>
-                      <div class="pull-right">
-                        <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
-                      </div>
-                    </li>
-                  </ul>
-                {{else if nombre_usuarioGoogle}}
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src='{{avatarGoogle}}' class="user-image" alt="User Image">
-                    <span class="hidden-xs">{{nombre_usuarioGoogle}}</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <!-- User image -->
-                    <li class="user-header">
-                      <img src='{{avatarGoogle}}' class="img-circle" alt="User Image">
-                      <p>
-                        {{nombre_usuarioGoogle}}
+                        {{datosUsuario.usuario}}
                       </p>
                     </li>
                     <!-- Menu Footer-->
@@ -151,6 +95,11 @@
             </a>
           </li>
           <li>
+            <a href="/tienda/5693728d3890294f10406189">
+              <i class="fa fa-shopping-cart"></i> <span>Tienda</span>
+            </a>
+          </li>
+          <li>
             <a href="#about">
               <i class="fa fa-book"></i> <span>About</span>
             </a>
@@ -165,7 +114,7 @@
               <i class="fa fa-pencil-square-o"></i> <span>Conctato</span>
             </a>
           </li>
-          {{#if nombre_usuario}}
+          {{#if datosUsuario}}
           <li>
             <a href="/administracion">
               <i class="fa fa-cogs"></i> <span>Administración</span>
@@ -183,14 +132,7 @@
   </div>
 </div>
 <!-- ./wrapper -->
-
 <!-- FIN MENU -->
-
-
-
-
-
-
 
 <div id="slider" class="w-section section-slider">
   <div data-animation="slide" data-duration="500" data-infinite="1" data-delay="6000" data-autoplay="1" class="w-slider slider">
@@ -515,23 +457,6 @@
           </div>
         </div>
       </div>
-      <!-- /modal on succes -->
-      <!-- modal on succes -->
-      <div class="modal fade" id="miniciosesion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              </div>
-            <div class="modal-body">
-              <div class="alert alert-success">
-                  Bienvenido a sense-rover.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /modal on succes --> 
     </div>
     <!-- Contacto: container: formulario -->
   </div>
@@ -550,6 +475,8 @@
   <!-- Flecha hacia arriba: container -->
 </div>
 <!-- Flecha hacia arriba -->
+
+{{>modal}}
 
 {{>footer}}
 

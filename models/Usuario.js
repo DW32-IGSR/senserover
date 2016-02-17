@@ -1,32 +1,28 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 
 var userModel = function() {
 
     var userSchema = new mongoose.Schema({
-        usuario: String,
+        email: { type: String, unique: true, lowercase: true },
+        password: String,
+        usuario: { type: String, unique: true},
+        avatar: { type: String, default: '/dist/img/user2-160x160.jpg' },
+        activacion_key: String,
+        validated: { type: Boolean, default: 0 },
+        ultima_conexion: { type: String , default: '' },
+        
         nombre: String,
         apellidos: String,
         dni: String,
         direccion: String,
         codigo_postal: String,
-        pass: String,
-        email: String,
-        activacion_key: String,
-        validated: Boolean,
-        ultima_conexion: String,
-        google: String,
-        tokens: Array,
         
-        profile: {
-            name: { type: String, default: '' },
-            gender: { type: String, default: '' },
-            location: { type: String, default: '' },
-            website: { type: String, default: '' },
-            picture: { type: String, default: '' }
-          }
+        google: String,
+        tokens: Array
+        
     }, {
         collection: 'usuarios'
     });
@@ -50,12 +46,40 @@ var userModel = function() {
             return 'no esta validado';
         }
     };
-
-    userSchema.methods.comparePassword = function(candidatePassword, cb) {
-        bcrypt.compare(candidatePassword, this.pass, function(err, isMatch) {
-            if (err) return cb(err);
-            cb(null, isMatch);
+    
+    /**
+     * Password hash middleware. // Registro
+     */
+    userSchema.pre('save', function(next) {
+      var user = this;
+      if (!user.isModified('password')) {
+        return next();
+      }
+      bcrypt.genSalt(10, function(err, salt) {
+        
+        if (err) {
+          return next(err);
+        }
+        bcrypt.hash(user.password, salt, null, function(err, hash) {
+          if (err) {
+            return next(err);
+          }
+          user.password = hash;
+          next();
         });
+      });
+    });
+    
+    /**
+     * Helper method for validating user's password.
+     */
+    userSchema.methods.comparePassword = function(candidatePassword, cb) {
+      bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) {
+          return cb(err);
+        }
+        cb(null, isMatch);
+      });
     };
 
     return mongoose.model('Usuario', userSchema);
