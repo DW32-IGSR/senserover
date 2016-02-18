@@ -79,10 +79,10 @@ exports.APIDronesUsuario = function(req, res) {
   var errors;
 
   // Validacion por servidor
-  if (req.body.usuario != undefined) {
+  if (req.params.usuario != undefined) {
     req.checkParams('id_usuario', 'La ID usuario es requerida.').notEmpty();
-    req.checkParams('id_dron', 'La ID usuario no es de MONGO.').isMongoId();
-    req.checkParams('id_dron', 'La ID usuario no cumple con la cantidad de caracteres.').len(24, 24);
+    req.checkParams('id_usuario', 'La ID usuario no es de MONGO.').isMongoId();
+    req.checkParams('id_usuario', 'La ID usuario no cumple con la cantidad de caracteres.').len(24, 24);
 
     errors = req.validationErrors();
   }
