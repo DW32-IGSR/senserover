@@ -81,9 +81,9 @@ Estructura del proyecto
 
 | Nombre                             | Descripción                                                  |
 | ---------------------------------- | ------------------------------------------------------------ |
-| **config**/passport.js             | Passport Local and OAuth strategies, plus login middleware.  |
-| **controllers**/api.js             | Controller for /api route and all api examples.              |
-| **controllers**/contact.js         | Controller for contact form.                                 |
+| **config**/passport.js             | Passport Local y OAuth estrategias.                          |
+| **controllers**/Administracion.js  | Controller para administración                               |
+| **controllers**/Alertas.js         | Controller el form de alertas                                |
 | **controllers**/home.js            | Controller for home page (index).                            |
 | **controllers**/user.js            | Controller for user account management.                      |
 | **models**/User.js                 | Mongoose schema and model for User.                          |

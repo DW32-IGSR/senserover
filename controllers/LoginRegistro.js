@@ -87,11 +87,7 @@ exports.postLogin = function(req, res, next) {
       
       //req.flash('success', { msg: 'Success! You are logged in.' });
       console.log('LLego');
-      req.flash({
-        type: 'error',
-        message: 'Prueba flash',
-        redirect: false
-      })
+      req.flash('success', 'This is a flash message using the express-flash module.');
       res.redirect(req.session.returnTo || req.get('referer'));
     });
   })(req, res, next);

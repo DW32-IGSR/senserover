@@ -32,3 +32,14 @@ exports.admin = function(req, res) {
     });
   }
 };
+
+exports.updateName = function(req, res) {
+  
+  Drones.findOneAndUpdate({ _id: req.body.id_dron_update }, { nombre: req.body.name_dron }, function(err, dron_actualizado) {
+    if(err){
+        console.log(err);
+    }
+    console.log("Nombre del dron actualizado");
+    res.redirect('/administracion');
+  });
+};

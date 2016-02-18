@@ -118,15 +118,10 @@ var passportConf = require('./config/passport');
  */
 app.get('/', homeController.index);
 app.get('/cerrar', homeController.destroySession);
-// VIEJO
-//app.post('/login', loginRegistroController.login);
-// NUEVO
 app.post('/login', loginRegistroController.postLogin);
-// VIEJO
-//app.post('/register', loginRegistroController.registro);
-//NUEVO
 app.post('/register', loginRegistroController.postSignup);
 app.get('/administracion', administracionController.admin);
+app.post('/update/nameDron', administracionController.updateName);
 app.get('/perfil', perfilController.perfil);
 app.post('/perfil/datos', perfilController.datosPerfil);
 app.post('/perfil/changePassword', perfilController.changePassword);
