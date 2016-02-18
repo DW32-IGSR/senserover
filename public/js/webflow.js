@@ -2409,6 +2409,7 @@
 	    if (google === null) {
 	    	//google maps api comentado
 	      //$.getScript('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=_wf_maps_loaded');
+	      $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg&callback=_wf_maps_loaded');
 	      window._wf_maps_loaded = mapsLoaded;
 	    } else {
 	      mapsLoaded();

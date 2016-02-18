@@ -113,7 +113,6 @@ var uploadImageController = require('./controllers/UploadImage');
  */
 var passportConf = require('./config/passport');
 
-
 /**
  * Rutas principales
  */

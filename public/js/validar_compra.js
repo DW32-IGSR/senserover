@@ -96,17 +96,17 @@ $(document).ready(function() {
                         stringLength: {
                             min: 1,
                             max: 20,
-                            message: 'El mínimo permitido es de 3 caracteres y máximo de 50'
+                            message: 'El mínimo permitido es de 3 caracteres y máximo de 20'
                         }
                     }
                 }
             }
         });
     });
-    $('#formulario_compra').on('submit', function(e) {
+    /*$('#formulario_compra').on('submit', function(e) {
         $('#mcompra').modal('show');
         setTimeout(function() {
             window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
         }, 1000);
-    });
+    });*/
 })

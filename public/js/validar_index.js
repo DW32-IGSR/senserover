@@ -209,33 +209,4 @@ $(document).ready(function() {
             }
         });
     });
-    $('#formulario_contacto').on('submit', function(e) {
-        $('#memail').modal('show');
-        /*setTimeout(function () {
-           window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
-        }, 1000);*/
-    });
-    $('#forget_pass_form').on('submit', function(e) {
-        $('#modalPassOlvidada').modal('hide');
-        $('#mforget_pass').modal('show');
-        /*setTimeout(function () {
-           window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
-        }, 1000);*/
-    });
-
-    //en proceso
-    $('#email-form-2-registro').on('submit', function(e) {
-        $('#ModalLoginRegistro').modal('hide');
-        $('#mregistro').modal('show');
-    });
-   $('#inicio-session').on('submit', function(e) {
-        $('#ModalLoginRegistro').modal('hide');
-        $('#miniciosesion').modal('show');
-        setTimeout(function() {
-            $('#miniciosesion').modal('hide');
-        }, 1000);
-    });
-
-
-
 })
