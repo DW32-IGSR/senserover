@@ -79,30 +79,43 @@ Rellene los campos necesarios a continuación, haga clic en **Guardar**
 Estructura del proyecto
 -----------------
 
-| Nombre                             | Descripción                                                  |
-| ---------------------------------- | ------------------------------------------------------------ |
-| **config**/passport.js             | Passport Local y OAuth estrategias.                          |
-| **controllers**/Administracion.js  | Controller para administración                               |
-| **controllers**/Alertas.js         | Controller el form de alertas                                |
-| **controllers**/home.js            | Controller for home page (index).                            |
-| **controllers**/user.js            | Controller for user account management.                      |
-| **models**/User.js                 | Mongoose schema and model for User.                          |
-| **public**/                        | Static assets (fonts, css, js, img).                         |
-| **public**/**js**/application.js   | Specify client-side JavaScript dependencies.                 |
-| **public**/**js**/main.js          | Place your client-side JavaScript here.                      |
-| **public**/**css**/main.less       | Main stylesheet for your app.                                |
-| **public/css/themes**/default.less | Some Bootstrap overrides to make it look prettier.           |
-| **views/account**/                 | Templates for *login, password reset, signup, profile*.      |
-| **views/api**/                     | Templates for API Examples.                                  |
-| **views/partials**/flash.jade      | Error, info and success flash notifications.                 |
-| **views/partials**/header.jade     | Navbar partial template.                                     |
-| **views/partials**/footer.jade     | Footer partial template.                                     |
-| **views**/layout.jade              | Base template.                                               |
-| **views**/home.jade                | Home page template.                                          |
-| .travis.yml                        | [Travis CI](https://travis-ci.org/) integration.             |
-| .env.example                       | Your API keys, tokens, passwords and database URI.           |
-| app.js                             | Main application file.                                       |
-| setup.js                           | Tool for removing authentication providers and other things. |
+| Nombre                             | Descripción                                                        |
+| ---------------------------------- | ------------------------------------------------------------------ |
+| **config**/passport.js             | Passport Local y OAuth estrategias.                                |
+| **controllers**/Administracion.js  | Controller para administración                                     |
+| **controllers**/Alertas.js         | Controller el form de alertas                                      |
+| **controllers**/Comprar.js         | Controller el form de compra/renovación                            |
+| **controllers**/DatosAPI.js        | Controller para las API de datos que envian los drones.            |
+| **controllers**/DronesAPI.js       | Controller para las API de drones.                                 |
+| **controllers**/DronesAPI.js       | Controller para las API de drones.                                 |
+| **controllers**/Email.js           | Controller para enviar correos.                                    |
+| **controllers**/error404.js        | Controller que salta cuando no se envian datos APIs correctamente. |
+| **controllers**/Estructura_Email.js| Controller para Mailgun.                                           |
+| **controllers**/Home.js            | Controller para sessiones usuario.                                 |
+| **controllers**/LoginRegistro.js   | Controller para login y registro.                                  |
+| **controllers**/Perfil.js          | Controller para el perfil usuario.                                 |
+| **controllers**/Productos.js       | Controller para productos.                                         |
+| **controllers**/Pronosticos.js     | Controller para pronosticos.                                       |
+| **controllers**/RangoFecha.js      | Controller para el form de rango de fechas.                        |
+| **controllers**/Tienda.js          | Controller para la tienda.                                         |
+| **controllers**/UploadImage.js     | Controller para poder subir avatares.                              |
+| **models**/User.js                 | Mongoose schema and model for User.                                |
+| **public**/                        | Static assets (fonts, css, js, img).                               |
+| **public**/**js**/application.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/main.js          | Place your client-side JavaScript here.                            |
+| **public**/**css**/main.less       | Main stylesheet for your app.                                      |
+| **public/css/themes**/default.less | Some Bootstrap overrides to make it look prettier.                 |
+| **views/account**/                 | Templates for *login, password reset, signup, profile*.            |
+| **views/api**/                     | Templates for API Examples.                                        |
+| **views/partials**/flash.jade      | Error, info and success flash notifications.                       |
+| **views/partials**/header.jade     | Navbar partial template.                                           |
+| **views/partials**/footer.jade     | Footer partial template.                                           |
+| **views**/layout.jade              | Base template.                                                     |
+| **views**/home.jade                | Home page template.                                                |
+| .travis.yml                        | [Travis CI](https://travis-ci.org/) integration.                   |
+| .env.example                       | Your API keys, tokens, passwords and database URI.                 |
+| app.js                             | Main application file.                                             |
+| setup.js                           | Tool for removing authentication providers and other things.       |
 
 
 Listado de paquetes

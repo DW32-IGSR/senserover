@@ -235,6 +235,10 @@ $(document).ready(function() {
         $("#id_dron_rango").val(this.value);
         $('#id_dron_alertas').attr('value', this.value);
         $("#dron_seleccionado").html(this.value);
+        $('#id_dron_update').attr('value', this.value);
+        var seleccionador = document.getElementById('seleccionador');
+        var nombre_dron = seleccionador.options[seleccionador.selectedIndex].text;
+        $("#name_dron").val(nombre_dron);
         $.ajax({
             type: "GET",
             url: c_url,

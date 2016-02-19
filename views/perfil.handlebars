@@ -83,10 +83,9 @@
     </div>
   </div>
 </div>
-<!-- ./wrapper -->
-
 <!-- FIN MENU -->
 
+<!-- INICIO PERFIL -->
 <div id="perfil" class="w-section section grafic">
   <div class="w-container">
     <div class="section-title-group">
@@ -109,7 +108,9 @@
         </a>
       </div>
       <!-- seccion-perfil: w-container: w-tabs tabs-wrapper: w-tab-menu tab-menu -->
+      
       <div class="w-tab-content">
+        <!-- INICIO DATOS PERSONALES -->
         <div data-w-tab="Datos Personales" class="w-tab-pane w--tab-active">
           <div class="w-container">
             <div class="section-title-group-perfil">
@@ -172,9 +173,9 @@
           </div>
           <!-- container Datos Personales-->
         </div>
-        <!-- seccion-perfil: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Datos Personales -->
+        <!-- FIN DATOS PERSONALES -->
         
-        
+        <!-- INICIO CAMBIAR CONTRASEÑA -->
         {{#unless datosUsuario.google}}
         
         <div data-w-tab="Contrasenya" class="w-tab-pane">
@@ -229,10 +230,10 @@
           </div>
           <!-- container Cambiar Contraseña -->
         </div>
-        <!-- seccion-perfil: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Cambiar Contraseña -->
         {{/unless}}
+        <!-- FIN CAMBIAR CONTRASEÑA -->
         
-        
+        <!-- INICIO CAMBIAR IMAGEN -->
         <div data-w-tab="Imagen" class="w-tab-pane">
           <div class="w-container">
             <div class="section-title-group-perfil">
@@ -265,7 +266,7 @@
           </div>
           <!-- container Cambiar Imagen -->
         </div>
-        <!-- seccion-perfil: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Imagen -->
+        <!-- INICIO CAMBIAR IMAGEN -->
       </div>
       <!-- seccion-perfil: w-container: w-tabs tabs-wrapper: w-tab-content -->
     </div>
@@ -273,8 +274,9 @@
   </div>
   <!-- Perfil: container -->
 </div>
-<!-- Perfil -->
+<!-- FIN PERFIL -->
 
+<!-- INICIO PERFIL_DRONES -->
 <div id="perfil_drones" class="w-section section grafic">
   <div class="w-container">
     <div class="section-title-group">
@@ -291,29 +293,6 @@
             </tr>
           </thead>
           <tbody>
-            <!--{{#each drones_perfil}} {{#if activo }}
-            <tr>
-              {{else}}
-              <tr bgcolor="#F6CECE">
-                {{/if }}
-                <td style="vertical-align:middle"> {{nombre}} </td>
-                <td style="vertical-align:middle"> {{tipo_subscripcion}} </td>
-                <td style="vertical-align:middle"> {{fecha_caducidad}} </td>
-                <td style="vertical-align:middle" id="{{@index}}"></td>
-                <td>
-                  <button class="w-tab-link-btnsubs w-inline-block button-subs" data-toggle="modal" data-target="#RenovarSubscripcion" id="{{_id}}" value="{{nombre}}"> <img src="/icons/plus-subscripcion.png" height="24" width="24"> </button>
-                </td>
-              </tr>
-              {{/each}} {{#each diasRestantes}}
-              <script>
-                if("{{this}}">0){
-                  $("#{{@index}}").html("{{this}}");
-                }else{
-                  $("#{{@index}}").html("0");
-                }
-              </script>
-              {{/each}}-->
-              
               {{#each drones_perfil}}
               <tr>
                 <td style="vertical-align:middle"> {{nombre}} </td>
@@ -347,9 +326,9 @@
   </div>
   <!-- Perfil-Drones: container -->
 </div>
-<!-- Perfil_Drones -->
+<!-- FIN PERFIL_DRONES -->
 
-<!-- Modal renovar subscripción alertas -->
+<!-- INICIO MODAL RENOVAR SUBSCRIPCIÓN -->
 <div class="modal fade" id="RenovarSubscripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -409,6 +388,7 @@
     </div>
   </div>
 </div>
+<!-- FIN MODAL RENOVAR SUBSCRIPCIÓN -->
 
 {{>footer}}
 

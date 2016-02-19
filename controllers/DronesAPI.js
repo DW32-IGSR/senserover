@@ -96,7 +96,7 @@ exports.findDronesUsuarioById = function(req, res) {
             if (err) return console.error(err);
             //Obtenemos un array de drones (objetos json)
             console.log("GET - /drones/:id_usuario");
-            console.log(dronesUsuario);
+            //console.log(dronesUsuario);
             res.send(dronesUsuario);
         });
     }

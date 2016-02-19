@@ -67,7 +67,7 @@ exports.postLogin = function(req, res, next) {
                       console.log(err);
                   }
                   
-                  var diasRestantesArray = [];
+                  //var diasRestantesArray = [];
                   for (var i = 0; i < dronesCant; i++) {
                     
                       var fechaHoy = moment().format("YYYY-MM-DD");
@@ -157,6 +157,6 @@ exports.postSignup = function(req, res, next) {
         res.redirect('/');
       });*/
       res.redirect('/');
-    })
+    });
   });
 };

@@ -7,6 +7,7 @@ var productosModel = function() {
     var productosSchema = new mongoose.Schema({
         nombre: String,
         descripcion: String,
+        imagen: String,
         precio: String
     }, {
         collection: 'productos'

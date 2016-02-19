@@ -100,7 +100,7 @@
 <!-- ./wrapper -->
 <!-- FIN MENU -->
 
-<!-- SELECCIÓN DE DRON -->
+<!-- INICIO SELECCIÓN DE DRON -->
 <div id="seleccion-dron" class="w-section section grafic">
   <div class="w-container">
     <div class="white-box formulario">
@@ -125,8 +125,8 @@
 </div>
 <!-- FIN SELECCIÓN DE DRON -->
 
-<!-- PANEL ESTADO -->
 {{#if drones}}
+<!-- INICIO PANEL ESTADO -->
 <div id="alertas" class="w-section section grafic">
   <div class="w-container">
     <h1 class="section-heading centered white">PANEL DE ESTADO</h1>
@@ -229,7 +229,7 @@
 </div>
 <!-- FIN PANEL ESTADO -->
 
-<!-- Modal configuracion alertas -->
+<!-- INICIO MODAL CONFIGURACIÓN DE ALERTAS -->
 <div class="modal fade" id="ModalAlertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -408,7 +408,9 @@
     </div>
   </div>
 </div>
+<!-- FIN MODAL CONFIGURACIÓN DE ALERTAS -->
 
+<!-- INICIO GRÁFICAS -->
 <div id="graficas" class="w-section section grafic grafica-a">
   <div class="w-container">
     <h1 class="section-heading centered">Gráficas</h1>
@@ -511,7 +513,9 @@
   </div>
   <!-- w-container -->
 </div>
-<!-- graficas: w-section section grafic grafica-a -->
+<!-- FIN GRÁFICAS -->
+
+<!-- INICIO PANEL DE ESTADO -->
 <div id="panel-estado" class="w-section section">
   <div class="centrado-a-3">
     <h1 class="section-heading centered">PANEL DE DRON</h1>
@@ -561,17 +565,16 @@
         <div data-w-tab="configuracion" class="w-tab-pane">
           <div class="centrado-a-2">
             <div class="w-form">
-              <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
+              <form id="form_cambioNombre_dron" name="form_cambioNombre_dron" data-name="form_cambioNombre_dron" class="form" action="/update/nameDron" method="post">
                 <label for="name" class="white-text">Nombre del dron</label>
-                <input id="name" type="text" placeholder="nombre actual" name="name" data-name="Name" class="w-input">
-                <input type="submit" value="Submit" data-wait="Please wait..." class="w-button">
+                <div class="form-group">
+                  <input id="name_dron" type="text" placeholder="Nombre actual" name="name_dron" data-name="name_dron" class="w-input">
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Cambiar nombre" data-wait="Please wait..." class="w-button" id="btn_form_nameUpdate">
+                </div>
+                <input hidden id="id_dron_update" type="text" name="id_dron_update">
               </form>
-              <div class="w-form-done">
-                <p>Thank you! Your submission has been received!</p>
-              </div>
-              <div class="w-form-fail">
-                <p>Oops! Something went wrong while submitting the form</p>
-              </div>
             </div>
             <!-- panel estado: Tab-configuración: "w-form -->
           </div>
@@ -598,7 +601,7 @@
   </div>
   <!-- panel-estado: centrado-a-3 -->
 </div>
-<!-- panel-estado: w-section section -->
+<!-- FIN PANEL DE ESTADO -->
 {{else}} <!-- Si no tiene drones -->
 <div id="c_dron" class="w-section section grafic">
   <div class="w-container">
@@ -608,6 +611,7 @@
 </div>
 {{/if}} <!-- If de no tener drones -->
 
+<!-- INICIO FAQ -->
 <div id="faq" class="w-section section grafic">
   <div class="w-container">
     <h1 class="section-heading centered">Preguntas frecuentes</h1>
@@ -615,7 +619,7 @@
     <a href="/faq" class="w-button button">Soluciones</a>
   </div>
 </div>
-<!-- preguntas frecuentes: w-section section grafic -->
+<!-- FIN FAQ -->
 
 <!-- modal on succes -->
 <div class="modal fade" id="malertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -638,7 +642,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<!-- <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg&callback=initialize' async defer></script> -->
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg' async defer></script>
 <script src="/js/scriptsMapa.js"></script>
 <script src="/js/myscriptMongo.js"></script>
