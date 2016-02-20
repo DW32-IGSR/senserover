@@ -34,7 +34,7 @@ exports.admin = function(req, res) {
                                                 productos: productos_encontrados,
                                                 drones: drones_encontrados,
                                                 datosUsuario: usuarios_encontrados
-                                            }
+                                            };
                                             //console.log('arrays: ' + arrays);
                                             res.render('admin', arrays);
                                         }
