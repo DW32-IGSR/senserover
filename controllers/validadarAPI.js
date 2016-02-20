@@ -34,30 +34,35 @@ exports.API = function(req, res) {
 exports.APIinsertar = function(req, res) {
 
   var errors;
-
+  console.log('Entro a validar');
+  console.log('id_dron: ' + req.params.id_dron);
   // Validacion por servidor
-  if (req.body.id_dron != undefined) {
-    req.checkBody('id_dron', 'La ID dron es requerida.').notEmpty();
-    req.checkBody('id_dron', 'La ID dron no es de MONGO.').isMongoId();
-    req.checkBody('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24, 24);
+  if (req.params.id_dron != undefined) {
+    req.checkParams('id_dron', 'La ID dron es requerida.').notEmpty();
+    req.checkParams('id_dron', 'La ID dron no es de MONGO.').isMongoId();
+    req.checkParams('id_dron', 'La ID dron no cumple con la cantidad de caracteres.').len(24, 24);
 
-    req.checkBody('temperatura', 'La temperatura no esta en decimal.').isDecimal();
-    req.checkBody('temperatura', 'La temperatura no cumple con la cantidad de caracteres.').len(1, 5);
+    req.checkParams('temperatura', 'La temperatura no esta en decimal.').isDecimal();
+    req.checkParams('temperatura', 'La temperatura no cumple con la cantidad de caracteres.').len(1, 5);
 
-    req.checkBody('humedad', 'La humedad no esta en decimal.').isDecimal();
-    req.checkBody('humedad', 'La humedad no cumple con la cantidad de caracteres.').len(1, 5);
+    req.checkParams('humedad', 'La humedad no esta en decimal.').isDecimal();
+    req.checkParams('humedad', 'La humedad no cumple con la cantidad de caracteres.').len(1, 5);
 
-    req.checkBody('co2', 'El co2 no esta en decimal.').isDecimal();
-    req.checkBody('co2', 'El co2 no cumple con la cantidad de caracteres.').len(1, 5);
+    req.checkParams('co2', 'El co2 no esta en decimal.').isDecimal();
+    req.checkParams('co2', 'El co2 no cumple con la cantidad de caracteres.').len(1, 5);
 
-    req.checkBody('radiacion', 'La radiacion no esta en decimal.').isDecimal();
-    req.checkBody('radiacion', 'La radiacion no cumple con la cantidad de caracteres.').len(1, 5);
+    req.checkParams('radiacion', 'La radiacion no esta en decimal.').isDecimal();
+    req.checkParams('radiacion', 'La radiacion no cumple con la cantidad de caracteres.').len(1, 5);
 
-    req.checkBody('luminosidad', 'La luminosidad no esta en decimal.').isDecimal();
-    req.checkBody('luminosidad', 'La luminosidad no cumple con la cantidad de caracteres.').len(1, 5);
+    req.checkParams('luminosidad', 'La luminosidad no esta en decimal.').isDecimal();
+    req.checkParams('luminosidad', 'La luminosidad no cumple con la cantidad de caracteres.').len(1, 5);
 
-    req.checkBody('bateria', 'La bateria no esta en decimal.').isDecimal();
-    //req.checkBody('bateria', 'La bateria no cumple con la cantidad de caracteres.').len(1,4); //Hay que mirar como nos envian este dato
+    req.checkParams('bateria', 'La bateria no esta en decimal.').isDecimal();
+    req.checkParams('bateria', 'La bateria no cumple con la cantidad de caracteres.').len(1,5); //Hay que mirar como nos envian este dato
+    
+    req.checkParams('latitud', 'La latitud no cumple con la cantidad de caracteres.').len(1,12);
+    
+    req.checkParams('longitud', 'La latitud no cumple con la cantidad de caracteres.').len(1,12); 
 
     errors = req.validationErrors();
   }

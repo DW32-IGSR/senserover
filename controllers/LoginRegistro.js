@@ -24,35 +24,51 @@ exports.postLogin = function(req, res, next) {
   var errors = req.validationErrors();
 
   console.log('errores validacion: ' + errors);
-  
 
   if (errors) {
     //req.flash('error', errors);
-    return res.redirect('/');
+    //return res.redirect('/');
+    
+   return res.render('index', {
+    flash: {
+        clase: 'alert alert-danger',
+        mensaje: "Ha ocurrido un error."
+      }
+    });
   }
   passport.authenticate('local', function(err, user, info) {
-    console.log('entro al passport');
+    //console.log('entro al passport');
     if (err) {
-      console.log('error de passport');
+      //console.log('error de passport');
       return next(err);
     }
     if (!user) {
       //req.flash('errors', { msg: info.message });
-      //req.flash('errors', 'Error, no existe usuario');
       console.log('distinto a user');
-      return res.redirect('/');
+      //return res.redirect('/');
+      return res.render('index', {
+      flash: {
+          clase: 'alert alert-danger',
+          mensaje: "No existe ese correo."
+        }
+      });
     }
     req.logIn(user, function(err) {
       console.log('entro a logIn');
       if (err) {
         console.log('error logIn');
         //return next(err);
-        return res.redirect('/');
+        //return res.redirect('/');
+        return res.render('index', {
+        flash: {
+            clase: 'alert alert-danger',
+            mensaje: "Error al logearte."
+          }
+        });
       }
-      console.log('ruben: ' + user.usuario + " " + user.validated);
+      //console.log('ruben: ' + user.usuario + " " + user.validated);
       console.log('entro a logIn 2');
-      
-      // pruebas
+
       Drones.find({
             'id_usuario': user.id
       }, function(err, drones_encontrados) {
@@ -67,7 +83,6 @@ exports.postLogin = function(req, res, next) {
                       console.log(err);
                   }
                   
-                  //var diasRestantesArray = [];
                   for (var i = 0; i < dronesCant; i++) {
                     
                       var fechaHoy = moment().format("YYYY-MM-DD");
@@ -84,14 +99,10 @@ exports.postLogin = function(req, res, next) {
               });
           }
       });
-      
-      //req.flash('success', { msg: 'Success! You are logged in.' });
-      console.log('LLego');
-      req.flash('success', 'This is a flash message using the express-flash module.');
+      //console.log('LLego');
       res.redirect(req.session.returnTo || req.get('referer'));
     });
   })(req, res, next);
-  
 };
 
 /**
@@ -107,15 +118,19 @@ exports.postSignup = function(req, res, next) {
 
   console.log('Entro a registro');
 
-
   var errors = req.validationErrors();
 
   if (errors) {
     //req.flash('errors', errors);
     console.log('Error registro 1');
-    return res.redirect('/');
+    //return res.redirect('/');
+   return res.render('index', {
+      flash: {
+        clase: 'alert alert-danger',
+        mensaje: "Ha ocurrido un error."
+      }
+    });
   }
-  
     var chars = process.env.KEY_CHAR;
     var new_key = "";
     for (var i = 0; i < 32; i++) {
@@ -129,12 +144,18 @@ exports.postSignup = function(req, res, next) {
     activacion_key: new_key
   });
   
-  console.log(user);
+  //console.log(user);
   
   Usuario.findOne({ $or: [{usuario: req.body.usuario}, {email: req.body.email}]}, function(err, existingUser) {
     if (existingUser) {
       //req.flash('errors', { msg: 'Account with that email address already exists.' });
-      return res.redirect('/');
+     return res.render('index', {
+      flash: {
+          clase: 'alert alert-danger',
+          mensaje: "Ese usuario ya existe."
+        }
+      });
+      //return res.redirect('/');
     }
     user.save(function(err) {
       if (err) {
@@ -156,7 +177,12 @@ exports.postSignup = function(req, res, next) {
         }
         res.redirect('/');
       });*/
-      res.redirect('/');
+      res.render('index', {
+        flash: {
+          clase: 'alert alert-success',
+          mensaje: "Te has registrado correctamente, ACTIVELO con el correo que ha recibido."
+        }
+      });
     });
   });
 };

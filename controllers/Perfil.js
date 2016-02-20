@@ -1,5 +1,6 @@
 var Drones = require("../models/Drones");
 var Usuario = require("../models/Usuario");
+//var Productos = require("../models/Productos");
 
 var bcrypt = require('bcrypt-nodejs');
 var moment = require('moment');
@@ -23,29 +24,30 @@ exports.perfil = function(req, res) {
             else {
                 Drones.find({
                     'id_usuario': user.id
-                }, function(err, drones_encontrados) {
+                }, function(err, drones_propios) {
                     if (err) {
                         console.log(err);
                     }
                     else {
-                        
-                        Drones.count({id_usuario: user.id}, function(err, dronesCant) {
-                           
-                           if (err) {
+                        Drones.count({
+                            id_usuario: user.id
+                        }, function(err, dronesCant) {
+
+                            if (err) {
                                 console.log(err);
                             }
-                            
+
                             var diasRestantesArray = [];
                             for (var i = 0; i < dronesCant; i++) {
 
                                 var fechaHoy = moment().format("Y-MM-DD");
-                                var fechaCaducidadDron = moment(drones_encontrados[i].fecha_caducidad, 'Y-MM-DD');
+                                var fechaCaducidadDron = moment(drones_propios[i].fecha_caducidad, 'Y-MM-DD');
                                 var days = fechaCaducidadDron.diff(fechaHoy, 'days');
-                                
+
                                 diasRestantesArray.push(days);
-                                
-                                /*if (drones_encontrados[i].fecha_caducidad < fechaHoy) {
-                        		    Drones.findOneAndUpdate({ _id: drones_encontrados[i]._id }, { activo: false }, function(err, dron_cad) {
+
+                                /*if (drones_propios[i].fecha_caducidad < fechaHoy) {
+                        		    Drones.findOneAndUpdate({ _id: drones_propios[i]._id }, { activo: false }, function(err, dron_cad) {
                         		        if(err){
                         		            console.log(err);
                         		        }
@@ -53,17 +55,17 @@ exports.perfil = function(req, res) {
                         		    });
                             	}*/
                             }
-                            
+
                             var arrays = {
-                                drones_perfil: drones_encontrados,
+                                drones_perfil: drones_propios,
                                 datosUsuario: datos_usuario,
                                 diasRestantes: diasRestantesArray
                             };
-                            
+
                             res.render('perfil', arrays);
                         });
                     }
-                });
+                }); //drones find
             }
         });
     }
@@ -136,20 +138,25 @@ exports.datosPerfil = function(req, res) {
                         }
                     });
                     res.redirect('/perfil');
+                    /*res.render('perfil', {
+                      flash: {
+                        clase: 'alert alert-success',
+                        mensaje: "Perfil actualizado correctamente."
+                      }
+                    });*/
                 } //else error
             }); //find update
         }
     }
 };
 
-// Hay que adaptarlo
 exports.changePassword = function(req, res) {
     var pass_actual = req.body.pass_actual;
     var pass_nueva = req.body.pass_nueva;
     var pass_nueva_conf = req.body.pass_nueva_conf;
     var id_usuario = req.body.id_usuario;
-    
-    
+
+
     // Validacion servidor
     req.assert('pass_actual', 'La contraseña es requerida.').notEmpty();
     req.assert('pass_actual', 'La contraseña Usa al menos 8 caracteres.').len(8, 20); //Hay que cambiar el valor 2 por 3
@@ -175,12 +182,10 @@ exports.changePassword = function(req, res) {
                     if (isMatch) {
                         console.log('isMatch');
                         bcrypt.genSalt(10, function(err, salt) {
-                            console.log('bcrypt');
                             if (err) {
-                              return (err);
+                                return (err);
                             }
                             bcrypt.hash(pass_nueva_conf, salt, null, function(err, hash) {
-                                console.log('bcrypt hash');
                                 if (err) {
                                     return (err);
                                 }
@@ -193,11 +198,11 @@ exports.changePassword = function(req, res) {
                                         console.error(err);
                                     }
                                     else {
-                                        console.log('Se ha restablecido la contraseña correctamente');
+                                        console.log('La contraseña se ha restablecido correctamente');
                                         res.redirect('/perfil');
                                     }
                                 });
-                
+
                             });
                         });
                     }

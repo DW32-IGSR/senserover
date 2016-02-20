@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html data-wf-site="5649c7988b8168f16dcf1bf1" data-wf-page="564c34ce2ff073d41da71d4b">
+
+<title>Admin</title>
+<link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
+<script type="text/javascript" src="/libs/jQuery-2.1.4.min.js"></script>
+
+<!-- INICIO MENU -->
+<div class="wrapper">
+  <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
+    <div class="w-container b-container">
+      <header class="main-header">
+        <a href="/" class="w-nav-brand brand-link"><h1 class="brand-text">Sense-Rover</h1></a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <div class="navbar-custom-menu menu-gork">
+            <ul class="nav navbar-nav">
+              <!-- User Account-->
+              <li class="dropdown user user-menu">
+                {{#if datosUsuario}}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src='{{datosUsuario.avatar}}' class="user-image" alt="User Image">
+                  <span class="hidden-xs">{{datosUsuario.usuario}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <img src='{{datosUsuario.avatar}}' class="img-circle" alt="User Image">
+                    <p>
+                      {{datosUsuario.usuario}}
+                    </p>
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="/perfil" class="btn btn-default btn-flat">Perfil</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="/cerrar" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                    </div>
+                  </li>
+                </ul>
+                {{else}}
+                <a href="#" data-target="#ModalLoginRegistro" data-toggle="modal" data-target=".bs-example-modal-sm" role="button">
+                  <span>Entrar</span> </a>
+                {{/if}}
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-bars"></i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <ul class="sidebar-menu">
+          <li class="header">MENÚ PRINCIPAL</li>
+          <li>
+            <a href="/">
+              <i class="fa fa-home"></i> <span>Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="/administracion">
+              <i class="fa fa-cogs"></i> <span>Administración</span>
+            </a>
+          </li>
+          <li>
+            <a href="/tienda/5693728d3890294f10406189">
+              <i class="fa fa-shopping-cart"></i> <span>Tienda</span>
+            </a>
+          </li>
+        </ul>
+
+      </aside>
+      <!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+                   immediately after the control sidebar -->
+      <!-- <div class="control-sidebar-bg"></div> -->
+    </div>
+  </div>
+</div>
+<!-- FIN MENU -->
+
+  <!-- 
+  /*var arrays = {
+    productos: productos_encontrados,
+    drones: drones_encontrados,
+    datosUsuario: usuarios_encontrados
+  }*/ 
+  -->
+
+<!-- tabla desplegable -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <ul>
+      {{#each productos}}
+        <li>{{this}}</li>  
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- productos -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <ul>
+      {{#each drones}}
+        <li>{{this}}</li>  
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- drones -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <ul>
+      {{#each datosUsuario}}
+        <li>{{this}}</li>
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{{>footer}}
+
+<!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+<!--<script type="text/javascript" src="/libs/jQuery-2.1.4.min.js"></script>-->
+<script src="/js/modernizr.js" type="text/javascript"></script>

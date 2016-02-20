@@ -103,10 +103,10 @@ $(document).ready(function() {
             }
         });
     });
-    /*$('#formulario_compra').on('submit', function(e) {
+    $('#formulario_compra').on('submit', function(e) {
         $('#mcompra').modal('show');
         setTimeout(function() {
             window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
         }, 1000);
-    });*/
+    });
 })

@@ -65,7 +65,7 @@ function dibujargrafica2() {
             plotLines: [{
                 value: 0,
                 width: 1,
-                color: 'pink'
+                color: '#808080'
             }]
         },
         tooltip: {

@@ -62,7 +62,13 @@ exports.comprar = function(req, res) {
         console.log(errors);
 
         if (errors) {
-            return res.redirect('/');
+            //return res.redirect('/');
+            return res.render('index', {
+                flash: {
+                    clase: 'alert alert-danger',
+                    mensaje: "Ha ocurrido un error."
+                }
+            });
         }
         else {
 
@@ -300,7 +306,13 @@ exports.renovarSubscripcion = function(req, res) {
 
                             estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
                         
-                            res.redirect('/perfil');
+                            //res.redirect('/perfil');
+                            return res.render('perfil', {
+                                flash: {
+                                    clase: 'alert alert-success',
+                                    mensaje: "Renovación realizada correctamente."
+                                  }
+                            });
                         }
                     });
                 }
@@ -347,6 +359,12 @@ exports.renovarSubscripcion = function(req, res) {
                             estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
                         
                             res.redirect('/perfil');
+                            /*return res.render('perfil', {
+                                flash: {
+                                    clase: 'alert alert-success',
+                                    mensaje: "Renovación realizada correctamente."
+                                  }
+                            });*/
                         }
                     });
                 }

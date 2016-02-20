@@ -24,7 +24,13 @@ exports.activacion = function(req, res, next) {
 
     if (errors) {
         //req.flash('error', errors);
-        return res.redirect('/');
+        //return res.redirect('/');
+        return res.render('index', {
+            flash: {
+                clase: 'alert alert-danger',
+                mensaje: "Ha ocurrido un error."
+              }
+        });
     }
 
     Usuario.findOne({
@@ -52,7 +58,13 @@ exports.activacion = function(req, res, next) {
         }
         else {
             console.log('Usuario no encontrado');
-            res.redirect('/');
+            //res.redirect('/');
+            return res.render('index', {
+                flash: {
+                    clase: 'alert alert-danger',
+                    mensaje: "Usuario no encontrado."
+                  }
+            });
         }
     });
 };
@@ -84,7 +96,13 @@ exports.contacto = function(req, res) {
 
     if (errors) {
         //req.flash('error', errors);
-        return res.redirect('/');
+        //return res.redirect('/');
+        return res.render('index', {
+            flash: {
+                clase: 'alert alert-danger',
+                mensaje: "Ha ocurrido un error."
+              }
+        });
     }
 
     var nombre_remitente = form_nombre;
@@ -111,6 +129,12 @@ exports.contacto = function(req, res) {
     estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
     //fin de mensaje de respuesta
     //res.redirect('/');
+    return res.render('index', {
+        flash: {
+            clase: 'alert alert-success',
+            mensaje: "Formulario enviado correctamente."
+          }
+    });
 };
 
 exports.forgetPassword = function(req, res) {

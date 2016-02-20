@@ -85,6 +85,32 @@
 </div>
 <!-- FIN MENU -->
 
+<!-- seccion de administracion -->
+
+{{#if datosUsuario.admin}}
+<div class="container">
+  <div class="row">
+    <div align="center">
+      <a class="btn btn-primary" href="/admin">modo administrador</a>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+<!-- seccion de administracion -->
+
+        {{#if flash}}
+          <div class="row">
+            <div class="col-xs-6 col-md-3"></div>
+            <div class="col-xs-6 col-md-6">              
+              <div class="{{flash.clase}}">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{flash.mensaje}} 
+              </div></div>
+            <div class="col-xs-6 col-md-3"></div>
+          </div>
+        {{/if}}
+
 <!-- INICIO PERFIL -->
 <div id="perfil" class="w-section section grafic">
   <div class="w-container">

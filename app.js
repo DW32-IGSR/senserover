@@ -89,6 +89,7 @@ app.use(passport.session());
  * Controladores
  */
 var homeController = require('./controllers/Home');
+var adminController = require('./controllers/Admin');
 var administracionController = require('./controllers/Administracion');
 var alertasController = require('./controllers/Alertas');
 var comprarController = require('./controllers/Comprar');
@@ -136,7 +137,12 @@ app.get('/recoverPassword/:key/:email', emailController.recoverPassword);
 app.post('/newPassword', emailController.newPassword);
 app.post('/alertas/update', alertasController.update);
 app.get('/404', error404Controller.error);
+app.get('/admin', adminController.admin);
 
+
+/**
+ * MULTER - IMÁGENES
+ */
 var storage = multer.diskStorage({
   //limits: {fileSize: 1, files:1},
   destination: function (req, file, cb) {

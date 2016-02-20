@@ -378,7 +378,7 @@ exports.addDato = function(req, res) {
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
 	//https://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/43/long/-1.9
-	//https://senserover-terrestre.rhcloud.com//api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/2253.55/long/363.22
+	//https://senserover-terrestre.rhcloud.com/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/43/long/-1.9
 
 	var id_dron = req.params.id_dron;
 	var temperatura = req.params.temperatura;
@@ -391,166 +391,167 @@ exports.addDato = function(req, res) {
 	var longitud = req.params.longitud;
 
 	// Validacion por servidor
-	//var validado = validadarAPI.APIinsertar(req, res);
-	//if (validado) {
-	//en pruebas socket
-	//var io = req.app.io;
-	//io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
-	//req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria);
-	req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria, latitud, longitud);
-	console.log("addDato socket: chat " + id_dron + " datos: " + temperatura + " " + humedad + " " + co2 + " " + radiacion + " " + luminosidad + " " + bateria);
-	//en pruebas
-
-	/*var fecha = new Date();
-	var fecha = fecha.setHours(fecha.getHours() + 1);
-	//console.log("fecha en milisegundos " + fecha)
-	var fecha = new Date(fecha);
-	console.log("fecha +1 " + fecha);*/
-
-	var fecha = moment().format("Y-MM-DD");
-	var hora = moment().utcOffset("+0000").valueOf();
-
-	console.log(hora);
-
-	//console.log(d)
-	// 2015-12-03 11:39:09
-	//var fecha2 = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
-	//console.log("fecha2:"+fecha2)
-
-	console.log("prueba put " + id_dron + " temperatura: " + temperatura + " humedad: " + humedad + " co2: " + co2 + " radiacion: " + radiacion + " luminosidad: " + luminosidad + " fecha: " + fecha);
-
-	Drones.find({
-		_id: id_dron
-	}, function(err, drones) {
-		if (err) {
-			console.error(err);
-		}
-		else {
-			console.log(drones);
-			if (drones != undefined || drones != null) {
-
-				var dato = new Dato({
-					id_dron: id_dron,
-					temperatura: temperatura,
-					humedad: humedad,
-					co2: co2,
-					radiacion: radiacion,
-					luminosidad: luminosidad,
-					bateria: bateria,
-					latitud: latitud,
-					longitud: longitud,
-					fecha: fecha,
-					hora: hora
-				});
-
-				console.log("GET - /api/datos/");
-				//guardar dato en la base de datos
-				dato.save(function(err) {
-					if (err) {
-						console.log('save error', err);
-					}
-					else {
-						//mensaje de ok si se guarda en bd
-						res.send('Dato guardado correctamente');
-
-						// ALERTAS
-
-						// Variables para mensajes de alertas
-						var msg_temp = "";
-						var msg_hum = "";
-						var msg_co2 = "";
-						var msg_rad = "";
-						var msg_lum = "";
-						var msg_bat = "";
-						var msg_total;
-						var alerta;
-
-						//var msg_temp, msg_hum, msg_co2, msg_rad, msg_lum, msg_bat, msg_total, alerta;
-
-						Alertas.find({
-							id_dron: id_dron
-						}, function(err, alertas) {
-							if (err) return console.error(err);
-
-							if (alertas[0].recibir_alertas) {
-								if (temperatura < alertas[0].temperatura.min || temperatura > alertas[0].temperatura.max) {
-									alerta = true;
-									//msg_temp = Alertas.mensaje_alerta('temperatura', temperatura, alertas[0].temperatura.min, alertas[0].temperatura.max);
-									//console.log(msg_temp)
-									msg_temp = '<br>La temperatura está fuera del rango indicado';
-									msg_temp += '<br>La temperatura actual es de <span style="color:red">' + temperatura + '</span> y el rango es de ' + alertas[0].temperatura.min + ' a ' + alertas[0].temperatura.max;
-									//console.log(msg_temp);	
-								}
-								if (humedad < alertas[0].humedad.min || temperatura > alertas[0].humedad.max) {
-									alerta = true;
-									msg_hum = '<br><br>La humedad está fuera del rango indicado';
-									msg_hum += '<br>La humedad actual es de <span style="color:red">' + humedad + '</span> y el rango es de ' + alertas[0].humedad.min + ' a ' + alertas[0].humedad.max;
-									//console.log(msg_hum);	
-								}
-								if (co2 < alertas[0].co2.min || co2 > alertas[0].co2.max) {
-									alerta = true;
-									msg_co2 = '<br><br>El co2 está fuera del rango indicado';
-									msg_co2 += '<br>El co2 actual es de <span style="color:red">' + co2 + '</span> y el rango es de ' + alertas[0].co2.min + ' a ' + alertas[0].co2.max;
-									//console.log(msg_co2);	
-								}
-								if (radiacion < alertas[0].radiacion.min || radiacion > alertas[0].radiacion.max) {
-									alerta = true;
-									msg_rad = '<br><br>La radiacion está fuera del rango indicado';
-									msg_rad += '<br>La radiacion actual es de <span style="color:red">' + radiacion + '</span> y el rango es de ' + alertas[0].radiacion.min + ' a ' + alertas[0].radiacion.max;
-									//console.log(msg_rad);	
-								}
-								if (luminosidad < alertas[0].luminosidad.min || luminosidad > alertas[0].luminosidad.max) {
-									alerta = true;
-									msg_lum = '<br><br>La luminosidad está fuera del rango indicado';
-									msg_lum += '<br>La luminosidad actual es de <span style="color:red">' + luminosidad + '</span> y el rango es de ' + alertas[0].luminosidad.min + ' a ' + alertas[0].luminosidad.max;
-									//console.log(msg_lum);	
-								}
-								if (bateria < alertas[0].bateria.min) {
-									alerta = true;
-									msg_bat = '<br><br>La bateria está por debajo del rango indicado';
-									msg_bat += '<br>La bateria actual es de <span style="color:red">' + bateria + '</span> y el rango es de ' + alertas[0].bateria.min;
-									//console.log(msg_bat);	
-								}
-							}
-
-							if (alerta) {
-								//busqueda de correo y envio
-								Usuario.find({
-									_id: drones[0].id_usuario
-								}, function(err, usuarios) {
-									var nombre_remitente = 'Sense-Rover';
-									var email_remitente = 'dw32igsr@gmail.com';
-									var nombre_destinatario = usuarios[0].usuario;
-									var email_destinatario = usuarios[0].email;
-									var asunto = 'Alertas del dron: ' + drones[0].nombre;
-
-									var cabecera = 'Hola ' + nombre_destinatario + '!<br><br>';
-									var nombre_dron = 'Estado del <b>' + drones[0].nombre + '</b><br>';
-									var firma = '<br><br><font size="1">El equipo de Sense-Rover</font>';
-
-									msg_total = cabecera + nombre_dron + msg_temp + msg_hum + msg_co2 + msg_rad + msg_lum + msg_bat + firma;
-
-									estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, msg_total);
-
-									//console.log(msg_total);
-								});
-							}
-						});
-					}
-				});
+	var validado = validadarAPI.APIinsertar(req, res);
+	if (validado) {
+		//en pruebas socket
+		//var io = req.app.io;
+		//io.emit('chat '+id_dron, temperatura, humedad, co2, radiacion, luminosidad, bateria);
+		//req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria);
+		req.app.io.sockets.in(id_dron).emit('updatechat', temperatura, humedad, co2, radiacion, luminosidad, bateria, latitud, longitud);
+		console.log("addDato socket: chat " + id_dron + " datos: " + temperatura + " " + humedad + " " + co2 + " " + radiacion + " " + luminosidad + " " + bateria);
+		//en pruebas
+	
+		/*var fecha = new Date();
+		var fecha = fecha.setHours(fecha.getHours() + 1);
+		//console.log("fecha en milisegundos " + fecha)
+		var fecha = new Date(fecha);
+		console.log("fecha +1 " + fecha);*/
+	
+		var fecha = moment().format("Y-MM-DD");
+		//var hora = moment().utcOffset("+0000").valueOf();  // Para meter la hora en segundos
+		var hora = moment().utcOffset("+0000").format("HH:mm:ss");
+	
+		console.log(hora);
+	
+		//console.log(d)
+		// 2015-12-03 11:39:09
+		//var fecha2 = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+		//console.log("fecha2:"+fecha2)
+	
+		console.log("prueba put " + id_dron + " temperatura: " + temperatura + " humedad: " + humedad + " co2: " + co2 + " radiacion: " + radiacion + " luminosidad: " + luminosidad + " fecha: " + fecha);
+	
+		Drones.find({
+			_id: id_dron
+		}, function(err, drones) {
+			if (err) {
+				console.error(err);
 			}
 			else {
-				// No muestra mensaje ni va a /
-				//res.send('Error a la hora de guardar')
-				/*console.log("GET - /datos/put/");
-				console.log('Error. Id_dron no encontrado');
-				res.redirect('/');*/
+				console.log(drones);
+				if (drones != undefined || drones != null) {
+	
+					var dato = new Dato({
+						id_dron: id_dron,
+						temperatura: temperatura,
+						humedad: humedad,
+						co2: co2,
+						radiacion: radiacion,
+						luminosidad: luminosidad,
+						bateria: bateria,
+						latitud: latitud,
+						longitud: longitud,
+						fecha: fecha,
+						hora: hora
+					});
+	
+					console.log("GET - /api/datos/");
+					//guardar dato en la base de datos
+					dato.save(function(err) {
+						if (err) {
+							console.log('save error', err);
+						}
+						else {
+							//mensaje de ok si se guarda en bd
+							res.send('Dato guardado correctamente');
+	
+							// ALERTAS
+	
+							// Variables para mensajes de alertas
+							var msg_temp = "";
+							var msg_hum = "";
+							var msg_co2 = "";
+							var msg_rad = "";
+							var msg_lum = "";
+							var msg_bat = "";
+							var msg_total;
+							var alerta;
+	
+							//var msg_temp, msg_hum, msg_co2, msg_rad, msg_lum, msg_bat, msg_total, alerta;
+	
+							Alertas.find({
+								id_dron: id_dron
+							}, function(err, alertas) {
+								if (err) return console.error(err);
+	
+								if (alertas[0].recibir_alertas) {
+									if (temperatura < alertas[0].temperatura.min || temperatura > alertas[0].temperatura.max) {
+										alerta = true;
+										//msg_temp = Alertas.mensaje_alerta('temperatura', temperatura, alertas[0].temperatura.min, alertas[0].temperatura.max);
+										//console.log(msg_temp)
+										msg_temp = '<br>La temperatura está fuera del rango indicado';
+										msg_temp += '<br>La temperatura actual es de <span style="color:red">' + temperatura + '</span> y el rango es de ' + alertas[0].temperatura.min + ' a ' + alertas[0].temperatura.max;
+										//console.log(msg_temp);	
+									}
+									if (humedad < alertas[0].humedad.min || temperatura > alertas[0].humedad.max) {
+										alerta = true;
+										msg_hum = '<br><br>La humedad está fuera del rango indicado';
+										msg_hum += '<br>La humedad actual es de <span style="color:red">' + humedad + '</span> y el rango es de ' + alertas[0].humedad.min + ' a ' + alertas[0].humedad.max;
+										//console.log(msg_hum);	
+									}
+									if (co2 < alertas[0].co2.min || co2 > alertas[0].co2.max) {
+										alerta = true;
+										msg_co2 = '<br><br>El co2 está fuera del rango indicado';
+										msg_co2 += '<br>El co2 actual es de <span style="color:red">' + co2 + '</span> y el rango es de ' + alertas[0].co2.min + ' a ' + alertas[0].co2.max;
+										//console.log(msg_co2);	
+									}
+									if (radiacion < alertas[0].radiacion.min || radiacion > alertas[0].radiacion.max) {
+										alerta = true;
+										msg_rad = '<br><br>La radiacion está fuera del rango indicado';
+										msg_rad += '<br>La radiacion actual es de <span style="color:red">' + radiacion + '</span> y el rango es de ' + alertas[0].radiacion.min + ' a ' + alertas[0].radiacion.max;
+										//console.log(msg_rad);	
+									}
+									if (luminosidad < alertas[0].luminosidad.min || luminosidad > alertas[0].luminosidad.max) {
+										alerta = true;
+										msg_lum = '<br><br>La luminosidad está fuera del rango indicado';
+										msg_lum += '<br>La luminosidad actual es de <span style="color:red">' + luminosidad + '</span> y el rango es de ' + alertas[0].luminosidad.min + ' a ' + alertas[0].luminosidad.max;
+										//console.log(msg_lum);	
+									}
+									if (bateria < alertas[0].bateria.min) {
+										alerta = true;
+										msg_bat = '<br><br>La bateria está por debajo del rango indicado';
+										msg_bat += '<br>La bateria actual es de <span style="color:red">' + bateria + '</span> y el rango es de ' + alertas[0].bateria.min;
+										//console.log(msg_bat);	
+									}
+								}
+	
+								if (alerta) {
+									//busqueda de correo y envio
+									Usuario.find({
+										_id: drones[0].id_usuario
+									}, function(err, usuarios) {
+										var nombre_remitente = 'Sense-Rover';
+										var email_remitente = 'dw32igsr@gmail.com';
+										var nombre_destinatario = usuarios[0].usuario;
+										var email_destinatario = usuarios[0].email;
+										var asunto = 'Alertas del dron: ' + drones[0].nombre;
+	
+										var cabecera = 'Hola ' + nombre_destinatario + '!<br><br>';
+										var nombre_dron = 'Estado del <b>' + drones[0].nombre + '</b><br>';
+										var firma = '<br><br><font size="1">El equipo de Sense-Rover</font>';
+	
+										msg_total = cabecera + nombre_dron + msg_temp + msg_hum + msg_co2 + msg_rad + msg_lum + msg_bat + firma;
+	
+										estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, msg_total);
+	
+										//console.log(msg_total);
+									});
+								}
+							});
+						}
+					});
+				}
+				else {
+					// No muestra mensaje ni va a /
+					//res.send('Error a la hora de guardar')
+					/*console.log("GET - /datos/put/");
+					console.log('Error. Id_dron no encontrado');
+					res.redirect('/');*/
+				}
 			}
-		}
-	}).sort({fecha: 'asc', hora: 'asc'});
-	/*} else {
+		}).sort({fecha: 'asc', hora: 'asc'});
+	} else {
 		return res.redirect('/404');
-	}*/
+	}
 };
 
 
@@ -565,7 +566,7 @@ exports.addDatoPost = function(req, res) {
 
 
 	var fecha = moment().format("Y-MM-DD");
-	var hora = moment().utcOffset("+0100").format("HH:mm:ss");
+	var hora = moment().utcOffset("+0000").format("HH:mm:ss");
 
 	var dato = new Dato({
 		id_dron: req.body.id_dron,

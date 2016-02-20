@@ -4,23 +4,6 @@
 <link rel="stylesheet" type="text/css" href="/css/normalize.css">
 <link rel="stylesheet" type="text/css" href="/css/dron-terrestre.webflow.css">
 
-{{#if sessionFlash}}
-  <div class="modal fade"  id="Mensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-        <div class="modal-body">
-          <div class="alert alert-success">
-              {{ expressFlash }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-{{/if}}
-
 <!-- INICIO MENU -->
 <div class="wrapper">
   <div data-collapse="all" data-animation="default" data-duration="400" data-contain="1" class="w-nav navigation-bar">
@@ -138,6 +121,17 @@
 <div id="slider" class="w-section section-slider">
   <div data-animation="slide" data-duration="500" data-infinite="1" data-delay="6000" data-autoplay="1" class="w-slider slider">
     <div class="w-slider-mask">
+        {{#if flash}}
+          <div class="row">
+            <div class="col-xs-6 col-md-3"></div>
+            <div class="col-xs-6 col-md-6">              
+              <div class="{{flash.clase}}">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{flash.mensaje}} 
+              </div></div>
+            <div class="col-xs-6 col-md-3"></div>
+          </div>
+        {{/if}}
       <div class="w-slide slide2">
         <div class="div-fondo">
           <h1 data-ix="fade-in-bottom-page-loads" class="hero-heading posicion">Proyecto Sense-Rover</h1>
@@ -465,6 +459,7 @@
           </div>
         </div>
       </div>
+      <!-- modal on succes -->
     </div>
     <!-- Contacto: container: formulario -->
   </div>

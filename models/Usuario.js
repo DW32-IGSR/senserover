@@ -20,6 +20,8 @@ var userModel = function() {
         direccion: String,
         codigo_postal: String,
         
+        admin: { type: Boolean, default: 0 },
+        
         google: String,
         tokens: Array
         

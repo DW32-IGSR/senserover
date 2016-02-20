@@ -9,6 +9,27 @@ var datosLat = [];
 var datosLon = [];
 var id_dron = "";
 
+
+/*if ($.cookie("senseRover_id") == undefined) {
+    //cargaDron();
+}
+else {
+    var cookie = $.cookie("senseRover_id");
+    //alert("else undefined")
+    cargaDron(cookie);
+}*/
+
+function mandarCookie(nombre_cookie, valor_cookie) {
+    if (valor_cookie != "selecciona" && valor_cookie != "") {
+        var cookie = $.cookie(nombre_cookie, valor_cookie, {
+            expires: 10,
+            path: '/administracion'
+        });
+        //alert("mandarCookie")
+        cargaDron(cookie);
+    }
+}
+
 var c_url = "";
 if (location.hostname == "sense-rover-nohtrim.c9users.io") {
     c_url = "";
@@ -49,6 +70,59 @@ function switchRoom(room) {
     socket.emit('switchRoom', room);
 }
 
+function cargaDron(id_dron) {
+    //se cambian las graficas y se cambian los valores en la seccion de estado
+    var c_url = window.location.href;
+    c_url = c_url.replace("administracion", "datos/" + id_dron);
+    //https://sense-rover-nohtrim.c9users.io/datos/56939648e4b0166e3b6a60f6
+    //console.log(c_url);
+    $("#id_dron_rango").val(id_dron);
+    $('#id_dron_alertas').attr('value', id_dron);
+    $("#dron_seleccionado").html(id_dron);
+    $('#id_dron_update').attr('value', id_dron);
+    var seleccionador = document.getElementById('seleccionador');
+    var nombre_dron = seleccionador.options[seleccionador.selectedIndex].text;
+    $("#name_dron").val(nombre_dron);
+    $.ajax({
+        type: "GET",
+        url: c_url,
+        dataType: "json",
+        success: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                //inconsistencia de base de datos revision de la ruta
+                fechas.push(data[i].fecha);
+                datosTemp.push(parseFloat(data[i].temperatura));
+                datosHum.push(parseInt(data[i].humedad, 10));
+                datosCO2.push(parseFloat(data[i].co2));
+                datosRad.push(parseFloat(data[i].radiacion));
+                datosLum.push(parseFloat(data[i].luminosidad));
+                datosBat.push(parseFloat(data[i].bateria));
+                //en desarrollo
+                datosLat.push(parseFloat(data[i].latitud));
+                datosLon.push(parseFloat(data[i].longitud));
+            }
+            switchRoom(id_dron);
+            $("#temp-ultimo").html(datosTemp[datosTemp.length - 1]);
+            $("#hum-ultimo").html(datosHum[datosHum.length - 1]);
+            $("#co2-ultimo").html(datosCO2[datosCO2.length - 1]);
+            $("#rad-ultimo").html(datosRad[datosRad.length - 1]);
+            $("#lum-ultimo").html(datosLum[datosLum.length - 1]);
+            $("#bat-ultimo").html(datosBat[datosBat.length - 1]);
+            dibujargrafica2();
+            colorearEstado();
+            describir();
+            //reiniciar mapas
+            iniciarMapa1(datosLat[datosLat.length - 1], datosLon[datosLon.length - 1]);
+            iniciarMapa2(datosLat, datosLon);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest.responseText);
+        }
+    }); //ajax   
+
+    //mostrar todas las secciones ocultas
+}
+
 function describir() {
     var c_url = window.location.href;
     c_url = c_url.replace("administracion", "drones/producto/" + $("#dron_seleccionado").html());
@@ -61,7 +135,7 @@ function describir() {
         success: function(data) {
             $("#desc_nombre").html(data[0].nombre);
             $("#desc_desc").html(data[0].descripcion);
-            $("#imagen_producto").attr('src', data[0].imagen);
+            $("#imagen_producto").attr('src', data[0].imagenes[0].url_img);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             console.log("Status: " + textStatus);
@@ -226,54 +300,8 @@ function colorearEstado() {
 }
 $(document).ready(function() {
     $("#seleccionador").change(function() {
-        id_dron = this.value;
-        //se cambian las graficas y se cambian los valores en la seccion de estado
-        var c_url = window.location.href;
-        c_url = c_url.replace("administracion", "datos/" + this.value);
-        //https://sense-rover-nohtrim.c9users.io/datos/56939648e4b0166e3b6a60f6
-        //console.log(c_url);
-        $("#id_dron_rango").val(this.value);
-        $('#id_dron_alertas').attr('value', this.value);
-        $("#dron_seleccionado").html(this.value);
-        $('#id_dron_update').attr('value', this.value);
-        var seleccionador = document.getElementById('seleccionador');
-        var nombre_dron = seleccionador.options[seleccionador.selectedIndex].text;
-        $("#name_dron").val(nombre_dron);
-        $.ajax({
-            type: "GET",
-            url: c_url,
-            dataType: "json",
-            success: function(data) {
-                for (var i = 0; i < data.length; i++) {
-                    //inconsistencia de base de datos revision de la ruta
-                    fechas.push(data[i].fecha);
-                    datosTemp.push(parseFloat(data[i].temperatura));
-                    datosHum.push(parseInt(data[i].humedad, 10));
-                    datosCO2.push(parseFloat(data[i].co2));
-                    datosRad.push(parseFloat(data[i].radiacion));
-                    datosLum.push(parseFloat(data[i].luminosidad));
-                    datosBat.push(parseFloat(data[i].bateria));
-                    //en desarrollo
-                    datosLat.push(parseFloat(data[i].latitud));
-                    datosLon.push(parseFloat(data[i].longitud));
-                }
-                switchRoom(id_dron);
-                $("#temp-ultimo").html(datosTemp[datosTemp.length - 1]);
-                $("#hum-ultimo").html(datosHum[datosHum.length - 1]);
-                $("#co2-ultimo").html(datosCO2[datosCO2.length - 1]);
-                $("#rad-ultimo").html(datosRad[datosRad.length - 1]);
-                $("#lum-ultimo").html(datosLum[datosLum.length - 1]);
-                $("#bat-ultimo").html(datosBat[datosBat.length - 1]);
-                dibujargrafica2();
-                colorearEstado();
-                describir();
-                //reiniciar mapas
-                iniciarMapa1(datosLat[datosLat.length - 1], datosLon[datosLon.length - 1]);
-                iniciarMapa2(datosLat, datosLon);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                console.log(XMLHttpRequest.responseText);
-            }
-        }); //ajax
+        mandarCookie("senseRover_id", this.value);
+        cargaDron(this.value);
+        //id_dron = this.value;
     }); //selected (funcion(){    
 })

@@ -105,8 +105,9 @@
         <div class="w-col w-col-6">
           <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
             <div class="w-slider-mask">
-              <div class="w-slide slide-dron1"></div>
-              <div class="w-slide slide-dron2"></div>
+              {{#each datos_producto._doc.imagenes}}
+                <div class="w-slide slide-dron1" style="background-image: url('{{url_img}}');"></div>
+              {{/each}}
             </div>
             <div class="w-slider-arrow-left">
               <div class="w-icon-slider-left"></div>
