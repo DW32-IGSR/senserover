@@ -78,110 +78,176 @@
       <!-- /.control-sidebar -->
       <!-- Add the sidebar's background. This div must be placed
                    immediately after the control sidebar -->
-      <!-- <div class="control-sidebar-bg"></div> -->
+      <div class="control-sidebar-bg"></div>
     </div>
   </div>
 </div>
 <!-- FIN MENU -->
 
-<!-- 
-  /*var arrays = {
-    productos: productos_encontrados,
-    drones: drones_encontrados,
-    datosUsuario: usuarios_encontrados
-  }*/ 
-  -->
-
 <div class="container">
   <div class="row">
-    <div class="table-responsive">
-      <!-- tabla desplegable -->
-      <!-- productos-->
-      <table class="table" border="1">
-        <th>id</th>
-        <th>nombre</th>
-        <th>precio</th>
-        <th>imagenes</th>
-        <th>especificaciones</th>
-        <th>opiniones</th>
-        <th>accion</th>
-        {{#each productos}}
-        <!--<p>{{this}}</p>-->
-        <tr>
-          <td>{{this._id}}</td>
-          <td>{{this.nombre}}</td>
-          <td>{{this.precio}}</td>
-          <td>
-            <ol>
-              {{#each this._doc.imagenes}}
-              <li>{{this.descripcion}} : {{this.url_img}}</li>
-              {{/each}}
-            </ol>
-          </td>
-          <td>
-            {{#each this._doc.especificaciones}}
-            <li>{{this.nombre}}:{{this.valor}}</li>
-            {{/each}}
-          </td>
-          <td>
-            {{#each this._doc.opiniones}}
-            <li>{{this.nombre}}{{this.valoracion}}</li>
-            {{this.opinion}} {{/each}}
-          </td>
-          <td>
-            <button class="btn-primary">modificar</button>
-            <button class="btn-danger">borrar</button>
-          </td>
-        </tr>
-        {{/each}}
-      </table>
-    </div>
-  </div>
-</div>
 
-<!-- productos -->
-<div class="container">
-  <div class="row">
-    <ul>
-      {{#each drones}}
-      <li>{{this}}</li>
-      {{/each}}
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#productos">Productos</a></li>
+      <li><a data-toggle="tab" href="#drones">Drones</a></li>
+      <li><a data-toggle="tab" href="#usuarios">Usuarios</a></li>
     </ul>
+
+    <div class="tab-content">
+
+      <div id="productos" class="tab-pane fade in active">
+        <!-- productos -->
+        <div class="table-responsive">
+          <table class="table table-striped" border="1">
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Imagenes</th>
+            <th>Especificaciones</th>
+            <th>Opiniones</th>
+            <th>Accion</th>
+            {{#each productos}}
+            <!--<p>{{this}}</p>-->
+            <tr>
+              <td>{{this._id}}</td>
+              <td>{{this.nombre}}</td>
+              <td>{{this.precio}}</td>
+              <td>
+                <ol>
+                  {{#each this._doc.imagenes}}
+                  <li>{{this.descripcion}} : {{this.url_img}}</li>
+                  {{/each}}
+                </ol>
+              </td>
+              <td>
+                {{#each this._doc.especificaciones}}
+                <li>{{this.nombre}}:{{this.valor}}</li>
+                {{/each}}
+              </td>
+              <td>
+                {{#each this._doc.opiniones}}
+                <li>{{this.nombre}}{{this.valoracion}}</li>
+                {{this.opinion}} {{/each}}
+              </td>
+              <td>
+                <button class="btn-primary">modificar</button>
+                <button class="btn-danger">borrar</button>
+              </td>
+            </tr>
+            {{/each}}
+          </table>
+        </div>
+        <!-- Fin productos -->
+      </div>
+      <!-- tab productos -->
+      
+      <!-- Drones -->
+      <div id="drones" class="tab-pane fade">
+        <div class="table-responsive">
+          <table class="table table-striped" border="1">
+            <th>Id</th>
+            <th>Producto</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Subscriupcion</th>
+            <th>Fecha de compra</th>
+            <th>Hora de compra</th>
+            <th>Fecha de caducidad</th> 
+            <th>Activo</th> 
+            <th>Accion</th>
+            {{#each drones}}
+            <tr>
+              <td>{{this._id}}</td>
+              <td>{{this.id_producto}}</td>
+              <td>{{this.id_usuario}}</td>
+              <td>{{this.nombre}}</td>
+              <td>{{this.tipo_subscripcion}}</td>
+              <td>{{this.fecha_compra}}</td>
+              <td>{{this.hora_compra}}</td>
+              <td>{{this.fecha_caducidad}}</td>
+              <td>{{this.activo}}</td>
+              <td>
+                <button class="btn-primary">modificar</button>
+                <button class="btn-danger">borrar</button>
+              </td>              
+            </tr>
+            {{/each}}
+          </table>  
+        </div>  
+      </div>  
+      <!-- drones -->
+      
+      <!-- usuarios -->
+      <div id="usuarios" class="tab-pane fade">
+        <div class="table-responsive">
+          <table class="table table-striped" border="1">    
+            <th>Id</th>
+            <th>Email</th>
+            <th>Usuario</th>
+            <th>Clave de activacion</th>
+            <th>Avatar</th>
+            <th>Hora de compra</th>
+            <th>Fecha de caducidad</th> 
+            <th>Activo</th> 
+            <th>Contraseña</th>
+            <th>Accion</th>
+            {{#each datosUsuario}}
+            <tr>
+              <td>{{this._id}}</td>
+              <td>{{this.email}}</td>
+              <td>{{this.usuario}}</td>
+              <td>{{this.activacion_key}}</td>
+              <td>{{this.avatar}}</td>
+              <td>{{this.ultima_conexion}}</td>
+              <td>{{this.validated}}</td>
+              <td>{{this.admin}}</td>
+              <td>{{this.password}}</td>
+              <td>
+                <button class="btn-primary">modificar</button>
+                <button class="btn-danger">borrar</button>
+              </td>              
+            </tr>
+            {{/each}}
+          </table>  
+      </div>
+      <!-- fin usuarios -->
+    </div>
+    <!-- tab content -->
+  </div>
+  <!-- row -->
+</div>
+<!-- container -->
+
+<div class="container">
+  <div class="row">
+
+    <!-- acordeon -->
+    <h3>Drones</h3>
     <div class="accordion">
       {{#each drones}}
-      <h3>{{this.nombre}}</h3>
+      <h3>{{@index}}.{{this.nombre}}</h3>
       <div>
         <p>{{this.fecha_caducidad}}</p>
         <p>{{this.fecha_compra}}</p>
         <p>{{this.id_usuario}}</p>
       </div>
       {{/each}}
-    </div>      
-  </div>
-</div>
-
-<!-- drones -->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <ul>
-        {{#each datosUsuario}}
-        <li>{{this}}</li>
-        {{/each}}
-      </ul>
     </div>
+    <!-- acordeon -->      
+    
   </div>
-</div>
+</div>  
+
 
 {{>footer}}
 
 <script>
-$(function() {
-  $( ".accordion" ).accordion();
-});
+  $(function() {
+    $(".accordion").accordion();
+  });
 </script>
 
 <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 <script type="text/javascript" src="/libs/jQuery-2.1.4.min.js"></script>
-<script type="text/javascript"  src="/js/modernizr.js"></script>
-<script type="text/javascript"  src="/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/modernizr.js"></script>
+<script type="text/javascript" src="/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
