@@ -206,6 +206,7 @@ app.get('/alertas/rango/bat/:id_dron', datosApiController.findMinMaxBatDronId);
 app.get('/api/datos/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria/lat/:latitud/long/:longitud', datosApiController.addDato);
 app.post('/datos/put', datosApiController.addDatoPost);
 app.get('/pronostico', pronosticosController.get);
+app.get('/apiDatos/log/:id_dron/:mensaje', datosApiController.logDron);
 
 
 /**

@@ -583,13 +583,15 @@
         <!-- panel estado: Tab-configuración: w-tab-pane -->
         <div data-w-tab="registro" class="w-tab-pane">
           <div class="bordecito">
-            <p class="white-text">14:50 se encendió el dron
+            <p id="dron_log" class="white-text">
+              <!--14:50 se encendió el dron
               <br>14:52 el dron mando una muestra
               <br>14:54 el dron mando una muestra
-              <br>14:56 se apagó el dron</p>
-            <a href="" class="hollow-button">HACER COMPROBACIÓN</a>
-            <a href="" class="hollow-button">exportar registro</a>
-            <a id="parada_dron"  href="" class="hollow-button">Parar dron</a>
+              <br>14:56 se apagó el dron-->
+              </p>
+            <a  id="btn_estado" class="hollow-button">HACER COMPROBACIÓN</a>
+            <a  class="hollow-button">exportar registro</a>
+            <a id="btn_parada_marcha" class="hollow-button">Parar dron</a>
           </div>
           <!-- panel estado: Tab-registro: bordecito -->
         </div>
@@ -605,7 +607,12 @@
 
 <!-- INICIO RUTA DRON -->
 <div id="ruta_dron" class="w-section section grafic" hidden>
-  <div id="mapa2" style='width:100%;height:400px;'></div>
+  <div class="w-container">
+    <div class="section-title-group">
+      <h2 class="section-heading centered">Ruta del Dron</h2>
+    </div>
+    <div id="mapa2" style='width:100%;height:400px;'></div>
+  </div>
 </div>
 <!-- FIN RUTA DRON -->
 
@@ -650,6 +657,7 @@
 <script type="text/javascript" src="/libs/jQuery-2.1.4.min.js"></script>
 <script type="text/javascript" src="/js/jquery_cookie.js"></script>
 <script type="text/javascript" src="/js/browserMqtt.js"></script>
+<script type="text/javascript" src="/js/scriptMqtt.js"></script>
 <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg' async defer></script>
 <script type="text/javascript" src="/js/scriptsMapa.js"></script>

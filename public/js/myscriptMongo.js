@@ -72,6 +72,11 @@ function switchRoom(room) {
 
 function cargaDron(id_dron) {
     //se cambian las graficas y se cambian los valores en la seccion de estado
+    
+    //subscripcion mqtt
+    client.subscribe(id_dron);
+    //"56939648e4b0166e3b6a60f6"
+    
     document.getElementById("seleccionador").options[0].disabled = true;
     $("#alertas").show();
     $("#graficas").show();

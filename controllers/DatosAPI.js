@@ -658,3 +658,8 @@ exports.findProductosById = function(req, res) {
 		return res.redirect('/404');
 	}
 };
+
+// Log dron, mensaje MQTT
+exports.logDron = function(req, res) {
+	
+};
