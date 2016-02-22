@@ -77,7 +77,7 @@ Rellene los campos necesarios a continuación, haga clic en **Guardar**
 
 <hr>
 
-<img src="https://s3.amazonaws.com/awsmp-logos/MongoLab-Logo-OnWhite.jpg" width="200">
+<img src="https://mongolab.com/company/brand/resources/MongoLab-Logo-Square-OnWhite-RGB.png" width="200">
 - Go to https://mongolab.com/
 - Sign up and add your *Domain Name*
 - From the domain overview, copy and paste the default SMTP *Login* and *Password* into `.env` file
