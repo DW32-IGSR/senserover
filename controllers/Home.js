@@ -21,6 +21,7 @@ exports.destroySession = function(req, res) {
         }
         else {
             console.log("sesion cerrada");
+            res.clearCookie('senseRover_id', { path: '/administracion' }); 
             res.redirect('/');
         }
     });
