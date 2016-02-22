@@ -79,27 +79,54 @@ Rellene los campos necesarios a continuación, haga clic en **Guardar**
 Estructura del proyecto
 -----------------
 
-| Nombre                             | Descripción                                                        |
-| ---------------------------------- | ------------------------------------------------------------------ |
-| **config**/passport.js             | Passport Local y OAuth estrategias.                                |
-| **controllers**/Administracion.js  | Controller para administración                                     |
-| **controllers**/Alertas.js         | Controller el form de alertas                                      |
-| **controllers**/Comprar.js         | Controller el form de compra/renovación                            |
-| **controllers**/DatosAPI.js        | Controller para las API de datos que envian los drones.            |
-| **controllers**/DronesAPI.js       | Controller para las API de drones.                                 |
-| **controllers**/DronesAPI.js       | Controller para las API de drones.                                 |
-| **controllers**/Email.js           | Controller para enviar correos.                                    |
-| **controllers**/error404.js        | Controller que salta cuando no se envian datos APIs correctamente. |
-| **controllers**/Estructura_Email.js| Controller para Mailgun.                                           |
-| **controllers**/Home.js            | Controller para sessiones usuario.                                 |
-| **controllers**/LoginRegistro.js   | Controller para login y registro.                                  |
-| **controllers**/Perfil.js          | Controller para el perfil usuario.                                 |
-| **controllers**/Productos.js       | Controller para productos.                                         |
-| **controllers**/Pronosticos.js     | Controller para pronosticos.                                       |
-| **controllers**/RangoFecha.js      | Controller para el form de rango de fechas.                        |
-| **controllers**/Tienda.js          | Controller para la tienda.                                         |
-| **controllers**/UploadImage.js     | Controller para poder subir avatares.                              |
-| **models**/User.js                 | Mongoose schema and model for User.                                |
+| Nombre                                        | Descripción                                                        |
+| --------------------------------------------- | ------------------------------------------------------------------ |
+| **config**/passport.js                        | Passport Local y OAuth estrategias.                                |
+| **controllers**/Administracion.js             | Controller para administración                                     |
+| **controllers**/Alertas.js                    | Controller el form de alertas                                      |
+| **controllers**/Comprar.js                    | Controller el form de compra/renovación                            |
+| **controllers**/DatosAPI.js                   | Controller para las API de datos que envian los drones.            |
+| **controllers**/DronesAPI.js                  | Controller para las API de drones.                                 |
+| **controllers**/DronesAPI.js                  | Controller para las API de drones.                                 |
+| **controllers**/Email.js                      | Controller para enviar correos.                                    |
+| **controllers**/error404.js                   | Controller que salta cuando no se envian datos APIs correctamente. |
+| **controllers**/Estructura_Email.js           | Controller para Mailgun.                                           |
+| **controllers**/Home.js                       | Controller para sessiones usuario.                                 |
+| **controllers**/LoginRegistro.js              | Controller para login y registro.                                  |
+| **controllers**/Perfil.js                     | Controller para el perfil usuario.                                 |
+| **controllers**/Productos.js                  | Controller para productos.                                         |
+| **controllers**/Pronosticos.js                | Controller para pronosticos.                                       |
+| **controllers**/RangoFecha.js                 | Controller para el form de rango de fechas.                        |
+| **controllers**/Tienda.js                     | Controller para la tienda.                                         |
+| **controllers**/UploadImage.js                | Controller para poder subir avatares.                              |
+| **controllers**/validadarAPI.js               | Controller para validar en el servidor las APIs.                   |
+| **models**/Alertas.js                         | Schema Mongoose y model de Alertas.                                |
+| **models**/Dato.js                            | Schema Mongoose y model de Datos.                                  |
+| **models**/Drones.js                          | Schema Mongoose y model de Drones.                                 |
+| **models**/Especificaciones.js                | Schema Mongoose y model de Especificaciones del producto           |
+| **models**/HistorialPedidos.js                | Schema Mongoose y model de HistorialPedidos.                       |
+| **models**/Opiniones.js                       | Schema Mongoose y model de Opiniones sobre los productos.          |
+| **models**/Productos.js                       | Schema Mongoose y model de Productos.                              |
+| **models**/Usuario.js                         | Schema Mongoose y model de Usuario                                 |
+| **public**/                                   | (fonts, css, js, img).                                             |
+| **public**/**avatar**/                        | El lugar donde se guardan los avatares.                            |
+| **public**/**bootstrap**/                     | Todo lo relacinado con bootstrap.                                  |
+| **public**/**css**/                           | Hubicación de los css.                                             |
+| **public**/**dist**/                          | Un theme de boostrap.                                              |
+| **public**/**icons**/                         | Iconos que utilizamos.                                             |
+| **public**/**images**/                        | Imagenes que utilizamos.                                           |
+| **public**/**js**/additional-methods.min.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/bootstrapValidator.min.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/browserMqtt.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/comprar.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/cookie.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/forget_pass.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/additional-methods.min.js   | Specify client-side JavaScript dependencies.                       |
+| **public**/**js**/additional-methods.min.js   | Specify client-side JavaScript dependencies.                       |
+| .travis.yml                        | [Travis CI](https://travis-ci.org/) integration.                   |
+| .env.example                       | Your API keys, tokens, passwords and database URI.                 |
+| app.js                             | Main application file.                                             |
+| setup.js                           | Tool for removing authentication providers and other things.       |
 | **public**/                        | Static assets (fonts, css, js, img).                               |
 | **public**/**js**/application.js   | Specify client-side JavaScript dependencies.                       |
 | **public**/**js**/main.js          | Place your client-side JavaScript here.                            |
@@ -176,3 +203,29 @@ Listado de paquetes
 | multiline                       | Multi-line strings for the generator.                                 |
 | blessed                         | Interactive command line interface for the generator.                 |
 | yui                             | Used by the Yahoo API example.                                        |
+
+
+Licencia
+-------
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Iosu Recalde, Ruben Alvarez, Gorka Perez and Sergio Valera.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

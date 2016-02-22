@@ -3,6 +3,7 @@ var Producto = require("../models/Productos");
 var Alertas = require("../models/Alertas");
 var Drones = require("../models/Drones");
 var Usuario = require("../models/Usuario");
+var LogDron = require("../models/LogDron");
 
 var validadarAPI = require('./validadarAPI');
 var estructura_email = require('./Estructura_Email');
@@ -661,5 +662,30 @@ exports.findProductosById = function(req, res) {
 
 // Log dron, mensaje MQTT
 exports.logDron = function(req, res) {
-	
+	console.log('id_dron: ' + req.params.id_dron);
+	console.log('mensaje: ' + req.params.mensaje);
+	Drones.findOne({_id: req.params.id_dron}, function(err, logDron_encontrados) {
+		if (err) {
+			console.error(err);
+		} else {
+			if (logDron_encontrados != undefined || logDron_encontrados != null) {
+				var fecha = moment().format("Y-MM-DD");
+				var hora = moment().utcOffset("+0100").format("HH:mm:ss");
+			
+				var log = new LogDron({
+					id_dron: req.params.id_dron,
+					mensaje: req.params.mensaje,
+					fecha: fecha,
+					hora: hora
+				});
+				
+				log.save(function(err, log_save) {
+					if (err) return res.send(500, err.message);
+					res.status(200).jsonp(log_save);
+				});
+			} else {
+				return res.redirect('/404');
+			}
+		}
+	});
 };

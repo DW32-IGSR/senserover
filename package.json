@@ -1,7 +1,7 @@
 {
-  "name": "Base",
+  "name": "Sense-Rover",
   "version": "1.0.0",
-  "description": "Basic structure for Express web apps.",
+  "description": "Proyecto de fin de curso 2014-2016 del ciclo formativo de desarrollo de aplicaciones web.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -14,7 +14,7 @@
     "express",
     "structure"
   ],
-  "author": "Terlici Ltd.",
+  "author": "Iosu Recalde, Ruben Alvarez, Gorka Perez y Sergio Valera.",
   "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

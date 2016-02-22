@@ -20,10 +20,12 @@ $("#btn_estado").click(function() {
 client.on("message", function(topic, message) {
     console.log("mensaje "+message);
     $("#dron_log").append("<br>"+new Date()+" : "+message);
-    //guardar mensaje bd
+    //guardar mensaje bd 
+    /*
     var url = "/apiDatos/log/"+$("#seleccionador").val()+"/"+message;
     var httpRequest = new XMLHttpRequest();
     httpRequest.open('GET', url);
-    httpRequest.send();    
+    httpRequest.send(); 
+    */
     //client.end();
 });
