@@ -4,7 +4,7 @@
 
 
 Demostración:
-http://senserover-terrestre.rhcloud.com/
+http://senserover.zubirimanteoweb.com/
 
 
 Características

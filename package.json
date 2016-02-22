@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Proyecto de fin de curso 2014-2016 del ciclo formativo de desarrollo de aplicaciones web.",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DW32-IGSR/senserover.git"
+  },
   "scripts": {
     "start": "node app.js",
-    "test": "node_modules/.bin/mocha tests/**", "expresso test/*"
+    "test": "node_modules/.bin/mocha tests/**"
   },
   "keywords": [
     "base",

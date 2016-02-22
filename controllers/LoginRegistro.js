@@ -19,7 +19,7 @@ exports.postLogin = function(req, res, next) {
   req.assert('password', 'La contraseña es requerida.').notEmpty();
   req.assert('password', 'Usa al menos 8 caracteres.').len(8, 20); //Hay que cambiar el valor 2 por 3
   
-  console.log(req);
+  //console.log(req);
 
   var errors = req.validationErrors();
 
