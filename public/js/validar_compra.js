@@ -100,7 +100,10 @@ $(document).ready(function() {
                         }
                     }
                 }
-            }/*,
+            },
+            submitHandler: function(validator, form, submitButton) {
+        alert("Your alert come here");
+    }/*,
             onSuccess: function(e) {
                 alert('bien');
                 $('#mcompra').modal('show');
