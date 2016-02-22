@@ -29,11 +29,25 @@ exports.admin = function(req, res) {
                                         if (err) {
                                             console.log(err);
                                         } else {
+                                            /*
+                                            for usuario {
+                                            usuario=[]
+                                            usuario.push(usuario.nombre)
+                                              for drones{
+                                                if dron.id_usuario==usuario._id
+                                                usuario.push(dron)
+                                              }
+                                              usuarios.push(usuario)
+                                            }
+                                            */
+                                            //for
+                                            
                                             console.log('admin entro a usuarios');
                                             var arrays = {
                                                 productos: productos_encontrados,
                                                 drones: drones_encontrados,
-                                                datosUsuario: usuarios_encontrados
+                                                datosUsuarioTodos: usuarios_encontrados,
+                                                datosUsuario: datos_usuario
                                             };
                                             //console.log('arrays: ' + arrays);
                                             res.render('admin', arrays);

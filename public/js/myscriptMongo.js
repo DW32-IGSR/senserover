@@ -72,6 +72,11 @@ function switchRoom(room) {
 
 function cargaDron(id_dron) {
     //se cambian las graficas y se cambian los valores en la seccion de estado
+    document.getElementById("seleccionador").options[0].disabled = true;
+    $("#alertas").show();
+    $("#graficas").show();
+    $("#panel-estado").show();
+    $("#ruta_dron").show();
     var c_url = window.location.href;
     c_url = c_url.replace("administracion", "datos/" + id_dron);
     //https://sense-rover-nohtrim.c9users.io/datos/56939648e4b0166e3b6a60f6

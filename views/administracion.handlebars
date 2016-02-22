@@ -127,7 +127,7 @@
 
 {{#if drones}}
 <!-- INICIO PANEL ESTADO -->
-<div id="alertas" class="w-section section grafic">
+<div id="alertas" class="w-section section grafic" hidden>
   <div class="w-container">
     <h1 class="section-heading centered white">PANEL DE ESTADO</h1>
     <div align="right">
@@ -411,7 +411,7 @@
 <!-- FIN MODAL CONFIGURACIÓN DE ALERTAS -->
 
 <!-- INICIO GRÁFICAS -->
-<div id="graficas" class="w-section section grafic grafica-a">
+<div id="graficas" class="w-section section grafic grafica-a" hidden>
   <div class="w-container">
     <h1 class="section-heading centered">Gráficas</h1>
     <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
@@ -516,7 +516,7 @@
 <!-- FIN GRÁFICAS -->
 
 <!-- INICIO PANEL DE ESTADO -->
-<div id="panel-estado" class="w-section section">
+<div id="panel-estado" class="w-section section" hidden>
   <div class="centrado-a-3">
     <h1 class="section-heading centered">PANEL DE DRON</h1>
     <div data-duration-in="300" data-duration-out="100" class="w-tabs tabs-wrapper">
@@ -602,8 +602,15 @@
   <!-- panel-estado: centrado-a-3 -->
 </div>
 <!-- FIN PANEL DE ESTADO -->
+
+<!-- INICIO RUTA DRON -->
+<div id="ruta_dron" class="w-section section grafic" hidden>
+  <div id="mapa2" style='width:100%;height:400px;'></div>
+</div>
+<!-- FIN RUTA DRON -->
+
 {{else}} <!-- Si no tiene drones -->
-<div id="c_dron" class="w-section section grafic">
+<div id="c_dron" class="w-section section grafic" >
   <div class="w-container">
     <p>No tienes drones</p>
     <a href="/tienda/5693728d3890294f10406189" class="w-button button" id="btn_compra">Comprar Dron</a>
@@ -641,15 +648,16 @@
 {{>footer}}
 
 <script type="text/javascript" src="/libs/jQuery-2.1.4.min.js"></script>
-<script src="/js/jquery_cookie.js"></script>
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg' async defer></script>
-<script src="/js/scriptsMapa.js"></script>
-<script src="/js/cookie.js"></script>
-<script src="/js/myscriptMongo.js"></script>
-<script src="/js/migrafica2.js"></script>
-<script src="/js/validar_administracion.js"></script>
-<script src="/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="/js/jquery_cookie.js"></script>
+<script type="text/javascript" src="/js/browserMqtt.js"></script>
+<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg' async defer></script>
+<script type="text/javascript" src="/js/scriptsMapa.js"></script>
+<script type="text/javascript" src="/js/cookie.js"></script>
+<script type="text/javascript" src="/js/myscriptMongo.js"></script>
+<script type="text/javascript" src="/js/migrafica2.js"></script>
+<script type="text/javascript" src="/js/validar_administracion.js"></script>
+<script type="text/javascript" src="/js/bootstrapValidator.min.js"></script>
 
 <!--</body>
 </html>-->
