@@ -50,9 +50,8 @@ socket.on('updatechat', function(temp, hum, co2, rad, lum, bat, lat, lon) {
     $("#bat-ultimo").html(bat);
     dibujargrafica2();
     colorearEstado();
-    //reinicio de mapas
-    iniciarMapa1(datosLat[datosLat.length - 1], datosLon[datosLon.length - 1]);
-    //en desarrollo
+    //reinicio de mapa
+    iniciarMapa2(datosLat, datosLon);
 });
 
 function switchRoom(room) {
@@ -190,7 +189,7 @@ function colorearEstado() {
                 var recibir_alertas=false;               
             }
             else{
-                if (data[0].temperatura != undefined) {
+                if (data[0].recibir_alertas == undefined) {
                     var recibir_alertas = false;
                 }else{
                     var recibir_alertas = data[0].recibir_alertas;
