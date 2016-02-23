@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
     $("#btn_form_alertas").click(function() {
-
         $('#form_alertas').bootstrapValidator({
             // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
             //container: '#errores',
@@ -241,7 +240,9 @@ $(document).ready(function() {
                 }
             }
         });
-        
+    });
+    
+    $("#btn_rango_fecha").click(function() {  
         $('#form_rango_fecha').bootstrapValidator({
             // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
             //container: '#errores',
@@ -258,6 +259,7 @@ $(document).ready(function() {
                         },
                         date: {
                             format: 'DD/MM/YYYY',
+                            max: 'Rango_fecha_final',
                             message: 'La fecha no es válida'
                         }
                     }
@@ -269,13 +271,39 @@ $(document).ready(function() {
                         },
                         date: {
                             format: 'DD/MM/YYYY',
+                            min: 'Rango_fecha_inicio',
                             message: 'La fecha no es válida'
                         }
                     }
                 }
             }
         });
+    });
     
+    $("#btn_form_nameUpdate").click(function() {  
+        $('#form_cambioNombre_dron').bootstrapValidator({
+            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+            //container: '#errores',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name_dron: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Nombre requerido'
+                        },
+                        stringLength: {
+                            min: 1,
+                            max: 20,
+                            message: 'El mínimo permitido es de 1 caracteres y máximo de 20'
+                        }
+                    }
+                }
+            }
+        });
     });
 
     //en proceso

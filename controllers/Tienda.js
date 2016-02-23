@@ -45,6 +45,7 @@ exports.tienda = function(req, res) {
     }
     else {
       console.log("El dron no existe");
+      res.redirect('/');
     }
   });
 };

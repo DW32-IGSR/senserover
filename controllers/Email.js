@@ -29,7 +29,7 @@ exports.activacion = function(req, res, next) {
             flash: {
                 clase: 'alert alert-danger',
                 mensaje: "Ha ocurrido un error."
-              }
+            }
         });
     }
 
@@ -63,7 +63,7 @@ exports.activacion = function(req, res, next) {
                 flash: {
                     clase: 'alert alert-danger',
                     mensaje: "Usuario no encontrado."
-                  }
+                }
             });
         }
     });
@@ -101,7 +101,7 @@ exports.contacto = function(req, res) {
             flash: {
                 clase: 'alert alert-danger',
                 mensaje: "Ha ocurrido un error."
-              }
+            }
         });
     }
 
@@ -133,7 +133,7 @@ exports.contacto = function(req, res) {
         flash: {
             clase: 'alert alert-success',
             mensaje: "Formulario enviado correctamente."
-          }
+        }
     });
 };
 
@@ -183,15 +183,27 @@ exports.forgetPassword = function(req, res) {
                 "<a href='http://" + req.headers.host + "/recoverPassword/" + new_key + "/" + email + "'>Restablecer contraseña</a>";
 
             estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
-            //res.redirect('/')
+            //res.redirect('/');
+            res.render('index', {
+                flash: {
+                  clase: 'alert alert-success',
+                  mensaje: "Revise el correo para restablecer la contraseña"
+                }
+            });
         }
         else {
             console.log('Email no encontrado');
-            req.flash('error', ' El correo no existe.');
+            res.render('index', {
+                flash: {
+                  clase: 'alert alert-danger',
+                  mensaje: "El correo no existe"
+                }
+            });
+            /*req.flash('error', ' El correo no existe.');
             res.render('index', {
                 expressFlash: req.flash('error'),
                 sessionFlash: res.locals.sessionFlash
-            });
+            });*/
         }
     });
 };
@@ -233,8 +245,13 @@ exports.recoverPassword = function(req, res) {
         }
         else {
             console.log('Error. No puedes recuperar la contraseña de ese correo.');
-            req.flash('error', 'No puedes recuperar la contraseña de ese correo.');
-            //res.render('index', { expressFlash: req.flash('error'), sessionFlash: res.locals.sessionFlash });
+            res.redirect('/');
+            /*res.render('index', {
+                flash: {
+                    clase: 'alert alert-danger',
+                    mensaje: "No se puede recuperar la contraseña de ese correo"
+                }
+            });*/ // Se ve mal el menú y tapa el mensaje
         }
     });
 };
@@ -260,7 +277,7 @@ exports.newPassword = function(req, res) {
 
     var errors = req.validationErrors();
 
-    console.log(errors);
+    //console.log(errors);
     console.log('entro a new password');
 
     if (errors) {
@@ -273,32 +290,37 @@ exports.newPassword = function(req, res) {
     }
     else {
         console.log('else');
-      bcrypt.genSalt(10, function(err, salt) {
-        console.log('bcrypt');
-        if (err) {
-          return (err);
-        }
-        bcrypt.hash(nueva_pass_conf, salt, null, function(err, hash) {
-            console.log('bcrypt hash');
-          if (err) {
-            return (err);
-          }
-          Usuario.findOneAndUpdate({
-                activacion_key: key,
-                email: email
-            }, {
-                password: hash
-            }, function(err, user) {
+        bcrypt.genSalt(10, function(err, salt) {
+            console.log('bcrypt');
+            if (err) {
+              return (err);
+            }
+            bcrypt.hash(nueva_pass_conf, salt, null, function(err, hash) {
+                console.log('bcrypt hash');
                 if (err) {
-                    console.error(err);
+                    return (err);
                 }
-                else {
-                    console.log('Se ha restablecido la contraseña correctamente');
-                    res.redirect('/');
-                }
+                Usuario.findOneAndUpdate({
+                    activacion_key: key,
+                    email: email
+                }, {
+                    password: hash
+                }, function(err, user) {
+                    if (err) {
+                        console.error(err);
+                    }
+                    else {
+                        console.log('Se ha restablecido la contraseña correctamente');
+                        //res.redirect('/');
+                        res.render('index', {
+                            flash: {
+                              clase: 'alert alert-success',
+                              mensaje: "Contraseña restablecida correctamente"
+                            }
+                        });
+                    }
+                });
             });
-
         });
-      });
     }
 };

@@ -88,13 +88,6 @@ exports.datosPerfil = function(req, res) {
         var form_cp = req.body.cp;
         var form_email = req.body.email;
 
-        console.log('Nombre: ' + form_nombre);
-        console.log('Apellidos: ' + form_apellidos);
-        console.log('DNI: ' + form_dni);
-        console.log('Dirección: ' + form_direccion);
-        console.log('Código Postal: ' + form_cp);
-        console.log('Email: ' + form_email);
-
         // Validacion servidor
         req.assert('nombre', 'El nombre es requerido.').notEmpty();
         req.assert('nombre', 'Nombre usa al menos 3 a 20 caracteres.').len(3, 20);
@@ -112,7 +105,7 @@ exports.datosPerfil = function(req, res) {
 
         var errors = req.validationErrors();
 
-        console.log(errors);
+        //console.log(errors);
 
         if (errors) {
             return res.redirect('/');
@@ -139,10 +132,10 @@ exports.datosPerfil = function(req, res) {
                     });
                     res.redirect('/perfil');
                     /*res.render('perfil', {
-                      flash: {
-                        clase: 'alert alert-success',
-                        mensaje: "Perfil actualizado correctamente."
-                      }
+                        flash: {
+                            clase: 'alert alert-success',
+                            mensaje: "Perfil actualizado correctamente."
+                        }
                     });*/
                 } //else error
             }); //find update
@@ -155,7 +148,6 @@ exports.changePassword = function(req, res) {
     var pass_nueva = req.body.pass_nueva;
     var pass_nueva_conf = req.body.pass_nueva_conf;
     var id_usuario = req.body.id_usuario;
-
 
     // Validacion servidor
     req.assert('pass_actual', 'La contraseña es requerida.').notEmpty();
@@ -208,11 +200,13 @@ exports.changePassword = function(req, res) {
                     }
                     else {
                         console.log('No coincide la contraseña actual');
+                        res.redirect('/perfil');
                     }
                 });
             }
             else {
                 console.log('No se puede cambiar la contraseña de ese usuario');
+                res.redirect('/perfil');
             }
         }
     });

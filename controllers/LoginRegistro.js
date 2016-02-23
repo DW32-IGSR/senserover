@@ -29,8 +29,8 @@ exports.postLogin = function(req, res, next) {
     //req.flash('error', errors);
     //return res.redirect('/');
     
-   return res.render('index', {
-    flash: {
+    return res.render('index', {
+      flash: {
         clase: 'alert alert-danger',
         mensaje: "Ha ocurrido un error."
       }

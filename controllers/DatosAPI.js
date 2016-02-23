@@ -661,6 +661,7 @@ exports.findProductosById = function(req, res) {
 };
 
 // Log dron, mensaje MQTT
+// Sin comprobar mediante MQTT
 exports.logDron = function(req, res) {
 	//http://sense-rover-nohtrim.c9users.io/apiDatos/log/56ab1b56e258103ceb331d19/prueba
 	console.log('id_dron: ' + req.params.id_dron);

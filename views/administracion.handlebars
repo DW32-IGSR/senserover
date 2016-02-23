@@ -500,14 +500,18 @@
         <input id="dato" name="dato" type="text" value="temperatura" hidden="true">
         <div class="w-row">
           <div class="w-col w-col-6">
-            <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango de fechas" class="w-input">
+            <div class="form-group">
+              <input id="Rango_fecha_inicio" type="date" placeholder="Inicio" name="Rango_fecha_inicio" data-name="Rango de fechas" class="w-input">
+            </div>
           </div>
           <div class="w-col w-col-6">
-            <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 2" class="w-input">
+            <div class="form-group">
+              <input id="Rango_fecha_final" type="date" placeholder="Final" name="Rango_fecha_final" data-name="Rango De Fechas 2" class="w-input">
+            </div>
           </div>
           <input id="id_dron_rango" hidden type="text" name="name_dron_rango" data-name="id_dron_rango" class="w-input">
         </div>
-        <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button">
+        <input type="submit" value="Submit" data-wait="Please wait..." class="w-button button" id="btn_rango_fecha">
       </form>
     </div>
   </div>
@@ -637,6 +641,7 @@
 <!-- FIN FAQ -->
 
 <!-- modal on succes -->
+<!--
 <div class="modal fade" id="malertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -651,6 +656,7 @@
     </div>
   </div>
 </div>
+-->
 <!-- /modal on succes -->
 
 {{>footer}}

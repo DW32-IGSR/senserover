@@ -4,6 +4,7 @@ exports.upload = function(req, res, next) {
   
     if (req.file == '' || req.file == undefined) {
       console.log('El archivo no es una imagen');
+      res.redirect('/perfil');
     } else {
       var img_split = req.file.path.split('/');
       var img_bd = '/'+img_split[1]+'/'+img_split[2];

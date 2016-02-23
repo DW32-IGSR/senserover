@@ -16,8 +16,8 @@ exports.comprar = function(req, res) {
 
     if (user == "" || user == undefined) {
         //algun mensaje de usuario no conectado
-        //res.redirect('/')
         console.log("No estas logeado");
+        res.redirect('/');
     }
     else {
         console.log("comprar");
@@ -59,7 +59,7 @@ exports.comprar = function(req, res) {
 
         var errors = req.validationErrors();
 
-        console.log(errors);
+        //console.log(errors);
 
         if (errors) {
             //return res.redirect('/');
@@ -204,9 +204,8 @@ exports.comprar = function(req, res) {
                                                             console.log('Alerta configurada');
                                                             //res.redirect('/perfil')
                                                         }
-
                                                     });
-                                                    //res.redirect('/perfil')
+                                                    res.redirect('/perfil');
                                                 }
                                             });
                                         }
@@ -233,8 +232,8 @@ exports.renovarSubscripcion = function(req, res) {
 
     if (user == "" || user == undefined) {
         //algun mensaje de usuario no conectado
-        //res.redirect('/')
         console.log("No estas logeado");
+        res.redirect('/');
     }
     else {
         console.log("renovar");
@@ -245,7 +244,9 @@ exports.renovarSubscripcion = function(req, res) {
             _id: id_dron
         }, function(err, dron_encontrado) {
             //pendiente tratamiento de error
-            console.log(err);
+            if (err) {
+                console.error(err);
+            }
 
             var fecha_caducidad_antigua = dron_encontrado.fecha_caducidad;
 
@@ -254,7 +255,7 @@ exports.renovarSubscripcion = function(req, res) {
             }, function(err, usuario) {
                 //pendiente tratamiento de error
                 
-                console.log(err);
+                //console.log(err);
                 var nombre_remitente = 'Sense-Rover';
                 var email_remitente = 'dw32igsr@gmail.com';
                 var nombre_destinatario = usuario.usuario;
@@ -267,12 +268,11 @@ exports.renovarSubscripcion = function(req, res) {
                 if (req.body.hasOwnProperty("btn_form_renovar_estandar")) {
 
                     var fecha = moment(fecha_caducidad_antigua).format("Y-MM-DD");
-                    console.log("Fecha caducidad antigua: "+fecha);
+                    //console.log("Fecha caducidad antigua: "+fecha);
                     
                     var fecha_final =  moment(fecha).add(6, 'months').format('Y-MM-DD');
                     
-                    console.log("Fecha final: "+fecha_final);
-
+                    //console.log("Fecha final: "+fecha_final);
 
                     Drones.findOneAndUpdate({
                         _id: id_dron
@@ -287,17 +287,12 @@ exports.renovarSubscripcion = function(req, res) {
                         else {
                             console.log('Renovación realizada');
                             
-                            /*fecha = fecha.setHours(fecha.getHours()+1);
-                    		//console.log("fecha en milisegundos " + fecha)
-                    		fecha = new Date(fecha);
-                            var fecha_accion = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();*/
-                            //var fecha_caducidad = fecha.getFullYear()+"-"+(fecha.getMonth()+7)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
-                            
                             var regAccion = new HistorialPedidos ({ id_dron : id_dron, id_usuario: usuario._id, accion: 'renovar', fecha_accion: fecha_renovar, hora_accion: hora_renovar, tipo_subscripcion_viejo: dron_encontrado.tipo_subscripcion, tipo_subscripcion_nuevo: 'estandar', fecha_caducidad: fecha_final});
                             regAccion.save(function (err) {
                                 if (err) {
                                   console.log('save error', err);
-                                }else {
+                                } else {
+                                    console.log('Historial Pedidos guardado');
                                 }
                             });
                             
@@ -306,19 +301,18 @@ exports.renovarSubscripcion = function(req, res) {
 
                             estructura_email.estructura_email(req, res, nombre_remitente, email_remitente, nombre_destinatario, email_destinatario, asunto, mensaje);
                         
-                            //res.redirect('/perfil');
-                            return res.render('perfil', {
+                            res.redirect('/perfil');
+                            /*return res.render('perfil', {
                                 flash: {
                                     clase: 'alert alert-success',
                                     mensaje: "Renovación realizada correctamente."
-                                  }
-                            });
+                                }
+                            });*/
                         }
                     });
                 }
 
                 if (req.body.hasOwnProperty("btn_form_renovar_profesional")) {
-
                     
                     var fecha = moment(fecha_caducidad_antigua).format("Y-MM-DD");
                     console.log("Fecha caducidad antigua: "+ fecha);
@@ -340,17 +334,12 @@ exports.renovarSubscripcion = function(req, res) {
                         else {
                             console.log('Renovación realizada');
                             
-                            /*fecha = fecha.setHours(fecha.getHours()+1);
-                    		//console.log("fecha en milisegundos " + fecha)
-                    		fecha = new Date(fecha);
-                            var fecha_accion = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();*/
-                            //var fecha_caducidad = fecha.getFullYear()+1+"-"+(fecha.getMonth()+1)+"-"+fecha.getDate()+" "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
-                            
                             var regAccion = new HistorialPedidos ({ id_dron : id_dron, id_usuario: usuario._id, accion: 'renovar', fecha_accion: fecha_renovar, hora_accion: hora_renovar, tipo_subscripcion_viejo: dron_encontrado.tipo_subscripcion, tipo_subscripcion_nuevo: 'profesional', fecha_caducidad: fecha_caducidad_nueva});
                             regAccion.save(function (err) {
                                 if (err) {
                                   console.log('save error', err);
-                                }else {
+                                } else {
+                                    console.log('Historial Pedidos guardado');
                                 }
                             });
                             
@@ -363,7 +352,7 @@ exports.renovarSubscripcion = function(req, res) {
                                 flash: {
                                     clase: 'alert alert-success',
                                     mensaje: "Renovación realizada correctamente."
-                                  }
+                                }
                             });*/
                         }
                     });

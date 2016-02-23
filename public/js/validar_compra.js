@@ -100,20 +100,7 @@ $(document).ready(function() {
                         }
                     }
                 }
-            },
-            submitHandler: function(validator, form, submitButton) {
-        alert("Your alert come here");
-    }/*,
-            onSuccess: function(e) {
-                alert('bien');
-                $('#mcompra').modal('show');
-                setTimeout(function() {
-                    window.location.href = "/perfil"; //will redirect to your blog page (an ex: blog.html)
-                }, 1000);
-            },onError: function(){
-                alert('mal');
-                //$("#btn_enviar").attr("disabled", false)
-            }*/
+            }
         });
     });
     /*$('#formulario_compra').on('submit', function(e) {
