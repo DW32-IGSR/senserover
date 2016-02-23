@@ -582,6 +582,18 @@ p {
 
 /* FIN ADMINISTRACIÓN */
 
+
+/* INICIO SCROLL PANEL DE DRON */
+.registro_scroll {
+  height: 150px;
+  width: auto;
+  overflow: auto;
+  border: 1px solid #666;
+  padding: 8px;
+}
+
+/* FIN SCROLL PANEL DE DRON*/
+
 .tabs-wrapper {
   margin-top: 40px;
   padding-bottom: 0px;

@@ -1,4 +1,6 @@
 //https://github.com/mqttjs/MQTT.js#browser
+//56939648e4b0166e3b6a60f6
+//var client = mqtt.connect('mqtts://test.mosquitto.org:8081'); // you add a ws:// url here
 var client = mqtt.connect('mqtt://test.mosquitto.org:8080'); // you add a ws:// url here
 
 $("#btn_parada_marcha").click(function() {
@@ -18,14 +20,9 @@ $("#btn_estado").click(function() {
 });
 
 client.on("message", function(topic, message) {
-    console.log("mensaje "+message);
-    $("#dron_log").append("<br>"+new Date()+" : "+message);
-    //guardar mensaje bd 
-    /*
-    var url = "/apiDatos/log/"+$("#seleccionador").val()+"/"+message;
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', url);
-    httpRequest.send(); 
-    */
-    //client.end();
+    //console.log("mensaje "+message);
+    if ($("#dron_log li").length >= 10) {
+        $("#dron_log li")[0].remove();
+    }
+    $("#dron_log").append("<li>"+new Date()+" : "+message+"</li>");
 });

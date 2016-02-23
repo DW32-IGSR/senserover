@@ -150,7 +150,6 @@ Estructura del proyecto
 | **views/partials**/perfil.handlebars          | Plantilla de pie de pagina.                                        |
 | **views/partials**/recoverPassword.handlebars | Plantilla de pie de pagina.                                        |
 | .env.example                                  | Tus API keys, tokens, contraseñas and database URI.                |
-| .travis.yml                                   | [Travis CI](https://travis-ci.org/) integration.                   |
 | app.js                                        | Archivo principal de la aplicación.                                |
 
 

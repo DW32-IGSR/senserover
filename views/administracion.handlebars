@@ -70,7 +70,7 @@
           </li>
           <li>
             <a href="#alertas">
-              <i class="fa fa-tachometer"></i> <span>Estado</span>
+              <i class="fa fa-tachometer"></i> <span>Panel de estado</span>
             </a>
           </li>
           <li>
@@ -80,7 +80,12 @@
           </li>
           <li>
             <a href="#panel-estado">
-              <i class="fa fa-car"></i> <span>Estado del dron</span>
+              <i class="fa fa-car"></i> <span>Panel del dron</span>
+            </a>
+          </li>
+          <li>
+            <a href="#ruta_dron">
+              <i class="fa fa-map-marker"></i> <span>Ruta del dron</span>
             </a>
           </li>
           <li>
@@ -528,12 +533,12 @@
         <a data-w-tab="descripcion_dron" class="w-tab-link w--current w-inline-block button tab">
           <div id="descripcion-dron"><img src="icons/info.png" height="24" width="24"></div>
         </a>
-        <a data-w-tab="posicion_actual" class="w-tab-link w-inline-block button tab">
+        <!--<a data-w-tab="posicion_actual" class="w-tab-link w-inline-block button tab">
           <div id="posicion-actual"><img src="icons/posicion-actual.png" height="24" width="24"></div>
-        </a>
-        <a data-w-tab="ruta" class="w-tab-link w-inline-block button tab">
+        </a>-->
+        <!--<a data-w-tab="ruta" class="w-tab-link w-inline-block button tab">
           <div id="seguimiento-ruta"><img src="icons/seguimiento-ruta.png" height="24" width="24"></div>
-        </a>
+        </a>-->
         <a id="configuracion" data-w-tab="configuracion" class="w-tab-link w-inline-block button tab">
           <div><img src="icons/conf.png" height="24" width="24"></div>
         </a>
@@ -556,15 +561,15 @@
           </div>
         </div>
         <!-- panel estado: Tab-descripciónDron: w-tab-pane -->
-        <div data-w-tab="posicion_actual" class="w-tab-pane">
-          <div id="mapa1" style='width:100%;height:400px;'></div>
+        <!--<div data-w-tab="posicion_actual" class="w-tab-pane">
+          <div id="mapa1" style='width:100%;height:400px;'></div>-->
           <!-- <div id="mapa1" data-widget-latlng="43.318334,-1.981231" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div> -->
-        </div>
+        <!--</div>-->
         <!-- panel estado: Tab-posiciónActual: w-tab-pane -->
-        <div data-w-tab="ruta" class="w-tab-pane">
+        <!--<div data-w-tab="ruta" class="w-tab-pane">-->
           <!--<div id="mapa2" style='width:100%;height:400px;'></div>-->
           <!-- <div data-widget-latlng="43.308111,-1.891282" data-widget-style="roadmap" data-widget-zoom="12" class="w-widget w-widget-map"></div> -->
-        </div>
+        <!--</div>-->
         <!-- panel estado: Tab-seguimientoRuta: w-tab-pane -->
         <div data-w-tab="configuracion" class="w-tab-pane">
           <div class="centrado-a-2">
@@ -587,16 +592,16 @@
         <!-- panel estado: Tab-configuración: w-tab-pane -->
         <div data-w-tab="registro" class="w-tab-pane">
           <div class="bordecito">
-            <p id="dron_log" class="white-text">
+            <ul id="dron_log" class="white-text registro_scroll">
               <!--14:50 se encendió el dron
               <br>14:52 el dron mando una muestra
               <br>14:54 el dron mando una muestra
               <br>14:56 se apagó el dron-->
-            </p>
+            </ul>
             <br>  
-            <a id="btn_estado" class="hollow-button">HACER COMPROBACIÓN</a>
+            <a id="btn_estado" class="hollow-button">hacer comprobación</a>
+            <a id="btn_parada_marcha" class="hollow-button">parar dron</a>
             <a class="hollow-button">exportar registro</a>
-            <a id="btn_parada_marcha" class="hollow-button">Parar dron</a>
           </div>
           <!-- panel estado: Tab-registro: bordecito -->
         </div>

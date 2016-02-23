@@ -7,17 +7,6 @@ var datosLum = [];
 var datosBat = [];
 var datosLat = [];
 var datosLon = [];
-var id_dron = "";
-
-
-/*if ($.cookie("senseRover_id") == undefined) {
-    //cargaDron();
-}
-else {
-    var cookie = $.cookie("senseRover_id");
-    //alert("else undefined")
-    cargaDron(cookie);
-}*/
 
 function mandarCookie(nombre_cookie, valor_cookie) {
     if (valor_cookie != "selecciona" && valor_cookie != "") {
@@ -74,6 +63,7 @@ function cargaDron(id_dron) {
     //se cambian las graficas y se cambian los valores en la seccion de estado
     
     //subscripcion mqtt
+    $("#dron_log").html("");
     client.subscribe(id_dron);
     //"56939648e4b0166e3b6a60f6"
     
@@ -122,11 +112,17 @@ function cargaDron(id_dron) {
             colorearEstado();
             describir();
             //reiniciar mapas
-            iniciarMapa1(datosLat[datosLat.length - 1], datosLon[datosLon.length - 1]);
-            iniciarMapa2(datosLat, datosLon);
+            //iniciarMapa1(datosLat[datosLat.length - 1], datosLon[datosLon.length - 1]);
+            if(datosLat!="" && datosLon!=""){
+                iniciarMapa2(datosLat, datosLon);
+            }else{
+                //console.log("coordenadas indefinidas");
+            }
         },
+        //error a revisar
         error: function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log(XMLHttpRequest.responseText);
+            console.log("status"+textStatus);
+            console.log("error"+errorThrown);
         }
     }); //ajax   
 
@@ -179,53 +175,73 @@ function colorearEstado() {
         url: c_url,
         dataType: "json",
         success: function(data) {
-            var recibir_alertas = data[0].recibir_alertas;
-            if (data[0].temperatura != undefined) {
-                var t_max = parseFloat(data[0].temperatura.max);
-                var t_min = parseFloat(data[0].temperatura.min);
+            if(data[0]==undefined){
+                var t_min=0;
+                var t_max=0;
+                var h_min=0;
+                var h_max=0;
+                var c_min=0;
+                var c_max=0;
+                var r_min=0;
+                var r_max=0;
+                var l_min=0;
+                var l_max=0;
+                var b_min=0;
+                var recibir_alertas=false;               
             }
-            else {
-                var t_max = 0;
-                var t_min = 0;
-            }
-            if (data[0].humedad != undefined) {
-                var h_max = parseInt(data[0].humedad.max, 10);
-                var h_min = parseInt(data[0].humedad.min, 10);
-            }
-            else {
-                var h_max = 0;
-                var h_min = 0;
-            }
-            if (data[0].co2 != undefined) {
-                var c_max = parseFloat(data[0].co2.max);
-                var c_min = parseFloat(data[0].co2.min);
-            }
-            else {
-                var c_max = 0;
-                var c_min = 0;
-            }
-            if (data[0].radiacion != undefined) {
-                var r_max = parseFloat(data[0].radiacion.max);
-                var r_min = parseFloat(data[0].radiacion.min);
-            }
-            else {
-                var r_max = 0;
-                var r_min = 0;
-            }
-            if (data[0].luminosidad != undefined) {
-                var l_max = parseFloat(data[0].luminosidad.max);
-                var l_min = parseFloat(data[0].luminosidad.min);
-            }
-            else {
-                var l_max = 0;
-                var l_min = 0;
-            }
-            if (data[0].bateria != undefined) {
-                var b_min = parseFloat(data[0].bateria.min);
-            }
-            else {
-                var b_min = 0;
-            }
+            else{
+                if (data[0].temperatura != undefined) {
+                    var recibir_alertas = false;
+                }else{
+                    var recibir_alertas = data[0].recibir_alertas;
+                }
+                if (data[0].temperatura != undefined) {
+                    var t_max = parseFloat(data[0].temperatura.max);
+                    var t_min = parseFloat(data[0].temperatura.min);
+                }
+                else {
+                    var t_max = 0;
+                    var t_min = 0;
+                }
+                if (data[0].humedad != undefined) {
+                    var h_max = parseInt(data[0].humedad.max, 10);
+                    var h_min = parseInt(data[0].humedad.min, 10);
+                }
+                else {
+                    var h_max = 0;
+                    var h_min = 0;
+                }
+                if (data[0].co2 != undefined) {
+                    var c_max = parseFloat(data[0].co2.max);
+                    var c_min = parseFloat(data[0].co2.min);
+                }
+                else {
+                    var c_max = 0;
+                    var c_min = 0;
+                }
+                if (data[0].radiacion != undefined) {
+                    var r_max = parseFloat(data[0].radiacion.max);
+                    var r_min = parseFloat(data[0].radiacion.min);
+                }
+                else {
+                    var r_max = 0;
+                    var r_min = 0;
+                }
+                if (data[0].luminosidad != undefined) {
+                    var l_max = parseFloat(data[0].luminosidad.max);
+                    var l_min = parseFloat(data[0].luminosidad.min);
+                }
+                else {
+                    var l_max = 0;
+                    var l_min = 0;
+                }
+                if (data[0].bateria != undefined) {
+                    var b_min = parseFloat(data[0].bateria.min);
+                }
+                else {
+                    var b_min = 0;
+                }
+            }    
             // cargar configuracion de alertas 
             $("#tempMinima").val(t_min);
             $("#tempMaxima").val(t_max);
@@ -312,6 +328,5 @@ $(document).ready(function() {
     $("#seleccionador").change(function() {
         mandarCookie("senseRover_id", this.value);
         cargaDron(this.value);
-        //id_dron = this.value;
     }); //selected (funcion(){    
 })

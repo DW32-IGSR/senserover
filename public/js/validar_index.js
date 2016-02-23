@@ -210,3 +210,10 @@ $(document).ready(function() {
         });
     });
 })
+
+
+/*
+.on('success.form.bv', function(e) {
+            alert("on success");
+        })
+*/
