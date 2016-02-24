@@ -32,7 +32,6 @@ else {
 
 //console.log("c_url "+c_url);
 var socket = io(c_url);
-//socket.on('updatechat', function(temp, hum, co2, rad, lum, bat) { 
 socket.on('updatechat', function(temp, hum, co2, rad, lum, bat, lat, lon) {
     datosTemp.push(parseFloat(temp));
     datosHum.push(parseInt(hum, 10));

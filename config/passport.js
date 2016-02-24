@@ -63,16 +63,16 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, passw
   console.log('Entro al passport.use');
   Usuario.findOne({ email: email }, function(err, user) {
     if (!user) {
-      console.log('ruben te pillo 2');
+      //console.log('error');
       return done(null, false, { message: 'Email ' + email + ' not found'});
     }
     user.comparePassword(password, function(err, isMatch) {
       console.log('Entro a comparePassword');
       if (isMatch) {
-        console.log('ruben te pillo 4');
+        //console.log('match');
         return done(null, user);
       } else {
-        console.log('ruben te pillo 5');
+        //console.log('mismatch');
         return done(null, false, { message: 'Invalid email or password.' });
       }
     });

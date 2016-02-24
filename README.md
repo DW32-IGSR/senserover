@@ -3,6 +3,9 @@
 ##Proyecto de fin de curso 2014-2016 del ciclo formativo de desarrollo de aplicaciones web
 
 
+Proyecto multidisciplinar entre estudiantes de electrónica y desarrollo de aplicaciones web.
+La finalidad del proyecto es ayudar al agricultor mediante nuestra aplicación web para gestionar y generar diferentes funcionalidades, que le puedan servir de ayuda a través de los datos recibidos de un dron. Por ejemplo, alertas y estadísticas.
+
 Demostración:
 http://senserover.zubirimanteoweb.com/
 
@@ -12,17 +15,16 @@ Características
 
 - **Local Authentication** using Email and Password
 - **OAuth 2.0 Authentication** Google
-- Flash notifications
 - MVC Project Structure
-- Node.js clusters support
+- Node.js + Express
 - Bootstrap 3 + Webflow.io
 - Contact Form (powered by Mailgun)
+- Sokect.io
+- MQTT
 - **Account Management**
  - Profile Details
  - Change Password
  - Forgot Password
- - Reset Password
-- CSRF protection
 
 
 Instalación
@@ -92,17 +94,16 @@ Estructura del proyecto
 | **controllers**/Administracion.js             | Controller para administración                                     |
 | **controllers**/Alertas.js                    | Controller el form de alertas                                      |
 | **controllers**/Comprar.js                    | Controller el form de compra/renovación                            |
-| **controllers**/DatosAPI.js                   | Controller para las API de datos que envian los drones.            |
-| **controllers**/DronesAPI.js                  | Controller para las API de drones.                                 |
+| **controllers**/DatosAPI.js                   | Controller para las API de datos que envían los drones.            |
 | **controllers**/DronesAPI.js                  | Controller para las API de drones.                                 |
 | **controllers**/Email.js                      | Controller para enviar correos.                                    |
-| **controllers**/error404.js                   | Controller que salta cuando no se envian datos APIs correctamente. |
+| **controllers**/error404.js                   | Controller que salta cuando no se envían datos APIs correctamente. |
 | **controllers**/Estructura_Email.js           | Controller para Mailgun.                                           |
-| **controllers**/Home.js                       | Controller para sessiones usuario.                                 |
+| **controllers**/Home.js                       | Controller para sessiones de usuario.                              |
 | **controllers**/LoginRegistro.js              | Controller para login y registro.                                  |
-| **controllers**/Perfil.js                     | Controller para el perfil usuario.                                 |
+| **controllers**/Perfil.js                     | Controller para el perfil de usuario.                              |
 | **controllers**/Productos.js                  | Controller para productos.                                         |
-| **controllers**/Pronosticos.js                | Controller para pronosticos.                                       |
+| **controllers**/Pronosticos.js                | Controller para pronósticos.                                       |
 | **controllers**/RangoFecha.js                 | Controller para el form de rango de fechas.                        |
 | **controllers**/Tienda.js                     | Controller para la tienda.                                         |
 | **controllers**/UploadImage.js                | Controller para poder subir avatares.                              |
@@ -118,38 +119,37 @@ Estructura del proyecto
 | **public**/                                   | (fonts, css, js, img).                                             |
 | **public**/**avatar**/                        | El lugar donde se guardan los avatares.                            |
 | **public**/**bootstrap**/                     | Todo lo relacinado con bootstrap.                                  |
-| **public**/**css**/                           | Hubicación de los css.                                             |
+| **public**/**css**/                           | Ubicación de los css.                                              |
 | **public**/**dist**/                          | Un theme de boostrap.                                              |
 | **public**/**icons**/                         | Iconos que utilizamos.                                             |
-| **public**/**images**/                        | Imagenes que utilizamos.                                           |
-| **public**/**js**/browserMqtt.js              | Libreria Mqtt.                                                     |
-| **public**/**js**/comprar.js                  | ...                                                                |
-| **public**/**js**/cookie.js                   | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/forget_pass.js              | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/migrafica2.js               | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/modernizr.js                | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/myscriptMongo.js            | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/pace.min.js                 | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/scriptMqtt.js               | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/scriptsMapa.js              | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/subscripcion.js             | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/validar_administracion.js   | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/validar_compra.js           | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/validar_index.js            | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/validar_perfil.js           | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/validar_recoverPass.js      | Specify client-side JavaScript dependencies.                       |
-| **public**/**js**/webflow.js                  | Specify client-side JavaScript dependencies.                       |
+| **public**/**images**/                        | Imágenes que utilizamos.                                           |
+| **public**/**js**/browserMqtt.js              | Librería Mqtt.                                                     |
+| **public**/**js**/comprar.js                  | Todo lo relacionado con la página de compra.                       |
+| **public**/**js**/cookie.js                   | Script para las cookies.                                           |
+| **public**/**js**/migrafica2.js               | Script para mostrar gráficas.                                      |
+| **public**/**js**/modernizr.js                | Librería Webflow.                                                  |
+| **public**/**js**/myscriptMongo.js            | Script que controla toda la página de administración.              |
+| **public**/**js**/pace.min.js                 | Librería pace, barra de progreso de carga de la página.            |
+| **public**/**js**/scriptMqtt.js               | Script para el protocolo MQTT.                                     |
+| **public**/**js**/scriptsMapa.js              | Script para las rutas del dron.                                    |
+| **public**/**js**/subscripcion.js             | Script para el modal de subscripción.                              |
+| **public**/**js**/validar_administracion.js   | Validaciones de formularios de la página administración.           |
+| **public**/**js**/validar_compra.js           | Validaciones de formularios de la página compra.                   |
+| **public**/**js**/validar_index.js            | Validaciones de formularios de la página index.                    |
+| **public**/**js**/validar_perfil.js           | Validaciones de formularios de la página perfil.                   |
+| **public**/**js**/validar_recoverPass.js      | Validación de formularios del modal de recuperación de contraseña. |
+| **public**/**js**/webflow.js                  | Librería Webflow.                                                  |
 | **public**/**libs**/                          | Librerias JQuery.                                                  |
 | **views**/**layouts**/main.handlebars         | Base de la plantilla.                                              |
 | **views/partials**/modal.handlebars           | Plantilla del modal de login/registro.                             |
-| **views/partials**/404.handlebars             | Plantilla de pie de pagina.                                        |
-| **views/partials**/admin.handlebars           | Plantilla de pie de pagina.                                        |
-| **views/partials**/administracion.handlebars  | Plantilla de pie de pagina.                                        |
-| **views/partials**/comprar.handlebars         | Plantilla de pie de pagina.                                        |
-| **views/partials**/index.handlebars           | Plantilla de pie de pagina.                                        |
-| **views/partials**/perfil.handlebars          | Plantilla de pie de pagina.                                        |
-| **views/partials**/recoverPassword.handlebars | Plantilla de pie de pagina.                                        |
-| .env.example                                  | Tus API keys, tokens, contraseñas and database URI.                |
+| **views/partials**/404.handlebars             | Página de error.                                                   |
+| **views/partials**/admin.handlebars           | Página de administración de la base de datos.                      |
+| **views/partials**/administracion.handlebars  | Página de administración del dron.                                 |
+| **views/partials**/comprar.handlebars         | Página de la tienda.                                               |
+| **views/partials**/index.handlebars           | Página principal de la Web.                                        |
+| **views/partials**/perfil.handlebars          | Página de perfil de usuario.                                       |
+| **views/partials**/recoverPassword.handlebars | Página para mostrar modal de recuperación de contraseña.           |
+| .env. example                                 | Tus API keys, tokens, contraseñas y database URI.                  |
 | app.js                                        | Archivo principal de la aplicación.                                |
 
 
@@ -159,32 +159,29 @@ Listado de paquetes
 
 | Package                         | Description                                                           |
 | ------------------------------- | --------------------------------------------------------------------- |
-| bcrypt-nodejs                   | Library for hashing and salting user passwords.                       |
+| bcrypt-nodejs                   | Módulo para hash y contraseñas de usuarios.                           |
 | body-parser                     | Express 4 middleware.                                                 |
-| dotenv                          | Loads environment variables from .env file.                           |
+| dotenv                          | Módulo para cargar variables de entorno del archivo .env              |
 | express                         | Node.js web framework.                                                |
 | express-session                 | Express 4 middleware.                                                 |
-| express-flash                   | Provides flash messages for Express.                                  |
-| express-validator               | Easy form validation for Express.                                     |
-| express-handlebars              | A Handlebars view engine for Express which doesn't suck.              |
-| express-session                 | Express 4 middleware.                                                 |
-| handlebars                      | You build semantic templates effectively with no frustration.         |
-| http                            | Request module.                                                       |
-| lodash                          | Handy JavaScript utlities library.                                    |
-| mailgun-js                      | Simple Node.js helper module for Mailgun API.                         |
-| moment                          | Parse, validate, manipulate, and display dates.                       |
+| express-flash                   | Módulo para mostrar mensajes flash.                                   |
+| express-validator               | Módulo para validar formularios.                                      |
+| express-handlebars              | Plantilla de express.                                                 |
+| handlebars                      | Plantilla para construir con eficacia.                                |
+| http                            | Módulo request.                                                       |
+| lodash                          | Módulo para utilidades de JavaScript.                                 |
+| mailgun-js                      | Módulo para el uso de la API de Mailgun.                              |
+| moment                          | Módulo para analizar, validar, manipular y dar formato a las fechas.  |
 | mongoose                        | MongoDB ODM.                                                          |
-| mqtt                            | A library for the MQTT protocol.                                      |
-| multer                          | Middleware for handling <code>multipart/form-data</code>.             |
-| passport                        | Simple and elegant authentication library for node.js                 |
-| passport-google-oauth           | Sign-in with Google plugin.                                           |
-| passport-local                  | Sign-in with Username and Password plugin.                            |
-| request                         | Simplified HTTP request library.                                      |
-| socket.io                       | node.js realtime framework server.                                    |
+| mqtt                            | Módulo para el protocolo MQTT.                                        |
+| multer                          | Middleware para el manejo de imágenes.                                |
+| passport                        | Módulo para la autenticación.                                         |
+| passport-google-oauth           | Iniciar sesión con Google.                                            |
+| passport-local                  | Iniciar sesión mediante usuario y contraseña.                         |
+| request                         | Librería HTTP request.                                                |
+| socket.io                       | Realtime framework server.                                            |
 | util                            | Node.JS util module.                                                  |
 | validator                       | String validation and sanitization.                                   |
-| mocha                           | Simple, flexible, fun test framework.                                 |
-| should                          | Test framework agnostic BDD-style assertions.                         |
 
 
 Licencia

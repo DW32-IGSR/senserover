@@ -1,0 +1,13 @@
+MONGODB="mongodb://cambiar:cambiar@ds037215.mongolab.com:37215/sense-rover"
+
+MAILGUN_USER=
+MAILGUN_PASSWORD=
+
+SESSION_SECRET=ponaquiloquequieras
+
+KEY_CHAR=abcdefghijklmnopqrstuv5xyz0123456789
+
+API_DEL_TIEMPO=
+
+GOOGLE_ID=
+GOOGLE_SECRET=

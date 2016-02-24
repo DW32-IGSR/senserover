@@ -12,7 +12,7 @@ exports.comprar = function(req, res) {
     //insert en la bd el usuario y el dron que compro
 
     var user = req.user;
-    console.log('entro');
+    //console.log('entro');
 
     if (user == "" || user == undefined) {
         //algun mensaje de usuario no conectado
@@ -172,15 +172,6 @@ exports.comprar = function(req, res) {
                                                         }else {
                                                         }
                                                     });
-                                                    
-                                                    //en pruebas
-                                                    console.log("pre intento crear room "+dron._id);
-                                                	//var io = req.app.io;
-                                                	//socket.emit('create', roomname);
-                                                    //io.sockets.emit('create', dron._id);
-                                                    req.app.io.emit('create', dron._id);
-                                                    console.log("post create");
-                                                    //en pruebas
 
                                                     var nombre_remitente = 'Sense-Rover';
                                                     var email_remitente = 'dw32igsr@gmail.com';

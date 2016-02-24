@@ -1,13 +1,14 @@
 //https://github.com/mqttjs/MQTT.js#browser
 //56939648e4b0166e3b6a60f6
 //var client = mqtt.connect('mqtts://test.mosquitto.org:8081'); // you add a ws:// url here
+//var client = mqtt.connect('wss://test.mosquitto.org:8081'); // you add a ws:// url here
 var client = mqtt.connect('mqtt://test.mosquitto.org:8080'); // you add a ws:// url here
 
 $("#btn_parada_marcha").click(function() {
     //console.log("parar");
     if($("#btn_parada_marcha").html()=="parar dron"){
-        client.publish($("#seleccionador").val(), "para");
         $("#btn_parada_marcha").html("continuar ruta");
+        client.publish($("#seleccionador").val(), "para");
     }else{
         $("#btn_parada_marcha").html("parar dron");
         client.publish($("#seleccionador").val(), "marcha");

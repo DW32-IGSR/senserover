@@ -103,7 +103,7 @@
     <div>
       <div class="w-row">
         <div class="w-col w-col-6">
-          <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
+          <div data-animation="slide" data-duration="500" data-delay="1000" data-infinite="1" class="w-slider">
             <div class="w-slider-mask">
               {{#each datos_producto._doc.imagenes}}
                 <div class="w-slide slide-dron1" style="background-image: url('{{url_img}}');"></div>
@@ -122,7 +122,7 @@
         <!-- seccion-producto: w-col w-col-6 -->
         <div class="w-col w-col-6 precio">
           <h1>{{datos_producto.precio}}&nbsp;€</h1>
-          <p>IVA incluido (precio*0.21)</p><a id="btn_compra" href="#seccion-paquete" class="button">Comprar</a>
+          <p>IVA incluido (precio*1.21)</p><p>No incluye precio paquete</p><a id="btn_compra" href="#seccion-paquete" class="button">Comprar</a>
         </div>
         <!-- seccion-producto: w-col w-col-6 precio -->
       </div>
@@ -147,6 +147,15 @@
           <div>
             <h2>Descripción</h2>
             <p align=left>{{datos_producto.descripcion}}</p>
+            <ul align=left>
+              <li>Marco de Sense-Rover, motores y controladores electrónicos de velocidad</li>
+              <li>Controlador RC 2,4 GHz de 4 canales</li>
+              <li>Piloto automático Erle-Brain 2 Linux</li>
+              <li>Módulo de poder</li>
+              <li>1600 mAh de la batería de NiMH 7.2V</li>
+              <li>Cargadores de baterías de NiMH</li>
+              <li>Mini-USB</li>
+            </ul>
           </div>
         </div>
         <!-- seccion-producto: w-container: w-tabs tabs-wrapper: w-tab-content: w-tab-pane: Descripción -->
@@ -168,7 +177,7 @@
             <h2>Opiniones</h2> {{#each datos_producto._doc.opiniones}}
             <div class="w-row row_opinion">
               <div class="w-col w-col-3">
-                <h1 class="heading-opinion">{{nombre}}</h1><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+                <h1 class="heading-opinion">{{nombre}}</h1><img src="http://sense-rover-nohtrim.c9users.io/images/foto_perfil1.jpg" class="imagen-about">
               </div>
               <div class="w-col w-col-9">
                 <p class="text_opinion">{{opinion}}</p>
@@ -204,10 +213,9 @@
           <hr>
           <p>Alertas en tiempo real</p>
           <hr>
-          <p>Y mucho más</p>
-          <hr>
           <p><b>1 Mes GRATIS</b></p>
           <hr>
+          <p> </p>
           <a href="#" name="comprar_pak" class="btn btn-default btn-block" id="tipo_basico">Comprar</a>
         </div>
       </div>
@@ -221,7 +229,9 @@
           <hr>
           <p>Y mucho más</p>
           <hr>
-          <p><b>5,99€ /Mes</b></p>
+          <p><b>1 Mes GRATIS</b></p>
+          <hr>
+          <p><b>5,99€ /Mes (durante 6 meses)</b></p>
           <hr>
           <a href="#" name="comprar_pak" class="btn btn-success btn-block" id="tipo_estandar">Comprar</a>
         </div>
@@ -230,13 +240,15 @@
         <div class="well">
           <h3><b>PROFESIONAL</b></h3>
           <hr>
-          <p>4 GB Datatransfer</p>
+          <p>Datos en tiempo real</p>
           <hr>
-          <p>4 GB Storage</p>
+          <p>Alertas en tiempo real</p>
           <hr>
           <p>Y mucho más</p>
           <hr>
-          <p><b>€ 5,99 /PM</b></p>
+          <p><b>1 Mes GRATIS</b></p>
+          <hr>
+          <p><b>€ 3,99€ /Mes (Durante un 12 meses)</b></p>
           <hr>
           <a href="#" name="comprar_pak" class="btn btn-primary btn-block" id="tipo_profesional">Comprar</a>
         </div>
@@ -369,7 +381,7 @@
       </div>
       <div class="modal-body">
         <div class="alert alert-success">
-          Compra realizada con éxito, visite su perfil para más información.
+          Compra realizada con éxito.
         </div>
       </div>
     </div>

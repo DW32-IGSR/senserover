@@ -101,6 +101,8 @@ $(document).ready(function() {
                     }
                 }
             }
+        }).on('success.form.bv', function(e) {
+            $('#mcompra').modal('show');
         });
     });
     /*$('#formulario_compra').on('submit', function(e) {

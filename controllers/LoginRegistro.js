@@ -44,7 +44,7 @@ exports.postLogin = function(req, res, next) {
     }
     if (!user) {
       //req.flash('errors', { msg: info.message });
-      console.log('distinto a user');
+      //console.log('distinto a user');
       //return res.redirect('/');
       return res.render('index', {
       flash: {
@@ -54,7 +54,7 @@ exports.postLogin = function(req, res, next) {
       });
     }
     req.logIn(user, function(err) {
-      console.log('entro a logIn');
+      //console.log('entro a logIn');
       if (err) {
         console.log('error logIn');
         //return next(err);
@@ -67,7 +67,7 @@ exports.postLogin = function(req, res, next) {
         });
       }
       //console.log('ruben: ' + user.usuario + " " + user.validated);
-      console.log('entro a logIn 2');
+      //console.log('entro a logIn 2');
 
       Drones.find({
             'id_usuario': user.id

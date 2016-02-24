@@ -1,6 +1,6 @@
 var lineas=[];
 
-function iniciarMapa1(latitud, longitud) {
+/*function iniciarMapa1(latitud, longitud) {
     //console.log("iniciar mapa1: lat:" + latitud + " lon:" + longitud);
     var centro = new google.maps.LatLng(latitud, longitud);
     var mapa1 = new google.maps.Map(document.getElementById('mapa1'), {
@@ -13,7 +13,7 @@ function iniciarMapa1(latitud, longitud) {
         map: mapa1,
         title: 'Ultima posicion del dron'
     });
-}
+}*/
 
 function iniciarMapa2(latitudes, longitudes) {
     var ultimapos = new google.maps.LatLng(latitudes[latitudes.length - 1], longitudes[longitudes.length - 1]);

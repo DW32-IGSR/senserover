@@ -9,7 +9,7 @@ exports.perfil = function(req, res) {
     //ruta a la pagina de perfil
 
     var user = req.user;
-    //console.log(user.usuario);
+    console.log("session usuario: "+user.usuario);
     if (user == "" || user == undefined) {
         res.redirect('/');
     }

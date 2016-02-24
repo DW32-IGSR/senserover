@@ -1,4 +1,4 @@
-$("a[name$='comprar_pak']").click(function() {
+$("a[name='comprar_pak']").click(function() {
     if ($("#nombre_usuario").html() != undefined) {
         $("#seccion-compra").fadeIn();
 
@@ -15,7 +15,7 @@ $("a[name$='comprar_pak']").click(function() {
 
 //modal de comfirmación de compra
 $("#btn_form_comprar").click(function() {
-    $('#ModalCompra').modal('show');
+    $('#mcompra').modal('show');
 });
 
 $('#tipo_basico').click(function() {
