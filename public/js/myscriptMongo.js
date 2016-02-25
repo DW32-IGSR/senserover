@@ -115,8 +115,6 @@ function cargaDron(id_dron) {
                 iniciarMapa2(datosLat, datosLon);
             }else{
                 //console.log("coordenadas indefinidas");
-                $("#ruta_dron").fadeOut();
-                $("#graficas").fadeOut();
             }
         },
         //error a revisar
