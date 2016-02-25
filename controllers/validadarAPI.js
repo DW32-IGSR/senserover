@@ -60,9 +60,9 @@ exports.APIinsertar = function(req, res) {
     req.checkParams('bateria', 'La bateria no esta en decimal.').isDecimal();
     req.checkParams('bateria', 'La bateria no cumple con la cantidad de caracteres.').len(1,5); //Hay que mirar como nos envian este dato
     
-    req.checkParams('latitud', 'La latitud no cumple con la cantidad de caracteres.').len(1,12);
+    req.checkParams('latitud', 'La latitud no cumple con la cantidad de caracteres.').len(1,30);
     
-    req.checkParams('longitud', 'La latitud no cumple con la cantidad de caracteres.').len(1,12); 
+    req.checkParams('longitud', 'La latitud no cumple con la cantidad de caracteres.').len(1,30); 
 
     errors = req.validationErrors();
   }

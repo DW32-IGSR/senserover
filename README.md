@@ -159,7 +159,7 @@ Estructura del proyecto
 Listado de paquetes
 ----------------
 
-| Paquete                         | Descripció                                                           |
+| Paquete                         | Descripción                                                           |
 | ------------------------------- | --------------------------------------------------------------------- |
 | bcrypt-nodejs                   | Módulo para hash y contraseñas de usuarios.                           |
 | body-parser                     | Express 4 middleware.                                                 |
