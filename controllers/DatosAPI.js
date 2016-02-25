@@ -378,7 +378,7 @@ exports.findMinMaxBatDronId = function(req, res) {
 exports.addDato = function(req, res) {
 	//Hacemos un insert en la base de datos de la collección Dato
 	//ejemplo
-	//https://sense-rover-nohtrim.c9users.io/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/43/long/-1.9
+	//find
 	//https://senserover-terrestre.rhcloud.com/api/datos/56939648e4b0166e3b6a60f6/t/22/h/40/co2/11/r/20/l/20/b/25/lat/43/long/-1.9
 
 	var id_dron = req.params.id_dron;

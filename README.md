@@ -13,24 +13,25 @@ http://senserover.zubirimanteoweb.com/
 Características
 --------
 
-- **Local Authentication** using Email and Password
+- **Local Authentication** usando email y contraseña
 - **OAuth 2.0 Authentication** Google
-- MVC Project Structure
+- Estructura del proyecto MVC
 - Node.js + Express
+- Mongoose (MongoLab)
 - Bootstrap 3 + Webflow.io
-- Contact Form (powered by Mailgun)
+- Formulario de contacto (mailgun)
 - Sokect.io
 - MQTT
 - **Account Management**
- - Profile Details
- - Change Password
- - Forgot Password
+ - Detalles de perfil
+ - Cambio de contraseña
+ - Recuperación de contraseña
 
 
 Instalación
 ---------------
 
-La manera mas sencilla de empezar es clonando el repositorio
+La manera más sencilla de empezar es clonando el repositorio
 
 ```bash
 # Clonar repositorio
@@ -42,13 +43,16 @@ cd miproyecto
 # Instalar dependencias con NPM
 npm install
 
+# Renombrar fichero ".env example" a ".env"
+mv .env\ example .env
+
 node app.js
 ```
 
 Obtención de API Keys
 ------------------
 
-Para utilizar cualquiera de las API incluidos o métodos de autenticación OAuth, tendrá que obtener credenciales apropiadas:  ID Cliente, Clave cliente secreta, API Key, o
+Para utilizar cualquiera de las API incluidas o métodos de autenticación OAuth, tendrá que obtener credenciales apropiadas:  ID Cliente, Clave cliente secreta, API Key, o
 Usuario & Contraseña. Usted tendrá que ir a través de cada proveedor para generar nuevas credenciales.
 
 
@@ -61,28 +65,28 @@ Usuario & Contraseña. Usted tendrá que ir a través de cada proveedor para gen
 - A continuación, en *Autenticación APIs* en la barra lateral haga click en la pestaña *Credenciales*
 - Haga click en el botón **Crear nuevo cliente ID**
 - Seleccionar *Aplicación Web* y haga click en **la pantalla para Configurar Consentimiento**
-- Select *Web Application* and click on **Configure Consent Screen**
-Rellene los campos necesarios a continuación, haga clic en **Guardar**
+Rellene los campos necesarios y a continuación, haga clic en **Guardar**
 - En el ID de cliente Crear diálogo modal:
  - **Tipo de aplicación**: Aplicación Web
  - **Autorizado Javascript orígenes**: http: // localhost: 3000
  - **Autorizado redirigir URI**: http://localhost:3000/auth/google/callback
 - Haga click en el botón **Crear ID de cliente*
-- Copiar y pegar*ID de cliente* y *Clave cliente secreta* llaves en `.env`
+- Copiar y pegar el *ID de cliente* y *Clave cliente secreta* en `.env`
 
 <hr>
 
 <img src="https://raw.github.com/mailgun/media/master/Mailgun_Primary.png" width="200">
-- Go to http://www.mailgun.com
-- Sign up and add your *Domain Name*
-- From the domain overview, copy and paste the default SMTP *Login* and *Password* into `.env` file
+- Ir a http://www.mailgun.com
+- Registrarse y entrar al *nombre de dominio*
+- Sobre el dominio, copiar y pegar la *API Key* y el *Default SMTP Login* al fichero `.env`
 
 <hr>
 
 <img src="https://mongolab.com/company/brand/resources/MongoLab-Logo-Square-OnWhite-RGB.png" width="200">
-- Go to https://mongolab.com/
-- Sign up and add your *Domain Name*
-- From the domain overview, copy and paste the default SMTP *Login* and *Password* into `.env` file
+- Ir https://mongolab.com/
+- Registrarse y accerder a *Account*
+- Seleccionar de *Account Users* la cuenta de usuario
+- Copiar y pegar la *API Key* al fichero `.env`, y habilitar el acceso a la API *Data API Access*
 
 
 Estructura del proyecto
@@ -111,9 +115,7 @@ Estructura del proyecto
 | **models**/Alertas.js                         | Schema Mongoose y model de Alertas.                                |
 | **models**/Dato.js                            | Schema Mongoose y model de Datos.                                  |
 | **models**/Drones.js                          | Schema Mongoose y model de Drones.                                 |
-| **models**/Especificaciones.js                | Schema Mongoose y model de Especificaciones del producto           |
 | **models**/HistorialPedidos.js                | Schema Mongoose y model de HistorialPedidos.                       |
-| **models**/Opiniones.js                       | Schema Mongoose y model de Opiniones sobre los productos.          |
 | **models**/Productos.js                       | Schema Mongoose y model de Productos.                              |
 | **models**/Usuario.js                         | Schema Mongoose y model de Usuario                                 |
 | **public**/                                   | (fonts, css, js, img).                                             |
@@ -157,7 +159,7 @@ Estructura del proyecto
 Listado de paquetes
 ----------------
 
-| Package                         | Description                                                           |
+| Paquete                         | Descripció                                                           |
 | ------------------------------- | --------------------------------------------------------------------- |
 | bcrypt-nodejs                   | Módulo para hash y contraseñas de usuarios.                           |
 | body-parser                     | Express 4 middleware.                                                 |
@@ -184,12 +186,37 @@ Listado de paquetes
 | validator                       | String validation and sanitization.                                   |
 
 
+Uso de la API
+----------------
+| Método    | Ruta (http://senserover.zubirimanteoweb.com)                                                                              | Ejemplo                                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| GET       | /productos                                                                                                                | /productos                                                                                                |
+| GET       | /productos/:id_producto                                                                                                   | /productos/5693728d3890294f10406189                                                                       |
+| GET       | /drones/:id_dron                                                                                                          | /drones/56af4d51764ae2a8c2618218                                                                          |
+| GET       | /drones/usuario/:id_usuario                                                                                               | /drones/usuario/56af4cdb764ae2a8c2618217                                                                  |
+| GET       | /datos/:id_dron                                                                                                           | /datos/56af4d51764ae2a8c2618218                                                                           |
+| GET       | /datos/:id_dron/temperatura                                                                                               | /datos/56af4d51764ae2a8c2618218/temperatura                                                               |
+| GET       | /datos/:id_dron/humedad                                                                                                   | /datos/56af4d51764ae2a8c2618218/humedad                                                                   |
+| GET       | /datos/:id_dron/co2                                                                                                       | /datos/56af4d51764ae2a8c2618218/co2                                                                       |
+| GET       | /datos/:id_dron/radiacion                                                                                                 | /datos/56af4d51764ae2a8c2618218/radiacion                                                                 |
+| GET       | /datos/:id_dron/luminosidad                                                                                               | /datos/56af4d51764ae2a8c2618218/luminosidad                                                               |
+| GET       | /api/datos/:id_dron/t/:temperatura/h/:humedad/co2/:co2/r/:radiacion/l/:luminosidad/b/:bateria/lat/:latitud/long/:longitud | /api/datos/56939648e4b0166e3b6a60f6/t/6/h/66/co2/-300/r/44.0/l/5600/b/10.22/lat/43.32206/long/-1.978376   |
+
+
+Referencias
+----------------
+- https://github.com/sahat/hackathon-starter
+- https://github.com/carlosazaustre/node-api-rest-example/tree/feature-express4
+- https://github.com/ctavan/express-validator
+- https://github.com/expressjs/multer
+ 
+
 Licencia
 -------
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Iosu Recalde, Ruben Alvarez, Gorka Perez and Sergio Valera.
+Copyright (c) 2016 Iosu Recalde, Rubén Álvarez, Gorka Perez and Sergio Valera.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

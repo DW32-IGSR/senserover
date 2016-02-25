@@ -93,7 +93,7 @@ passport.use(new GoogleStrategy({
     Usuario.findOne({ google: profile.id }, function(err, existingUser) {
       if (existingUser) {
         //req.flash('errors', { msg: 'There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
-        console.log('There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.');
+        console.log('Ya existe una cuenta de Google que te pertenece. Iniciar sesión con esa cuenta o eliminarla , luego vincularlo con su cuenta actual');
         done(err);
       } else {
         Usuario.findById(req.user.id, function(err, user) {
@@ -107,7 +107,7 @@ passport.use(new GoogleStrategy({
           user.avatar = user.profile.picture || profile._json.image.url;
           user.save(function(err) {
             //req.flash('info', { msg: 'Google account has been linked.' });
-            console.log('Google account has been linked.');
+            console.log('Cuenta de Google se ha relacionado.');
             done(err, user);
           });
         });
@@ -122,7 +122,7 @@ passport.use(new GoogleStrategy({
       Usuario.findOne({ email: profile.emails[0].value }, function(err, existingEmailUser) {
         if (existingEmailUser) {
           //req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings.' });
-          console.log('There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings.');
+          console.log('Ya existe una cuenta a través de esta dirección de correo electrónico. Iniciar sesión en esa cuenta y vincularla con Google manualmente de configuración de la cuenta.');
           done(err);
         } else {
           var user = new Usuario();

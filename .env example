@@ -1,7 +1,20 @@
-MONGODB="mongodb://cambiar:cambiar@ds037215.mongolab.com:37215/sense-rover"
+/**
+  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
 
-MAILGUN_USER=
-MAILGUN_PASSWORD=
+  1. Nunca debes hacer commit de este archivo a un repositorio público de GitHub
+
+  2. Puede usar estas APIs para el desarrollo, pero debes crear las APIs si vas a ponerlo en producción.
+  
+  3. Renombra este fichero a `.env`
+
+  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
+*/
+
+
+MONGODB=mongodb://cambiar:cambiar@ds037215.mongolab.com:37215/sense-rover
+
+MAILGUN_USER=sandbox59385b2211904b9496d3daafccc6256f.mailgun.org
+MAILGUN_PASSWORD=key-a337122e0eea8fbcb3daa1291c3acf5f
 
 SESSION_SECRET=ponaquiloquequieras
 
@@ -9,5 +22,5 @@ KEY_CHAR=abcdefghijklmnopqrstuv5xyz0123456789
 
 API_DEL_TIEMPO=
 
-GOOGLE_ID=
-GOOGLE_SECRET=
+GOOGLE_ID=16999742542-iuieos7tcf266naq1mngiegfpakspkbe.apps.googleusercontent.com
+GOOGLE_SECRET=JAOk6wZT4-B5QRVxjSUVRJg8

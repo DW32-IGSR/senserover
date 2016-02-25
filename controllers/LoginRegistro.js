@@ -17,7 +17,7 @@ exports.postLogin = function(req, res, next) {
   req.assert('email', 'El email es requerido.').notEmpty();
   req.assert('email', 'Email no válido').isEmail();
   req.assert('password', 'La contraseña es requerida.').notEmpty();
-  req.assert('password', 'Usa al menos 8 caracteres.').len(8, 20); //Hay que cambiar el valor 2 por 3
+  req.assert('password', 'Usa al menos 8 caracteres.').len(8, 20); 
   
   //console.log(req);
 

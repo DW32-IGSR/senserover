@@ -209,14 +209,13 @@ app.get('/apiDatos/log/:id_dron/:mensaje', datosApiController.logDron);
 
 
 /**
- * OAuth authentication routes. (Sign in) EN PRUEBAS
+ * OAuth authentication routes. (Sign in)
  */
 
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
   res.redirect(req.session.returnTo || '/');
 });
-
 
 /**
  * Ruta por defecto

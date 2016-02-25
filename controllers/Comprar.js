@@ -35,9 +35,6 @@ exports.comprar = function(req, res) {
         var form_id_producto = req.body.id_producto_compra;
         var form_tipo_sub = req.body.tipo_subscripcion;
 
-        // basico --> 1mes
-        // estandar --> 6meses
-        // profesional --> 12meses
 
         // Validacion servidor
         req.assert('nombre_compra', 'El nombre es requerido.').notEmpty();
@@ -72,7 +69,6 @@ exports.comprar = function(req, res) {
         }
         else {
 
-            // prueba ruben
             console.log('Nombre: ' + form_nombre);
             console.log('nombre pre compra: ' + form_nombre_producto);
 
@@ -127,6 +123,10 @@ exports.comprar = function(req, res) {
                                             var fecha_compra = moment().format("Y-MM-DD");
                                             var hora_compra = moment().utcOffset("+0000").format("HH:mm:ss");
 
+                                            // basico --> 1mes
+                                            // estandar --> 6meses
+                                            // profesional --> 12meses
+                                            
                                             var fecha_caducidad;
 
                                             if (form_tipo_sub == 'basico') {
