@@ -9,6 +9,10 @@ La finalidad del proyecto es ayudar al agricultor mediante nuestra aplicación w
 Demostración:
 http://senserover.zubirimanteoweb.com/
 
+Usuario de demostración:
+Email: dw32igsr1@gmail.com
+Contraseña: 12345678
+
 
 Características
 --------
